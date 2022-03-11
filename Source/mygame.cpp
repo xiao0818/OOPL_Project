@@ -206,7 +206,8 @@ void CGameStateRun::OnBeginState()
 	const int HITS_LEFT = 10;
 	const int HITS_LEFT_X = 590;
 	const int HITS_LEFT_Y = 0;
-	const int BACKGROUND_X = 60;
+	const int BACKGROUND_X = (SIZE_X - background.Width()) / 2;
+	const int BACKGROUND_Y = (SIZE_Y - background.Height()) / 2;
 	const int ANIMATION_SPEED = 15;
 	for (int i = 0; i < NUMBALLS; i++) {				// 設定球的起始座標
 		int x_pos = i % BALL_PER_ROW;
@@ -216,7 +217,7 @@ void CGameStateRun::OnBeginState()
 		ball[i].SetIsAlive(true);
 	}
 	eraser.Initialize();
-	background.SetTopLeft(BACKGROUND_X,0);				// 設定背景的起始座標
+	background.SetTopLeft(BACKGROUND_X, BACKGROUND_Y);				// 設定背景的起始座標
 	help.SetTopLeft(0, SIZE_Y - help.Height());			// 設定說明圖的起始座標
 	hits_left.SetInteger(HITS_LEFT);					// 指定剩下的撞擊數
 	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// 指定剩下撞擊數的座標
@@ -231,12 +232,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	// 如果希望修改cursor的樣式，則將下面程式的commment取消即可
 	//
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
-	//
-	// 移動背景圖的座標
-	//
-	if (background.Top() > SIZE_Y)
-		background.SetTopLeft(60 ,-background.Height());
-	background.SetTopLeft(background.Left(),background.Top()+1);
 	//
 	// 移動球
 	//
@@ -284,7 +279,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
 	eraser.LoadBitmap();
-	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
+	background.LoadBitmap(IDB_GROUND_14_14);					// 載入背景的圖形
 	//
 	// 完成部分Loading動作，提高進度
 	//
