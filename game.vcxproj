@@ -329,6 +329,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\Ground.bmp" />
     <Image Include="Resources\Ground_14_14.bmp" />
     <Image Include="Resources\Wall.bmp" />
     <Image Include="res\bitmap3.bmp" />

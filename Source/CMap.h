@@ -7,9 +7,9 @@ namespace game_framework {
 		void OnShow();											// 將圖形貼到畫面
 		void SetXY();											// 設定座標
 	protected:
-		CMovingBitmap background;	// 圖
+		CMovingBitmap ground;
 		int map[14][14];
-		int x, y;					// 座標
+		int x, y;
 		int brickLength, brickWidth;
 		CWall wall;
 	};

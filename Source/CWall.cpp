@@ -19,8 +19,8 @@ namespace game_framework {
 
 	void CWall::SetXY(int nx, int ny)
 	{
-		x = nx - 1;
-		y = ny - 26;
+		x = nx;
+		y = ny - 23;
 	}
 
 	void CWall::OnShow()

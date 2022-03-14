@@ -11,15 +11,15 @@ namespace game_framework {
 	CMap::CMap()
 	{
 		x = y = 0;
-		brickLength = 71;
-		brickWidth = 44;
+		brickLength = 72;
+		brickWidth = 46;
 
 		int map_init[14][14] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-								{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-								{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-								{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-								{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-								{1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -40,20 +40,18 @@ namespace game_framework {
 
 	void CMap::LoadBitmap()
 	{
-		background.LoadBitmap(IDB_GROUND_14_14);
+		ground.LoadBitmap(IDB_GROUND);
 		wall.LoadBitmap();
 	}
 
 	void CMap::SetXY()
 	{
-		x = (SIZE_X - background.Width()) / 2;
-		y = (SIZE_Y - background.Height()) / 2;
+		x = (SIZE_X - ground.Width() * 14) / 2;
+		y = (SIZE_Y - ground.Height() * 14) / 2;
 	}
 
 	void CMap::OnShow()
 	{
-		background.SetTopLeft(x, y);
-		background.ShowBitmap();
 		for (int i = 0; i < 14; i++)
 		{
 			for (int j = 0; j < 14; j++)
@@ -61,6 +59,8 @@ namespace game_framework {
 				switch (map[i][j])
 				{
 					case 0:
+						ground.SetTopLeft(x + brickLength * j, y + brickWidth * i);
+						ground.ShowBitmap();
 						break;
 					case 1:
 						wall.SetXY(x + brickLength * j, y + brickWidth * i);
