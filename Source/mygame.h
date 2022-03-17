@@ -43,6 +43,7 @@
 #include "CBouncingBall.h"
 #include "CWall.h"
 #include "CGround.h"
+#include "CPlayer.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -105,6 +106,7 @@ namespace game_framework {
 		//CBouncingBall   bball;		// ¤ÏÂÐ¼u¸õªº²y
 		CGround			ground;
 		CWall			*wall;
+		CPlayer			player;
 		int				WALL_NUMBER;
 	};
 

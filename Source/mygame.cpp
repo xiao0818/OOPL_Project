@@ -211,7 +211,7 @@ void CGameStateRun::OnBeginState()
 							{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
 							{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
 							{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
-							{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+							{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1},
 							{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 							{1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
 							{1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1},
@@ -229,6 +229,9 @@ void CGameStateRun::OnBeginState()
 				wall[count].SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
 				count++;
 			}
+			else if (map_init[i][j] == 2) {
+				player.SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
+			}
 		}
 	}
 }
@@ -240,13 +243,14 @@ void CGameStateRun::OnMove()
 void CGameStateRun::OnInit()
 {
 	ShowInitProgress(33);
+
 	ground.LoadBitmap();
-	
 	for (int i = 0; i < WALL_NUMBER; i++)
 	{
 			wall[i].LoadBitmap();
 	}
-	
+	player.LoadBitmap();
+
 	ShowInitProgress(50);
 	Sleep(300);
 }
@@ -286,5 +290,6 @@ void CGameStateRun::OnShow()
 	{
 		wall[i].OnShow();
 	}
+	player.OnShow();
 }
 }

@@ -108,6 +108,8 @@ IDB_WALL                BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_
 
 IDB_GROUND              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\Ground.bmp"
 
+IDB_PLAYER              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\Player.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
