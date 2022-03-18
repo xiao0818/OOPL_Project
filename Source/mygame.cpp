@@ -60,236 +60,276 @@
 #include "mygame.h"
 
 namespace game_framework {
-/////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的遊戲開頭畫面物件
-/////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////
+	// 這個class為遊戲的遊戲開頭畫面物件
+	/////////////////////////////////////////////////////////////////////////////
 
-CGameStateInit::CGameStateInit(CGame *g)
-: CGameState(g)
-{
-}
-
-void CGameStateInit::OnInit()
-{
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
-	ShowInitProgress(0);	// 一開始的loading進度為0%
-	//
-	// 開始載入資料
-	//
-	logo.LoadBitmap(IDB_BACKGROUND);
-	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-	//
-	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
-	//
-}
-
-void CGameStateInit::OnBeginState()
-{
-}
-
-void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
-{
-	const char KEY_ESC = 27;
-	const char KEY_SPACE = ' ';
-	if (nChar == KEY_SPACE)
-		GotoGameState(GAME_STATE_RUN);						// 切換至GAME_STATE_RUN
-	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
-		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 關閉遊戲
-}
-
-void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
-{
-	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
-}
-
-void CGameStateInit::OnShow()
-{
-	//
-	// 貼上logo
-	//
-	logo.SetTopLeft((SIZE_X - logo.Width())/2, SIZE_Y/8);
-	logo.ShowBitmap();
-	//
-	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
-	//
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
-	pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
-	if (ENABLE_GAME_PAUSE)
-		pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
-	pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
-}								
-
-/////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的結束狀態(Game Over)
-/////////////////////////////////////////////////////////////////////////////
-
-CGameStateOver::CGameStateOver(CGame *g)
-: CGameState(g)
-{
-}
-
-void CGameStateOver::OnMove()
-{
-	counter--;
-	if (counter < 0)
-		GotoGameState(GAME_STATE_INIT);
-}
-
-void CGameStateOver::OnBeginState()
-{
-	counter = 30 * 5; // 5 seconds
-}
-
-void CGameStateOver::OnInit()
-{
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
-	ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
-	//
-	// 開始載入資料
-	//
-	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-	//
-	// 最終進度為100%
-	//
-	ShowInitProgress(100);
-}
-
-void CGameStateOver::OnShow()
-{
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240,210,str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
-/////////////////////////////////////////////////////////////////////////////
-
-CGameStateRun::CGameStateRun(CGame *g)
-: CGameState(g), WALL_NUMBER(74)
-{
-	wall = new CWall [WALL_NUMBER];
-}
-
-CGameStateRun::~CGameStateRun()
-{
-	delete [] wall;
-}
-
-void CGameStateRun::OnBeginState()
-{
-	const int BRICK_LENGTH = 72;
-	const int BRICK_WIDTH = 46;
-	const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
-	const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
-	ground.SetXY(GROUND_X, GROUND_Y);
-	int map_init[14][14] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-							{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-							{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
-							{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-							{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
-							{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
-							{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1},
-							{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-							{1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-							{1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1},
-							{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-							{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
-							{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-							{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-	int count = 0;
-	for (int i = 0; i < 14; i++)
+	CGameStateInit::CGameStateInit(CGame *g)
+	: CGameState(g)
 	{
-		for (int j = 0; j < 14; j++)
+	}
+
+	void CGameStateInit::OnInit()
+	{
+		//
+		// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
+		//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
+		//
+		ShowInitProgress(0);	// 一開始的loading進度為0%
+		//
+		// 開始載入資料
+		//
+		logo.LoadBitmap(IDB_BACKGROUND);
+		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+		//
+		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
+		//
+	}
+
+	void CGameStateInit::OnBeginState()
+	{
+	}
+
+	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+	{
+		const char KEY_ESC = 27;
+		const char KEY_SPACE = ' ';
+		if (nChar == KEY_SPACE)
+			GotoGameState(GAME_STATE_RUN);						// 切換至GAME_STATE_RUN
+		else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
+			PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 關閉遊戲
+	}
+
+	void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
+	{
+		GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
+	}
+
+	void CGameStateInit::OnShow()
+	{
+		//
+		// 貼上logo
+		//
+		logo.SetTopLeft((SIZE_X - logo.Width())/2, SIZE_Y/8);
+		logo.ShowBitmap();
+		//
+		// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
+		//
+		CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
+		CFont f,*fp;
+		f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
+		fp=pDC->SelectObject(&f);					// 選用 font f
+		pDC->SetBkColor(RGB(0,0,0));
+		pDC->SetTextColor(RGB(255,255,0));
+		pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
+		pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
+		if (ENABLE_GAME_PAUSE)
+			pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
+		pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
+		pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
+		CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	}								
+
+	/////////////////////////////////////////////////////////////////////////////
+	// 這個class為遊戲的結束狀態(Game Over)
+	/////////////////////////////////////////////////////////////////////////////
+
+	CGameStateOver::CGameStateOver(CGame *g)
+	: CGameState(g)
+	{
+	}
+
+	void CGameStateOver::OnMove()
+	{
+		counter--;
+		if (counter < 0)
+			GotoGameState(GAME_STATE_INIT);
+	}
+
+	void CGameStateOver::OnBeginState()
+	{
+		counter = 30 * 5; // 5 seconds
+	}
+
+	void CGameStateOver::OnInit()
+	{
+		//
+		// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
+		//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
+		//
+		ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
+		//
+		// 開始載入資料
+		//
+		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+		//
+		// 最終進度為100%
+		//
+		ShowInitProgress(100);
+	}
+
+	void CGameStateOver::OnShow()
+	{
+		CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
+		CFont f,*fp;
+		f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
+		fp=pDC->SelectObject(&f);					// 選用 font f
+		pDC->SetBkColor(RGB(0,0,0));
+		pDC->SetTextColor(RGB(255,255,0));
+		char str[80];								// Demo 數字對字串的轉換
+		sprintf(str, "Game Over ! (%d)", counter / 30);
+		pDC->TextOut(240,210,str);
+		pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
+		CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	}
+
+	/////////////////////////////////////////////////////////////////////////////
+	// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
+	/////////////////////////////////////////////////////////////////////////////
+
+	CGameStateRun::CGameStateRun(CGame *g)
+	: CGameState(g), WALL_NUMBER(74)
+	{
+		wall = new CWall [WALL_NUMBER];
+	}
+
+	CGameStateRun::~CGameStateRun()
+	{
+		delete [] wall;
+	}
+
+	void CGameStateRun::OnBeginState()
+	{
+		const int BRICK_LENGTH = 72;
+		const int BRICK_WIDTH = 46;
+		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
+		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
+		ground.SetXY(GROUND_X, GROUND_Y);
+
+		int map_init[14][14] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
+								{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+								{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1},
+								{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+								{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+								{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+		map = new int *[14];
+		for (int i = 0; i < 14; i++)
 		{
-			if (map_init[i][j] == 1) {
-				wall[count].SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
-				count++;
+			map[i] = new int[14];
+		}
+		for (int i = 0; i < 14; i++)
+		{
+			for (int j = 0; j < 14; j++)
+			{
+				map[i][j] = map_init[i][j];
 			}
-			else if (map_init[i][j] == 2) {
-				player.SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
+		}
+
+
+		player.Initialize(map);
+		int count = 0;
+		for (int i = 0; i < 14; i++)
+		{
+			for (int j = 0; j < 14; j++)
+			{
+				if (map_init[i][j] == 1) {
+					wall[count].SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
+					count++;
+				}
+				else if (map_init[i][j] == 2) {
+					player.SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
+				}
 			}
 		}
 	}
-}
 
-void CGameStateRun::OnMove()
-{
-}
-
-void CGameStateRun::OnInit()
-{
-	ShowInitProgress(33);
-
-	ground.LoadBitmap();
-	for (int i = 0; i < WALL_NUMBER; i++)
+	void CGameStateRun::OnMove()
 	{
-			wall[i].LoadBitmap();
+		player.OnMove();
 	}
-	player.LoadBitmap();
 
-	ShowInitProgress(50);
-	Sleep(300);
-}
-
-void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
-{
-}
-
-void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
-{
-}
-
-void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
-{
-}
-
-void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)
-{
-}
-
-void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)
-{
-}
-
-void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)
-{
-}
-
-void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
-{
-}
-
-void CGameStateRun::OnShow()
-{
-	ground.OnShow();
-	for (int i = 0; i < WALL_NUMBER; i++)
+	void CGameStateRun::OnInit()
 	{
-		wall[i].OnShow();
+		ShowInitProgress(33);
+
+		ground.LoadBitmap();
+		for (int i = 0; i < WALL_NUMBER; i++)
+		{
+				wall[i].LoadBitmap();
+		}
+		player.LoadBitmap();
+
+		ShowInitProgress(50);
+		Sleep(300);
 	}
-	player.OnShow();
-}
+
+	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+	{
+		const char KEY_LEFT = 0x25; // keyboard左箭頭
+		const char KEY_UP = 0x26; // keyboard上箭頭
+		const char KEY_RIGHT = 0x27; // keyboard右箭頭
+		const char KEY_DOWN = 0x28; // keyboard下箭頭
+		if (nChar == KEY_LEFT)
+			player.SetMovingLeft(true);
+		if (nChar == KEY_RIGHT)
+			player.SetMovingRight(true);
+		if (nChar == KEY_UP)
+			player.SetMovingUp(true);
+		if (nChar == KEY_DOWN)
+			player.SetMovingDown(true);
+	}
+
+	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+	{
+		const char KEY_LEFT = 0x25; // keyboard左箭頭
+		const char KEY_UP = 0x26; // keyboard上箭頭
+		const char KEY_RIGHT = 0x27; // keyboard右箭頭
+		const char KEY_DOWN = 0x28; // keyboard下箭頭
+		if (nChar == KEY_LEFT)
+			player.SetMovingLeft(false);
+		if (nChar == KEY_RIGHT)
+			player.SetMovingRight(false);
+		if (nChar == KEY_UP)
+			player.SetMovingUp(false);
+		if (nChar == KEY_DOWN)
+			player.SetMovingDown(false);
+	}
+
+	void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
+	{
+	}
+
+	void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)
+	{
+	}
+
+	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)
+	{
+	}
+
+	void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)
+	{
+	}
+
+	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
+	{
+	}
+
+	void CGameStateRun::OnShow()
+	{
+		ground.OnShow();
+		for (int i = 0; i < WALL_NUMBER; i++)
+		{
+			wall[i].OnShow();
+		}
+		player.OnShow();
+	}
 }

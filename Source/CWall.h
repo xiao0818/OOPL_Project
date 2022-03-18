@@ -3,11 +3,11 @@ namespace game_framework {
 	{
 	public:
 		CWall();
-		void LoadBitmap();										// 載入圖形
-		void OnShow();											// 將圖形貼到畫面
-		void SetXY(int nx, int ny);								// 設定座標
+		void LoadBitmap();
+		void OnShow();
+		void SetXY(int nx, int ny);
 	protected:
-		CMovingBitmap bitmap;		// 圖
-		int x, y;					// 座標
+		CMovingBitmap bitmap;
+		int x, y;
 	};
 }

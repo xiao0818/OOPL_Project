@@ -3,9 +3,9 @@ namespace game_framework {
 	{
 	public:
 		CGround();
-		void LoadBitmap();										// 載入圖形
-		void OnShow();											// 將圖形貼到畫面
-		void SetXY(int nx ,int ny);											// 設定座標
+		void LoadBitmap();
+		void OnShow();
+		void SetXY(int nx ,int ny);
 	protected:
 		CMovingBitmap ground;
 		int x, y;

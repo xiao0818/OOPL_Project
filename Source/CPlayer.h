@@ -3,11 +3,31 @@ namespace game_framework {
 	{
 	public:
 		CPlayer();
-		void LoadBitmap();										// 載入圖形
-		void OnShow();											// 將圖形貼到畫面
-		void SetXY(int nx, int ny);								// 設定座標
+		int  GetX1();
+		int  GetY1();
+		int  GetX2();
+		int  GetY2();
+		void Initialize(int **map);
+		void LoadBitmap();
+		void OnMove();
+		void OnShow();
+		void SetMovingLeft(bool flag);
+		void SetMovingRight(bool flag);
+		void SetMovingUp(bool flag);
+		void SetMovingDown(bool flag);
+		void SetXY(int nx, int ny);
 	protected:
-		CMovingBitmap bitmap;		// 圖
-		int x, y;					// 座標
+		CAnimation animation;
+		int x, y;
+		int indexX, indexY;
+		bool isMovingDown;
+		bool isMovingLeft;
+		bool isMovingRight;
+		bool isMovingUp;
+		int moveCountForLeft;
+		int moveCountForRight;
+		int moveCountForUp;
+		int moveCountForDown;
+		int **mapRecord;
 	};
 }
