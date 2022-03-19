@@ -12,7 +12,7 @@ namespace game_framework {
 	{
 		x = y = 0;
 		brickLength = 72;
-		brickWidth = 46;
+		brickWidth = 48;
 	}
 
 	void CGround::LoadBitmap()

@@ -24,10 +24,8 @@ namespace game_framework {
 		bool isMovingLeft;
 		bool isMovingRight;
 		bool isMovingUp;
-		int moveCountForLeft;
-		int moveCountForRight;
-		int moveCountForUp;
-		int moveCountForDown;
+		int moveCountForX;
+		int moveCountForY;
 		int **mapRecord;
 	};
 }

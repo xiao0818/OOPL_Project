@@ -10,6 +10,7 @@ namespace game_framework {
 	CPlayer::CPlayer()
 	{
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		moveCountForX = moveCountForY = 0;
 	}
 
 	int CPlayer::GetX1()
@@ -53,42 +54,68 @@ namespace game_framework {
 
 	void CPlayer::OnMove()
 	{
-		const int STEP_SIZE = 2;
+		const int STEP_TARGET = 12;
+		const int STEP_SIZE_X = 6;
+		const int STEP_SIZE_Y = 4;
 		animation.OnMove();
-		if (isMovingLeft && mapRecord[indexX - 1][indexY] == 0) {
-			x -= STEP_SIZE;
-			moveCountForLeft++;
-			if (moveCountForLeft == 36) {
-				mapRecord[indexX][indexY] = 0;
-				mapRecord[--indexX][indexY] = 2;
-				moveCountForLeft = 0;
+		if (isMovingLeft) {
+			if (moveCountForX != 0) {
+				x -= STEP_SIZE_X;
+				moveCountForX--;
+				if (moveCountForX == -STEP_TARGET) {
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[--indexX][indexY] = 2;
+					moveCountForX = 0;
+				}
+			}
+			else if (mapRecord[indexX - 1][indexY] == 0 && (moveCountForY == 0 || (moveCountForY < 0 && mapRecord[indexX - 1][indexY - 1] == 0) || (moveCountForY > 0 && mapRecord[indexX - 1][indexY + 1] == 0))) {
+				x -= STEP_SIZE_X;
+				moveCountForX--;
 			}
 		}
-		if (isMovingRight && mapRecord[indexX + 1][indexY] == 0) {
-			x += STEP_SIZE;
-			moveCountForRight++;
-			if (moveCountForRight == 36) {
-				mapRecord[indexX][indexY] = 0;
-				mapRecord[++indexX][indexY] = 2;
-				moveCountForRight = 0;
+		if (isMovingRight) {
+			if (moveCountForX != 0) {
+				x += STEP_SIZE_X;
+				moveCountForX++;
+				if (moveCountForX == STEP_TARGET) {
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[++indexX][indexY] = 2;
+					moveCountForX = 0;
+				}
+			}
+			else if (mapRecord[indexX + 1][indexY] == 0 && (moveCountForY == 0 || (moveCountForY < 0 && mapRecord[indexX + 1][indexY - 1] == 0) || (moveCountForY > 0 && mapRecord[indexX + 1][indexY + 1] == 0))) {
+				x += STEP_SIZE_X;
+				moveCountForX++;
 			}
 		}
-		if (isMovingUp && mapRecord[indexX][indexY - 1] == 0)	{
-			y -= STEP_SIZE;
-			moveCountForUp++;
-			if (moveCountForUp == 23) {
-				mapRecord[indexX][indexY] = 0;
-				mapRecord[indexX][--indexY] = 2;
-				moveCountForUp = 0;
+		if (isMovingUp) {
+			if (moveCountForY != 0) {
+				y -= STEP_SIZE_Y;
+				moveCountForY--;
+				if (moveCountForY == -STEP_TARGET) {
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[indexX][--indexY] = 2;
+					moveCountForY = 0;
+				}
+			}
+			else if (mapRecord[indexX][indexY - 1] == 0 && (moveCountForX == 0 || (moveCountForX < 0 && mapRecord[indexX - 1][indexY - 1] == 0) || (moveCountForX > 0 && mapRecord[indexX + 1][indexY - 1] == 0))) {
+				y -= STEP_SIZE_Y;
+				moveCountForY--;
 			}
 		}
-		if (isMovingDown && mapRecord[indexX][indexY + 1] == 0) {
-			y += STEP_SIZE;
-			moveCountForDown++;
-			if (moveCountForDown == 23) {
-				mapRecord[indexX][indexY] = 0;
-				mapRecord[indexX][++indexY] = 2;
-				moveCountForDown = 0;
+		if (isMovingDown) {
+			if (moveCountForY != 0) {
+				y += STEP_SIZE_Y;
+				moveCountForY++;
+				if (moveCountForY == STEP_TARGET) {
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[indexX][++indexY] = 2;
+					moveCountForY = 0;
+				}
+			}
+			else if (mapRecord[indexX][indexY + 1] == 0 && (moveCountForX == 0 || (moveCountForX < 0 && mapRecord[indexX - 1][indexY + 1] == 0) || (moveCountForX > 0 && mapRecord[indexX + 1][indexY + 1] == 0))) {
+				y += STEP_SIZE_Y;
+				moveCountForY++;
 			}
 		}
 	}

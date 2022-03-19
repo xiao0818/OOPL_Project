@@ -201,7 +201,7 @@ namespace game_framework {
 	void CGameStateRun::OnBeginState()
 	{
 		const int BRICK_LENGTH = 72;
-		const int BRICK_WIDTH = 46;
+		const int BRICK_WIDTH = 48;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
 		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
 		ground.SetXY(GROUND_X, GROUND_Y);
@@ -210,12 +210,12 @@ namespace game_framework {
 								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 								{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
 								{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-								{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
-								{1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1},
-								{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1},
-								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-								{1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-								{1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+								{1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 1},
+								{1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1},
+								{1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
 								{1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
 								{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1},
 								{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -241,11 +241,11 @@ namespace game_framework {
 			for (int j = 0; j < 14; j++)
 			{
 				if (map_init[i][j] == 1) {
-					wall[count].SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
+					wall[count].SetXY(GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					count++;
 				}
 				else if (map_init[i][j] == 2) {
-					player.SetXY(GROUND_X + BRICK_LENGTH * j, GROUND_Y + BRICK_WIDTH * i);
+					player.SetXY(GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 				}
 			}
 		}
