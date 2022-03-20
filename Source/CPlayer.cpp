@@ -143,40 +143,69 @@ namespace game_framework {
 
 	void CPlayer::SetMovingLeft(bool flag)
 	{
-		isMovingLeft = flag;
+		if (!isMovingRight && !isMovingUp && !isMovingDown)
+		{
+			isMovingLeft = flag;
+		}
 	}
 
 	void CPlayer::SetMovingRight(bool flag)
 	{
-		isMovingRight = flag;
+		if (!isMovingLeft && !isMovingUp && !isMovingDown)
+		{
+			isMovingRight = flag;
+		}
 	}
 
 	void CPlayer::SetMovingUp(bool flag)
 	{
-		isMovingUp = flag;
+		if (!isMovingLeft && !isMovingRight && !isMovingDown)
+		{
+			if (isMovingUp == true && flag == false)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
+			}
+			else if (isMovingUp == false && flag == true)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_002, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_003, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_004, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_005, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_006, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_007, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_UP_008, RGB(0, 0, 0));
+			}
+			isMovingUp = flag;
+		}
 	}
 
 	void CPlayer::SetMovingDown(bool flag)
 	{
-		if (isMovingDown == true && flag == false)
+		if (!isMovingLeft && !isMovingRight && !isMovingUp)
 		{
-			animation.ClearBitmapList();
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+			if (isMovingDown == true && flag == false)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+			}
+			else if (isMovingDown == false && flag == true)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_002, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_003, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_004, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_005, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_006, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_007, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_008, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_009, RGB(0, 0, 0));
+			}
+			isMovingDown = flag;
 		}
-		else if (isMovingDown == false && flag == true)
-		{
-			animation.ClearBitmapList();
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_002, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_003, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_004, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_005, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_006, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_007, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_008, RGB(0, 0, 0));
-			animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_009, RGB(0, 0, 0));
-		}
-		isMovingDown = flag;
 	}
 
 	void CPlayer::SetXY(int nx, int ny)

@@ -165,31 +165,55 @@
     <Image Include="Resources\Ground.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_001.bmp">
+    <Image Include="Resources\player\up\player_move_up_001.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_002.bmp">
+    <Image Include="Resources\player\up\player_move_up_002.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_003.bmp">
+    <Image Include="Resources\player\up\player_move_up_003.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_004.bmp">
+    <Image Include="Resources\player\up\player_move_up_004.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_005.bmp">
+    <Image Include="Resources\player\up\player_move_up_005.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_006.bmp">
+    <Image Include="Resources\player\up\player_move_up_006.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_007.bmp">
+    <Image Include="Resources\player\up\player_move_up_007.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_008.bmp">
+    <Image Include="Resources\player\up\player_move_up_008.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player_move_down_009.bmp">
+    <Image Include="Resources\player\down\player_move_down_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down\player_move_down_009.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
