@@ -234,6 +234,13 @@ int CAnimation::Width()
 	return bmp_iter->Width();
 }
 
+////
+
+void CAnimation::ClearBitmapList()
+{
+	bmp.clear();
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // CInteger: 硂class矗ㄑ陪ボ俱计瓜
 // 1. 璶来眔或㊣(笲ノ)ㄤ贺琌ぃ来祘Α琌ぐ或種

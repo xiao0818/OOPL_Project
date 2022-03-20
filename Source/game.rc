@@ -96,7 +96,23 @@ IDB_WALL                BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_
 
 IDB_GROUND              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\Ground.bmp"
 
-IDB_PLAYER              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\Player.bmp"
+IDB_PLAYER_MOVE_DOWN_001 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_001.bmp"
+
+IDB_PLAYER_MOVE_DOWN_002 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_002.bmp"
+
+IDB_PLAYER_MOVE_DOWN_003 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_003.bmp"
+
+IDB_PLAYER_MOVE_DOWN_004 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_004.bmp"
+
+IDB_PLAYER_MOVE_DOWN_005 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_005.bmp"
+
+IDB_PLAYER_MOVE_DOWN_006 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_006.bmp"
+
+IDB_PLAYER_MOVE_DOWN_007 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_007.bmp"
+
+IDB_PLAYER_MOVE_DOWN_008 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_008.bmp"
+
+IDB_PLAYER_MOVE_DOWN_009 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player_move_down_009.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

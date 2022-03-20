@@ -230,7 +230,6 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="Res\ball.bmp" />
     <None Include="RES\bmp0.bmp" />
     <None Include="RES\bmp1.bmp" />
     <None Include="RES\bmp10.bmp" />
@@ -242,12 +241,8 @@
     <None Include="RES\bmp7.bmp" />
     <None Include="RES\bmp8.bmp" />
     <None Include="RES\bmp9.bmp" />
-    <None Include="RES\center.bmp" />
     <None Include="RES\continue.bmp" />
     <None Include="Res\corner.bmp" />
-    <None Include="RES\eraser1.bmp" />
-    <None Include="RES\eraser2.bmp" />
-    <None Include="RES\eraser3.bmp" />
     <None Include="res\game.ico" />
     <None Include="res\game.rc2" />
     <None Include="RES\gamecurs.cur" />
@@ -326,11 +321,16 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Ground.bmp" />
-    <Image Include="Resources\Ground_14_14.bmp" />
-    <Image Include="Resources\Player.bmp" />
+    <Image Include="Resources\player_move_down_001.bmp" />
+    <Image Include="Resources\player_move_down_002.bmp" />
+    <Image Include="Resources\player_move_down_003.bmp" />
+    <Image Include="Resources\player_move_down_004.bmp" />
+    <Image Include="Resources\player_move_down_005.bmp" />
+    <Image Include="Resources\player_move_down_006.bmp" />
+    <Image Include="Resources\player_move_down_007.bmp" />
+    <Image Include="Resources\player_move_down_008.bmp" />
+    <Image Include="Resources\player_move_down_009.bmp" />
     <Image Include="Resources\Wall.bmp" />
-    <Image Include="res\bitmap3.bmp" />
-    <Image Include="res\bitmap4.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

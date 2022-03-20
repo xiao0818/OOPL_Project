@@ -16,9 +16,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\ball.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="RES\bmp0.bmp">
       <Filter>Resource Files</Filter>
     </None>
@@ -52,22 +49,10 @@
     <None Include="RES\bmp9.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="RES\center.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="RES\continue.bmp">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Res\corner.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="RES\eraser1.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="RES\eraser2.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="RES\eraser3.bmp">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="res\game.ico">
@@ -174,22 +159,37 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\bitmap3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\Ground_14_14.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\Wall.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Ground.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\bitmap4.bmp">
+    <Image Include="Resources\player_move_down_001.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\Player.bmp">
+    <Image Include="Resources\player_move_down_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player_move_down_009.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
