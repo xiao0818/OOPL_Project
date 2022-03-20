@@ -210,12 +210,12 @@ namespace game_framework {
 								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
 								{2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 2},
 								{2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2},
-								{2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 2, 2, 0, 0, 0, 2, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 2},
-								{2, 0, 0, 0, 2, 2, 0, 0, 0, 2, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2},
+								{2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 2},
 								{2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2},
 								{2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 2},
 								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -229,7 +229,7 @@ namespace game_framework {
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				map[i][j] = map_init[i][j];
+				map[i][j] = map_init[j][i];
 			}
 		}
 
@@ -240,10 +240,10 @@ namespace game_framework {
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				if (map_init[i][j] == 1) {
+				if (map[i][j] == 1) {
 					player.SetXY(GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
 				}
-				else if (map_init[i][j] == 2) {
+				else if (map[i][j] == 2) {
 					wall[count].SetXY(GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					count++;
 				}
@@ -321,6 +321,7 @@ namespace game_framework {
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 	{
+		GotoGameState(GAME_STATE_OVER);
 	}
 
 	void CGameStateRun::OnShow()
