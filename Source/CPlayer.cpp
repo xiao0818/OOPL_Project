@@ -145,6 +145,23 @@ namespace game_framework {
 	{
 		if (!isMovingRight && !isMovingUp && !isMovingDown)
 		{
+			if (isMovingLeft == true && flag == false)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
+			}
+			else if (isMovingLeft == false && flag == true)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_002, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_003, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_004, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_005, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_006, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_007, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_008, RGB(0, 0, 0));
+			}
 			isMovingLeft = flag;
 		}
 	}
@@ -153,6 +170,23 @@ namespace game_framework {
 	{
 		if (!isMovingLeft && !isMovingUp && !isMovingDown)
 		{
+			if (isMovingRight == true && flag == false)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
+			}
+			else if (isMovingRight == false && flag == true)
+			{
+				animation.ClearBitmapList();
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_002, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_003, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_004, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_005, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_006, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_007, RGB(0, 0, 0));
+				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_008, RGB(0, 0, 0));
+			}
 			isMovingRight = flag;
 		}
 	}

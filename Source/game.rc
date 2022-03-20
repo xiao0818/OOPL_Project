@@ -130,6 +130,38 @@ IDB_PLAYER_MOVE_UP_007  BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_
 
 IDB_PLAYER_MOVE_UP_008  BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\up\\player_move_up_008.bmp"
 
+IDB_PLAYER_MOVE_LEFT_001 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_001.bmp"
+
+IDB_PLAYER_MOVE_LEFT_002 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_002.bmp"
+
+IDB_PLAYER_MOVE_LEFT_003 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_003.bmp"
+
+IDB_PLAYER_MOVE_LEFT_004 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_004.bmp"
+
+IDB_PLAYER_MOVE_LEFT_005 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_005.bmp"
+
+IDB_PLAYER_MOVE_LEFT_006 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_006.bmp"
+
+IDB_PLAYER_MOVE_LEFT_007 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_007.bmp"
+
+IDB_PLAYER_MOVE_LEFT_008 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\left\\player_move_left_008.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_001 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_001.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_002 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_002.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_003 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_003.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_004 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_004.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_005 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_005.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_006 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_006.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_007 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_007.bmp"
+
+IDB_PLAYER_MOVE_RIGHT_008 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\player\\right\\player_move_right_008.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
