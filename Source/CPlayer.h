@@ -24,8 +24,11 @@ namespace game_framework {
 		bool isMovingLeft;
 		bool isMovingRight;
 		bool isMovingUp;
-		int moveCountForX;
-		int moveCountForY;
+		bool isKeyDownPressed;
+		bool isKeyLeftPressed;
+		bool isKeyRightPressed;
+		bool isKeyUpPressed;
+		int movingCount;
 		int **mapRecord;
 	};
 }

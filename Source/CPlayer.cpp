@@ -10,7 +10,8 @@ namespace game_framework {
 	CPlayer::CPlayer()
 	{
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		moveCountForX = moveCountForY = 0;
+		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
+		movingCount = 0;
 		animation.SetDelayCount(2);
 	}
 
@@ -58,100 +59,17 @@ namespace game_framework {
 
 	void CPlayer::OnMove()
 	{
-		const int STEP_TARGET = 12;
-		const int STEP_SIZE_X = 6;
-		const int STEP_SIZE_Y = 4;
+		const int STEP_TARGET = 8;
+		const int STEP_SIZE_X = 9;
+		const int STEP_SIZE_Y = 6;
 		animation.OnMove();
-
-		if (isMovingLeft)
+		
+		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
-			if (moveCountForX != 0)
+			if (isKeyLeftPressed)
 			{
-				x -= STEP_SIZE_X;
-				moveCountForX--;
-				if (moveCountForX == -STEP_TARGET)
-				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[--indexX][indexY] = 1;
-					moveCountForX = 0;
-				}
-			}
-			else if (mapRecord[indexX - 1][indexY] == 0 && (moveCountForY == 0 || (moveCountForY < 0 && mapRecord[indexX - 1][indexY - 1] == 0) || (moveCountForY > 0 && mapRecord[indexX - 1][indexY + 1] == 0)))
-			{
-				x -= STEP_SIZE_X;
-				moveCountForX--;
-			}
-		}
-		if (isMovingRight)
-		{
-			if (moveCountForX != 0)
-			{
-				x += STEP_SIZE_X;
-				moveCountForX++;
-				if (moveCountForX == STEP_TARGET)
-				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[++indexX][indexY] = 1;
-					moveCountForX = 0;
-				}
-			}
-			else if (mapRecord[indexX + 1][indexY] == 0 && (moveCountForY == 0 || (moveCountForY < 0 && mapRecord[indexX + 1][indexY - 1] == 0) || (moveCountForY > 0 && mapRecord[indexX + 1][indexY + 1] == 0)))
-			{
-				x += STEP_SIZE_X;
-				moveCountForX++;
-			}
-		}
-		if (isMovingUp)
-		{
-			if (moveCountForY != 0)
-			{
-				y -= STEP_SIZE_Y;
-				moveCountForY--;
-				if (moveCountForY == -STEP_TARGET)
-				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[indexX][--indexY] = 1;
-					moveCountForY = 0;
-				}
-			}
-			else if (mapRecord[indexX][indexY - 1] == 0 && (moveCountForX == 0 || (moveCountForX < 0 && mapRecord[indexX - 1][indexY - 1] == 0) || (moveCountForX > 0 && mapRecord[indexX + 1][indexY - 1] == 0)))
-			{
-				y -= STEP_SIZE_Y;
-				moveCountForY--;
-			}
-		}
-		if (isMovingDown)
-		{
-			if (moveCountForY != 0)
-			{
-				y += STEP_SIZE_Y;
-				moveCountForY++;
-				if (moveCountForY == STEP_TARGET)
-				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[indexX][++indexY] = 1;
-					moveCountForY = 0;
-				}
-			}
-			else if (mapRecord[indexX][indexY + 1] == 0 && (moveCountForX == 0 || (moveCountForX < 0 && mapRecord[indexX - 1][indexY + 1] == 0) || (moveCountForX > 0 && mapRecord[indexX + 1][indexY + 1] == 0)))
-			{
-				y += STEP_SIZE_Y;
-				moveCountForY++;
-			}
-		}
-	}
-
-	void CPlayer::SetMovingLeft(bool flag)
-	{
-		if (!isMovingRight && !isMovingUp && !isMovingDown)
-		{
-			if (isMovingLeft == true && flag == false)
-			{
-				animation.ClearBitmapList();
-				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
-			}
-			else if (isMovingLeft == false && flag == true)
-			{
+				movingCount = 0;
+				isMovingLeft = true;
 				animation.ClearBitmapList();
 				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_002, RGB(0, 0, 0));
@@ -162,21 +80,10 @@ namespace game_framework {
 				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_007, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_008, RGB(0, 0, 0));
 			}
-			isMovingLeft = flag;
-		}
-	}
-
-	void CPlayer::SetMovingRight(bool flag)
-	{
-		if (!isMovingLeft && !isMovingUp && !isMovingDown)
-		{
-			if (isMovingRight == true && flag == false)
+			else if (isKeyRightPressed)
 			{
-				animation.ClearBitmapList();
-				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
-			}
-			else if (isMovingRight == false && flag == true)
-			{
+				movingCount = 0;
+				isMovingRight = true;
 				animation.ClearBitmapList();
 				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_002, RGB(0, 0, 0));
@@ -187,21 +94,10 @@ namespace game_framework {
 				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_007, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_008, RGB(0, 0, 0));
 			}
-			isMovingRight = flag;
-		}
-	}
-
-	void CPlayer::SetMovingUp(bool flag)
-	{
-		if (!isMovingLeft && !isMovingRight && !isMovingDown)
-		{
-			if (isMovingUp == true && flag == false)
+			else if (isKeyUpPressed)
 			{
-				animation.ClearBitmapList();
-				animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
-			}
-			else if (isMovingUp == false && flag == true)
-			{
+				movingCount = 0;
+				isMovingUp = true;
 				animation.ClearBitmapList();
 				animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_UP_002, RGB(0, 0, 0));
@@ -212,21 +108,10 @@ namespace game_framework {
 				animation.AddBitmap(IDB_PLAYER_MOVE_UP_007, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_UP_008, RGB(0, 0, 0));
 			}
-			isMovingUp = flag;
-		}
-	}
-
-	void CPlayer::SetMovingDown(bool flag)
-	{
-		if (!isMovingLeft && !isMovingRight && !isMovingUp)
-		{
-			if (isMovingDown == true && flag == false)
+			else if (isKeyDownPressed)
 			{
-				animation.ClearBitmapList();
-				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
-			}
-			else if (isMovingDown == false && flag == true)
-			{
+				movingCount = 0;
+				isMovingDown = true;
 				animation.ClearBitmapList();
 				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_002, RGB(0, 0, 0));
@@ -238,8 +123,147 @@ namespace game_framework {
 				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_008, RGB(0, 0, 0));
 				animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_009, RGB(0, 0, 0));
 			}
-			isMovingDown = flag;
 		}
+
+		if (isMovingLeft)
+		{
+			if (mapRecord[indexX - 1][indexY] == 0)
+			{
+				x -= STEP_SIZE_X;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[--indexX][indexY] = 1;
+					movingCount = 0;
+					if (!isKeyLeftPressed)
+					{
+						isMovingLeft = false;
+						animation.ClearBitmapList();
+						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
+					}
+				}
+			}
+			else
+			{
+				if (!isKeyLeftPressed)
+				{
+					isMovingLeft = false;
+					animation.ClearBitmapList();
+					animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
+				}
+			}
+		}
+
+		if (isMovingRight)
+		{
+			if (mapRecord[indexX + 1][indexY] == 0)
+			{
+				x += STEP_SIZE_X;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[++indexX][indexY] = 1;
+					movingCount = 0;
+					if (!isKeyRightPressed)
+					{
+						isMovingRight = false;
+						animation.ClearBitmapList();
+						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
+					}
+				}
+			}
+			else
+			{
+				if (!isKeyRightPressed)
+				{
+					isMovingRight = false;
+					animation.ClearBitmapList();
+					animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
+				}
+			}
+		}
+
+		if (isMovingUp)
+		{
+			if (mapRecord[indexX][indexY - 1] == 0)
+			{
+				y -= STEP_SIZE_Y;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[indexX][--indexY] = 1;
+					movingCount = 0;
+					if (!isKeyUpPressed)
+					{
+						isMovingUp = false;
+						animation.ClearBitmapList();
+						animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
+					}
+				}
+			}
+			else
+			{
+				if (!isKeyUpPressed)
+				{
+					isMovingUp = false;
+					animation.ClearBitmapList();
+					animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
+				}
+			}
+		}
+
+		if (isMovingDown)
+		{
+			if (mapRecord[indexX][indexY + 1] == 0)
+			{
+				y += STEP_SIZE_Y;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = 0;
+					mapRecord[indexX][++indexY] = 1;
+					movingCount = 0;
+					if (!isKeyDownPressed)
+					{
+						isMovingDown = false;
+						animation.ClearBitmapList();
+						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+					}
+				}
+			}
+			else
+			{
+				if (!isKeyDownPressed)
+				{
+					isMovingDown = false;
+					animation.ClearBitmapList();
+					animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+				}
+			}
+		}
+	}
+
+	void CPlayer::SetMovingLeft(bool flag)
+	{
+		isKeyLeftPressed = flag;
+	}
+
+	void CPlayer::SetMovingRight(bool flag)
+	{
+		isKeyRightPressed = flag;
+	}
+
+	void CPlayer::SetMovingUp(bool flag)
+	{
+		isKeyUpPressed = flag;
+	}
+
+	void CPlayer::SetMovingDown(bool flag)
+	{
+		isKeyDownPressed = flag;
 	}
 
 	void CPlayer::SetXY(int nx, int ny)
