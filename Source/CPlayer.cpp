@@ -38,7 +38,7 @@ namespace game_framework {
 		mapRecord = map;
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 14; j++) {
-				if (mapRecord[i][j] == 2) {
+				if (mapRecord[i][j] == 1) {
 					indexX = i;
 					indexY = j;
 					break;
@@ -58,13 +58,14 @@ namespace game_framework {
 		const int STEP_SIZE_X = 6;
 		const int STEP_SIZE_Y = 4;
 		animation.OnMove();
+
 		if (isMovingLeft) {
 			if (moveCountForX != 0) {
 				x -= STEP_SIZE_X;
 				moveCountForX--;
 				if (moveCountForX == -STEP_TARGET) {
 					mapRecord[indexX][indexY] = 0;
-					mapRecord[--indexX][indexY] = 2;
+					mapRecord[--indexX][indexY] = 1;
 					moveCountForX = 0;
 				}
 			}
@@ -79,7 +80,7 @@ namespace game_framework {
 				moveCountForX++;
 				if (moveCountForX == STEP_TARGET) {
 					mapRecord[indexX][indexY] = 0;
-					mapRecord[++indexX][indexY] = 2;
+					mapRecord[++indexX][indexY] = 1;
 					moveCountForX = 0;
 				}
 			}
@@ -94,7 +95,7 @@ namespace game_framework {
 				moveCountForY--;
 				if (moveCountForY == -STEP_TARGET) {
 					mapRecord[indexX][indexY] = 0;
-					mapRecord[indexX][--indexY] = 2;
+					mapRecord[indexX][--indexY] = 1;
 					moveCountForY = 0;
 				}
 			}
@@ -109,7 +110,7 @@ namespace game_framework {
 				moveCountForY++;
 				if (moveCountForY == STEP_TARGET) {
 					mapRecord[indexX][indexY] = 0;
-					mapRecord[indexX][++indexY] = 2;
+					mapRecord[indexX][++indexY] = 1;
 					moveCountForY = 0;
 				}
 			}
