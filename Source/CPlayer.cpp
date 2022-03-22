@@ -35,21 +35,17 @@ namespace game_framework {
 		return y + animation.Height();
 	}
 
+	int CPlayer::GetIndexX() {
+		return indexX;
+	}
+
+	int CPlayer::GetIndexY() {
+		return indexY;
+	}
+
 	void CPlayer::Initialize(int **map)
 	{
 		mapRecord = map;
-		for (int i = 0; i < 14; i++)
-		{
-			for (int j = 0; j < 14; j++)
-			{
-				if (mapRecord[i][j] == 1)
-				{
-					indexX = i;
-					indexY = j;
-					break;
-				}
-			}
-		}
 	}
 
 	void CPlayer::LoadBitmap()
@@ -266,8 +262,10 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::SetXY(int nx, int ny)
+	void CPlayer::SetXY(int ni, int nj, int nx, int ny)
 	{
+		indexX = ni;
+		indexY = nj;
 		x = nx + (72 / 2) - (animation.Width() / 2);
 		y = ny + 46 - animation.Height();
 	}

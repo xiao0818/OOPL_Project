@@ -241,10 +241,10 @@ namespace game_framework {
 			for (int j = 0; j < 14; j++)
 			{
 				if (map[i][j] == 1) {
-					player.SetXY(GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
+					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
 				}
 				else if (map[i][j] == 2) {
-					wall[count].SetXY(GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					wall[count].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					count++;
 				}
 			}
@@ -327,10 +327,20 @@ namespace game_framework {
 	void CGameStateRun::OnShow()
 	{
 		ground.OnShow();
-		for (int i = 0; i < WALL_NUMBER; i++)
+
+		for (int j = 0; j < 14; j++)
 		{
-			wall[i].OnShow();
+			for (int k = 0; k < WALL_NUMBER; k++)
+			{
+				if (wall[k].GetIndexY() == j)
+				{
+					wall[k].OnShow();
+				}
+			}
+			if (player.GetIndexY() == j)
+			{
+				player.OnShow();
+			}
 		}
-		player.OnShow();
 	}
 }

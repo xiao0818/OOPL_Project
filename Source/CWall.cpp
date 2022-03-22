@@ -12,14 +12,24 @@ namespace game_framework {
 		x = y = 0;
 	}
 
+	int CWall::GetIndexX() {
+		return indexX;
+	}
+
+	int CWall::GetIndexY() {
+		return indexY;
+	}
+
 	void CWall::LoadBitmap()
 	{
 		bitmap.LoadBitmap(IDB_WALL);
 		//bitmap.LoadBitmap(IDB_WALL, RGB(0, 0, 0));
 	}
 
-	void CWall::SetXY(int nx, int ny)
+	void CWall::SetXY(int ni, int nj, int nx, int ny)
 	{
+		indexX = ni;
+		indexY = nj;
 		x = nx;
 		y = ny - 23;
 	}
