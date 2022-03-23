@@ -7,6 +7,8 @@ namespace game_framework {
 		int  GetY1();
 		int  GetX2();
 		int  GetY2();
+		int  GetIndexX();
+		int  GetIndexY();
 		void Initialize(int **map);
 		void LoadBitmap();
 		void OnMove();
@@ -16,11 +18,11 @@ namespace game_framework {
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
 		void PressKeySpace();
-		void SetXY(int nx, int ny);
+		void SetXY(int ni, int nj, int nx, int ny);
 	protected:
 		CAnimation animation;
-		int x, y;
 		int indexX, indexY;
+		int x, y;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;
