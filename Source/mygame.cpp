@@ -277,6 +277,7 @@ namespace game_framework {
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
+		const char KEY_SPACE = ' ';
 		if (nChar == KEY_LEFT)
 			player.SetMovingLeft(true);
 		if (nChar == KEY_RIGHT)
@@ -285,6 +286,8 @@ namespace game_framework {
 			player.SetMovingUp(true);
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
+		if (nChar == KEY_SPACE)
+			player.PressKeySpace();
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)

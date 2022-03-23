@@ -266,6 +266,11 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
+	void CPlayer::PressKeySpace()
+	{
+
+	}
+
 	void CPlayer::SetXY(int nx, int ny)
 	{
 		x = nx + (72 / 2) - (animation.Width() / 2);

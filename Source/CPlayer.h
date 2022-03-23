@@ -15,6 +15,7 @@ namespace game_framework {
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
+		void PressKeySpace();
 		void SetXY(int nx, int ny);
 	protected:
 		CAnimation animation;
