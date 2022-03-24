@@ -188,14 +188,21 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 
 	CGameStateRun::CGameStateRun(CGame *g)
-	: CGameState(g), WALL_NUMBER(74)
+	: CGameState(g), WALL_NUMBER(52), STONE_BRICK_NUMBER(22)
 	{
 		wall = new CWall [WALL_NUMBER];
+		stoneBrick = new CStoneBrick[STONE_BRICK_NUMBER];
 	}
 
 	CGameStateRun::~CGameStateRun()
 	{
 		delete [] wall;
+		delete [] stoneBrick;
+		for (int i = 0; i < 14; i++)
+		{
+			delete [] map[i];
+		}
+		delete [] map;
 	}
 
 	void CGameStateRun::OnBeginState()
@@ -208,16 +215,16 @@ namespace game_framework {
 
 		int map_init[14][14] = {{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
 								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-								{2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 2},
-								{2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2},
-								{2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 2},
+								{2, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 2},
+								{2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2},
+								{2, 0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 2},
 								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
 								{2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 2},
-								{2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2},
-								{2, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 2},
+								{2, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 2},
+								{2, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 2},
+								{2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2},
+								{2, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 2},
 								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
 								{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}};
 		map = new int *[14];
@@ -235,17 +242,25 @@ namespace game_framework {
 
 
 		player.Initialize(map);
-		int count = 0;
+		int countWall = 0;
+		int countStoneBrick = 0;
 		for (int i = 0; i < 14; i++)
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				if (map[i][j] == 1) {
+				if (map[i][j] == 1)
+				{
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
 				}
-				else if (map[i][j] == 2) {
-					wall[count].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					count++;
+				else if (map[i][j] == 2)
+				{
+					wall[countWall].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					countWall++;
+				}
+				else if (map[i][j] == 3)
+				{
+					stoneBrick[countStoneBrick].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					countStoneBrick++;
 				}
 			}
 		}
@@ -264,6 +279,10 @@ namespace game_framework {
 		for (int i = 0; i < WALL_NUMBER; i++)
 		{
 				wall[i].LoadBitmap();
+		}
+		for (int i = 0; i < STONE_BRICK_NUMBER; i++)
+		{
+			stoneBrick[i].LoadBitmap();
 		}
 		player.LoadBitmap();
 
@@ -338,6 +357,13 @@ namespace game_framework {
 				if (wall[k].GetIndexY() == j)
 				{
 					wall[k].OnShow();
+				}
+			}
+			for (int k = 0; k < STONE_BRICK_NUMBER; k++)
+			{
+				if (stoneBrick[k].GetIndexY() == j)
+				{
+					stoneBrick[k].OnShow();
 				}
 			}
 			if (player.GetIndexY() == j)

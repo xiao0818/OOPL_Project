@@ -12,6 +12,7 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingCount = 0;
+		faceTo = 3;
 		animation.SetDelayCount(2);
 	}
 
@@ -64,6 +65,7 @@ namespace game_framework {
 		{
 			if (isKeyLeftPressed)
 			{
+				faceTo = 0;
 				movingCount = 0;
 				isMovingLeft = true;
 				animation.ClearBitmapList();
@@ -78,6 +80,7 @@ namespace game_framework {
 			}
 			else if (isKeyRightPressed)
 			{
+				faceTo = 1;
 				movingCount = 0;
 				isMovingRight = true;
 				animation.ClearBitmapList();
@@ -92,6 +95,7 @@ namespace game_framework {
 			}
 			else if (isKeyUpPressed)
 			{
+				faceTo = 2;
 				movingCount = 0;
 				isMovingUp = true;
 				animation.ClearBitmapList();
@@ -106,6 +110,7 @@ namespace game_framework {
 			}
 			else if (isKeyDownPressed)
 			{
+				faceTo = 3;
 				movingCount = 0;
 				isMovingDown = true;
 				animation.ClearBitmapList();
@@ -264,7 +269,6 @@ namespace game_framework {
 
 	void CPlayer::PressKeySpace()
 	{
-
 	}
 
 	void CPlayer::SetXY(int ni, int nj, int nx, int ny)

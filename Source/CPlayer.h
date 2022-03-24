@@ -33,5 +33,6 @@ namespace game_framework {
 		bool isKeyUpPressed;
 		int movingCount;
 		int **mapRecord;
+		int faceTo;
 	};
 }

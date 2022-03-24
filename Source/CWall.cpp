@@ -23,7 +23,6 @@ namespace game_framework {
 	void CWall::LoadBitmap()
 	{
 		bitmap.LoadBitmap(IDB_WALL);
-		//bitmap.LoadBitmap(IDB_WALL, RGB(0, 0, 0));
 	}
 
 	void CWall::SetXY(int ni, int nj, int nx, int ny)

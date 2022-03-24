@@ -162,6 +162,8 @@ IDB_PLAYER_MOVE_RIGHT_007 BITMAP                  "..\\Resources\\player\\right\
 
 IDB_PLAYER_MOVE_RIGHT_008 BITMAP                  "..\\Resources\\player\\right\\player_move_right_008.bmp"
 
+IDB_STONE_BRICK         BITMAP                  "..\\Resources\\brick\\StoneBrick.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -39,8 +39,9 @@
 */
 
 #include "CGround.h"
-#include "CWall.h"
 #include "CPlayer.h"
+#include "CWall.h"
+#include "CStoneBrick.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -95,9 +96,11 @@ namespace game_framework {
 	private:
 		int				**map;
 		CGround			ground;
-		CWall			*wall;
 		CPlayer			player;
+		CWall			*wall;
+		CStoneBrick		*stoneBrick;
 		int				WALL_NUMBER;
+		int				STONE_BRICK_NUMBER;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

@@ -1,16 +1,18 @@
 namespace game_framework {
-	class CWall
+	class CStoneBrick
 	{
 	public:
-		CWall();
+		CStoneBrick();
 		int  GetIndexX();
 		int  GetIndexY();
 		void LoadBitmap();
 		void SetXY(int ni, int nj, int nx, int ny);
+		void setAlive(bool flag);
 		void OnShow();
 	protected:
 		CMovingBitmap bitmap;
 		int indexX, indexY;
 		int x, y;
+		bool isAlive;
 	};
 }
