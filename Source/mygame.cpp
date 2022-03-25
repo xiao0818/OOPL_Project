@@ -188,16 +188,14 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 
 	CGameStateRun::CGameStateRun(CGame *g)
-	: CGameState(g), WALL_NUMBER(52), STONE_BRICK_NUMBER(22)
+	: CGameState(g)
 	{
-		wall = new CWall [WALL_NUMBER];
-		stoneBrick = new CStoneBrick[STONE_BRICK_NUMBER];
+		wall.clear();
+		stoneBrick.clear();
 	}
 
 	CGameStateRun::~CGameStateRun()
 	{
-		delete [] wall;
-		delete [] stoneBrick;
 		for (int i = 0; i < 14; i++)
 		{
 			delete [] map[i];
@@ -242,8 +240,6 @@ namespace game_framework {
 
 
 		player.Initialize(map);
-		int countWall = 0;
-		int countStoneBrick = 0;
 		for (int i = 0; i < 14; i++)
 		{
 			for (int j = 0; j < 14; j++)
@@ -254,13 +250,17 @@ namespace game_framework {
 				}
 				else if (map[i][j] == 2)
 				{
-					wall[countWall].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					countWall++;
+					CWall tempWall;
+					tempWall.LoadBitmap();
+					tempWall.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					wall.push_back(tempWall);
 				}
 				else if (map[i][j] == 3)
 				{
-					stoneBrick[countStoneBrick].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					countStoneBrick++;
+					CStoneBrick tempstoneBrick;
+					tempstoneBrick.LoadBitmap();
+					tempstoneBrick.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					stoneBrick.push_back(tempstoneBrick);
 				}
 			}
 		}
@@ -276,14 +276,6 @@ namespace game_framework {
 		ShowInitProgress(33);
 
 		ground.LoadBitmap();
-		for (int i = 0; i < WALL_NUMBER; i++)
-		{
-				wall[i].LoadBitmap();
-		}
-		for (int i = 0; i < STONE_BRICK_NUMBER; i++)
-		{
-			stoneBrick[i].LoadBitmap();
-		}
 		player.LoadBitmap();
 
 		ShowInitProgress(50);
@@ -352,18 +344,18 @@ namespace game_framework {
 
 		for (int j = 0; j < 14; j++)
 		{
-			for (int k = 0; k < WALL_NUMBER; k++)
+			for (list<CWall>::iterator k = wall.begin(); k != wall.end(); k++)
 			{
-				if (wall[k].GetIndexY() == j)
+				if (k->GetIndexY() == j)
 				{
-					wall[k].OnShow();
+					k->OnShow();
 				}
 			}
-			for (int k = 0; k < STONE_BRICK_NUMBER; k++)
+			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
 			{
-				if (stoneBrick[k].GetIndexY() == j)
+				if (k->GetIndexY() == j)
 				{
-					stoneBrick[k].OnShow();
+					k->OnShow();
 				}
 			}
 			if (player.GetIndexY() == j)
