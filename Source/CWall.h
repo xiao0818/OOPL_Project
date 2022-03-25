@@ -1,3 +1,6 @@
+#ifndef CWALL_H
+#define CWALL_H
+
 namespace game_framework {
 	class CWall
 	{
@@ -14,3 +17,5 @@ namespace game_framework {
 		int x, y;
 	};
 }
+
+#endif

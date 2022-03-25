@@ -1,3 +1,6 @@
+#ifndef CSTONEBRICK_H
+#define CSTONEBRICK_H
+
 namespace game_framework {
 	class CStoneBrick
 	{
@@ -16,3 +19,5 @@ namespace game_framework {
 		bool isAlive;
 	};
 }
+
+#endif

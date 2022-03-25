@@ -1,3 +1,6 @@
+#ifndef CGROUND_H
+#define CGROUND_H
+
 namespace game_framework {
 	class CGround
 	{
@@ -12,3 +15,5 @@ namespace game_framework {
 		int brickLength, brickWidth;
 	};
 }
+
+#endif

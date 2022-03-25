@@ -309,7 +309,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace();
+			player.PressKeySpace(stoneBrick);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)

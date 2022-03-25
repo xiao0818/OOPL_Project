@@ -267,7 +267,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace()
+	void CPlayer::PressKeySpace(CStoneBrick *stoneBrick)
 	{
 	}
 

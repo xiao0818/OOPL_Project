@@ -1,3 +1,8 @@
+#ifndef CPLAYER_H
+#define CPLAYER_H
+
+#include "CStoneBrick.h"
+
 namespace game_framework {
 	class CPlayer
 	{
@@ -17,7 +22,7 @@ namespace game_framework {
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
-		void PressKeySpace();
+		void PressKeySpace(CStoneBrick *stoneBrick);
 		void SetXY(int ni, int nj, int nx, int ny);
 	protected:
 		CAnimation animation;
@@ -36,3 +41,5 @@ namespace game_framework {
 		int faceTo;
 	};
 }
+
+#endif
