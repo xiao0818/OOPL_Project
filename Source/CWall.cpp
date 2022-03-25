@@ -30,12 +30,12 @@ namespace game_framework {
 		indexX = ni;
 		indexY = nj;
 		x = nx;
-		y = ny - 23;
+		y = ny;
 	}
 
 	void CWall::OnShow()
 	{
-		bitmap.SetTopLeft(x, y);
+		bitmap.SetTopLeft(x, y - 24);
 		bitmap.ShowBitmap();
 	}
 }

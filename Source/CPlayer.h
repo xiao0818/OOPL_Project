@@ -39,6 +39,8 @@ namespace game_framework {
 		int movingCount;
 		int **mapRecord;
 		int faceTo;
+		list<CStoneBrick>::iterator swallowedBrick;
+		bool isSwallowed;
 	};
 }
 

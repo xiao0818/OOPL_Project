@@ -14,6 +14,7 @@ namespace game_framework {
 		movingCount = 0;
 		faceTo = 3;
 		animation.SetDelayCount(2);
+		isSwallowed = false;
 	}
 
 	int CPlayer::GetX1()
@@ -266,47 +267,104 @@ namespace game_framework {
 
 	void CPlayer::PressKeySpace(list<CStoneBrick> &stoneBrick)
 	{
-		if (faceTo == 0)
+		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
-			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			if (isSwallowed == false)
 			{
-				if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
+				if (faceTo == 0)
 				{
-					k->setAlive(false);
-					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					{
+						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
+						{
+							k->setAlive(false);
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							swallowedBrick = k;
+							isSwallowed = true;
+						}
+					}
+				}
+				else if (faceTo == 1)
+				{
+					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					{
+						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
+						{
+							k->setAlive(false);
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							swallowedBrick = k;
+							isSwallowed = true;
+						}
+					}
+				}
+				else if (faceTo == 2)
+				{
+					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					{
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
+						{
+							k->setAlive(false);
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							swallowedBrick = k;
+							isSwallowed = true;
+						}
+					}
+				}
+				else if (faceTo == 3)
+				{
+					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					{
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
+						{
+							k->setAlive(false);
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							swallowedBrick = k;
+							isSwallowed = true;
+						}
+					}
 				}
 			}
-		}
-		else if (faceTo == 1)
-		{
-			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			else if (isSwallowed == true)
 			{
-				if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
+				if (faceTo == 0)
 				{
-					k->setAlive(false);
-					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+					if (mapRecord[indexX - 1][indexY] == 0)
+					{
+						mapRecord[indexX - 1][indexY] = 3;
+						swallowedBrick->SetXY(indexX - 1, indexY, x - 72, y);
+						swallowedBrick->setAlive(true);
+						isSwallowed = false;
+					}
 				}
-			}
-		}
-		else if (faceTo == 2)
-		{
-			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
-			{
-				if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
+				else if (faceTo == 1)
 				{
-					k->setAlive(false);
-					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+					if (mapRecord[indexX + 1][indexY] == 0)
+					{
+						mapRecord[indexX + 1][indexY] = 3;
+						swallowedBrick->SetXY(indexX + 1, indexY, x + 72, y);
+						swallowedBrick->setAlive(true);
+						isSwallowed = false;
+					}
 				}
-			}
-		}
-		else if (faceTo == 3)
-		{
-			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
-			{
-				if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
+				else if (faceTo == 2)
 				{
-					k->setAlive(false);
-					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+					if (mapRecord[indexX][indexY - 1] == 0)
+					{
+						mapRecord[indexX][indexY - 1] = 3;
+						swallowedBrick->SetXY(indexX, indexY - 1, x, y - 48);
+						swallowedBrick->setAlive(true);
+						isSwallowed = false;
+					}
+				}
+				else if (faceTo == 3)
+				{
+					if (mapRecord[indexX][indexY + 1] == 0)
+					{
+						mapRecord[indexX][indexY + 1] = 3;
+						swallowedBrick->SetXY(indexX, indexY + 1, x, y + 48);
+						swallowedBrick->setAlive(true);
+						isSwallowed = false;
+					}
 				}
 			}
 		}
@@ -316,13 +374,13 @@ namespace game_framework {
 	{
 		indexX = ni;
 		indexY = nj;
-		x = nx + (72 / 2) - (animation.Width() / 2);
-		y = ny + 46 - animation.Height();
+		x = nx;
+		y = ny;
 	}
 
 	void CPlayer::OnShow()
 	{
-		animation.SetTopLeft(x, y);
+		animation.SetTopLeft(x + (72 / 2) - (animation.Width() / 2), y + 46 - animation.Height());
 		animation.OnShow();
 	}
 }

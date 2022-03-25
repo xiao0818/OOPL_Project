@@ -31,7 +31,7 @@ namespace game_framework {
 		indexX = ni;
 		indexY = nj;
 		x = nx;
-		y = ny - 23;
+		y = ny;
 	}
 
 	void CStoneBrick::setAlive(bool flag)
@@ -42,7 +42,7 @@ namespace game_framework {
 	void CStoneBrick::OnShow()
 	{
 		if (isAlive) {
-			bitmap.SetTopLeft(x, y);
+			bitmap.SetTopLeft(x, y - 24);
 			bitmap.ShowBitmap();
 		}
 	}
