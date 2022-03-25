@@ -94,13 +94,11 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		int				**map;
-		CGround			ground;
-		CPlayer			player;
-		CWall			*wall;
-		CStoneBrick		*stoneBrick;
-		int				wallNumber;
-		int				stoneBrickNumber;
+		int					**map;
+		CGround				ground;
+		CPlayer				player;
+		list<CWall>			wall;
+		list<CStoneBrick>	stoneBrick;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

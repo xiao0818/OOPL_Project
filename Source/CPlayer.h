@@ -22,7 +22,7 @@ namespace game_framework {
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
-		void PressKeySpace(CStoneBrick *stoneBrick);
+		void PressKeySpace(list<CStoneBrick> &stoneBrick);
 		void SetXY(int ni, int nj, int nx, int ny);
 	protected:
 		CAnimation animation;

@@ -155,8 +155,7 @@ namespace game_framework {
 				}
 			}
 		}
-
-		if (isMovingRight)
+		else if (isMovingRight)
 		{
 			if (mapRecord[indexX + 1][indexY] == 0)
 			{
@@ -185,8 +184,7 @@ namespace game_framework {
 				}
 			}
 		}
-
-		if (isMovingUp)
+		else if (isMovingUp)
 		{
 			if (mapRecord[indexX][indexY - 1] == 0)
 			{
@@ -215,8 +213,7 @@ namespace game_framework {
 				}
 			}
 		}
-
-		if (isMovingDown)
+		else if (isMovingDown)
 		{
 			if (mapRecord[indexX][indexY + 1] == 0)
 			{
@@ -267,8 +264,52 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(CStoneBrick *stoneBrick)
+	void CPlayer::PressKeySpace(list<CStoneBrick> &stoneBrick)
 	{
+		if (faceTo == 0)
+		{
+			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			{
+				if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
+				{
+					k->setAlive(false);
+					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+				}
+			}
+		}
+		else if (faceTo == 1)
+		{
+			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			{
+				if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
+				{
+					k->setAlive(false);
+					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+				}
+			}
+		}
+		else if (faceTo == 2)
+		{
+			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			{
+				if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
+				{
+					k->setAlive(false);
+					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+				}
+			}
+		}
+		else if (faceTo == 3)
+		{
+			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			{
+				if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
+				{
+					k->setAlive(false);
+					mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+				}
+			}
+		}
 	}
 
 	void CPlayer::SetXY(int ni, int nj, int nx, int ny)

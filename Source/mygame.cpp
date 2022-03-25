@@ -190,14 +190,12 @@ namespace game_framework {
 	CGameStateRun::CGameStateRun(CGame *g)
 	: CGameState(g)
 	{
-		wallNumber = 0;
-		stoneBrickNumber = 0;
+		wall.clear();
+		stoneBrick.clear();
 	}
 
 	CGameStateRun::~CGameStateRun()
 	{
-		delete [] wall;
-		delete [] stoneBrick;
 		for (int i = 0; i < 14; i++)
 		{
 			delete [] map[i];
@@ -237,24 +235,11 @@ namespace game_framework {
 			for (int j = 0; j < 14; j++)
 			{
 				map[i][j] = map_init[j][i];
-				if (map_init[j][i] == 2)
-				{
-					wallNumber++;
-				}
-				else if (map_init[j][i] == 3)
-				{
-					stoneBrickNumber++;
-				}
 			}
 		}
 
-
 		player.Initialize(map);
 
-		wall = new CWall[wallNumber];
-		stoneBrick = new CStoneBrick[stoneBrickNumber];
-		int wallCount = 0;
-		int stoneBrickCount = 0;
 		for (int i = 0; i < 14; i++)
 		{
 			for (int j = 0; j < 14; j++)
@@ -265,13 +250,17 @@ namespace game_framework {
 				}
 				else if (map[i][j] == 2)
 				{
-					wall[wallCount].LoadBitmap();
-					wall[wallCount++].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					CWall tempWall;
+					tempWall.LoadBitmap();
+					tempWall.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					wall.push_back(tempWall);
 				}
 				else if (map[i][j] == 3)
 				{
-					stoneBrick[stoneBrickCount].LoadBitmap();
-					stoneBrick[stoneBrickCount++].SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					CStoneBrick tempstoneBrick;
+					tempstoneBrick.LoadBitmap();
+					tempstoneBrick.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					stoneBrick.push_back(tempstoneBrick);
 				}
 			}
 		}
@@ -355,18 +344,18 @@ namespace game_framework {
 
 		for (int j = 0; j < 14; j++)
 		{
-			for (int k = 0; k < wallNumber; k++)
+			for (list<CWall>::iterator k = wall.begin(); k != wall.end(); k++)
 			{
-				if (wall[k].GetIndexY() == j)
+				if (k->GetIndexY() == j)
 				{
-					wall[k].OnShow();
+					k->OnShow();
 				}
 			}
-			for (int k = 0; k < stoneBrickNumber; k++)
+			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
 			{
-				if (stoneBrick[k].GetIndexY() == j)
+				if (k->GetIndexY() == j)
 				{
-					stoneBrick[k].OnShow();
+					k->OnShow();
 				}
 			}
 			if (player.GetIndexY() == j)
