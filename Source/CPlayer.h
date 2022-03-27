@@ -38,7 +38,11 @@ namespace game_framework {
 		bool isKeyUpPressed;
 		int movingCount;
 		int **mapRecord;
-		int faceTo;
+		string faceTo;
+		string LEFT = "LEFT";
+		string RIGHT = "RIGHT";
+		string UP = "UP";
+		string DOWN = "DOWN";
 		list<CStoneBrick>::iterator swallowedBrick;
 		bool isSwallowed;
 	};

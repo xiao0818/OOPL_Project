@@ -219,9 +219,6 @@
     <Image Include="Resources\player\down\player_move_down_008.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\player\down\player_move_down_009.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\player\left\player_move_left_001.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -271,6 +268,102 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\brick\StoneBrick.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\left_with_full\player_move_with_full_left_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\right_with_full\player_move_with_full_right_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\up_with_full\player_move_with_full_up_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player\down_with_full\player_move_with_full_down_008.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
