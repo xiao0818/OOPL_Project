@@ -8,10 +8,6 @@ namespace game_framework {
 	{
 	public:
 		CPlayer();
-		int  GetX1();
-		int  GetY1();
-		int  GetX2();
-		int  GetY2();
 		int  GetIndexX();
 		int  GetIndexY();
 		void Initialize(int **map);
@@ -25,7 +21,14 @@ namespace game_framework {
 		void PressKeySpace(list<CStoneBrick> &stoneBrick);
 		void SetXY(int ni, int nj, int nx, int ny);
 	protected:
-		CAnimation animation;
+		CAnimation leftAnimation;
+		CAnimation rightAnimation;
+		CAnimation upAnimation;
+		CAnimation downAnimation;
+		CAnimation leftWithFullAnimation;
+		CAnimation rightWithFullAnimation;
+		CAnimation upWithFullAnimation;
+		CAnimation downWithFullAnimation;
 		int indexX, indexY;
 		int x, y;
 		bool isMovingDown;

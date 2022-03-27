@@ -13,28 +13,15 @@ namespace game_framework {
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingCount = 0;
 		faceTo = DOWN;
-		animation.SetDelayCount(2);
+		leftAnimation.SetDelayCount(2);
+		rightAnimation.SetDelayCount(2);
+		upAnimation.SetDelayCount(2);
+		downAnimation.SetDelayCount(2);
+		leftWithFullAnimation.SetDelayCount(2);
+		rightWithFullAnimation.SetDelayCount(2);
+		upWithFullAnimation.SetDelayCount(2);
+		downWithFullAnimation.SetDelayCount(2);
 		isSwallowed = false;
-	}
-
-	int CPlayer::GetX1()
-	{
-		return x;
-	}
-
-	int CPlayer::GetY1()
-	{
-		return y;
-	}
-
-	int CPlayer::GetX2()
-	{
-		return x + animation.Width();
-	}
-
-	int CPlayer::GetY2()
-	{
-		return y + animation.Height();
 	}
 
 	int CPlayer::GetIndexX() {
@@ -52,7 +39,71 @@ namespace game_framework {
 
 	void CPlayer::LoadBitmap()
 	{
-		animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_002, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_003, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_004, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_005, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_006, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_007, RGB(0, 0, 0));
+		leftAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_008, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_002, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_003, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_004, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_005, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_006, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_007, RGB(0, 0, 0));
+		rightAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_008, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_002, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_003, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_004, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_005, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_006, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_007, RGB(0, 0, 0));
+		upAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_008, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_002, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_003, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_004, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_005, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_006, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_007, RGB(0, 0, 0));
+		downAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_008, RGB(0, 0, 0));
+
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_001, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_002, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_003, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_004, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_005, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_006, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_007, RGB(0, 0, 0));
+		leftWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_008, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_001, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_002, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_003, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_004, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_005, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_006, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_007, RGB(0, 0, 0));
+		rightWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_008, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_001, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_002, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_003, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_004, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_005, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_006, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_007, RGB(0, 0, 0));
+		upWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_008, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_001, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_002, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_003, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_004, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_005, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_006, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_007, RGB(0, 0, 0));
+		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_008, RGB(0, 0, 0));
 	}
 
 	void CPlayer::OnMove()
@@ -60,7 +111,6 @@ namespace game_framework {
 		const int STEP_TARGET = 8;
 		const int STEP_SIZE_X = 9;
 		const int STEP_SIZE_Y = 6;
-		animation.OnMove();
 		
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -69,43 +119,11 @@ namespace game_framework {
 				if (faceTo != LEFT)
 				{
 					faceTo = LEFT;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
-					}
 				}
 				else
 				{
 					movingCount = 0;
 					isMovingLeft = true;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_008, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_008, RGB(0, 0, 0));
-					}
 				}
 			}
 			else if (isKeyRightPressed)
@@ -113,43 +131,11 @@ namespace game_framework {
 				if (faceTo != RIGHT)
 				{
 					faceTo = RIGHT;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
-					}
 				}
 				else
 				{
 					movingCount = 0;
 					isMovingRight = true;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_008, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_008, RGB(0, 0, 0));
-					}
 				}
 			}
 			else if (isKeyUpPressed)
@@ -157,43 +143,11 @@ namespace game_framework {
 				if (faceTo != UP)
 				{
 					faceTo = UP;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
-					}
 				}
 				else
 				{
 					movingCount = 0;
 					isMovingUp = true;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_008, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_008, RGB(0, 0, 0));
-					}
 				}
 			}
 			else if (isKeyDownPressed)
@@ -201,43 +155,11 @@ namespace game_framework {
 				if (faceTo != DOWN)
 				{
 					faceTo = DOWN;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
-					}
 				}
 				else
 				{
 					movingCount = 0;
 					isMovingDown = true;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_008, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_002, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_003, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_004, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_005, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_006, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_007, RGB(0, 0, 0));
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_008, RGB(0, 0, 0));
-					}
 				}
 			}
 		}
@@ -246,6 +168,8 @@ namespace game_framework {
 		{
 			if (mapRecord[indexX - 1][indexY] == 0)
 			{
+				leftAnimation.OnMove();
+				leftWithFullAnimation.OnMove();
 				x -= STEP_SIZE_X;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
@@ -253,42 +177,20 @@ namespace game_framework {
 					mapRecord[indexX][indexY] = 0;
 					mapRecord[--indexX][indexY] = 1;
 					movingCount = 0;
-					if (!isKeyLeftPressed)
-					{
-						isMovingLeft = false;
-						animation.ClearBitmapList();
-						if (isSwallowed)
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_001, RGB(0, 0, 0));
-						}
-						else
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
-						}
-					}
+					isMovingLeft = isKeyLeftPressed;
 				}
 			}
 			else
 			{
-				if (!isKeyLeftPressed)
-				{
-					isMovingLeft = false;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
-					}
-				}
+				isMovingLeft = isKeyLeftPressed;
 			}
 		}
 		else if (isMovingRight)
 		{
 			if (mapRecord[indexX + 1][indexY] == 0)
 			{
+				rightAnimation.OnMove();
+				rightWithFullAnimation.OnMove();
 				x += STEP_SIZE_X;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
@@ -296,42 +198,20 @@ namespace game_framework {
 					mapRecord[indexX][indexY] = 0;
 					mapRecord[++indexX][indexY] = 1;
 					movingCount = 0;
-					if (!isKeyRightPressed)
-					{
-						isMovingRight = false;
-						animation.ClearBitmapList();
-						if (isSwallowed)
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_001, RGB(0, 0, 0));
-						}
-						else
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
-						}
-					}
+					isMovingRight = isKeyRightPressed;
 				}
 			}
 			else
 			{
-				if (!isKeyRightPressed)
-				{
-					isMovingRight = false;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
-					}
-				}
+				isMovingRight = isKeyRightPressed;
 			}
 		}
 		else if (isMovingUp)
 		{
 			if (mapRecord[indexX][indexY - 1] == 0)
 			{
+				upAnimation.OnMove();
+				upWithFullAnimation.OnMove();
 				y -= STEP_SIZE_Y;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
@@ -339,42 +219,20 @@ namespace game_framework {
 					mapRecord[indexX][indexY] = 0;
 					mapRecord[indexX][--indexY] = 1;
 					movingCount = 0;
-					if (!isKeyUpPressed)
-					{
-						isMovingUp = false;
-						animation.ClearBitmapList();
-						if (isSwallowed)
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_001, RGB(0, 0, 0));
-						}
-						else
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
-						}
-					}
+					isMovingUp = isKeyUpPressed;
 				}
 			}
 			else
 			{
-				if (!isKeyUpPressed)
-				{
-					isMovingUp = false;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
-					}
-				}
+				isMovingUp = isKeyUpPressed;
 			}
 		}
 		else if (isMovingDown)
 		{
 			if (mapRecord[indexX][indexY + 1] == 0)
 			{
+				downAnimation.OnMove();
+				downWithFullAnimation.OnMove();
 				y += STEP_SIZE_Y;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
@@ -382,36 +240,12 @@ namespace game_framework {
 					mapRecord[indexX][indexY] = 0;
 					mapRecord[indexX][++indexY] = 1;
 					movingCount = 0;
-					if (!isKeyDownPressed)
-					{
-						isMovingDown = false;
-						animation.ClearBitmapList();
-						if (isSwallowed)
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_001, RGB(0, 0, 0));
-						}
-						else
-						{
-							animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
-						}
-					}
+					isMovingDown = isKeyDownPressed;
 				}
 			}
 			else
 			{
-				if (!isKeyDownPressed)
-				{
-					isMovingDown = false;
-					animation.ClearBitmapList();
-					if (isSwallowed)
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_001, RGB(0, 0, 0));
-					}
-					else
-					{
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
-					}
-				}
+				isMovingDown = isKeyDownPressed;
 			}
 		}
 	}
@@ -452,8 +286,6 @@ namespace game_framework {
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
 							swallowedBrick = k;
 							isSwallowed = true;
-							animation.ClearBitmapList();
-							animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_WITH_FULL_001, RGB(0, 0, 0));
 						}
 					}
 				}
@@ -467,8 +299,6 @@ namespace game_framework {
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
 							swallowedBrick = k;
 							isSwallowed = true;
-							animation.ClearBitmapList();
-							animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_WITH_FULL_001, RGB(0, 0, 0));
 						}
 					}
 				}
@@ -482,8 +312,6 @@ namespace game_framework {
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
 							swallowedBrick = k;
 							isSwallowed = true;
-							animation.ClearBitmapList();
-							animation.AddBitmap(IDB_PLAYER_MOVE_UP_WITH_FULL_001, RGB(0, 0, 0));
 						}
 					}
 				}
@@ -497,8 +325,6 @@ namespace game_framework {
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
 							swallowedBrick = k;
 							isSwallowed = true;
-							animation.ClearBitmapList();
-							animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_001, RGB(0, 0, 0));
 						}
 					}
 				}
@@ -513,8 +339,6 @@ namespace game_framework {
 						swallowedBrick->SetXY(indexX - 1, indexY, x - 72, y);
 						swallowedBrick->setAlive(true);
 						isSwallowed = false;
-						animation.ClearBitmapList();
-						animation.AddBitmap(IDB_PLAYER_MOVE_LEFT_001, RGB(0, 0, 0));
 					}
 				}
 				else if (faceTo == RIGHT)
@@ -525,8 +349,6 @@ namespace game_framework {
 						swallowedBrick->SetXY(indexX + 1, indexY, x + 72, y);
 						swallowedBrick->setAlive(true);
 						isSwallowed = false;
-						animation.ClearBitmapList();
-						animation.AddBitmap(IDB_PLAYER_MOVE_RIGHT_001, RGB(0, 0, 0));
 					}
 				}
 				else if (faceTo == UP)
@@ -537,8 +359,6 @@ namespace game_framework {
 						swallowedBrick->SetXY(indexX, indexY - 1, x, y - 48);
 						swallowedBrick->setAlive(true);
 						isSwallowed = false;
-						animation.ClearBitmapList();
-						animation.AddBitmap(IDB_PLAYER_MOVE_UP_001, RGB(0, 0, 0));
 					}
 				}
 				else if (faceTo == DOWN)
@@ -549,8 +369,6 @@ namespace game_framework {
 						swallowedBrick->SetXY(indexX, indexY + 1, x, y + 48);
 						swallowedBrick->setAlive(true);
 						isSwallowed = false;
-						animation.ClearBitmapList();
-						animation.AddBitmap(IDB_PLAYER_MOVE_DOWN_001, RGB(0, 0, 0));
 					}
 				}
 			}
@@ -567,7 +385,83 @@ namespace game_framework {
 
 	void CPlayer::OnShow()
 	{
-		animation.SetTopLeft(x + (72 / 2) - (animation.Width() / 2), y + 46 - animation.Height());
-		animation.OnShow();
+		if (!isSwallowed)
+		{
+			if (faceTo == LEFT)
+			{
+				if (!isMovingLeft)
+				{
+					leftAnimation.Reset();
+				}
+				leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
+				leftAnimation.OnShow();
+			}
+			else if (faceTo == RIGHT)
+			{
+				if (!isMovingRight)
+				{
+					rightAnimation.Reset();
+				}
+				rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
+				rightAnimation.OnShow();
+			}
+			else if (faceTo == UP)
+			{
+				if (!isMovingUp)
+				{
+					upAnimation.Reset();
+				}
+				upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
+				upAnimation.OnShow();
+			}
+			else if (faceTo == DOWN)
+			{
+				if (!isMovingDown)
+				{
+					downAnimation.Reset();
+				}
+				downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
+				downAnimation.OnShow();
+			}
+		}
+		else if(isSwallowed)
+		{
+			if (faceTo == LEFT)
+			{
+				if (!isMovingLeft)
+				{
+					leftWithFullAnimation.Reset();
+				}
+				leftWithFullAnimation.SetTopLeft(x + (72 / 2) - (leftWithFullAnimation.Width() / 2), y + 46 - leftWithFullAnimation.Height());
+				leftWithFullAnimation.OnShow();
+			}
+			else if (faceTo == RIGHT)
+			{
+				if (!isMovingRight)
+				{
+					rightWithFullAnimation.Reset();
+				}
+				rightWithFullAnimation.SetTopLeft(x + (72 / 2) - (rightWithFullAnimation.Width() / 2), y + 46 - rightWithFullAnimation.Height());
+				rightWithFullAnimation.OnShow();
+			}
+			else if (faceTo == UP)
+			{
+				if (!isMovingUp)
+				{
+					upWithFullAnimation.Reset();
+				}
+				upWithFullAnimation.SetTopLeft(x + (72 / 2) - (upWithFullAnimation.Width() / 2), y + 46 - upWithFullAnimation.Height());
+				upWithFullAnimation.OnShow();
+			}
+			else if (faceTo == DOWN)
+			{
+				if (!isMovingDown)
+				{
+					downWithFullAnimation.Reset();
+				}
+				downWithFullAnimation.SetTopLeft(x + (72 / 2) - (downWithFullAnimation.Width() / 2), y + 46 - downWithFullAnimation.Height());
+				downWithFullAnimation.OnShow();
+			}
+		}
 	}
 }
