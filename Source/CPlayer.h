@@ -13,13 +13,13 @@ namespace game_framework {
 		void Initialize(int **map);
 		void LoadBitmap();
 		void OnMove();
-		void OnShow();
 		void SetMovingLeft(bool flag);
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
 		void PressKeySpace(list<CStoneBrick> &stoneBrick);
 		void SetXY(int ni, int nj, int nx, int ny);
+		void OnShow();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;

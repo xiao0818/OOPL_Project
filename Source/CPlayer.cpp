@@ -376,6 +376,7 @@ namespace game_framework {
 						mapRecord[indexX - 1][indexY] = 3;
 						swallowedBrick->SetXY(indexX - 1, indexY, x - 72, y);
 						swallowedBrick->setAlive(true);
+						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}
@@ -386,6 +387,7 @@ namespace game_framework {
 						mapRecord[indexX + 1][indexY] = 3;
 						swallowedBrick->SetXY(indexX + 1, indexY, x + 72, y);
 						swallowedBrick->setAlive(true);
+						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}
@@ -396,6 +398,7 @@ namespace game_framework {
 						mapRecord[indexX][indexY - 1] = 3;
 						swallowedBrick->SetXY(indexX, indexY - 1, x, y - 48);
 						swallowedBrick->setAlive(true);
+						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}
@@ -406,6 +409,7 @@ namespace game_framework {
 						mapRecord[indexX][indexY + 1] = 3;
 						swallowedBrick->SetXY(indexX, indexY + 1, x, y + 48);
 						swallowedBrick->setAlive(true);
+						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}

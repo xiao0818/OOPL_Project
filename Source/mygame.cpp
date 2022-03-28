@@ -257,10 +257,11 @@ namespace game_framework {
 				}
 				else if (map[i][j] == 3)
 				{
-					CStoneBrick tempstoneBrick;
-					tempstoneBrick.LoadBitmap();
-					tempstoneBrick.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					stoneBrick.push_back(tempstoneBrick);
+					CStoneBrick tempStoneBrick;
+					tempStoneBrick.Initialize(map);
+					tempStoneBrick.LoadBitmap();
+					tempStoneBrick.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					stoneBrick.push_back(tempStoneBrick);
 				}
 			}
 		}
@@ -269,6 +270,11 @@ namespace game_framework {
 	void CGameStateRun::OnMove()
 	{
 		player.OnMove();
+
+		for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+		{
+			k->OnMove();
+		}
 	}
 
 	void CGameStateRun::OnInit()
