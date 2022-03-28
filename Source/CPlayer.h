@@ -29,6 +29,10 @@ namespace game_framework {
 		CAnimation rightWithFullAnimation;
 		CAnimation upWithFullAnimation;
 		CAnimation downWithFullAnimation;
+		CAnimation eatLeftAnimation;
+		CAnimation eatRightAnimation;
+		CAnimation eatUpAnimation;
+		CAnimation eatDownAnimation;
 		int indexX, indexY;
 		int x, y;
 		bool isMovingDown;
@@ -48,6 +52,7 @@ namespace game_framework {
 		string DOWN = "DOWN";
 		list<CStoneBrick>::iterator swallowedBrick;
 		bool isSwallowed;
+		bool isEating;
 	};
 }
 

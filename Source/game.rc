@@ -226,6 +226,38 @@ IDB_PLAYER_MOVE_DOWN_WITH_FULL_007 BITMAP                  "..\\Resources\\playe
 
 IDB_PLAYER_MOVE_DOWN_WITH_FULL_008 BITMAP                  "..\\Resources\\player\\down_with_full\\player_move_with_full_down_008.bmp"
 
+IDB_PLAYER_EAT_DOWN_001 BITMAP                  "..\\Resources\\player\\eat_down\\player_eat_down_001.bmp"
+
+IDB_PLAYER_EAT_DOWN_002 BITMAP                  "..\\Resources\\player\\eat_down\\player_eat_down_002.bmp"
+
+IDB_PLAYER_EAT_DOWN_003 BITMAP                  "..\\Resources\\player\\eat_down\\player_eat_down_003.bmp"
+
+IDB_PLAYER_EAT_DOWN_004 BITMAP                  "..\\Resources\\player\\eat_down\\player_eat_down_004.bmp"
+
+IDB_PLAYER_EAT_LEFT_001 BITMAP                  "..\\Resources\\player\\eat_left\\player_eat_left_001.bmp"
+
+IDB_PLAYER_EAT_LEFT_002 BITMAP                  "..\\Resources\\player\\eat_left\\player_eat_left_002.bmp"
+
+IDB_PLAYER_EAT_LEFT_003 BITMAP                  "..\\Resources\\player\\eat_left\\player_eat_left_003.bmp"
+
+IDB_PLAYER_EAT_LEFT_004 BITMAP                  "..\\Resources\\player\\eat_left\\player_eat_left_004.bmp"
+
+IDB_PLAYER_EAT_RIGHT_001 BITMAP                  "..\\Resources\\player\\eat_right\\player_eat_right_001.bmp"
+
+IDB_PLAYER_EAT_RIGHT_002 BITMAP                  "..\\Resources\\player\\eat_right\\player_eat_right_002.bmp"
+
+IDB_PLAYER_EAT_RIGHT_003 BITMAP                  "..\\Resources\\player\\eat_right\\player_eat_right_003.bmp"
+
+IDB_PLAYER_EAT_RIGHT_004 BITMAP                  "..\\Resources\\player\\eat_right\\player_eat_right_004.bmp"
+
+IDB_PLAYER_EAT_UP_001   BITMAP                  "..\\Resources\\player\\eat_up\\player_eat_up_001.bmp"
+
+IDB_PLAYER_EAT_UP_002   BITMAP                  "..\\Resources\\player\\eat_up\\player_eat_up_002.bmp"
+
+IDB_PLAYER_EAT_UP_003   BITMAP                  "..\\Resources\\player\\eat_up\\player_eat_up_003.bmp"
+
+IDB_PLAYER_EAT_UP_004   BITMAP                  "..\\Resources\\player\\eat_up\\player_eat_up_004.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

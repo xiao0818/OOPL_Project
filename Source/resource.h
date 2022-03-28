@@ -2,6 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by game.rc
 //
+#define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
 #define IDP_SOCKETS_INIT_FAILED         104
 #define IDR_MAINFRAME                   128
@@ -100,6 +101,22 @@
 #define IDB_PLAYER_MOVE_DOWN_WITH_FULL_007 240
 #define IDB_BITMAP13                    241
 #define IDB_PLAYER_MOVE_DOWN_WITH_FULL_008 241
+#define IDB_PLAYER_EAT_DOWN_001         242
+#define IDB_PLAYER_EAT_DOWN_002         243
+#define IDB_PLAYER_EAT_DOWN_003         244
+#define IDB_PLAYER_EAT_DOWN_004         245
+#define IDB_PLAYER_EAT_LEFT_001         246
+#define IDB_PLAYER_EAT_LEFT_002         247
+#define IDB_PLAYER_EAT_LEFT_003         248
+#define IDB_PLAYER_EAT_LEFT_004         249
+#define IDB_PLAYER_EAT_RIGHT_001        250
+#define IDB_PLAYER_EAT_RIGHT_002        251
+#define IDB_PLAYER_EAT_RIGHT_004        253
+#define IDB_PLAYER_EAT_UP_001           254
+#define IDB_PLAYER_EAT_UP_002           255
+#define IDB_PLAYER_EAT_UP_003           256
+#define IDB_BITMAP6                     257
+#define IDB_PLAYER_EAT_UP_004           257
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -112,7 +129,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        242
+#define _APS_NEXT_RESOURCE_VALUE        258
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

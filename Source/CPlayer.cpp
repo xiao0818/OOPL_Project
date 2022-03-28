@@ -21,7 +21,12 @@ namespace game_framework {
 		rightWithFullAnimation.SetDelayCount(2);
 		upWithFullAnimation.SetDelayCount(2);
 		downWithFullAnimation.SetDelayCount(2);
+		eatLeftAnimation.SetDelayCount(2);
+		eatRightAnimation.SetDelayCount(2);
+		eatUpAnimation.SetDelayCount(2);
+		eatDownAnimation.SetDelayCount(2);
 		isSwallowed = false;
+		isEating = false;
 	}
 
 	int CPlayer::GetIndexX() {
@@ -104,6 +109,23 @@ namespace game_framework {
 		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_006, RGB(0, 0, 0));
 		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_007, RGB(0, 0, 0));
 		downWithFullAnimation.AddBitmap(IDB_PLAYER_MOVE_DOWN_WITH_FULL_008, RGB(0, 0, 0));
+
+		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_001, RGB(0, 0, 0));
+		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_002, RGB(0, 0, 0));
+		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_003, RGB(0, 0, 0));
+		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_004, RGB(0, 0, 0));
+		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_001, RGB(0, 0, 0));
+		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_002, RGB(0, 0, 0));
+		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_003, RGB(0, 0, 0));
+		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_004, RGB(0, 0, 0));
+		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_001, RGB(0, 0, 0));
+		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_002, RGB(0, 0, 0));
+		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_003, RGB(0, 0, 0));
+		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_004, RGB(0, 0, 0));
+		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_001, RGB(0, 0, 0));
+		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_002, RGB(0, 0, 0));
+		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_003, RGB(0, 0, 0));
+		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_004, RGB(0, 0, 0));
 	}
 
 	void CPlayer::OnMove()
@@ -114,6 +136,21 @@ namespace game_framework {
 		
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
+			if (isEating) {
+				eatLeftAnimation.OnMove();
+				eatRightAnimation.OnMove();
+				eatUpAnimation.OnMove();
+				eatDownAnimation.OnMove();
+			}
+			if (eatLeftAnimation.IsFinalBitmap() && eatRightAnimation.IsFinalBitmap() && eatUpAnimation.IsFinalBitmap() && eatDownAnimation.IsFinalBitmap())
+			{
+				isEating = false;
+				eatLeftAnimation.Reset();
+				eatRightAnimation.Reset();
+				eatUpAnimation.Reset();
+				eatDownAnimation.Reset();
+			}
+
 			if (isKeyLeftPressed)
 			{
 				if (faceTo != LEFT)
@@ -274,6 +311,7 @@ namespace game_framework {
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
+			isEating = true;
 			if (isSwallowed == false)
 			{
 				if (faceTo == LEFT)
@@ -385,7 +423,30 @@ namespace game_framework {
 
 	void CPlayer::OnShow()
 	{
-		if (!isSwallowed)
+		if (isEating)
+		{
+			if (faceTo == LEFT)
+			{
+				eatLeftAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
+				eatLeftAnimation.OnShow();
+			}
+			else if (faceTo == RIGHT)
+			{
+				eatRightAnimation.SetTopLeft(x + (72 / 2) - (eatRightAnimation.Width() / 2), y + 46 - eatRightAnimation.Height());
+				eatRightAnimation.OnShow();
+			}
+			else if (faceTo == UP)
+			{
+				eatUpAnimation.SetTopLeft(x + (72 / 2) - (eatUpAnimation.Width() / 2), y + 46 - eatUpAnimation.Height());
+				eatUpAnimation.OnShow();
+			}
+			else if (faceTo == DOWN)
+			{
+				eatDownAnimation.SetTopLeft(x + (72 / 2) - (eatDownAnimation.Width() / 2), y + 46 - eatDownAnimation.Height());
+				eatDownAnimation.OnShow();
+			}
+		}
+		else if (!isSwallowed)
 		{
 			if (faceTo == LEFT)
 			{
