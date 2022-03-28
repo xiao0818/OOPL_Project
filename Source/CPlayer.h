@@ -1,7 +1,9 @@
 #ifndef CPLAYER_H
 #define CPLAYER_H
 
-#include "CStoneBrick.h"
+#include "CName.h"
+#include "CDirection.h"
+#include "CStone.h"
 
 namespace game_framework {
 	class CPlayer
@@ -10,14 +12,14 @@ namespace game_framework {
 		CPlayer();
 		int  GetIndexX();
 		int  GetIndexY();
-		void Initialize(int **map);
+		void Initialize(CName **map);
 		void LoadBitmap();
 		void OnMove();
 		void SetMovingLeft(bool flag);
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
-		void PressKeySpace(list<CStoneBrick> &stoneBrick);
+		void PressKeySpace(list<CStone> &Stone);
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:
@@ -44,13 +46,9 @@ namespace game_framework {
 		bool isKeyRightPressed;
 		bool isKeyUpPressed;
 		int movingCount;
-		int **mapRecord;
-		string faceTo;
-		string LEFT = "LEFT";
-		string RIGHT = "RIGHT";
-		string UP = "UP";
-		string DOWN = "DOWN";
-		list<CStoneBrick>::iterator swallowedBrick;
+		CName **mapRecord;
+		CDirection faceTo;
+		list<CStone>::iterator swallowedBrick;
 		bool isSwallowed;
 		bool isEating;
 	};

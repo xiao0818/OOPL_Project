@@ -114,7 +114,7 @@
     <ClCompile Include="Source\CPlayer.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CStoneBrick.cpp">
+    <ClCompile Include="Source\CStone.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,7 +155,13 @@
     <ClInclude Include="Source\CPlayer.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CStoneBrick.h">
+    <ClInclude Include="Source\CName.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CStone.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CDirection.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>

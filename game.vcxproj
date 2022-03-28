@@ -256,7 +256,7 @@
     <ClCompile Include="Source\audio.cpp" />
     <ClCompile Include="Source\CGround.cpp" />
     <ClCompile Include="Source\CPlayer.cpp" />
-    <ClCompile Include="Source\CStoneBrick.cpp" />
+    <ClCompile Include="Source\CStone.cpp" />
     <ClCompile Include="Source\CWall.cpp" />
     <ClCompile Include="Source\game.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -301,9 +301,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h" />
+    <ClInclude Include="Source\CDirection.h" />
     <ClInclude Include="Source\CGround.h" />
+    <ClInclude Include="Source\CName.h" />
     <ClInclude Include="Source\CPlayer.h" />
-    <ClInclude Include="Source\CStoneBrick.h" />
+    <ClInclude Include="Source\CStone.h" />
     <ClInclude Include="Source\CWall.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\gameDoc.h" />

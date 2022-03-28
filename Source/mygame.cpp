@@ -191,7 +191,34 @@ namespace game_framework {
 	: CGameState(g)
 	{
 		wall.clear();
-		stoneBrick.clear();
+		stone.clear();
+
+		CName map_init[14][14] = {{CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::PLAYER, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL}};
+		map = new CName *[14];
+		for (int i = 0; i < 14; i++)
+		{
+			map[i] = new CName[14];
+		}
+		for (int i = 0; i < 14; i++)
+		{
+			for (int j = 0; j < 14; j++)
+			{
+				map[i][j] = map_init[j][i];
+			}
+		}
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -211,57 +238,30 @@ namespace game_framework {
 		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
 		ground.SetXY(GROUND_X, GROUND_Y);
 
-		int map_init[14][14] = {{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-								{2, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 2},
-								{2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2},
-								{2, 0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2},
-								{2, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 2},
-								{2, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 2},
-								{2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2},
-								{2, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 2},
-								{2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-								{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}};
-		map = new int *[14];
-		for (int i = 0; i < 14; i++)
-		{
-			map[i] = new int[14];
-		}
-		for (int i = 0; i < 14; i++)
-		{
-			for (int j = 0; j < 14; j++)
-			{
-				map[i][j] = map_init[j][i];
-			}
-		}
-
 		player.Initialize(map);
 
 		for (int i = 0; i < 14; i++)
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				if (map[i][j] == 1)
+				if (map[i][j] == CName::PLAYER)
 				{
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
 				}
-				else if (map[i][j] == 2)
+				else if (map[i][j] == CName::WALL)
 				{
 					CWall tempWall;
 					tempWall.LoadBitmap();
 					tempWall.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					wall.push_back(tempWall);
 				}
-				else if (map[i][j] == 3)
+				else if (map[i][j] == CName::STONE)
 				{
-					CStoneBrick tempStoneBrick;
-					tempStoneBrick.Initialize(map);
-					tempStoneBrick.LoadBitmap();
-					tempStoneBrick.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					stoneBrick.push_back(tempStoneBrick);
+					CStone tempStone;
+					tempStone.Initialize(map);
+					tempStone.LoadBitmap();
+					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					stone.push_back(tempStone);
 				}
 			}
 		}
@@ -271,7 +271,7 @@ namespace game_framework {
 	{
 		player.OnMove();
 
-		for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+		for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 		{
 			k->OnMove();
 		}
@@ -304,7 +304,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace(stoneBrick);
+			player.PressKeySpace(stone);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -357,7 +357,7 @@ namespace game_framework {
 					k->OnShow();
 				}
 			}
-			for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+			for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 			{
 				if (k->GetIndexY() == j)
 				{

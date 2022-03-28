@@ -1,18 +1,21 @@
-#ifndef CSTONEBRICK_H
-#define CSTONEBRICK_H
+#ifndef CSTONE_H
+#define CSTONE_H
+
+#include "CName.h"
+#include "CDirection.h"
 
 namespace game_framework {
-	class CStoneBrick
+	class CStone
 	{
 	public:
-		CStoneBrick();
+		CStone();
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsMove();
-		void Initialize(int **map);
+		void Initialize(CName **map);
 		void LoadBitmap();
 		void OnMove();
-		void SpitedOut(string faceTo);
+		void SpitedOut(CDirection faceTo);
 		void SetXY(int ni, int nj, int nx, int ny);
 		void setAlive(bool flag);
 		void OnShow();
@@ -20,17 +23,13 @@ namespace game_framework {
 		CMovingBitmap bitmap;
 		int indexX, indexY;
 		int x, y;
-		int **mapRecord;
+		CName **mapRecord;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;
 		bool isMovingUp;
 		int movingCount;
 		bool isAlive;
-		string LEFT = "LEFT";
-		string RIGHT = "RIGHT";
-		string UP = "UP";
-		string DOWN = "DOWN";
 	};
 }
 

@@ -12,7 +12,7 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingCount = 0;
-		faceTo = DOWN;
+		faceTo = CDirection::DOWN;
 		leftAnimation.SetDelayCount(2);
 		rightAnimation.SetDelayCount(2);
 		upAnimation.SetDelayCount(2);
@@ -37,7 +37,7 @@ namespace game_framework {
 		return indexY;
 	}
 
-	void CPlayer::Initialize(int **map)
+	void CPlayer::Initialize(CName **map)
 	{
 		mapRecord = map;
 	}
@@ -153,9 +153,9 @@ namespace game_framework {
 		{
 			if (isKeyLeftPressed)
 			{
-				if (faceTo != LEFT)
+				if (faceTo != CDirection::LEFT)
 				{
-					faceTo = LEFT;
+					faceTo = CDirection::LEFT;
 				}
 				else
 				{
@@ -165,9 +165,9 @@ namespace game_framework {
 			}
 			else if (isKeyRightPressed)
 			{
-				if (faceTo != RIGHT)
+				if (faceTo != CDirection::RIGHT)
 				{
-					faceTo = RIGHT;
+					faceTo = CDirection::RIGHT;
 				}
 				else
 				{
@@ -177,9 +177,9 @@ namespace game_framework {
 			}
 			else if (isKeyUpPressed)
 			{
-				if (faceTo != UP)
+				if (faceTo != CDirection::UP)
 				{
-					faceTo = UP;
+					faceTo = CDirection::UP;
 				}
 				else
 				{
@@ -189,9 +189,9 @@ namespace game_framework {
 			}
 			else if (isKeyDownPressed)
 			{
-				if (faceTo != DOWN)
+				if (faceTo != CDirection::DOWN)
 				{
-					faceTo = DOWN;
+					faceTo = CDirection::DOWN;
 				}
 				else
 				{
@@ -203,7 +203,7 @@ namespace game_framework {
 
 		if (isMovingLeft)
 		{
-			if (mapRecord[indexX - 1][indexY] == 0)
+			if (mapRecord[indexX - 1][indexY] == CName::SPACE)
 			{
 				leftAnimation.OnMove();
 				leftWithFullAnimation.OnMove();
@@ -211,8 +211,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[--indexX][indexY] = 1;
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[--indexX][indexY] = CName::PLAYER;
 					movingCount = 0;
 					isMovingLeft = isKeyLeftPressed;
 				}
@@ -224,7 +224,7 @@ namespace game_framework {
 		}
 		else if (isMovingRight)
 		{
-			if (mapRecord[indexX + 1][indexY] == 0)
+			if (mapRecord[indexX + 1][indexY] == CName::SPACE)
 			{
 				rightAnimation.OnMove();
 				rightWithFullAnimation.OnMove();
@@ -232,8 +232,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[++indexX][indexY] = 1;
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[++indexX][indexY] = CName::PLAYER;
 					movingCount = 0;
 					isMovingRight = isKeyRightPressed;
 				}
@@ -245,7 +245,7 @@ namespace game_framework {
 		}
 		else if (isMovingUp)
 		{
-			if (mapRecord[indexX][indexY - 1] == 0)
+			if (mapRecord[indexX][indexY - 1] == CName::SPACE)
 			{
 				upAnimation.OnMove();
 				upWithFullAnimation.OnMove();
@@ -253,8 +253,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[indexX][--indexY] = 1;
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[indexX][--indexY] = CName::PLAYER;
 					movingCount = 0;
 					isMovingUp = isKeyUpPressed;
 				}
@@ -266,7 +266,7 @@ namespace game_framework {
 		}
 		else if (isMovingDown)
 		{
-			if (mapRecord[indexX][indexY + 1] == 0)
+			if (mapRecord[indexX][indexY + 1] == CName::SPACE)
 			{
 				downAnimation.OnMove();
 				downWithFullAnimation.OnMove();
@@ -274,8 +274,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord[indexX][indexY] = 0;
-					mapRecord[indexX][++indexY] = 1;
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[indexX][++indexY] = CName::PLAYER;
 					movingCount = 0;
 					isMovingDown = isKeyDownPressed;
 				}
@@ -307,60 +307,60 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(list<CStoneBrick> &stoneBrick)
+	void CPlayer::PressKeySpace(list<CStone> &stone)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
 			isEating = true;
 			if (isSwallowed == false)
 			{
-				if (faceTo == LEFT)
+				if (faceTo == CDirection::LEFT)
 				{
-					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
 							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
 					}
 				}
-				else if (faceTo == RIGHT)
+				else if (faceTo == CDirection::RIGHT)
 				{
-					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
 							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
 					}
 				}
-				else if (faceTo == UP)
+				else if (faceTo == CDirection::UP)
 				{
-					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
 						{
 							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
 					}
 				}
-				else if (faceTo == DOWN)
+				else if (faceTo == CDirection::DOWN)
 				{
-					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
+					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
 						{
 							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
+							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
@@ -369,44 +369,44 @@ namespace game_framework {
 			}
 			else if (isSwallowed == true)
 			{
-				if (faceTo == LEFT)
+				if (faceTo == CDirection::LEFT)
 				{
-					if (mapRecord[indexX - 1][indexY] == 0)
+					if (mapRecord[indexX - 1][indexY] == CName::SPACE)
 					{
-						mapRecord[indexX - 1][indexY] = 3;
+						mapRecord[indexX - 1][indexY] = CName::STONE;
 						swallowedBrick->SetXY(indexX - 1, indexY, x - 72, y);
 						swallowedBrick->setAlive(true);
 						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}
-				else if (faceTo == RIGHT)
+				else if (faceTo == CDirection::RIGHT)
 				{
-					if (mapRecord[indexX + 1][indexY] == 0)
+					if (mapRecord[indexX + 1][indexY] == CName::SPACE)
 					{
-						mapRecord[indexX + 1][indexY] = 3;
+						mapRecord[indexX + 1][indexY] = CName::STONE;
 						swallowedBrick->SetXY(indexX + 1, indexY, x + 72, y);
 						swallowedBrick->setAlive(true);
 						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}
-				else if (faceTo == UP)
+				else if (faceTo == CDirection::UP)
 				{
-					if (mapRecord[indexX][indexY - 1] == 0)
+					if (mapRecord[indexX][indexY - 1] == CName::SPACE)
 					{
-						mapRecord[indexX][indexY - 1] = 3;
+						mapRecord[indexX][indexY - 1] = CName::STONE;
 						swallowedBrick->SetXY(indexX, indexY - 1, x, y - 48);
 						swallowedBrick->setAlive(true);
 						swallowedBrick->SpitedOut(faceTo);
 						isSwallowed = false;
 					}
 				}
-				else if (faceTo == DOWN)
+				else if (faceTo == CDirection::DOWN)
 				{
-					if (mapRecord[indexX][indexY + 1] == 0)
+					if (mapRecord[indexX][indexY + 1] == CName::SPACE)
 					{
-						mapRecord[indexX][indexY + 1] = 3;
+						mapRecord[indexX][indexY + 1] = CName::STONE;
 						swallowedBrick->SetXY(indexX, indexY + 1, x, y + 48);
 						swallowedBrick->setAlive(true);
 						swallowedBrick->SpitedOut(faceTo);
@@ -429,22 +429,22 @@ namespace game_framework {
 	{
 		if (isEating)
 		{
-			if (faceTo == LEFT)
+			if (faceTo == CDirection::LEFT)
 			{
 				eatLeftAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
 				eatLeftAnimation.OnShow();
 			}
-			else if (faceTo == RIGHT)
+			else if (faceTo == CDirection::RIGHT)
 			{
 				eatRightAnimation.SetTopLeft(x + (72 / 2) - (eatRightAnimation.Width() / 2), y + 46 - eatRightAnimation.Height());
 				eatRightAnimation.OnShow();
 			}
-			else if (faceTo == UP)
+			else if (faceTo == CDirection::UP)
 			{
 				eatUpAnimation.SetTopLeft(x + (72 / 2) - (eatUpAnimation.Width() / 2), y + 46 - eatUpAnimation.Height());
 				eatUpAnimation.OnShow();
 			}
-			else if (faceTo == DOWN)
+			else if (faceTo == CDirection::DOWN)
 			{
 				eatDownAnimation.SetTopLeft(x + (72 / 2) - (eatDownAnimation.Width() / 2), y + 46 - eatDownAnimation.Height());
 				eatDownAnimation.OnShow();
@@ -452,7 +452,7 @@ namespace game_framework {
 		}
 		else if (!isSwallowed)
 		{
-			if (faceTo == LEFT)
+			if (faceTo == CDirection::LEFT)
 			{
 				if (!isMovingLeft)
 				{
@@ -461,7 +461,7 @@ namespace game_framework {
 				leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
 				leftAnimation.OnShow();
 			}
-			else if (faceTo == RIGHT)
+			else if (faceTo == CDirection::RIGHT)
 			{
 				if (!isMovingRight)
 				{
@@ -470,7 +470,7 @@ namespace game_framework {
 				rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
 				rightAnimation.OnShow();
 			}
-			else if (faceTo == UP)
+			else if (faceTo == CDirection::UP)
 			{
 				if (!isMovingUp)
 				{
@@ -479,7 +479,7 @@ namespace game_framework {
 				upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
 				upAnimation.OnShow();
 			}
-			else if (faceTo == DOWN)
+			else if (faceTo == CDirection::DOWN)
 			{
 				if (!isMovingDown)
 				{
@@ -491,7 +491,7 @@ namespace game_framework {
 		}
 		else if(isSwallowed)
 		{
-			if (faceTo == LEFT)
+			if (faceTo == CDirection::LEFT)
 			{
 				if (!isMovingLeft)
 				{
@@ -500,7 +500,7 @@ namespace game_framework {
 				leftWithFullAnimation.SetTopLeft(x + (72 / 2) - (leftWithFullAnimation.Width() / 2), y + 46 - leftWithFullAnimation.Height());
 				leftWithFullAnimation.OnShow();
 			}
-			else if (faceTo == RIGHT)
+			else if (faceTo == CDirection::RIGHT)
 			{
 				if (!isMovingRight)
 				{
@@ -509,7 +509,7 @@ namespace game_framework {
 				rightWithFullAnimation.SetTopLeft(x + (72 / 2) - (rightWithFullAnimation.Width() / 2), y + 46 - rightWithFullAnimation.Height());
 				rightWithFullAnimation.OnShow();
 			}
-			else if (faceTo == UP)
+			else if (faceTo == CDirection::UP)
 			{
 				if (!isMovingUp)
 				{
@@ -518,7 +518,7 @@ namespace game_framework {
 				upWithFullAnimation.SetTopLeft(x + (72 / 2) - (upWithFullAnimation.Width() / 2), y + 46 - upWithFullAnimation.Height());
 				upWithFullAnimation.OnShow();
 			}
-			else if (faceTo == DOWN)
+			else if (faceTo == CDirection::DOWN)
 			{
 				if (!isMovingDown)
 				{

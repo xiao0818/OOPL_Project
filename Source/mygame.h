@@ -38,10 +38,11 @@
  *      3. Use ShowInitProgress(percent) to display loading progress.
 */
 
+#include "CName.h"
 #include "CGround.h"
 #include "CPlayer.h"
 #include "CWall.h"
-#include "CStoneBrick.h"
+#include "CStone.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -94,11 +95,11 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		int					**map;
+		CName				**map;
 		CGround				ground;
 		CPlayer				player;
 		list<CWall>			wall;
-		list<CStoneBrick>	stoneBrick;
+		list<CStone>		stone;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
