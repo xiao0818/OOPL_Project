@@ -8,6 +8,7 @@ namespace game_framework {
 		CStoneBrick();
 		int  GetIndexX();
 		int  GetIndexY();
+		bool IsMove();
 		void Initialize(int **map);
 		void LoadBitmap();
 		void OnMove();

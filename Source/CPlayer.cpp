@@ -134,23 +134,23 @@ namespace game_framework {
 		const int STEP_SIZE_X = 9;
 		const int STEP_SIZE_Y = 6;
 		
-		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
+		if (isEating) {
+			eatLeftAnimation.OnMove();
+			eatRightAnimation.OnMove();
+			eatUpAnimation.OnMove();
+			eatDownAnimation.OnMove();
+		}
+		if (eatLeftAnimation.IsFinalBitmap() && eatRightAnimation.IsFinalBitmap() && eatUpAnimation.IsFinalBitmap() && eatDownAnimation.IsFinalBitmap())
 		{
-			if (isEating) {
-				eatLeftAnimation.OnMove();
-				eatRightAnimation.OnMove();
-				eatUpAnimation.OnMove();
-				eatDownAnimation.OnMove();
-			}
-			if (eatLeftAnimation.IsFinalBitmap() && eatRightAnimation.IsFinalBitmap() && eatUpAnimation.IsFinalBitmap() && eatDownAnimation.IsFinalBitmap())
-			{
-				isEating = false;
-				eatLeftAnimation.Reset();
-				eatRightAnimation.Reset();
-				eatUpAnimation.Reset();
-				eatDownAnimation.Reset();
-			}
+			isEating = false;
+			eatLeftAnimation.Reset();
+			eatRightAnimation.Reset();
+			eatUpAnimation.Reset();
+			eatDownAnimation.Reset();
+		}
 
+		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown && !isEating)
+		{
 			if (isKeyLeftPressed)
 			{
 				if (faceTo != LEFT)
@@ -318,7 +318,7 @@ namespace game_framework {
 				{
 					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
 					{
-						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
+						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
 							k->setAlive(false);
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
@@ -331,7 +331,7 @@ namespace game_framework {
 				{
 					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
 					{
-						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
+						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
 							k->setAlive(false);
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
@@ -344,7 +344,7 @@ namespace game_framework {
 				{
 					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
 					{
-						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
 						{
 							k->setAlive(false);
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;
@@ -357,7 +357,7 @@ namespace game_framework {
 				{
 					for (list<CStoneBrick>::iterator k = stoneBrick.begin(); k != stoneBrick.end(); k++)
 					{
-						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
 						{
 							k->setAlive(false);
 							mapRecord[k->GetIndexX()][k->GetIndexY()] = 0;

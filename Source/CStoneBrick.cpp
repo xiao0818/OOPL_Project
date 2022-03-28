@@ -22,6 +22,11 @@ namespace game_framework {
 		return indexY;
 	}
 
+	bool CStoneBrick::IsMove()
+	{
+		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
+	}
+
 	void CStoneBrick::Initialize(int **map)
 	{
 		mapRecord = map;
