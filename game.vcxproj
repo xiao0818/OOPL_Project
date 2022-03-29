@@ -255,6 +255,7 @@
   <ItemGroup>
     <ClCompile Include="Source\audio.cpp" />
     <ClCompile Include="Source\CGround.cpp" />
+    <ClCompile Include="Source\CMud.cpp" />
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CStone.cpp" />
     <ClCompile Include="Source\CWall.cpp" />
@@ -303,6 +304,7 @@
     <ClInclude Include="Source\audio.h" />
     <ClInclude Include="Source\CDirection.h" />
     <ClInclude Include="Source\CGround.h" />
+    <ClInclude Include="Source\CMud.h" />
     <ClInclude Include="Source\CName.h" />
     <ClInclude Include="Source\CPlayer.h" />
     <ClInclude Include="Source\CStone.h" />
@@ -326,6 +328,38 @@
   <ItemGroup>
     <Image Include="Resources\brick\StoneBrick.bmp" />
     <Image Include="Resources\Ground.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_000.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_001.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_002.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_003.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_004.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_005.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_006.bmp" />
+    <Image Include="Resources\mud\down\mud_move_down_007.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_000.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_001.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_002.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_003.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_004.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_005.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_006.bmp" />
+    <Image Include="Resources\mud\left\mud_move_left_007.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_000.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_001.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_002.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_003.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_004.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_005.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_006.bmp" />
+    <Image Include="Resources\mud\right\mud_move_right_007.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_000.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_001.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_002.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_003.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_004.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_005.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_006.bmp" />
+    <Image Include="Resources\mud\up\mud_move_up_007.bmp" />
     <Image Include="Resources\player\down\player_move_down_001.bmp" />
     <Image Include="Resources\player\down\player_move_down_002.bmp" />
     <Image Include="Resources\player\down\player_move_down_003.bmp" />

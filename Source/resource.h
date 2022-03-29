@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by game.rc
+// Microsoft Visual C++ 產生的 Include 檔案。
+// 由 game.rc 使用
 //
 #define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
@@ -117,6 +117,39 @@
 #define IDB_PLAYER_EAT_UP_003           256
 #define IDB_BITMAP6                     257
 #define IDB_PLAYER_EAT_UP_004           257
+#define IDB_MUD_MOVE_DOWN_001           261
+#define IDB_MUD_MOVE_DOWN_002           262
+#define IDB_MUD_MOVE_DOWN_003           263
+#define IDB_MUD_MOVE_DOWN_004           264
+#define IDB_MUD_MOVE_DOWN_005           265
+#define IDB_MUD_MOVE_DOWN_006           266
+#define IDB_MUD_MOVE_DOWN_007           267
+#define IDB_MUD_MOVE_DOWN_008           268
+#define IDB_MUD_MOVE_LEFT_001           269
+#define IDB_MUD_MOVE_LEFT_002           270
+#define IDB_MUD_MOVE_LEFT_003           271
+#define IDB_MUD_MOVE_LEFT_004           272
+#define IDB_MUD_MOVE_LEFT_005           273
+#define IDB_MUD_MOVE_LEFT_006           274
+#define IDB_MUD_MOVE_LEFT_007           275
+#define IDB_MUD_MOVE_LEFT_008           276
+#define IDB_MUD_MOVE_RIGHT_001          277
+#define IDB_MUD_MOVE_RIGHT_002          278
+#define IDB_MUD_MOVE_RIGHT_003          279
+#define IDB_MUD_MOVE_RIGHT_004          280
+#define IDB_MUD_MOVE_RIGHT_005          281
+#define IDB_MUD_MOVE_RIGHT_006          282
+#define IDB_MUD_MOVE_RIGHT_007          283
+#define IDB_MUD_MOVE_RIGHT_008          284
+#define IDB_BITMAP3                     285
+#define IDB_MUD_MOVE_UP_001             285
+#define IDB_MUD_MOVE_UP_002             286
+#define IDB_MUD_MOVE_UP_003             287
+#define IDB_MUD_MOVE_UP_004             288
+#define IDB_MUD_MOVE_UP_005             289
+#define IDB_MUD_MOVE_UP_006             290
+#define IDB_MUD_MOVE_UP_007             291
+#define IDB_MUD_MOVE_UP_008             292
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -129,7 +162,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        258
+#define _APS_NEXT_RESOURCE_VALUE        293
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
