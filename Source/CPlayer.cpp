@@ -320,8 +320,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
-							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
+							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
@@ -333,8 +332,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
-							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
+							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
@@ -346,8 +344,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
 						{
-							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
+							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
@@ -359,8 +356,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
 						{
-							k->setAlive(false);
-							mapRecord[k->GetIndexX()][k->GetIndexY()] = CName::SPACE;
+							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
@@ -373,10 +369,7 @@ namespace game_framework {
 				{
 					if (mapRecord[indexX - 1][indexY] == CName::SPACE)
 					{
-						mapRecord[indexX - 1][indexY] = CName::STONE;
-						swallowedBrick->SetXY(indexX - 1, indexY, x - 72, y);
-						swallowedBrick->setAlive(true);
-						swallowedBrick->SpitedOut(faceTo);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
 					}
 				}
@@ -384,10 +377,7 @@ namespace game_framework {
 				{
 					if (mapRecord[indexX + 1][indexY] == CName::SPACE)
 					{
-						mapRecord[indexX + 1][indexY] = CName::STONE;
-						swallowedBrick->SetXY(indexX + 1, indexY, x + 72, y);
-						swallowedBrick->setAlive(true);
-						swallowedBrick->SpitedOut(faceTo);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
 					}
 				}
@@ -395,10 +385,7 @@ namespace game_framework {
 				{
 					if (mapRecord[indexX][indexY - 1] == CName::SPACE)
 					{
-						mapRecord[indexX][indexY - 1] = CName::STONE;
-						swallowedBrick->SetXY(indexX, indexY - 1, x, y - 48);
-						swallowedBrick->setAlive(true);
-						swallowedBrick->SpitedOut(faceTo);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
 					}
 				}
@@ -406,10 +393,7 @@ namespace game_framework {
 				{
 					if (mapRecord[indexX][indexY + 1] == CName::SPACE)
 					{
-						mapRecord[indexX][indexY + 1] = CName::STONE;
-						swallowedBrick->SetXY(indexX, indexY + 1, x, y + 48);
-						swallowedBrick->setAlive(true);
-						swallowedBrick->SpitedOut(faceTo);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
 					}
 				}

@@ -15,9 +15,9 @@ namespace game_framework {
 		void Initialize(CName **map);
 		void LoadBitmap();
 		void OnMove();
-		void SpitedOut(CDirection faceTo);
+		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 		void SetXY(int ni, int nj, int nx, int ny);
-		void setAlive(bool flag);
+		void Swallowed(CDirection faceTo);
 		void OnShow();
 	protected:
 		CMovingBitmap bitmap;
@@ -30,6 +30,7 @@ namespace game_framework {
 		bool isMovingUp;
 		int movingCount;
 		bool isAlive;
+		bool isSwallowed;
 	};
 }
 

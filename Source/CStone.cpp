@@ -12,6 +12,7 @@ namespace game_framework {
 		x = y = 0;
 		isAlive = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		isSwallowed = false;
 	}
 
 	int CStone::GetIndexX() {
@@ -43,86 +44,142 @@ namespace game_framework {
 		const int STEP_SIZE_X = 12;
 		const int STEP_SIZE_Y = 8;
 
-		if (isMovingLeft)
+		if (isSwallowed)
 		{
-			if (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER)
+			if (isMovingLeft)
 			{
 				x -= STEP_SIZE_X;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[--indexX][indexY] = CName::STONE;
 					movingCount = 0;
-					isMovingLeft = (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER);
+					isMovingLeft = isSwallowed = isAlive = false;
 				}
 			}
-			else
-			{
-				isMovingLeft = false;
-			}
-		}
-		else if (isMovingRight)
-		{
-			if (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER)
+			else if (isMovingRight)
 			{
 				x += STEP_SIZE_X;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[++indexX][indexY] = CName::STONE;
 					movingCount = 0;
-					isMovingRight = (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER);
+					isMovingRight = isSwallowed = isAlive = false;
 				}
 			}
-			else
-			{
-				isMovingRight = false;
-			}
-		}
-		else if (isMovingUp)
-		{
-			if (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER)
+			else if (isMovingUp)
 			{
 				y -= STEP_SIZE_Y;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[indexX][--indexY] = CName::STONE;
 					movingCount = 0;
-					isMovingUp = (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER);
+					isMovingUp = isSwallowed = isAlive = false;
 				}
 			}
-			else
-			{
-				isMovingUp = false;
-			}
-		}
-		else if (isMovingDown)
-		{
-			if (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER)
+			else if (isMovingDown)
 			{
 				y += STEP_SIZE_Y;
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[indexX][++indexY] = CName::STONE;
 					movingCount = 0;
-					isMovingDown = (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER);
+					isMovingDown = isSwallowed = isAlive = false;
 				}
 			}
-			else
+		}
+		else
+		{
+			if (isMovingLeft)
 			{
-				isMovingDown = false;
+				if (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER)
+				{
+					x -= STEP_SIZE_X;
+					movingCount++;
+					if (movingCount == STEP_TARGET)
+					{
+						mapRecord[indexX][indexY] = CName::SPACE;
+						mapRecord[--indexX][indexY] = CName::STONE;
+						movingCount = 0;
+						isMovingLeft = (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER);
+					}
+				}
+				else
+				{
+					isMovingLeft = false;
+				}
+			}
+			else if (isMovingRight)
+			{
+				if (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER)
+				{
+					x += STEP_SIZE_X;
+					movingCount++;
+					if (movingCount == STEP_TARGET)
+					{
+						mapRecord[indexX][indexY] = CName::SPACE;
+						mapRecord[++indexX][indexY] = CName::STONE;
+						movingCount = 0;
+						isMovingRight = (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER);
+					}
+				}
+				else
+				{
+					isMovingRight = false;
+				}
+			}
+			else if (isMovingUp)
+			{
+				if (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER)
+				{
+					y -= STEP_SIZE_Y;
+					movingCount++;
+					if (movingCount == STEP_TARGET)
+					{
+						mapRecord[indexX][indexY] = CName::SPACE;
+						mapRecord[indexX][--indexY] = CName::STONE;
+						movingCount = 0;
+						isMovingUp = (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER);
+					}
+				}
+				else
+				{
+					isMovingUp = false;
+				}
+			}
+			else if (isMovingDown)
+			{
+				if (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER)
+				{
+					y += STEP_SIZE_Y;
+					movingCount++;
+					if (movingCount == STEP_TARGET)
+					{
+						mapRecord[indexX][indexY] = CName::SPACE;
+						mapRecord[indexX][++indexY] = CName::STONE;
+						movingCount = 0;
+						isMovingDown = (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER);
+					}
+				}
+				else
+				{
+					isMovingDown = false;
+				}
 			}
 		}
 	}
 
-	void CStone::SpitedOut(CDirection faceTo)
+	void CStone::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
 	{
+		indexX = ni;
+		indexY = nj;
+		x = nx;
+		y = ny;
+		mapRecord[indexX][indexY] = CName::STONE;
+		isAlive = true;
 		movingCount = 0;
 		if (faceTo == CDirection::LEFT)
 		{
@@ -150,9 +207,26 @@ namespace game_framework {
 		y = ny;
 	}
 
-	void CStone::setAlive(bool flag)
+	void CStone::Swallowed(CDirection faceTo)
 	{
-		isAlive = flag;
+		isSwallowed = true;
+		movingCount = 0;
+		if (faceTo == CDirection::LEFT)
+		{
+			isMovingRight = true;
+		}
+		else if (faceTo == CDirection::RIGHT)
+		{
+			isMovingLeft = true;
+		}
+		else if (faceTo == CDirection::UP)
+		{
+			isMovingDown = true;
+		}
+		else if (faceTo == CDirection::DOWN)
+		{
+			isMovingUp = true;
+		}
 	}
 
 	void CStone::OnShow()

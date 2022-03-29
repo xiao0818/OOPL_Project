@@ -8,7 +8,6 @@
 #define IDR_MAINFRAME                   128
 #define IDR_GAMETYPE                    129
 #define IDB_RACKET                      131
-#define IDB_BITMAP1                     132
 #define IDB_BACKGROUND                  132
 #define IDB_CORNER                      133
 #define IDB_BALL1                       134
@@ -28,7 +27,6 @@
 #define IDB_MINUS                       148
 #define IDB_CONTINUE                    152
 #define IDC_GAMECURSOR                  153
-#define IDB_BITMAP2                     156
 #define IDB_LOADING                     156
 #define IDB_WALL                        166
 #define IDB_GROUND                      169
@@ -39,7 +37,6 @@
 #define IDB_PLAYER_MOVE_DOWN_005        179
 #define IDB_PLAYER_MOVE_DOWN_006        180
 #define IDB_PLAYER_MOVE_DOWN_007        181
-#define IDB_BITMAP10                    182
 #define IDB_PLAYER_MOVE_DOWN_008        182
 #define IDB_PLAYER_MOVE_DOWN_009        183
 #define IDB_PLAYER_MOVE_UP_001          185
@@ -65,7 +62,6 @@
 #define IDB_PLAYER_MOVE_RIGHT_005       205
 #define IDB_PLAYER_MOVE_RIGHT_006       206
 #define IDB_PLAYER_MOVE_RIGHT_007       207
-#define IDB_BITMAP11                    208
 #define IDB_PLAYER_MOVE_RIGHT_008       208
 #define IDB_STONE_BRICK                 209
 #define IDB_PLAYER_MOVE_LEFT_WITH_FULL_001 210
@@ -99,7 +95,6 @@
 #define IDB_PLAYER_MOVE_DOWN_WITH_FULL_005 238
 #define IDB_PLAYER_MOVE_DOWN_WITH_FULL_006 239
 #define IDB_PLAYER_MOVE_DOWN_WITH_FULL_007 240
-#define IDB_BITMAP13                    241
 #define IDB_PLAYER_MOVE_DOWN_WITH_FULL_008 241
 #define IDB_PLAYER_EAT_DOWN_001         242
 #define IDB_PLAYER_EAT_DOWN_002         243
@@ -115,7 +110,6 @@
 #define IDB_PLAYER_EAT_UP_001           254
 #define IDB_PLAYER_EAT_UP_002           255
 #define IDB_PLAYER_EAT_UP_003           256
-#define IDB_BITMAP6                     257
 #define IDB_PLAYER_EAT_UP_004           257
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
