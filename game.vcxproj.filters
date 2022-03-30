@@ -522,5 +522,11 @@
     <Image Include="Resources\mud\up\mud_move_up_007.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Title.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\TitleWithPlay.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

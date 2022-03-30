@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (繁體，台灣) resources
+// Chinese (Traditional, Taiwan) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -322,6 +322,10 @@ IDB_MUD_MOVE_UP_007     BITMAP                  "..\\Resources\\mud\\up\\mud_mov
 
 IDB_MUD_MOVE_UP_008     BITMAP                  "..\\Resources\\mud\\up\\mud_move_up_007.bmp"
 
+IDB_START_TITLE         BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\Title.bmp"
+
+IDB_START_TITLE_WITH_PLAY BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\TitleWithPlay.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -330,12 +334,12 @@ IDB_MUD_MOVE_UP_008     BITMAP                  "..\\Resources\\mud\\up\\mud_mov
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // 中文 (繁體，台灣) resources
+#endif    // Chinese (Traditional, Taiwan) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 英文 (美國) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -633,7 +637,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // 英文 (美國) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

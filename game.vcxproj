@@ -440,6 +440,8 @@
     <Image Include="Resources\player\up_with_full\player_move_with_full_up_006.bmp" />
     <Image Include="Resources\player\up_with_full\player_move_with_full_up_007.bmp" />
     <Image Include="Resources\player\up_with_full\player_move_with_full_up_008.bmp" />
+    <Image Include="Resources\Title.bmp" />
+    <Image Include="Resources\TitleWithPlay.bmp" />
     <Image Include="Resources\Wall.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
