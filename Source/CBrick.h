@@ -1,15 +1,14 @@
-#ifndef CSTONE_H
-#define CSTONE_H
+#ifndef CBRICK_H
+#define CBRICK_H
 
 #include "CName.h"
 #include "CDirection.h"
-#include "CBrick.h"
 
 namespace game_framework {
-	class CStone : public CBrick
+	class CBrick
 	{
 	public:
-		/*CStone();
+		CBrick();
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsMove();
@@ -19,9 +18,9 @@ namespace game_framework {
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 		void SetXY(int ni, int nj, int nx, int ny);
 		void Swallowed(CDirection faceTo);
-		void OnShow();*/
+		void OnShow();
 	protected:
-		/*CMovingBitmap bitmap;
+		CMovingBitmap bitmap;
 		int indexX, indexY;
 		int x, y;
 		CName **mapRecord;
@@ -31,7 +30,7 @@ namespace game_framework {
 		bool isMovingUp;
 		int movingCount;
 		bool isAlive;
-		bool isSwallowed;*/
+		bool isSwallowed;
 	};
 }
 
