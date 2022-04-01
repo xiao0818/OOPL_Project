@@ -4,10 +4,10 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-#include "CStone.h"
+#include "CBrick.h"
 
 namespace game_framework {
-	/*CStone::CStone()
+	CBrick::CBrick()
 	{
 		x = y = 0;
 		isAlive = true;
@@ -15,30 +15,30 @@ namespace game_framework {
 		isSwallowed = false;
 	}
 
-	int CStone::GetIndexX() {
+	int CBrick::GetIndexX() {
 		return indexX;
 	}
 
-	int CStone::GetIndexY() {
+	int CBrick::GetIndexY() {
 		return indexY;
 	}
 
-	bool CStone::IsMove()
+	bool CBrick::IsMove()
 	{
 		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	}
 
-	void CStone::Initialize(CName **map)
+	void CBrick::Initialize(CName **map)
 	{
 		mapRecord = map;
 	}
 
-	void CStone::LoadBitmap()
+	void CBrick::LoadBitmap()
 	{
 		bitmap.LoadBitmap(IDB_STONE_BRICK);
 	}
 
-	void CStone::OnMove()
+	void CBrick::OnMove()
 	{
 		const int STEP_TARGET = 6;
 		const int STEP_SIZE_X = 12;
@@ -172,7 +172,7 @@ namespace game_framework {
 		}
 	}
 
-	void CStone::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
+	void CBrick::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
 	{
 		indexX = ni;
 		indexY = nj;
@@ -199,7 +199,7 @@ namespace game_framework {
 		}
 	}
 
-	void CStone::SetXY(int ni, int nj, int nx, int ny)
+	void CBrick::SetXY(int ni, int nj, int nx, int ny)
 	{
 		indexX = ni;
 		indexY = nj;
@@ -207,7 +207,7 @@ namespace game_framework {
 		y = ny;
 	}
 
-	void CStone::Swallowed(CDirection faceTo)
+	void CBrick::Swallowed(CDirection faceTo)
 	{
 		isSwallowed = true;
 		movingCount = 0;
@@ -229,11 +229,11 @@ namespace game_framework {
 		}
 	}
 
-	void CStone::OnShow()
+	void CBrick::OnShow()
 	{
 		if (isAlive) {
 			bitmap.SetTopLeft(x, y - 24);
 			bitmap.ShowBitmap();
 		}
-	}*/
+	}
 }
