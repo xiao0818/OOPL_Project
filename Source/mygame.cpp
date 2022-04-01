@@ -276,6 +276,7 @@ namespace game_framework {
 				else if(map[i][j] == CName::MUD){
 					CMud tempMud;
 					tempMud;
+					tempMud.Initialize(map);
 					tempMud.LoadBitmap();
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					mud.push_back(tempMud);
@@ -302,7 +303,6 @@ namespace game_framework {
 	void CGameStateRun::OnMove()
 	{
 		player.OnMove();
-		mud.OnMove();
 		for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 		{
 			k->OnMove();
@@ -319,7 +319,6 @@ namespace game_framework {
 
 		ground.LoadBitmap();
 		player.LoadBitmap();
-		mud.LoadBitmap();
 
 		ShowInitProgress(50);
 		Sleep(300);
