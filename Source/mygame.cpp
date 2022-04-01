@@ -216,6 +216,7 @@ namespace game_framework {
 	{
 		wall.clear();
 		stone.clear();
+		mud.clear();
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -263,7 +264,6 @@ namespace game_framework {
 		}
 
 		player.Initialize(map);
-		mud.Initialize(map);
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -274,7 +274,11 @@ namespace game_framework {
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
 				}
 				else if(map[i][j] == CName::MUD){
-					mud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					CMud tempMud;
+					tempMud;
+					tempMud.LoadBitmap();
+					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					mud.push_back(tempMud);
 				}
 				else if (map[i][j] == CName::WALL)
 				{
@@ -302,6 +306,10 @@ namespace game_framework {
 		for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 		{
 			k->OnMove();
+		}
+		for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+		{
+			m->OnMove();
 		}
 	}
 
@@ -397,8 +405,12 @@ namespace game_framework {
 			{
 				player.OnShow();
 			}
-			if (mud.GetIndexY() == j) {
-				mud.OnShow();
+			for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+			{
+				if (m->GetIndexY() == j)
+				{
+					m->OnShow();
+				}
 			}
 		}
 	}
