@@ -104,7 +104,7 @@ namespace game_framework {
 		CPlayer				player;
 		list<CWall>			wall;
 		list<CStone>		stone;
-		CMud				mud;
+		list<CMud>			mud;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
