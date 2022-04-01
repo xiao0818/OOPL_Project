@@ -106,6 +106,10 @@ namespace game_framework {
 	{
 	}
 
+	void CMud::SetMovingDirection() {
+
+	}
+
 	void CMud::SetXY(int ni, int nj, int nx, int ny)
 	{
 		indexX = ni;
@@ -116,6 +120,41 @@ namespace game_framework {
 
 	void CMud::OnShow()
 	{
-		
+		if (faceTo == CDirection::LEFT)
+		{
+			if (!isMovingLeft)
+			{
+				leftAnimation.Reset();
+			}
+			leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
+			leftAnimation.OnShow();
+		}
+		else if (faceTo == CDirection::RIGHT)
+		{
+			if (!isMovingRight)
+			{
+				rightAnimation.Reset();
+			}
+			rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
+			rightAnimation.OnShow();
+		}
+		else if (faceTo == CDirection::UP)
+		{
+			if (!isMovingUp)
+			{
+				upAnimation.Reset();
+			}
+			upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
+			upAnimation.OnShow();
+		}
+		else if (faceTo == CDirection::DOWN)
+		{
+			if (!isMovingDown)
+			{
+				downAnimation.Reset();
+			}
+			downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
+			downAnimation.OnShow();
+		}
 	}
 }
