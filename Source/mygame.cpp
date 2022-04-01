@@ -236,7 +236,7 @@ namespace game_framework {
 		ground.SetXY(GROUND_X, GROUND_Y);
 
 		CName map_init[14][14] = { {CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
@@ -263,6 +263,7 @@ namespace game_framework {
 		}
 
 		player.Initialize(map);
+		mud.Initialize(map);
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -271,6 +272,9 @@ namespace game_framework {
 				if (map[i][j] == CName::PLAYER)
 				{
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
+				}
+				else if(map[i][j] == CName::MUD){
+					mud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 				}
 				else if (map[i][j] == CName::WALL)
 				{
@@ -294,7 +298,7 @@ namespace game_framework {
 	void CGameStateRun::OnMove()
 	{
 		player.OnMove();
-
+		mud.OnMove();
 		for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
 		{
 			k->OnMove();
@@ -307,6 +311,7 @@ namespace game_framework {
 
 		ground.LoadBitmap();
 		player.LoadBitmap();
+		mud.LoadBitmap();
 
 		ShowInitProgress(50);
 		Sleep(300);
@@ -391,6 +396,9 @@ namespace game_framework {
 			if (player.GetIndexY() == j)
 			{
 				player.OnShow();
+			}
+			if (mud.GetIndexY() == j) {
+				mud.OnShow();
 			}
 		}
 	}

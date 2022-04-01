@@ -43,6 +43,7 @@
 #include "CPlayer.h"
 #include "CWall.h"
 #include "CStone.h"
+#include "CMud.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -103,6 +104,7 @@ namespace game_framework {
 		CPlayer				player;
 		list<CWall>			wall;
 		list<CStone>		stone;
+		CMud				mud;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
