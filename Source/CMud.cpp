@@ -13,7 +13,7 @@ namespace game_framework {
 	{
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		movingCount = 0;
-		faceTo = CDirection::DOWN;
+		faceTo = SetMovingDirection();
 		leftAnimation.SetDelayCount(2);
 		rightAnimation.SetDelayCount(2);
 		upAnimation.SetDelayCount(2);
@@ -67,24 +67,6 @@ namespace game_framework {
 		downAnimation.AddBitmap(IDB_MUD_MOVE_DOWN_006, RGB(0, 0, 0));
 		downAnimation.AddBitmap(IDB_MUD_MOVE_DOWN_007, RGB(0, 0, 0));
 		downAnimation.AddBitmap(IDB_MUD_MOVE_DOWN_008, RGB(0, 0, 0));
-
-		/*
-		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_001, RGB(0, 0, 0));
-		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_002, RGB(0, 0, 0));
-		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_003, RGB(0, 0, 0));
-		eatLeftAnimation.AddBitmap(IDB_PLAYER_EAT_LEFT_004, RGB(0, 0, 0));
-		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_001, RGB(0, 0, 0));
-		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_002, RGB(0, 0, 0));
-		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_003, RGB(0, 0, 0));
-		eatRightAnimation.AddBitmap(IDB_PLAYER_EAT_RIGHT_004, RGB(0, 0, 0));
-		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_001, RGB(0, 0, 0));
-		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_002, RGB(0, 0, 0));
-		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_003, RGB(0, 0, 0));
-		eatUpAnimation.AddBitmap(IDB_PLAYER_EAT_UP_004, RGB(0, 0, 0));
-		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_001, RGB(0, 0, 0));
-		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_002, RGB(0, 0, 0));
-		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_003, RGB(0, 0, 0));
-		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_004, RGB(0, 0, 0));*/
 	}
 
 	void CMud::OnMove()
@@ -93,9 +75,22 @@ namespace game_framework {
 		const int STEP_SIZE_X = 9;
 		const int STEP_SIZE_Y = 6;
 
+		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp) {
+			faceTo = SetMovingDirection();
+			movingCount = 0;
+			if (faceTo == CDirection::LEFT)
+				isMovingLeft = true;
+			else if (faceTo == CDirection::RIGHT)
+				isMovingRight = true;
+			else if (faceTo == CDirection::UP)
+				isMovingUp = true;
+			else if (faceTo == CDirection::DOWN)
+				isMovingDown = true;
+		}
+
 		if (isMovingLeft)
 		{
-			if (mapRecord[indexX - 1][indexY] == CName::SPACE)
+			if (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER)
 			{
 				leftAnimation.OnMove();
 				x -= STEP_SIZE_X;
@@ -103,19 +98,18 @@ namespace game_framework {
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[--indexX][indexY] = CName::PLAYER;
+					mapRecord[--indexX][indexY] = CName::MUD;
 					movingCount = 0;
-					isMovingLeft = isKeyLeftPressed;
 				}
 			}
 			else
 			{
-				isMovingLeft = isKeyLeftPressed;
+				isMovingLeft = false;
 			}
 		}
 		else if (isMovingRight)
 		{
-			if (mapRecord[indexX + 1][indexY] == CName::SPACE)
+			if (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER)
 			{
 				rightAnimation.OnMove();
 				x += STEP_SIZE_X;
@@ -123,19 +117,18 @@ namespace game_framework {
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[++indexX][indexY] = CName::PLAYER;
+					mapRecord[++indexX][indexY] = CName::MUD;
 					movingCount = 0;
-					isMovingRight = isKeyRightPressed;
 				}
 			}
 			else
 			{
-				isMovingRight = isKeyRightPressed;
+				isMovingRight = false;
 			}
 		}
 		else if (isMovingUp)
 		{
-			if (mapRecord[indexX][indexY - 1] == CName::SPACE)
+			if (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER)
 			{
 				upAnimation.OnMove();
 				y -= STEP_SIZE_Y;
@@ -143,19 +136,18 @@ namespace game_framework {
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[indexX][--indexY] = CName::PLAYER;
+					mapRecord[indexX][--indexY] = CName::MUD;
 					movingCount = 0;
-					isMovingUp = isKeyUpPressed;
 				}
 			}
 			else
 			{
-				isMovingUp = isKeyUpPressed;
+				isMovingUp = false;
 			}
 		}
 		else if (isMovingDown)
 		{
-			if (mapRecord[indexX][indexY + 1] == CName::SPACE)
+			if (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER)
 			{
 				downAnimation.OnMove();
 				y += STEP_SIZE_Y;
@@ -163,14 +155,13 @@ namespace game_framework {
 				if (movingCount == STEP_TARGET)
 				{
 					mapRecord[indexX][indexY] = CName::SPACE;
-					mapRecord[indexX][++indexY] = CName::PLAYER;
+					mapRecord[indexX][++indexY] = CName::MUD;
 					movingCount = 0;
-					isMovingDown = isKeyDownPressed;
 				}
 			}
 			else
 			{
-				isMovingDown = isKeyDownPressed;
+				isMovingDown = false;
 			}
 		}
 	}
@@ -192,7 +183,8 @@ namespace game_framework {
 	}
 
 	CDirection CMud::SetMovingDirection() {
-		srand(time(NULL));
+
+		//srand(time(NULL));
 
 		int x = rand();
 		int flag = x % 4;
