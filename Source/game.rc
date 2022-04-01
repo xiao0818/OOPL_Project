@@ -326,9 +326,9 @@ IDB_START_TITLE         BITMAP                  "..\\Resources\\Title.bmp"
 
 IDB_START_TITLE_WITH_PLAY BITMAP                  "..\\Resources\\TitleWithPlay.bmp"
 
-IDB_STEEL_BRICK         BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\brick\\SteelBrick.bmp"
+IDB_STEEL_BRICK         BITMAP                  "..\\Resources\\brick\\SteelBrick.bmp"
 
-IDB_WOODEN_BRICK        BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\brick\\WoodenBrick.bmp"
+IDB_WOODEN_BRICK        BITMAP                  "..\\Resources\\brick\\WoodenBrick.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
