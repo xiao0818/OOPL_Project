@@ -307,7 +307,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(list<CStone> &stone)
+	void CPlayer::PressKeySpace(list<CBrick> &brick)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -316,7 +316,7 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
+					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
@@ -328,7 +328,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
+					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
@@ -340,7 +340,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
+					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
 						{
@@ -352,7 +352,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
+					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
 						{

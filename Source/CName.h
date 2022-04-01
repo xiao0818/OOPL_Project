@@ -8,6 +8,8 @@ namespace game_framework {
 		PLAYER,
 		WALL,
 		STONE,
+		WOODEN,
+		STEEL,
 		MUD
 	};
 }

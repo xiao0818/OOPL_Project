@@ -13,7 +13,7 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsMove();
 		void Initialize(CName **map);
-		void LoadBitmap();
+		virtual void LoadBitmap();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 		void SetXY(int ni, int nj, int nx, int ny);

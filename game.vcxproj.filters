@@ -123,6 +123,12 @@
     <ClCompile Include="Source\CBrick.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CWooden.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CSteel.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -174,6 +180,12 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CBrick.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CWooden.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CSteel.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -532,6 +544,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\TitleWithPlay.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brick\SteelBrick.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brick\WoodenBrick.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

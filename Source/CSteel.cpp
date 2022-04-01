@@ -4,10 +4,10 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-#include "CStone.h"
+#include "CSteel.h"
 
 namespace game_framework {
-	//CStone::CStone()
+	//CSteel::CSteel()
 	//{
 	//	x = y = 0;
 	//	isAlive = true;
@@ -15,30 +15,30 @@ namespace game_framework {
 	//	isSwallowed = false;
 	//}
 
-	//int CStone::GetIndexX() {
+	//int CSteel::GetIndexX() {
 	//	return indexX;
 	//}
 
-	//int CStone::GetIndexY() {
+	//int CSteel::GetIndexY() {
 	//	return indexY;
 	//}
 
-	//bool CStone::IsMove()
+	//bool CSteel::IsMove()
 	//{
 	//	return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	//}
 
-	//void CStone::Initialize(CName **map)
+	//void CSteel::Initialize(CName **map)
 	//{
 	//	mapRecord = map;
 	//}
 
-	void CStone::LoadBitmap()
+	void CSteel::LoadBitmap()
 	{
-		bitmap.LoadBitmap(IDB_STONE_BRICK);
+		bitmap.LoadBitmap(IDB_STEEL_BRICK);
 	}
 
-	//void CStone::OnMove()
+	//void CSteel::OnMove()
 	//{
 	//	const int STEP_TARGET = 6;
 	//	const int STEP_SIZE_X = 12;
@@ -172,7 +172,7 @@ namespace game_framework {
 	//	}
 	//}
 
-	//void CStone::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
+	//void CSteel::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
 	//{
 	//	indexX = ni;
 	//	indexY = nj;
@@ -199,7 +199,7 @@ namespace game_framework {
 	//	}
 	//}
 
-	//void CStone::SetXY(int ni, int nj, int nx, int ny)
+	//void CSteel::SetXY(int ni, int nj, int nx, int ny)
 	//{
 	//	indexX = ni;
 	//	indexY = nj;
@@ -207,7 +207,7 @@ namespace game_framework {
 	//	y = ny;
 	//}
 
-	//void CStone::Swallowed(CDirection faceTo)
+	//void CSteel::Swallowed(CDirection faceTo)
 	//{
 	//	isSwallowed = true;
 	//	movingCount = 0;
@@ -229,7 +229,7 @@ namespace game_framework {
 	//	}
 	//}
 
-	//void CStone::OnShow()
+	//void CSteel::OnShow()
 	//{
 	//	if (isAlive) {
 	//		bitmap.SetTopLeft(x, y - 24);

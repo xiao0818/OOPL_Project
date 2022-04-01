@@ -3,7 +3,7 @@
 
 #include "CName.h"
 #include "CDirection.h"
-#include "CStone.h"
+#include "CBrick.h"
 
 namespace game_framework {
 	class CPlayer
@@ -19,7 +19,7 @@ namespace game_framework {
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
-		void PressKeySpace(list<CStone> &Stone);
+		void PressKeySpace(list<CBrick> &brick);
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:
@@ -48,7 +48,7 @@ namespace game_framework {
 		int movingCount;
 		CName **mapRecord;
 		CDirection faceTo;
-		list<CStone>::iterator swallowedBrick;
+		list<CBrick>::iterator swallowedBrick;
 		bool isSwallowed;
 		bool isEating;
 	};

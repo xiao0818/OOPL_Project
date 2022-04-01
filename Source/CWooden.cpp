@@ -4,10 +4,10 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-#include "CStone.h"
+#include "CWooden.h"
 
 namespace game_framework {
-	//CStone::CStone()
+	//CWooden::CWooden()
 	//{
 	//	x = y = 0;
 	//	isAlive = true;
@@ -15,30 +15,30 @@ namespace game_framework {
 	//	isSwallowed = false;
 	//}
 
-	//int CStone::GetIndexX() {
+	//int CWooden::GetIndexX() {
 	//	return indexX;
 	//}
 
-	//int CStone::GetIndexY() {
+	//int CWooden::GetIndexY() {
 	//	return indexY;
 	//}
 
-	//bool CStone::IsMove()
+	//bool CWooden::IsMove()
 	//{
 	//	return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	//}
 
-	//void CStone::Initialize(CName **map)
+	//void CWooden::Initialize(CName **map)
 	//{
 	//	mapRecord = map;
 	//}
 
-	void CStone::LoadBitmap()
+	void CWooden::LoadBitmap()
 	{
-		bitmap.LoadBitmap(IDB_STONE_BRICK);
+		bitmap.LoadBitmap(IDB_WOODEN_BRICK);
 	}
 
-	//void CStone::OnMove()
+	//void CWooden::OnMove()
 	//{
 	//	const int STEP_TARGET = 6;
 	//	const int STEP_SIZE_X = 12;
@@ -172,7 +172,7 @@ namespace game_framework {
 	//	}
 	//}
 
-	//void CStone::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
+	//void CWooden::SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny)
 	//{
 	//	indexX = ni;
 	//	indexY = nj;
@@ -199,7 +199,7 @@ namespace game_framework {
 	//	}
 	//}
 
-	//void CStone::SetXY(int ni, int nj, int nx, int ny)
+	//void CWooden::SetXY(int ni, int nj, int nx, int ny)
 	//{
 	//	indexX = ni;
 	//	indexY = nj;
@@ -207,7 +207,7 @@ namespace game_framework {
 	//	y = ny;
 	//}
 
-	//void CStone::Swallowed(CDirection faceTo)
+	//void CWooden::Swallowed(CDirection faceTo)
 	//{
 	//	isSwallowed = true;
 	//	movingCount = 0;
@@ -229,7 +229,7 @@ namespace game_framework {
 	//	}
 	//}
 
-	//void CStone::OnShow()
+	//void CWooden::OnShow()
 	//{
 	//	if (isAlive) {
 	//		bitmap.SetTopLeft(x, y - 24);

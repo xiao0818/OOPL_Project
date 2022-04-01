@@ -42,7 +42,10 @@
 #include "CGround.h"
 #include "CPlayer.h"
 #include "CWall.h"
+#include "CBrick.h"
 #include "CStone.h"
+#include "CWooden.h"
+#include "CSteel.h"
 #include "CMud.h"
 
 namespace game_framework {
@@ -103,7 +106,7 @@ namespace game_framework {
 		CGround				ground;
 		CPlayer				player;
 		list<CWall>			wall;
-		list<CStone>		stone;
+		list<CBrick>		brick;
 		CMud				mud;
 	};
 

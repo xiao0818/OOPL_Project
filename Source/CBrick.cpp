@@ -35,7 +35,7 @@ namespace game_framework {
 
 	void CBrick::LoadBitmap()
 	{
-		bitmap.LoadBitmap(IDB_STONE_BRICK);
+		//bitmap.LoadBitmap(IDB_STONE_BRICK);
 	}
 
 	void CBrick::OnMove()
