@@ -5,6 +5,8 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CMud.h"
+#include <stdlib.h>
+#include <time.h>
 
 namespace game_framework {
 	CMud::CMud()
@@ -87,7 +89,90 @@ namespace game_framework {
 
 	void CMud::OnMove()
 	{
-		
+		const int STEP_TARGET = 8;
+		const int STEP_SIZE_X = 9;
+		const int STEP_SIZE_Y = 6;
+
+		if (isMovingLeft)
+		{
+			if (mapRecord[indexX - 1][indexY] == CName::SPACE)
+			{
+				leftAnimation.OnMove();
+				x -= STEP_SIZE_X;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[--indexX][indexY] = CName::PLAYER;
+					movingCount = 0;
+					isMovingLeft = isKeyLeftPressed;
+				}
+			}
+			else
+			{
+				isMovingLeft = isKeyLeftPressed;
+			}
+		}
+		else if (isMovingRight)
+		{
+			if (mapRecord[indexX + 1][indexY] == CName::SPACE)
+			{
+				rightAnimation.OnMove();
+				x += STEP_SIZE_X;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[++indexX][indexY] = CName::PLAYER;
+					movingCount = 0;
+					isMovingRight = isKeyRightPressed;
+				}
+			}
+			else
+			{
+				isMovingRight = isKeyRightPressed;
+			}
+		}
+		else if (isMovingUp)
+		{
+			if (mapRecord[indexX][indexY - 1] == CName::SPACE)
+			{
+				upAnimation.OnMove();
+				y -= STEP_SIZE_Y;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[indexX][--indexY] = CName::PLAYER;
+					movingCount = 0;
+					isMovingUp = isKeyUpPressed;
+				}
+			}
+			else
+			{
+				isMovingUp = isKeyUpPressed;
+			}
+		}
+		else if (isMovingDown)
+		{
+			if (mapRecord[indexX][indexY + 1] == CName::SPACE)
+			{
+				downAnimation.OnMove();
+				y += STEP_SIZE_Y;
+				movingCount++;
+				if (movingCount == STEP_TARGET)
+				{
+					mapRecord[indexX][indexY] = CName::SPACE;
+					mapRecord[indexX][++indexY] = CName::PLAYER;
+					movingCount = 0;
+					isMovingDown = isKeyDownPressed;
+				}
+			}
+			else
+			{
+				isMovingDown = isKeyDownPressed;
+			}
+		}
 	}
 
 	void CMud::SetMovingLeft(bool flag)
@@ -106,8 +191,25 @@ namespace game_framework {
 	{
 	}
 
-	void CMud::SetMovingDirection() {
+	CDirection CMud::SetMovingDirection() {
+		srand(time(NULL));
 
+		int x = rand();
+		int flag = x % 4;
+
+		switch(flag){
+			case 0:
+				return CDirection::RIGHT;
+			case 1:
+				return CDirection::LEFT;
+			case 2:
+				return CDirection::DOWN;
+			case 3:
+				return CDirection::UP;
+			default:
+				printf("ERROR!! in CMud.cpp function SetMoveingDirection switch case to default");
+				return CDirection::LEFT;
+		};
 	}
 
 	void CMud::SetXY(int ni, int nj, int nx, int ny)
