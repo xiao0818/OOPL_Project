@@ -14,10 +14,6 @@ namespace game_framework {
 		void Initialize(CName **map);
 		void LoadBitmap();
 		void OnMove();
-		void SetMovingLeft(bool flag);
-		void SetMovingRight(bool flag);
-		void SetMovingUp(bool flag);
-		void SetMovingDown(bool flag);
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
@@ -36,6 +32,9 @@ namespace game_framework {
 		bool isMovingLeft;
 		bool isMovingRight;
 		bool isMovingUp;
+		bool isHit;
+		bool isFood;
+		int foodTime;
 		int movingCount;
 		CName **mapRecord;
 		CDirection faceTo;
