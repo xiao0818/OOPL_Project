@@ -95,7 +95,7 @@ namespace game_framework {
 		{
 			if (isMovingLeft)
 			{
-				if (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER)
+				if (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER || mapRecord[indexX - 1][indexY] == CName::MUD)
 				{
 					x -= STEP_SIZE_X;
 					movingCount++;
@@ -104,7 +104,7 @@ namespace game_framework {
 						mapRecord[indexX][indexY] = CName::SPACE;
 						mapRecord[--indexX][indexY] = CName::STONE;
 						movingCount = 0;
-						isMovingLeft = (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER);
+						isMovingLeft = (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER || mapRecord[indexX - 1][indexY] == CName::MUD);
 					}
 				}
 				else
@@ -114,7 +114,7 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				if (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER)
+				if (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER || mapRecord[indexX + 1][indexY] == CName::MUD)
 				{
 					x += STEP_SIZE_X;
 					movingCount++;
@@ -123,7 +123,7 @@ namespace game_framework {
 						mapRecord[indexX][indexY] = CName::SPACE;
 						mapRecord[++indexX][indexY] = CName::STONE;
 						movingCount = 0;
-						isMovingRight = (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER);
+						isMovingRight = (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER || mapRecord[indexX + 1][indexY] == CName::MUD);
 					}
 				}
 				else
@@ -133,7 +133,7 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				if (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER)
+				if (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER || mapRecord[indexX][indexY - 1] == CName::MUD)
 				{
 					y -= STEP_SIZE_Y;
 					movingCount++;
@@ -142,7 +142,7 @@ namespace game_framework {
 						mapRecord[indexX][indexY] = CName::SPACE;
 						mapRecord[indexX][--indexY] = CName::STONE;
 						movingCount = 0;
-						isMovingUp = (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER);
+						isMovingUp = (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER || mapRecord[indexX][indexY - 1] == CName::MUD);
 					}
 				}
 				else
@@ -152,7 +152,7 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				if (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER)
+				if (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER || mapRecord[indexX][indexY + 1] == CName::MUD)
 				{
 					y += STEP_SIZE_Y;
 					movingCount++;
@@ -161,7 +161,7 @@ namespace game_framework {
 						mapRecord[indexX][indexY] = CName::SPACE;
 						mapRecord[indexX][++indexY] = CName::STONE;
 						movingCount = 0;
-						isMovingDown = (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER);
+						isMovingDown = (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER || mapRecord[indexX][indexY + 1] == CName::MUD);
 					}
 				}
 				else

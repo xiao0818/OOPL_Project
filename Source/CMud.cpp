@@ -71,9 +71,9 @@ namespace game_framework {
 
 	void CMud::OnMove()
 	{
-		const int STEP_TARGET = 8;
-		const int STEP_SIZE_X = 9;
-		const int STEP_SIZE_Y = 6;
+		const int STEP_TARGET = 24;
+		const int STEP_SIZE_X = 3;
+		const int STEP_SIZE_Y = 2;
 
 		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp) {
 			faceTo = SetMovingDirection();
