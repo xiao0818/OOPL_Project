@@ -106,8 +106,8 @@ namespace game_framework {
 		CGround				ground;
 		CPlayer				player;
 		list<CWall>			wall;
-		list<CStone>		stone;
-		CMud				mud;
+		list<CBrick>		brick;
+		list<CMud>			mud;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

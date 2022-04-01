@@ -318,8 +318,7 @@ namespace game_framework {
 	void CGameStateRun::OnMove()
 	{
 		player.OnMove();
-		mud.OnMove();
-		for (list<CStone>::iterator k = stone.begin(); k != stone.end(); k++)
+		for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 		{
 			k->OnMove();
 		}
