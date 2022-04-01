@@ -72,7 +72,7 @@ namespace game_framework {
 
 	void CMud::OnMove()
 	{
-		const int HIT_TIME_LIMIT = 144;
+		const int FOOD_TIME_LIMIT = 90;
 		const int STEP_TARGET = 24;
 		const int STEP_SIZE_X = 3;
 		const int STEP_SIZE_Y = 2;
@@ -92,7 +92,7 @@ namespace game_framework {
 
 		if (isFood) {
 			foodTime++;
-			if (foodTime == HIT_TIME_LIMIT)
+			if (foodTime == FOOD_TIME_LIMIT)
 				isFood = false;
 		}
 
@@ -283,5 +283,9 @@ namespace game_framework {
 			downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
 			downAnimation.OnShow();
 		}
+	}
+
+	void CMud::HitByBrick() {
+		isHit = true;
 	}
 }

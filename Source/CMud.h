@@ -17,6 +17,7 @@ namespace game_framework {
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
+		void HitByBrick();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
