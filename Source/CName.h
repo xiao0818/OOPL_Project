@@ -7,7 +7,8 @@ namespace game_framework {
 		SPACE,
 		PLAYER,
 		WALL,
-		STONE
+		STONE,
+		MUD
 	};
 }
 
