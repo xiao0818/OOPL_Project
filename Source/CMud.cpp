@@ -281,42 +281,84 @@ namespace game_framework {
 
 	void CMud::OnShow()
 	{
-		if (faceTo == CDirection::LEFT)
-		{
-			if (!isMovingLeft)
+		if (isHit) {
+			if (faceTo == CDirection::LEFT)
 			{
-				leftAnimation.Reset();
+				if (!isMovingLeft)
+				{
+					hitLeftAnimation.Reset();
+				}
+				hitLeftAnimation.SetTopLeft(x + (72 / 2) - (hitLeftAnimation.Width() / 2), y + 46 - hitLeftAnimation.Height());
+				hitLeftAnimation.OnShow();
 			}
-			leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
-			leftAnimation.OnShow();
-		}
-		else if (faceTo == CDirection::RIGHT)
-		{
-			if (!isMovingRight)
+			else if (faceTo == CDirection::RIGHT)
 			{
-				rightAnimation.Reset();
+				if (!isMovingRight)
+				{
+					hitRightAnimation.Reset();
+				}
+				hitRightAnimation.SetTopLeft(x + (72 / 2) - (hitRightAnimation.Width() / 2), y + 46 - hitRightAnimation.Height());
+				hitRightAnimation.OnShow();
 			}
-			rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
-			rightAnimation.OnShow();
-		}
-		else if (faceTo == CDirection::UP)
-		{
-			if (!isMovingUp)
+			else if (faceTo == CDirection::UP)
 			{
-				upAnimation.Reset();
+				if (!isMovingUp)
+				{
+					hitUpAnimation.Reset();
+				}
+				hitUpAnimation.SetTopLeft(x + (72 / 2) - (hitUpAnimation.Width() / 2), y + 46 - hitUpAnimation.Height());
+				hitUpAnimation.OnShow();
 			}
-			upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
-			upAnimation.OnShow();
-		}
-		else if (faceTo == CDirection::DOWN)
-		{
-			if (!isMovingDown)
+			else if (faceTo == CDirection::DOWN)
 			{
-				downAnimation.Reset();
+				if (!isMovingDown)
+				{
+					hitDownAnimation.Reset();
+				}
+				hitDownAnimation.SetTopLeft(x + (72 / 2) - (hitDownAnimation.Width() / 2), y + 46 - hitDownAnimation.Height());
+				hitDownAnimation.OnShow();
 			}
-			downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
-			downAnimation.OnShow();
 		}
+		else {
+			if (faceTo == CDirection::LEFT)
+			{
+				if (!isMovingLeft)
+				{
+					leftAnimation.Reset();
+				}
+				leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
+				leftAnimation.OnShow();
+			}
+			else if (faceTo == CDirection::RIGHT)
+			{
+				if (!isMovingRight)
+				{
+					rightAnimation.Reset();
+				}
+				rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
+				rightAnimation.OnShow();
+			}
+			else if (faceTo == CDirection::UP)
+			{
+				if (!isMovingUp)
+				{
+					upAnimation.Reset();
+				}
+				upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
+				upAnimation.OnShow();
+			}
+			else if (faceTo == CDirection::DOWN)
+			{
+				if (!isMovingDown)
+				{
+					downAnimation.Reset();
+				}
+				downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
+				downAnimation.OnShow();
+			}
+		}
+		
+		
 	}
 
 	void CMud::HitByBrick() {
