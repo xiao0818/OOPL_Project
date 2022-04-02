@@ -281,7 +281,7 @@ namespace game_framework {
 
 	void CMud::OnShow()
 	{
-		if (isHit) {
+		if (isHit || isFood) {
 			if (faceTo == CDirection::LEFT)
 			{
 				if (!isMovingLeft)
