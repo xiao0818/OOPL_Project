@@ -3,6 +3,7 @@
 
 #include "CName.h"
 #include "CDirection.h"
+#include "CMud.h"
 
 namespace game_framework {
 	class CBrick
@@ -12,7 +13,7 @@ namespace game_framework {
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsMove();
-		void Initialize(CName **map);
+		void Initialize(CName **map, CMud *mud);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
@@ -24,6 +25,7 @@ namespace game_framework {
 		int indexX, indexY;
 		int x, y;
 		CName **mapRecord;
+		CMud *mudRecord;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;

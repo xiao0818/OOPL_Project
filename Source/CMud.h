@@ -17,7 +17,8 @@ namespace game_framework {
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
-		void HitByBrick();
+		void HitByBrick(CDirection tempDir);
+		void ReturnBack();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -37,6 +38,7 @@ namespace game_framework {
 		bool isFood;
 		int foodTime;
 		int movingCount;
+		int hitCount;
 		CName **mapRecord;
 		CDirection faceTo;
 	};

@@ -28,9 +28,10 @@ namespace game_framework {
 		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	}
 
-	void CBrick::Initialize(CName **map)
+	void CBrick::Initialize(CName **map, CMud *mud)
 	{
 		mapRecord = map;
+		mudRecord = mud;
 	}
 
 	void CBrick::LoadBitmap()
@@ -43,6 +44,8 @@ namespace game_framework {
 		const int STEP_TARGET = 6;
 		const int STEP_SIZE_X = 12;
 		const int STEP_SIZE_Y = 8;
+		const int BRICK_LENGTH = 72;
+		const int BRICK_WIDTH = 48;
 
 		if (isSwallowed)
 		{
@@ -101,7 +104,12 @@ namespace game_framework {
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
+						if (mapRecord[indexX - 1][indexY] == CName::MUD) {
+							mudRecord->HitByBrick(CDirection::LEFT);
+						}
+						else {
+							mapRecord[indexX][indexY] = CName::SPACE;
+						}
 						mapRecord[--indexX][indexY] = CName::STONE;
 						movingCount = 0;
 						isMovingLeft = (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER || mapRecord[indexX - 1][indexY] == CName::MUD);
@@ -120,7 +128,12 @@ namespace game_framework {
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
+						if (mapRecord[indexX + 1][indexY] == CName::MUD) {
+							mudRecord->HitByBrick(CDirection::RIGHT);
+						}
+						else {
+							mapRecord[indexX][indexY] = CName::SPACE;
+						}
 						mapRecord[++indexX][indexY] = CName::STONE;
 						movingCount = 0;
 						isMovingRight = (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER || mapRecord[indexX + 1][indexY] == CName::MUD);
@@ -139,7 +152,12 @@ namespace game_framework {
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
+						if (mapRecord[indexX][indexY - 1] == CName::MUD) {
+							mudRecord->HitByBrick(CDirection::UP);
+						}
+						else {
+							mapRecord[indexX][indexY] = CName::SPACE;
+						}
 						mapRecord[indexX][--indexY] = CName::STONE;
 						movingCount = 0;
 						isMovingUp = (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER || mapRecord[indexX][indexY - 1] == CName::MUD);
@@ -158,7 +176,12 @@ namespace game_framework {
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
+						if (mapRecord[indexX][indexY + 1] == CName::MUD) {
+							mudRecord->HitByBrick(CDirection::DOWN);
+						}
+						else {
+							mapRecord[indexX][indexY] = CName::SPACE;
+						}
 						mapRecord[indexX][++indexY] = CName::STONE;
 						movingCount = 0;
 						isMovingDown = (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER || mapRecord[indexX][indexY + 1] == CName::MUD);

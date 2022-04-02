@@ -110,6 +110,9 @@ namespace game_framework {
 		const int STEP_TARGET = 24;
 		const int STEP_SIZE_X = 3;
 		const int STEP_SIZE_Y = 2;
+		const int HIT_TARGET = 8;
+		const int HIT_STEP_SIZE_X = 9;
+		const int HIT_STEP_SIZE_Y = 6;
 
 		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp) {
 			faceTo = SetMovingDirection();
@@ -126,35 +129,57 @@ namespace game_framework {
 
 		if (isFood) {
 			foodTime++;
-			if (foodTime == FOOD_TIME_LIMIT)
+			if (foodTime == FOOD_TIME_LIMIT) {
 				isFood = false;
-				isHit = false;
+				isMovingDown = isMovingLeft = isMovingRight = isMovingUp = false;
+				foodTime = 0;
+			}
 		}
 
 		if (isHit) {
 			if (faceTo == CDirection::LEFT){
 				hitLeftAnimation.OnMove();
-				x += STEP_SIZE_X;
-				movingCount--;
+				x += HIT_STEP_SIZE_X;
+				hitCount++;
+				if (hitCount == HIT_TARGET) {
+					mapRecord[++indexX][indexY] = CName::MUD;
+					isFood = true;
+					isHit = false;
+					hitCount = 0;
+				}
 			}
 			else if (faceTo == CDirection::RIGHT) {
 				hitRightAnimation.OnMove();
-				x -= STEP_SIZE_X;
-				movingCount--;
+				x -= HIT_STEP_SIZE_X;
+				hitCount++;
+				if (hitCount == HIT_TARGET) {
+					mapRecord[--indexX][indexY] = CName::MUD;
+					isFood = true;
+					isHit = false;
+					hitCount = 0;
+				}
 			}
 			else if (faceTo == CDirection::UP) {
 				hitUpAnimation.OnMove();
-				y += STEP_SIZE_Y;
-				movingCount--;
+				y += HIT_STEP_SIZE_Y;
+				hitCount++;
+				if (hitCount == HIT_TARGET) {
+					mapRecord[indexX][++indexY] = CName::MUD;
+					isFood = true;
+					isHit = false;
+					hitCount = 0;
+				}
 			}
 			else if (faceTo == CDirection::DOWN) {
 				hitDownAnimation.OnMove();
-				y -= STEP_SIZE_Y;
-				movingCount--;
-			}
-
-			if (movingCount == 0) {
-				isFood = true;
+				y -= HIT_STEP_SIZE_Y;
+				hitCount++;
+				if (hitCount == HIT_TARGET) {
+					mapRecord[indexX][--indexY] = CName::MUD;
+					isFood = true;
+					isHit = false;
+					hitCount = 0;
+				}
 			}
 		}
 
@@ -173,9 +198,6 @@ namespace game_framework {
 						movingCount = 0;
 					}
 				}
-				else if (movingCount != 0 && mapRecord[indexX - 1][indexY] == CName::STONE) {
-					isHit = true;
-				}
 				else {
 					isMovingLeft = false;
 				}
@@ -193,9 +215,6 @@ namespace game_framework {
 						mapRecord[++indexX][indexY] = CName::MUD;
 						movingCount = 0;
 					}
-				}
-				else if (movingCount != 0 && mapRecord[indexX + 1][indexY] == CName::STONE) {
-					isHit = true;
 				}
 				else
 				{
@@ -216,9 +235,6 @@ namespace game_framework {
 						movingCount = 0;
 					}
 				}
-				else if (movingCount != 0 && mapRecord[indexX][indexY - 1] == CName::STONE) {
-					isHit = true;
-				}
 				else
 				{
 					isMovingUp = false;
@@ -237,9 +253,6 @@ namespace game_framework {
 						mapRecord[indexX][++indexY] = CName::MUD;
 						movingCount = 0;
 					}
-				}
-				else if (movingCount != 0 && mapRecord[indexX][indexY + 1] == CName::STONE) {
-					isHit = true;
 				}
 				else
 				{
@@ -361,7 +374,39 @@ namespace game_framework {
 		
 	}
 
-	void CMud::HitByBrick() {
+	void CMud::HitByBrick(CDirection tempDir) {
+		if (movingCount != 0) {
+			ReturnBack();//¦^Âk­ì¦ì
+		}
+		hitCount = 0;
+		faceTo = tempDir;
 		isHit = true;
+	}
+
+	void CMud::ReturnBack() {
+		const int STEP_SIZE_X = 3;
+		const int STEP_SIZE_Y = 2;
+		while (movingCount != 0) {
+			if (faceTo == CDirection::LEFT) {
+				hitLeftAnimation.OnMove();
+				x += STEP_SIZE_X;
+				movingCount--;
+			}
+			else if (faceTo == CDirection::RIGHT) {
+				hitRightAnimation.OnMove();
+				x -= STEP_SIZE_X;
+				movingCount--;
+			}
+			else if (faceTo == CDirection::UP) {
+				hitUpAnimation.OnMove();
+				y += STEP_SIZE_Y;
+				movingCount--;
+			}
+			else if (faceTo == CDirection::DOWN) {
+				hitDownAnimation.OnMove();
+				y -= STEP_SIZE_Y;
+				movingCount--;
+			}
+		}
 	}
 }
