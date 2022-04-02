@@ -23,10 +23,10 @@ namespace game_framework {
 		CAnimation rightAnimation;
 		CAnimation upAnimation;
 		CAnimation downAnimation;
-		// CAnimation eatLeftAnimation;
-		// CAnimation eatRightAnimation;
-		// CAnimation eatUpAnimation;
-		// CAnimation eatDownAnimation;
+		CAnimation hitLeftAnimation;
+		CAnimation hitRightAnimation;
+		CAnimation hitUpAnimation;
+		CAnimation hitDownAnimation;
 		int indexX, indexY;
 		int x, y;
 		bool isMovingDown;

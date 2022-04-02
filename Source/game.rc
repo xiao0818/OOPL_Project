@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (Traditional, Taiwan) resources
+// 中文 (繁體，台灣) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -330,6 +330,70 @@ IDB_STEEL_BRICK         BITMAP                  "..\\Resources\\brick\\SteelBric
 
 IDB_WOODEN_BRICK        BITMAP                  "..\\Resources\\brick\\WoodenBrick.bmp"
 
+IDB_MUD_HIT_DOWN_001    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_000.bmp"
+
+IDB_MUD_HIT_DOWN_002    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_001.bmp"
+
+IDB_MUD_HIT_DOWN_003    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_002.bmp"
+
+IDB_MUD_HIT_DOWN_004    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_003.bmp"
+
+IDB_MUD_HIT_DOWN_005    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_004.bmp"
+
+IDB_MUD_HIT_DOWN_006    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_005.bmp"
+
+IDB_MUD_HIT_DOWN_007    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_006.bmp"
+
+IDB_MUD_HIT_DOWN_008    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_down\\mud_hit_down_007.bmp"
+
+IDB_MUD_HIT_LEFT_001    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_000.bmp"
+
+IDB_MUD_HIT_LEFT_002    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_001.bmp"
+
+IDB_MUD_HIT_LEFT_003    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_002.bmp"
+
+IDB_MUD_HIT_LEFT_004    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_003.bmp"
+
+IDB_MUD_HIT_LEFT_005    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_004.bmp"
+
+IDB_MUD_HIT_LEFT_006    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_005.bmp"
+
+IDB_MUD_HIT_LEFT_007    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_006.bmp"
+
+IDB_MUD_HIT_LEFT_008    BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_left\\mud_hit_left_007.bmp"
+
+IDB_MUD_HIT_RIGHT_001   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_000.bmp"
+
+IDB_MUD_HIT_RIGHT_002   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_001.bmp"
+
+IDB_MUD_HIT_RIGHT_003   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_002.bmp"
+
+IDB_MUD_HIT_RIGHT_004   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_003.bmp"
+
+IDB_MUD_HIT_RIGHT_005   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_004.bmp"
+
+IDB_MUD_HIT_RIGHT_006   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_005.bmp"
+
+IDB_MUD_HIT_RIGHT_007   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_006.bmp"
+
+IDB_MUD_HIT_RIGHT_008   BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_right\\mud_hit_right_007.bmp"
+
+IDB_MUD_HIT_UP_001      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_000.bmp"
+
+IDB_MUD_HIT_UP_002      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_001.bmp"
+
+IDB_MUD_HIT_UP_003      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_002.bmp"
+
+IDB_MUD_HIT_UP_004      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_003.bmp"
+
+IDB_MUD_HIT_UP_005      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_004.bmp"
+
+IDB_MUD_HIT_UP_006      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_005.bmp"
+
+IDB_MUD_HIT_UP_007      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_006.bmp"
+
+IDB_MUD_HIT_UP_008      BITMAP                  "C:\\Users\\joker\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\mud\\hit_up\\mud_hit_up_007.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -338,12 +402,12 @@ IDB_WOODEN_BRICK        BITMAP                  "..\\Resources\\brick\\WoodenBri
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // Chinese (Traditional, Taiwan) resources
+#endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// 英文 (美國) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -641,7 +705,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // English (United States) resources
+#endif    // 英文 (美國) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

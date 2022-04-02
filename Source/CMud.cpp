@@ -36,6 +36,7 @@ namespace game_framework {
 
 	void CMud::LoadBitmap()
 	{
+		//move animation
 		leftAnimation.AddBitmap(IDB_MUD_MOVE_LEFT_001, RGB(0, 0, 0));
 		leftAnimation.AddBitmap(IDB_MUD_MOVE_LEFT_002, RGB(0, 0, 0));
 		leftAnimation.AddBitmap(IDB_MUD_MOVE_LEFT_003, RGB(0, 0, 0));
@@ -68,6 +69,39 @@ namespace game_framework {
 		downAnimation.AddBitmap(IDB_MUD_MOVE_DOWN_006, RGB(0, 0, 0));
 		downAnimation.AddBitmap(IDB_MUD_MOVE_DOWN_007, RGB(0, 0, 0));
 		downAnimation.AddBitmap(IDB_MUD_MOVE_DOWN_008, RGB(0, 0, 0));
+		//hit animation
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_001, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_002, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_003, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_004, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_005, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_006, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_007, RGB(0, 0, 0));
+		hitLeftAnimation.AddBitmap(IDB_MUD_HIT_LEFT_008, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_001, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_002, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_003, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_004, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_005, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_006, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_007, RGB(0, 0, 0));
+		hitRightAnimation.AddBitmap(IDB_MUD_HIT_RIGHT_008, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_001, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_002, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_003, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_004, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_005, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_006, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_007, RGB(0, 0, 0));
+		hitDownAnimation.AddBitmap(IDB_MUD_HIT_DOWN_008, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_001, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_002, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_003, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_004, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_005, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_006, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_007, RGB(0, 0, 0));
+		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_008, RGB(0, 0, 0));
 	}
 
 	void CMud::OnMove()
@@ -94,33 +128,33 @@ namespace game_framework {
 			foodTime++;
 			if (foodTime == FOOD_TIME_LIMIT)
 				isFood = false;
+				isHit = false;
 		}
 
 		if (isHit) {
 			if (faceTo == CDirection::LEFT){
-				leftAnimation.OnMove();//传Θ穡痶animetion
+				hitLeftAnimation.OnMove();
 				x += STEP_SIZE_X;
 				movingCount--;
 			}
 			else if (faceTo == CDirection::RIGHT) {
-				rightAnimation.OnMove();//传Θ穡痶animetion
+				hitRightAnimation.OnMove();
 				x -= STEP_SIZE_X;
 				movingCount--;
 			}
 			else if (faceTo == CDirection::UP) {
-				upAnimation.OnMove();//传Θ穡痶animetion
+				hitUpAnimation.OnMove();
 				y += STEP_SIZE_Y;
 				movingCount--;
 			}
 			else if (faceTo == CDirection::DOWN) {
-				downAnimation.OnMove();//传Θ穡痶animetion
+				hitDownAnimation.OnMove();
 				y -= STEP_SIZE_Y;
 				movingCount--;
 			}
 
 			if (movingCount == 0) {
 				isFood = true;
-				isHit = false;
 			}
 		}
 
