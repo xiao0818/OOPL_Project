@@ -29,7 +29,7 @@ namespace game_framework {
 		return indexY;
 	}
 
-	void CMud::Initialize(CName **map)
+	void CMud::Initialize(CMap &map)
 	{
 		mapRecord = map;
 	}
@@ -142,7 +142,7 @@ namespace game_framework {
 				x += HIT_STEP_SIZE_X;
 				hitCount++;
 				if (hitCount == HIT_TARGET) {
-					mapRecord[++indexX][indexY] = CName::MUD;
+					mapRecord.SetCNameInMap(++indexX, indexY, CName::MUD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
@@ -153,7 +153,7 @@ namespace game_framework {
 				x -= HIT_STEP_SIZE_X;
 				hitCount++;
 				if (hitCount == HIT_TARGET) {
-					mapRecord[--indexX][indexY] = CName::MUD;
+					mapRecord.SetCNameInMap(--indexX, indexY, CName::MUD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
@@ -164,7 +164,7 @@ namespace game_framework {
 				y += HIT_STEP_SIZE_Y;
 				hitCount++;
 				if (hitCount == HIT_TARGET) {
-					mapRecord[indexX][++indexY] = CName::MUD;
+					mapRecord.SetCNameInMap(indexX, ++indexY, CName::MUD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
@@ -175,7 +175,7 @@ namespace game_framework {
 				y -= HIT_STEP_SIZE_Y;
 				hitCount++;
 				if (hitCount == HIT_TARGET) {
-					mapRecord[indexX][--indexY] = CName::MUD;
+					mapRecord.SetCNameInMap(indexX, --indexY, CName::MUD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
@@ -186,15 +186,15 @@ namespace game_framework {
 		if (!isHit && !isFood) {
 			if (isMovingLeft)
 			{
-				if (mapRecord[indexX - 1][indexY] == CName::SPACE || mapRecord[indexX - 1][indexY] == CName::PLAYER)
+				if (mapRecord.GetCNameInMap(indexX - 1, indexY) == CName::SPACE || mapRecord.GetCNameInMap(indexX - 1, indexY) == CName::PLAYER)
 				{
 					leftAnimation.OnMove();
 					x -= STEP_SIZE_X;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
-						mapRecord[--indexX][indexY] = CName::MUD;
+						mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
+						mapRecord.SetCNameInMap(--indexX, indexY, CName::MUD);
 						movingCount = 0;
 					}
 				}
@@ -204,15 +204,15 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				if (mapRecord[indexX + 1][indexY] == CName::SPACE || mapRecord[indexX + 1][indexY] == CName::PLAYER)
+				if (mapRecord.GetCNameInMap(indexX + 1, indexY) == CName::SPACE || mapRecord.GetCNameInMap(indexX + 1, indexY) == CName::PLAYER)
 				{
 					rightAnimation.OnMove();
 					x += STEP_SIZE_X;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
-						mapRecord[++indexX][indexY] = CName::MUD;
+						mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
+						mapRecord.SetCNameInMap(++indexX, indexY, CName::MUD);
 						movingCount = 0;
 					}
 				}
@@ -223,15 +223,15 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				if (mapRecord[indexX][indexY - 1] == CName::SPACE || mapRecord[indexX][indexY - 1] == CName::PLAYER)
+				if (mapRecord.GetCNameInMap(indexX, indexY - 1) == CName::SPACE || mapRecord.GetCNameInMap(indexX, indexY - 1) == CName::PLAYER)
 				{
 					upAnimation.OnMove();
 					y -= STEP_SIZE_Y;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
-						mapRecord[indexX][--indexY] = CName::MUD;
+						mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
+						mapRecord.SetCNameInMap(indexX, --indexY, CName::MUD);
 						movingCount = 0;
 					}
 				}
@@ -242,15 +242,15 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				if (mapRecord[indexX][indexY + 1] == CName::SPACE || mapRecord[indexX][indexY + 1] == CName::PLAYER)
+				if (mapRecord.GetCNameInMap(indexX, indexY + 1) == CName::SPACE || mapRecord.GetCNameInMap(indexX, indexY + 1) == CName::PLAYER)
 				{
 					downAnimation.OnMove();
 					y += STEP_SIZE_Y;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						mapRecord[indexX][indexY] = CName::SPACE;
-						mapRecord[indexX][++indexY] = CName::MUD;
+						mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
+						mapRecord.SetCNameInMap(indexX, ++indexY, CName::MUD);
 						movingCount = 0;
 					}
 				}

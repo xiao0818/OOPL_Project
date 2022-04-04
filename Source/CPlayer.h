@@ -3,6 +3,7 @@
 
 #include "CName.h"
 #include "CDirection.h"
+#include "CMap.h"
 #include "CBrick.h"
 
 namespace game_framework {
@@ -12,7 +13,7 @@ namespace game_framework {
 		CPlayer();
 		int  GetIndexX();
 		int  GetIndexY();
-		void Initialize(CName **map);
+		void Initialize(CMap &map);
 		void LoadBitmap();
 		void OnMove();
 		void SetMovingLeft(bool flag);
@@ -46,7 +47,7 @@ namespace game_framework {
 		bool isKeyRightPressed;
 		bool isKeyUpPressed;
 		int movingCount;
-		CName **mapRecord;
+		CMap mapRecord;
 		CDirection faceTo;
 		list<CBrick>::iterator swallowedBrick;
 		bool isSwallowed;

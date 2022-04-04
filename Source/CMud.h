@@ -3,6 +3,7 @@
 
 #include "CDirection.h"
 #include "CName.h"
+#include "CMap.h"
 
 namespace game_framework {
 	class CMud
@@ -11,7 +12,7 @@ namespace game_framework {
 		CMud();
 		int  GetIndexX();
 		int  GetIndexY();
-		void Initialize(CName **map);
+		void Initialize(CMap &map);
 		void LoadBitmap();
 		void OnMove();
 		CDirection SetMovingDirection();
@@ -39,7 +40,7 @@ namespace game_framework {
 		int foodTime;
 		int movingCount;
 		int hitCount;
-		CName **mapRecord;
+		CMap mapRecord;
 		CDirection faceTo;
 	};
 }

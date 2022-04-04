@@ -221,11 +221,11 @@ namespace game_framework {
 
 	CGameStateRun::~CGameStateRun()
 	{
-		for (int i = 0; i < 14; i++)
-		{
-			delete [] map[i];
-		}
-		delete [] map;
+		//for (int i = 0; i < 14; i++)
+		//{
+		//	delete [] map[i];
+		//}
+		//delete [] map;
 	}
 
 	void CGameStateRun::OnBeginState()
@@ -236,33 +236,6 @@ namespace game_framework {
 		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
 		ground.SetXY(GROUND_X, GROUND_Y);
 
-		CName map_init[14][14] = { {CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
-								{CName::WALL, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::STEEL, CName::STEEL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STEEL, CName::STEEL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::PLAYER, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::WOODEN, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL} };
-		map = new CName *[14];
-		for (int i = 0; i < 14; i++)
-		{
-			map[i] = new CName[14];
-		}
-		for (int i = 0; i < 14; i++)
-		{
-			for (int j = 0; j < 14; j++)
-			{
-				map[i][j] = map_init[j][i];
-			}
-		}
-
 		player.Initialize(map);
 		mud.Initialize(map);
 
@@ -270,11 +243,11 @@ namespace game_framework {
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				if (map[i][j] == CName::PLAYER)
+				if (map.GetCNameInMap(i, j) == CName::PLAYER)
 				{
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
 				}
-				else if(map[i][j] == CName::MUD){
+				else if(map.GetCNameInMap(i, j) == CName::MUD){
 					mud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					/*CMud tempMud;
 					tempMud.Initialize(map);
@@ -282,14 +255,14 @@ namespace game_framework {
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					mud.push_back(tempMud);*/
 				}
-				else if (map[i][j] == CName::WALL)
+				else if (map.GetCNameInMap(i, j) == CName::WALL)
 				{
 					CWall tempWall;
 					tempWall.LoadBitmap();
 					tempWall.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					wall.push_back(tempWall);
 				}
-				else if (map[i][j] == CName::STONE)
+				else if (map.GetCNameInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
 					tempStone.Initialize(map, &mud);
@@ -297,7 +270,7 @@ namespace game_framework {
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
 				}
-				else if (map[i][j] == CName::WOODEN)
+				else if (map.GetCNameInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
 					tempWooden.Initialize(map, &mud);
@@ -305,7 +278,7 @@ namespace game_framework {
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
 				}
-				else if (map[i][j] == CName::STEEL)
+				else if (map.GetCNameInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
 					tempSteel.Initialize(map, &mud);
