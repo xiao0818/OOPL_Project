@@ -28,7 +28,7 @@ namespace game_framework {
 		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	}
 
-	void CBrick::Initialize(CMap &map, CMud *mud)
+	void CBrick::Initialize(CMap *map, CMud *mud)
 	{
 		mapRecord = map;
 		mudRecord = mud;
@@ -55,7 +55,7 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
+					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingCount = 0;
 					isMovingLeft = isSwallowed = isAlive = false;
 				}
@@ -66,7 +66,7 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
+					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingCount = 0;
 					isMovingRight = isSwallowed = isAlive = false;
 				}
@@ -77,7 +77,7 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
+					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingCount = 0;
 					isMovingUp = isSwallowed = isAlive = false;
 				}
@@ -88,7 +88,7 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
+					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingCount = 0;
 					isMovingDown = isSwallowed = isAlive = false;
 				}
@@ -98,19 +98,19 @@ namespace game_framework {
 		{
 			if (isMovingLeft)
 			{
-				if (mapRecord.GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
+				if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
 				{
 					x -= STEP_SIZE_X;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						if (mapRecord.GetMonsterInMap(indexX - 1, indexY) == CName::MUD) {
+						if (mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::LEFT);
 						}
-						mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord.SetBrickInMap(--indexX, indexY, CName::STONE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+						mapRecord->SetBrickInMap(--indexX, indexY, CName::STONE);
 						movingCount = 0;
-						isMovingLeft = (mapRecord.GetBrickInMap(indexX - 1, indexY) == CName::SPACE);
+						isMovingLeft = (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE);
 					}
 				}
 				else
@@ -120,19 +120,19 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				if (mapRecord.GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
+				if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
 				{
 					x += STEP_SIZE_X;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						if (mapRecord.GetMonsterInMap(indexX + 1, indexY) == CName::MUD) {
+						if (mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::RIGHT);
 						}
-						mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord.SetBrickInMap(++indexX, indexY, CName::STONE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+						mapRecord->SetBrickInMap(++indexX, indexY, CName::STONE);
 						movingCount = 0;
-						isMovingRight = (mapRecord.GetBrickInMap(indexX + 1, indexY) == CName::SPACE);
+						isMovingRight = (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE);
 					}
 				}
 				else
@@ -142,19 +142,19 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				if (mapRecord.GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
+				if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
 				{
 					y -= STEP_SIZE_Y;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						if (mapRecord.GetMonsterInMap(indexX, indexY - 1) == CName::MUD) {
+						if (mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::UP);
 						}
-						mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord.SetBrickInMap(indexX, --indexY, CName::STONE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+						mapRecord->SetBrickInMap(indexX, --indexY, CName::STONE);
 						movingCount = 0;
-						isMovingUp = (mapRecord.GetBrickInMap(indexX, indexY - 1) == CName::SPACE);
+						isMovingUp = (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE);
 					}
 				}
 				else
@@ -164,19 +164,19 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				if (mapRecord.GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
+				if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
 				{
 					y += STEP_SIZE_Y;
 					movingCount++;
 					if (movingCount == STEP_TARGET)
 					{
-						if (mapRecord.GetMonsterInMap(indexX, indexY + 1) == CName::MUD) {
+						if (mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::DOWN);
 						}
-						mapRecord.SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord.SetBrickInMap(indexX, ++indexY, CName::STONE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+						mapRecord->SetBrickInMap(indexX, ++indexY, CName::STONE);
 						movingCount = 0;
-						isMovingDown = (mapRecord.GetBrickInMap(indexX, indexY + 1) == CName::SPACE);
+						isMovingDown = (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE);
 					}
 				}
 				else
@@ -193,7 +193,7 @@ namespace game_framework {
 		indexY = nj;
 		x = nx;
 		y = ny;
-		mapRecord.SetBrickInMap(indexX, indexY, CName::STONE);
+		mapRecord->SetBrickInMap(indexX, indexY, CName::STONE);
 		isAlive = true;
 		movingCount = 0;
 		if (faceTo == CDirection::LEFT)

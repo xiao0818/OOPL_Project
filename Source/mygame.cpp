@@ -232,8 +232,8 @@ namespace game_framework {
 		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
 		ground.SetXY(GROUND_X, GROUND_Y);
 
-		player.Initialize(map);
-		mud.Initialize(map);
+		player.Initialize(&map);
+		mud.Initialize(&map);
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -262,7 +262,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(map, &mud);
+					tempStone.Initialize(&map, &mud);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -270,7 +270,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(map, &mud);
+					tempWooden.Initialize(&map, &mud);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -278,7 +278,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(map, &mud);
+					tempSteel.Initialize(&map, &mud);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);

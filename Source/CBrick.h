@@ -14,7 +14,7 @@ namespace game_framework {
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsMove();
-		void Initialize(CMap &map, CMud *mud);
+		void Initialize(CMap *map, CMud *mud);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
@@ -25,7 +25,7 @@ namespace game_framework {
 		CMovingBitmap bitmap;
 		int indexX, indexY;
 		int x, y;
-		CMap mapRecord;
+		CMap *mapRecord;
 		CMud *mudRecord;
 		bool isMovingDown;
 		bool isMovingLeft;

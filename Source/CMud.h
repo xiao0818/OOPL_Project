@@ -12,7 +12,7 @@ namespace game_framework {
 		CMud();
 		int  GetIndexX();
 		int  GetIndexY();
-		void Initialize(CMap &map);
+		void Initialize(CMap *map);
 		void LoadBitmap();
 		void OnMove();
 		CDirection SetMovingDirection();
@@ -40,7 +40,7 @@ namespace game_framework {
 		int foodTime;
 		int movingCount;
 		int hitCount;
-		CMap mapRecord;
+		CMap *mapRecord;
 		CDirection faceTo;
 	};
 }
