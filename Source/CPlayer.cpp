@@ -203,7 +203,7 @@ namespace game_framework {
 
 		if (isMovingLeft)
 		{
-			if (mapRecord.GetCNameInMap(indexX - 1, indexY) == CName::SPACE)
+			if (mapRecord.GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
 			{
 				leftAnimation.OnMove();
 				leftWithFullAnimation.OnMove();
@@ -211,8 +211,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
-					mapRecord.SetCNameInMap(--indexX, indexY, CName::PLAYER);
+					mapRecord.SetPlayerInMap(indexX, indexY, CName::SPACE);
+					mapRecord.SetPlayerInMap(--indexX, indexY, CName::PLAYER);
 					movingCount = 0;
 					isMovingLeft = isKeyLeftPressed;
 				}
@@ -224,7 +224,7 @@ namespace game_framework {
 		}
 		else if (isMovingRight)
 		{
-			if (mapRecord.GetCNameInMap(indexX + 1, indexY) == CName::SPACE)
+			if (mapRecord.GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
 			{
 				rightAnimation.OnMove();
 				rightWithFullAnimation.OnMove();
@@ -232,8 +232,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
-					mapRecord.SetCNameInMap(++indexX, indexY, CName::PLAYER);
+					mapRecord.SetPlayerInMap(indexX, indexY, CName::SPACE);
+					mapRecord.SetPlayerInMap(++indexX, indexY, CName::PLAYER);
 					movingCount = 0;
 					isMovingRight = isKeyRightPressed;
 				}
@@ -245,7 +245,7 @@ namespace game_framework {
 		}
 		else if (isMovingUp)
 		{
-			if (mapRecord.GetCNameInMap(indexX, indexY - 1) == CName::SPACE)
+			if (mapRecord.GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
 			{
 				upAnimation.OnMove();
 				upWithFullAnimation.OnMove();
@@ -253,8 +253,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
-					mapRecord.SetCNameInMap(indexX, --indexY, CName::PLAYER);
+					mapRecord.SetPlayerInMap(indexX, indexY, CName::SPACE);
+					mapRecord.SetPlayerInMap(indexX, --indexY, CName::PLAYER);
 					movingCount = 0;
 					isMovingUp = isKeyUpPressed;
 				}
@@ -266,7 +266,7 @@ namespace game_framework {
 		}
 		else if (isMovingDown)
 		{
-			if (mapRecord.GetCNameInMap(indexX, indexY + 1) == CName::SPACE)
+			if (mapRecord.GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
 			{
 				downAnimation.OnMove();
 				downWithFullAnimation.OnMove();
@@ -274,8 +274,8 @@ namespace game_framework {
 				movingCount++;
 				if (movingCount == STEP_TARGET)
 				{
-					mapRecord.SetCNameInMap(indexX, indexY, CName::SPACE);
-					mapRecord.SetCNameInMap(indexX, ++indexY, CName::PLAYER);
+					mapRecord.SetPlayerInMap(indexX, indexY, CName::SPACE);
+					mapRecord.SetPlayerInMap(indexX, ++indexY, CName::PLAYER);
 					movingCount = 0;
 					isMovingDown = isKeyDownPressed;
 				}
@@ -367,7 +367,7 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					if (mapRecord.GetCNameInMap(indexX - 1, indexY) == CName::SPACE)
+					if (mapRecord.GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
@@ -375,7 +375,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					if (mapRecord.GetCNameInMap(indexX + 1, indexY) == CName::SPACE)
+					if (mapRecord.GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
@@ -383,7 +383,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					if (mapRecord.GetCNameInMap(indexX, indexY - 1) == CName::SPACE)
+					if (mapRecord.GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
@@ -391,7 +391,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					if (mapRecord.GetCNameInMap(indexX, indexY + 1) == CName::SPACE)
+					if (mapRecord.GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;

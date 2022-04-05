@@ -24,27 +24,61 @@ namespace game_framework {
 								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL} };
 
-		map = new CName *[14];
-		for (int i = 0; i < 14; i++)
-		{
-			map[i] = new CName[14];
-		}
 		for (int i = 0; i < 14; i++)
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				map[i][j] = map_init[j][i];
+				playerMap[i][j] = CName::SPACE;
+				brickMap[i][j] = CName::SPACE;
+				monsterMap[i][j] = CName::SPACE;
+
+				if (map_init[j][i] == CName::PLAYER)
+				{
+					playerMap[i][j] = map_init[j][i];
+				}
+				else if (map_init[j][i] == CName::WALL || map_init[j][i] == CName::STONE || map_init[j][i] == CName::WOODEN || map_init[j][i] == CName::STEEL)
+				{
+					brickMap[i][j] = map_init[j][i];
+				}
+				else if (map_init[j][i] == CName::MUD)
+				{
+					monsterMap[i][j] = map_init[j][i];
+				}
 			}
 		}
 	}
 
-	void CMap::SetCNameInMap(int nx, int ny, CName name)
+	CMap::~CMap()
 	{
-		map[nx][ny] = name;
 	}
 
-	CName CMap::GetCNameInMap(int nx, int ny)
+	void CMap::SetPlayerInMap(int nx, int ny, CName name)
 	{
-		return map[nx][ny];
+		playerMap[nx][ny] = name;
+	}
+
+	CName CMap::GetPlayerInMap(int nx, int ny)
+	{
+		return playerMap[nx][ny];
+	}
+
+	void CMap::SetBrickInMap(int nx, int ny, CName name)
+	{
+		brickMap[nx][ny] = name;
+	}
+
+	CName CMap::GetBrickInMap(int nx, int ny)
+	{
+		return brickMap[nx][ny];
+	}
+
+	void CMap::SetMonsterInMap(int nx, int ny, CName name)
+	{
+		monsterMap[nx][ny] = name;
+	}
+
+	CName CMap::GetMonsterInMap(int nx, int ny)
+	{
+		return monsterMap[nx][ny];
 	}
 }

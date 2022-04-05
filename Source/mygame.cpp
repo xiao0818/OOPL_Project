@@ -221,15 +221,11 @@ namespace game_framework {
 
 	CGameStateRun::~CGameStateRun()
 	{
-		//for (int i = 0; i < 14; i++)
-		//{
-		//	delete [] map[i];
-		//}
-		//delete [] map;
 	}
 
 	void CGameStateRun::OnBeginState()
 	{
+		TRACE("OnBeginState\n");
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
@@ -243,11 +239,12 @@ namespace game_framework {
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				if (map.GetCNameInMap(i, j) == CName::PLAYER)
+				if (map.GetPlayerInMap(i, j) == CName::PLAYER)
 				{
-					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j); 
+					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 				}
-				else if(map.GetCNameInMap(i, j) == CName::MUD){
+				else if(map.GetMonsterInMap(i, j) == CName::MUD)
+				{
 					mud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					/*CMud tempMud;
 					tempMud.Initialize(map);
@@ -255,14 +252,14 @@ namespace game_framework {
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					mud.push_back(tempMud);*/
 				}
-				else if (map.GetCNameInMap(i, j) == CName::WALL)
+				else if (map.GetBrickInMap(i, j) == CName::WALL)
 				{
 					CWall tempWall;
 					tempWall.LoadBitmap();
 					tempWall.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					wall.push_back(tempWall);
 				}
-				else if (map.GetCNameInMap(i, j) == CName::STONE)
+				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
 					tempStone.Initialize(map, &mud);
@@ -270,7 +267,7 @@ namespace game_framework {
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
 				}
-				else if (map.GetCNameInMap(i, j) == CName::WOODEN)
+				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
 					tempWooden.Initialize(map, &mud);
@@ -278,7 +275,7 @@ namespace game_framework {
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
 				}
-				else if (map.GetCNameInMap(i, j) == CName::STEEL)
+				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
 					tempSteel.Initialize(map, &mud);
