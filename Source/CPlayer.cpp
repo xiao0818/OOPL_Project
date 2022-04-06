@@ -203,7 +203,7 @@ namespace game_framework {
 
 		if (isMovingLeft)
 		{
-			if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
+			if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MUD_FOOD)
 			{
 				leftAnimation.OnMove();
 				leftWithFullAnimation.OnMove();
@@ -224,7 +224,7 @@ namespace game_framework {
 		}
 		else if (isMovingRight)
 		{
-			if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
+			if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MUD_FOOD)
 			{
 				rightAnimation.OnMove();
 				rightWithFullAnimation.OnMove();
@@ -245,7 +245,7 @@ namespace game_framework {
 		}
 		else if (isMovingUp)
 		{
-			if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
+			if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MUD_FOOD)
 			{
 				upAnimation.OnMove();
 				upWithFullAnimation.OnMove();
@@ -266,7 +266,7 @@ namespace game_framework {
 		}
 		else if (isMovingDown)
 		{
-			if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
+			if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MUD_FOOD)
 			{
 				downAnimation.OnMove();
 				downWithFullAnimation.OnMove();

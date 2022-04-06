@@ -10,7 +10,8 @@ namespace game_framework {
 		STONE,
 		WOODEN,
 		STEEL,
-		MUD
+		MUD,
+		MUD_FOOD
 	};
 }
 

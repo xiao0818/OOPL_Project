@@ -114,7 +114,8 @@ namespace game_framework {
 		const int HIT_STEP_SIZE_X = 9;
 		const int HIT_STEP_SIZE_Y = 6;
 
-		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp) {
+		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp)
+		{
 			faceTo = SetMovingDirection();
 			movingCount = 0;
 			if (faceTo == CDirection::LEFT)
@@ -127,55 +128,67 @@ namespace game_framework {
 				isMovingDown = true;
 		}
 
-		if (isFood) {
+		if (isFood)
+		{
 			foodTime++;
-			if (foodTime == FOOD_TIME_LIMIT) {
+			if (foodTime == FOOD_TIME_LIMIT)
+			{
 				isFood = false;
 				isMovingDown = isMovingLeft = isMovingRight = isMovingUp = false;
 				foodTime = 0;
+				mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD);
 			}
 		}
 
-		if (isHit) {
-			if (faceTo == CDirection::LEFT){
+		if (isHit)
+		{
+			if (faceTo == CDirection::LEFT)
+			{
 				hitLeftAnimation.OnMove();
 				x += HIT_STEP_SIZE_X;
 				hitCount++;
-				if (hitCount == HIT_TARGET) {
-					mapRecord->SetMonsterInMap(++indexX, indexY, CName::MUD);
+				if (hitCount == HIT_TARGET)
+				{
+					mapRecord->SetMonsterInMap(++indexX, indexY, CName::MUD_FOOD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
 				}
 			}
-			else if (faceTo == CDirection::RIGHT) {
+			else if (faceTo == CDirection::RIGHT)
+			{
 				hitRightAnimation.OnMove();
 				x -= HIT_STEP_SIZE_X;
 				hitCount++;
-				if (hitCount == HIT_TARGET) {
-					mapRecord->SetMonsterInMap(--indexX, indexY, CName::MUD);
+				if (hitCount == HIT_TARGET)
+				{
+					mapRecord->SetMonsterInMap(--indexX, indexY, CName::MUD_FOOD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
 				}
 			}
-			else if (faceTo == CDirection::UP) {
+			else if (faceTo == CDirection::UP)
+			{
 				hitUpAnimation.OnMove();
 				y += HIT_STEP_SIZE_Y;
 				hitCount++;
-				if (hitCount == HIT_TARGET) {
-					mapRecord->SetMonsterInMap(indexX, ++indexY, CName::MUD);
+				if (hitCount == HIT_TARGET)
+				{
+					mapRecord->SetMonsterInMap(indexX, ++indexY, CName::MUD_FOOD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
 				}
 			}
-			else if (faceTo == CDirection::DOWN) {
+			else if (faceTo == CDirection::DOWN)
+			{
 				hitDownAnimation.OnMove();
 				y -= HIT_STEP_SIZE_Y;
 				hitCount++;
-				if (hitCount == HIT_TARGET) {
-					mapRecord->SetMonsterInMap(indexX, --indexY, CName::MUD);
+				if (hitCount == HIT_TARGET)
+				{
+					mapRecord->SetMonsterInMap(indexX, --indexY, CName::MUD_FOOD);
 					isFood = true;
 					isHit = false;
 					hitCount = 0;
@@ -183,7 +196,8 @@ namespace game_framework {
 			}
 		}
 
-		if (!isHit && !isFood) {
+		if (!isHit && !isFood)
+		{
 			if (isMovingLeft)
 			{
 				if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::SPACE)
@@ -262,8 +276,8 @@ namespace game_framework {
 		}
 	}
 
-	CDirection CMud::SetMovingDirection() {
-
+	CDirection CMud::SetMovingDirection()
+	{
 		srand((unsigned int)time(NULL));
 
 		int x = rand();
@@ -294,7 +308,8 @@ namespace game_framework {
 
 	void CMud::OnShow()
 	{
-		if (isHit || isFood) {
+		if (isHit || isFood)
+		{
 			if (faceTo == CDirection::LEFT)
 			{
 				if (!isMovingLeft)
@@ -332,7 +347,8 @@ namespace game_framework {
 				hitDownAnimation.OnShow();
 			}
 		}
-		else {
+		else
+		{
 			if (faceTo == CDirection::LEFT)
 			{
 				if (!isMovingLeft)
@@ -374,35 +390,43 @@ namespace game_framework {
 		
 	}
 
-	void CMud::HitByBrick(CDirection tempDir) {
-		if (movingCount != 0) {
-			ReturnBack();//回歸原位
-		}
+	void CMud::HitByBrick(CDirection tempDir)
+	{
+		//if (movingCount != 0)
+		//{
+		//	ReturnBack();//回歸原位
+		//}
 		hitCount = 0;
 		faceTo = tempDir;
 		isHit = true;
 	}
 
-	void CMud::ReturnBack() {
+	void CMud::ReturnBack()
+	{
 		const int STEP_SIZE_X = 3;
 		const int STEP_SIZE_Y = 2;
-		while (movingCount != 0) {
-			if (faceTo == CDirection::LEFT) {
+		while (movingCount != 0)
+		{
+			if (faceTo == CDirection::LEFT)
+			{
 				hitLeftAnimation.OnMove();
 				x += STEP_SIZE_X;
 				movingCount--;
 			}
-			else if (faceTo == CDirection::RIGHT) {
+			else if (faceTo == CDirection::RIGHT)
+			{
 				hitRightAnimation.OnMove();
 				x -= STEP_SIZE_X;
 				movingCount--;
 			}
-			else if (faceTo == CDirection::UP) {
+			else if (faceTo == CDirection::UP)
+			{
 				hitUpAnimation.OnMove();
 				y += STEP_SIZE_Y;
 				movingCount--;
 			}
-			else if (faceTo == CDirection::DOWN) {
+			else if (faceTo == CDirection::DOWN)
+			{
 				hitDownAnimation.OnMove();
 				y -= STEP_SIZE_Y;
 				movingCount--;
