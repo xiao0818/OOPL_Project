@@ -417,6 +417,7 @@ namespace game_framework {
 			//movingCount--;
 			x += STEP_SIZE_X * movingLeftCount;
 			movingLeftCount = 0;
+			mapRecord->SetMonsterInMap(indexX - 1, indexY, CName::SPACE);
 		}
 		else if (faceTo == CDirection::RIGHT)
 		{
@@ -425,6 +426,7 @@ namespace game_framework {
 			//movingCount--;
 			x -= STEP_SIZE_X * movingRightCount;
 			movingRightCount = 0;
+			mapRecord->SetMonsterInMap(indexX + 1, indexY, CName::SPACE);
 		}
 		else if (faceTo == CDirection::UP)
 		{
@@ -433,6 +435,7 @@ namespace game_framework {
 			//movingCount--;
 			y += STEP_SIZE_Y * movingUpCount;
 			movingUpCount = 0;
+			mapRecord->SetMonsterInMap(indexX, indexY - 1, CName::SPACE);
 		}
 		else if (faceTo == CDirection::DOWN)
 		{
@@ -441,6 +444,7 @@ namespace game_framework {
 			//movingCount--;
 			y -= STEP_SIZE_Y * movingDownCount;
 			movingDownCount = 0;
+			mapRecord->SetMonsterInMap(indexX, indexY + 1, CName::SPACE);
 		}
 	}
 }
