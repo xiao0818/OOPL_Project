@@ -31,7 +31,10 @@ namespace game_framework {
 		bool isMovingLeft;
 		bool isMovingRight;
 		bool isMovingUp;
-		int movingCount;
+		int movingLeftCount;
+		int movingRightCount;
+		int movingUpCount;
+		int movingDownCount;
 		bool isAlive;
 		bool isSwallowed;
 	};

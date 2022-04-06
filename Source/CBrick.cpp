@@ -10,6 +10,7 @@ namespace game_framework {
 	CBrick::CBrick()
 	{
 		x = y = 0;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		isAlive = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isSwallowed = false;
@@ -52,44 +53,44 @@ namespace game_framework {
 			if (isMovingLeft)
 			{
 				x -= STEP_SIZE_X;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingLeftCount++;
+				if (movingLeftCount == STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingCount = 0;
+					movingLeftCount = 0;
 					isMovingLeft = isSwallowed = isAlive = false;
 				}
 			}
 			else if (isMovingRight)
 			{
 				x += STEP_SIZE_X;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingRightCount++;
+				if (movingRightCount == STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingCount = 0;
+					movingRightCount = 0;
 					isMovingRight = isSwallowed = isAlive = false;
 				}
 			}
 			else if (isMovingUp)
 			{
 				y -= STEP_SIZE_Y;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingUpCount++;
+				if (movingUpCount == STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingCount = 0;
+					movingUpCount = 0;
 					isMovingUp = isSwallowed = isAlive = false;
 				}
 			}
 			else if (isMovingDown)
 			{
 				y += STEP_SIZE_Y;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingDownCount++;
+				if (movingDownCount == STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingCount = 0;
+					movingDownCount = 0;
 					isMovingDown = isSwallowed = isAlive = false;
 				}
 			}
@@ -98,18 +99,18 @@ namespace game_framework {
 		{
 			if (isMovingLeft)
 			{
-				if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
+				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 				{
 					x -= STEP_SIZE_X;
-					movingCount++;
-					if (movingCount == STEP_TARGET)
+					movingLeftCount++;
+					mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
+					if (movingLeftCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::LEFT);
 						}
-						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord->SetBrickInMap(--indexX, indexY, CName::STONE);
-						movingCount = 0;
+						mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
+						movingLeftCount = 0;
 						isMovingLeft = (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE);
 					}
 				}
@@ -120,18 +121,18 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
+				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 				{
 					x += STEP_SIZE_X;
-					movingCount++;
-					if (movingCount == STEP_TARGET)
+					movingRightCount++;
+					mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
+					if (movingRightCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::RIGHT);
 						}
-						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord->SetBrickInMap(++indexX, indexY, CName::STONE);
-						movingCount = 0;
+						mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
+						movingRightCount = 0;
 						isMovingRight = (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE);
 					}
 				}
@@ -142,18 +143,18 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
+				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 				{
 					y -= STEP_SIZE_Y;
-					movingCount++;
-					if (movingCount == STEP_TARGET)
+					movingUpCount++;
+					mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
+					if (movingUpCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::UP);
 						}
-						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord->SetBrickInMap(indexX, --indexY, CName::STONE);
-						movingCount = 0;
+						mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
+						movingUpCount = 0;
 						isMovingUp = (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE);
 					}
 				}
@@ -164,18 +165,18 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
+				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
 				{
 					y += STEP_SIZE_Y;
-					movingCount++;
-					if (movingCount == STEP_TARGET)
+					movingDownCount++;
+					mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
+					if (movingDownCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MUD) {
 							mudRecord->HitByBrick(CDirection::DOWN);
 						}
-						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-						mapRecord->SetBrickInMap(indexX, ++indexY, CName::STONE);
-						movingCount = 0;
+						mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
+						movingDownCount = 0;
 						isMovingDown = (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE);
 					}
 				}
@@ -195,7 +196,7 @@ namespace game_framework {
 		y = ny;
 		mapRecord->SetBrickInMap(indexX, indexY, CName::STONE);
 		isAlive = true;
-		movingCount = 0;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		if (faceTo == CDirection::LEFT)
 		{
 			isMovingLeft = true;
@@ -225,7 +226,7 @@ namespace game_framework {
 	void CBrick::Swallowed(CDirection faceTo)
 	{
 		isSwallowed = true;
-		movingCount = 0;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		if (faceTo == CDirection::LEFT)
 		{
 			isMovingRight = true;
