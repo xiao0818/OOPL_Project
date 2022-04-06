@@ -13,6 +13,7 @@ namespace game_framework {
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsFood();
+		bool IsAlive();
 		void Initialize(CMap *map);
 		void LoadBitmap();
 		void OnMove();

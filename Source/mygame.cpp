@@ -298,6 +298,10 @@ namespace game_framework {
 		{
 			m->OnMove();
 		}*/
+		if (mud.IsAlive() == false)
+		{
+			GotoGameState(GAME_STATE_OVER);
+		}
 	}
 
 	void CGameStateRun::OnInit()

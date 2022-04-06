@@ -35,6 +35,11 @@ namespace game_framework {
 		return isFood;
 	}
 
+	bool CMud::IsAlive()
+	{
+		return isAlive;
+	}
+
 	void CMud::Initialize(CMap *map)
 	{
 		mapRecord = map;
