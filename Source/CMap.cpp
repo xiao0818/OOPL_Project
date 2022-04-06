@@ -9,7 +9,7 @@
 namespace game_framework {
 	CMap::CMap()
 	{
-		CName map_init[14][14] = { {CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
+		CName mapInit[14][14] = { {CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
 								{CName::WALL, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
@@ -28,28 +28,35 @@ namespace game_framework {
 		{
 			for (int j = 0; j < 14; j++)
 			{
-				playerMap[i][j] = CName::SPACE;
-				brickMap[i][j] = CName::SPACE;
-				monsterMap[i][j] = CName::SPACE;
-
-				if (map_init[j][i] == CName::PLAYER)
-				{
-					playerMap[i][j] = map_init[j][i];
-				}
-				else if (map_init[j][i] == CName::WALL || map_init[j][i] == CName::STONE || map_init[j][i] == CName::WOODEN || map_init[j][i] == CName::STEEL)
-				{
-					brickMap[i][j] = map_init[j][i];
-				}
-				else if (map_init[j][i] == CName::MUD)
-				{
-					monsterMap[i][j] = map_init[j][i];
-				}
+				map[i][j] = mapInit[i][j];
 			}
 		}
 	}
 
-	CMap::~CMap()
+	void CMap::Initialize()
 	{
+		for (int i = 0; i < 14; i++)
+		{
+			for (int j = 0; j < 14; j++)
+			{
+				playerMap[i][j] = CName::SPACE;
+				brickMap[i][j] = CName::SPACE;
+				monsterMap[i][j] = CName::SPACE;
+
+				if (map[j][i] == CName::PLAYER)
+				{
+					playerMap[i][j] = map[j][i];
+				}
+				else if (map[j][i] == CName::WALL || map[j][i] == CName::STONE || map[j][i] == CName::WOODEN || map[j][i] == CName::STEEL)
+				{
+					brickMap[i][j] = map[j][i];
+				}
+				else if (map[j][i] == CName::MUD)
+				{
+					monsterMap[i][j] = map[j][i];
+				}
+			}
+		}
 	}
 
 	void CMap::SetPlayerInMap(int nx, int ny, CName name)
