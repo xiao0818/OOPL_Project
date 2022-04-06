@@ -38,7 +38,10 @@ namespace game_framework {
 		bool isHit;
 		bool isFood;
 		int foodTime;
-		int movingCount;
+		int movingLeftCount;
+		int movingRightCount;
+		int movingUpCount;
+		int movingDownCount;
 		int hitCount;
 		CMap *mapRecord;
 		CDirection faceTo;

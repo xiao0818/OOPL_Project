@@ -11,7 +11,7 @@ namespace game_framework {
 	{
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
-		movingCount = 0;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		faceTo = CDirection::DOWN;
 		leftAnimation.SetDelayCount(2);
 		rightAnimation.SetDelayCount(2);
@@ -159,7 +159,7 @@ namespace game_framework {
 				}
 				else
 				{
-					movingCount = 0;
+					movingLeftCount = 0;
 					isMovingLeft = true;
 				}
 			}
@@ -171,7 +171,7 @@ namespace game_framework {
 				}
 				else
 				{
-					movingCount = 0;
+					movingRightCount = 0;
 					isMovingRight = true;
 				}
 			}
@@ -183,7 +183,7 @@ namespace game_framework {
 				}
 				else
 				{
-					movingCount = 0;
+					movingUpCount = 0;
 					isMovingUp = true;
 				}
 			}
@@ -195,7 +195,7 @@ namespace game_framework {
 				}
 				else
 				{
-					movingCount = 0;
+					movingDownCount = 0;
 					isMovingDown = true;
 				}
 			}
@@ -203,17 +203,17 @@ namespace game_framework {
 
 		if (isMovingLeft)
 		{
-			if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MUD_FOOD)
+			if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MUD_FOOD) || movingLeftCount != 0)
 			{
 				leftAnimation.OnMove();
 				leftWithFullAnimation.OnMove();
 				x -= STEP_SIZE_X;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingLeftCount++;
+				mapRecord->SetPlayerInMap(indexX - 1, indexY, CName::PLAYER);
+				if (movingLeftCount == STEP_TARGET)
 				{
-					mapRecord->SetPlayerInMap(indexX, indexY, CName::SPACE);
-					mapRecord->SetPlayerInMap(--indexX, indexY, CName::PLAYER);
-					movingCount = 0;
+					mapRecord->SetPlayerInMap(indexX--, indexY, CName::SPACE);
+					movingLeftCount = 0;
 					isMovingLeft = isKeyLeftPressed;
 				}
 			}
@@ -224,17 +224,17 @@ namespace game_framework {
 		}
 		else if (isMovingRight)
 		{
-			if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MUD_FOOD)
+			if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MUD_FOOD) || movingRightCount != 0)
 			{
 				rightAnimation.OnMove();
 				rightWithFullAnimation.OnMove();
 				x += STEP_SIZE_X;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingRightCount++;
+				mapRecord->SetPlayerInMap(indexX + 1, indexY, CName::PLAYER);
+				if (movingRightCount == STEP_TARGET)
 				{
-					mapRecord->SetPlayerInMap(indexX, indexY, CName::SPACE);
-					mapRecord->SetPlayerInMap(++indexX, indexY, CName::PLAYER);
-					movingCount = 0;
+					mapRecord->SetPlayerInMap(indexX++, indexY, CName::SPACE);
+					movingRightCount = 0;
 					isMovingRight = isKeyRightPressed;
 				}
 			}
@@ -245,17 +245,17 @@ namespace game_framework {
 		}
 		else if (isMovingUp)
 		{
-			if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MUD_FOOD)
+			if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MUD_FOOD) || movingUpCount != 0)
 			{
 				upAnimation.OnMove();
 				upWithFullAnimation.OnMove();
 				y -= STEP_SIZE_Y;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingUpCount++;
+				mapRecord->SetPlayerInMap(indexX, indexY - 1, CName::PLAYER);
+				if (movingUpCount == STEP_TARGET)
 				{
-					mapRecord->SetPlayerInMap(indexX, indexY, CName::SPACE);
-					mapRecord->SetPlayerInMap(indexX, --indexY, CName::PLAYER);
-					movingCount = 0;
+					mapRecord->SetPlayerInMap(indexX, indexY--, CName::SPACE);
+					movingUpCount = 0;
 					isMovingUp = isKeyUpPressed;
 				}
 			}
@@ -266,17 +266,17 @@ namespace game_framework {
 		}
 		else if (isMovingDown)
 		{
-			if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MUD_FOOD)
+			if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MUD_FOOD) || movingDownCount != 0)
 			{
 				downAnimation.OnMove();
 				downWithFullAnimation.OnMove();
 				y += STEP_SIZE_Y;
-				movingCount++;
-				if (movingCount == STEP_TARGET)
+				movingDownCount++;
+				mapRecord->SetPlayerInMap(indexX, indexY + 1, CName::PLAYER);
+				if (movingDownCount == STEP_TARGET)
 				{
-					mapRecord->SetPlayerInMap(indexX, indexY, CName::SPACE);
-					mapRecord->SetPlayerInMap(indexX, ++indexY, CName::PLAYER);
-					movingCount = 0;
+					mapRecord->SetPlayerInMap(indexX, indexY++, CName::SPACE);
+					movingDownCount = 0;
 					isMovingDown = isKeyDownPressed;
 				}
 			}

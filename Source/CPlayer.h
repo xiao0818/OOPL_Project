@@ -46,7 +46,10 @@ namespace game_framework {
 		bool isKeyLeftPressed;
 		bool isKeyRightPressed;
 		bool isKeyUpPressed;
-		int movingCount;
+		int movingLeftCount;
+		int movingRightCount;
+		int movingUpCount;
+		int movingDownCount;
 		CMap *mapRecord;
 		CDirection faceTo;
 		list<CBrick>::iterator swallowedBrick;
