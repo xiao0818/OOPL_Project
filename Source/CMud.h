@@ -12,6 +12,7 @@ namespace game_framework {
 		CMud();
 		int  GetIndexX();
 		int  GetIndexY();
+		bool IsFood();
 		void Initialize(CMap *map);
 		void LoadBitmap();
 		void OnMove();
@@ -20,6 +21,7 @@ namespace game_framework {
 		void OnShow();
 		void HitByBrick(CDirection tempDir);
 		void ReturnBack();
+		void Swallowed();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -45,6 +47,7 @@ namespace game_framework {
 		int hitCount;
 		CMap *mapRecord;
 		CDirection faceTo;
+		bool isAlive;
 	};
 }
 

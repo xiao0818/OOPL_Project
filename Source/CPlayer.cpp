@@ -307,7 +307,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(list<CBrick> &brick)
+	void CPlayer::PressKeySpace(list<CBrick> &brick, CMud *mud)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -325,6 +325,10 @@ namespace game_framework {
 							isSwallowed = true;
 						}
 					}
+					if (mud->GetIndexX() == indexX - 1 && mud->GetIndexY() == indexY && mud->IsFood())
+					{
+						mud->Swallowed();
+					}
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
@@ -336,6 +340,10 @@ namespace game_framework {
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
+					}
+					if (mud->GetIndexX() == indexX + 1 && mud->GetIndexY() == indexY && mud->IsFood())
+					{
+						mud->Swallowed();
 					}
 				}
 				else if (faceTo == CDirection::UP)
@@ -349,6 +357,10 @@ namespace game_framework {
 							isSwallowed = true;
 						}
 					}
+					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY - 1 && mud->IsFood())
+					{
+						mud->Swallowed();
+					}
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
@@ -360,6 +372,10 @@ namespace game_framework {
 							swallowedBrick = k;
 							isSwallowed = true;
 						}
+					}
+					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY + 1 && mud->IsFood())
+					{
+						mud->Swallowed();
 					}
 				}
 			}

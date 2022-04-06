@@ -225,7 +225,6 @@ namespace game_framework {
 
 	void CGameStateRun::OnBeginState()
 	{
-		TRACE("OnBeginState\n");
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
@@ -329,7 +328,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace(brick);
+			player.PressKeySpace(brick, &mud);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
