@@ -23,6 +23,7 @@ namespace game_framework {
 		void HitByBrick(CDirection tempDir);
 		void ReturnBack();
 		void Swallowed();
+		void Reset();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;

@@ -214,9 +214,6 @@ namespace game_framework {
 	CGameStateRun::CGameStateRun(CGame *g)
 	: CGameState(g)
 	{
-		wall.clear();
-		brick.clear();
-		//mud.clear();
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -230,6 +227,13 @@ namespace game_framework {
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
 		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
 		ground.SetXY(GROUND_X, GROUND_Y);
+
+		wall.clear();
+		brick.clear();
+		//mud.clear();
+		mud.Reset();
+
+		map.Initialize();
 
 		player.Initialize(&map);
 		mud.Initialize(&map);

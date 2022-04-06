@@ -467,4 +467,12 @@ namespace game_framework {
 		isAlive = false;
 		mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 	}
+	void CMud::Reset()
+	{
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		isHit = isFood = false;
+		isAlive = true;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = 0;
+		faceTo = SetMovingDirection();
+	}
 }

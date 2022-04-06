@@ -8,7 +8,7 @@ namespace game_framework {
 	{
 	public:
 		CMap();
-		~CMap();
+		void Initialize();
 		void SetPlayerInMap(int nx, int ny, CName name);
 		CName GetPlayerInMap(int nx, int ny);
 		void SetBrickInMap(int nx, int ny, CName name);
@@ -16,6 +16,7 @@ namespace game_framework {
 		void SetMonsterInMap(int nx, int ny, CName name);
 		CName GetMonsterInMap(int nx, int ny);
 	private:
+		CName map[14][14];
 		CName playerMap[14][14];
 		CName brickMap[14][14];
 		CName monsterMap[14][14];
