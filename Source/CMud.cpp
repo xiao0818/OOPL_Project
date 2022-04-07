@@ -124,7 +124,7 @@ namespace game_framework {
 		const int HIT_STEP_SIZE_X = 9;
 		const int HIT_STEP_SIZE_Y = 6;
 
-		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp)
+		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp && !isHit && !isFood && isAlive)
 		{
 			faceTo = SetMovingDirection();
 			movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
@@ -144,7 +144,7 @@ namespace game_framework {
 			if (foodTime == FOOD_TIME_LIMIT)
 			{
 				isFood = false;
-				isMovingDown = isMovingLeft = isMovingRight = isMovingUp = false;
+				isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 				foodTime = 0;
 				mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD);
 			}
@@ -152,64 +152,115 @@ namespace game_framework {
 
 		if (isHit)
 		{
-			if (faceTo == CDirection::LEFT)
+			if (isMovingLeft && movingLeftCount != 0)
 			{
-				hitLeftAnimation.OnMove();
-				//x += HIT_STEP_SIZE_X;
-				hitCount++;
-				if (hitCount == HIT_TARGET)
+				x -= STEP_SIZE_X;
+				movingLeftCount++;
+				mapRecord->SetMonsterInMap(indexX - 1, indexY, CName::MUD);
+				if (movingLeftCount == STEP_TARGET)
 				{
-					//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
-					//mapRecord->SetMonsterInMap(++indexX, indexY, CName::MUD_FOOD);
-					mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
-					isFood = true;
-					isHit = false;
-					hitCount = 0;
+					mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
+					movingLeftCount = 0;
+					isMovingLeft = false;
 				}
 			}
-			else if (faceTo == CDirection::RIGHT)
+			else if (isMovingRight && movingRightCount != 0)
 			{
-				hitRightAnimation.OnMove();
-				//x -= HIT_STEP_SIZE_X;
-				hitCount++;
-				if (hitCount == HIT_TARGET)
+				x += STEP_SIZE_X;
+				movingRightCount++;
+				mapRecord->SetMonsterInMap(indexX + 1, indexY, CName::MUD);
+				if (movingRightCount == STEP_TARGET)
 				{
-					//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
-					//mapRecord->SetMonsterInMap(--indexX, indexY, CName::MUD_FOOD);
-					mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
-					isFood = true;
-					isHit = false;
-					hitCount = 0;
+					mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
+					movingRightCount = 0;
+					isMovingRight = false;
 				}
 			}
-			else if (faceTo == CDirection::UP)
+			else if (isMovingUp && movingUpCount != 0)
 			{
-				hitUpAnimation.OnMove();
-				//y += HIT_STEP_SIZE_Y;
-				hitCount++;
-				if (hitCount == HIT_TARGET)
+				y -= STEP_SIZE_Y;
+				movingUpCount++;
+				mapRecord->SetMonsterInMap(indexX, indexY - 1, CName::MUD);
+				if (movingUpCount == STEP_TARGET)
 				{
-					//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
-					//mapRecord->SetMonsterInMap(indexX, ++indexY, CName::MUD_FOOD);
-					mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
-					isFood = true;
-					isHit = false;
-					hitCount = 0;
+					mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
+					movingUpCount = 0;
+					isMovingUp = false;
 				}
 			}
-			else if (faceTo == CDirection::DOWN)
+			else if (isMovingDown && movingDownCount != 0)
 			{
-				hitDownAnimation.OnMove();
-				//y -= HIT_STEP_SIZE_Y;
-				hitCount++;
-				if (hitCount == HIT_TARGET)
+				y += STEP_SIZE_Y;
+				movingDownCount++;
+				mapRecord->SetMonsterInMap(indexX, indexY + 1, CName::MUD);
+				if (movingDownCount == STEP_TARGET)
 				{
-					//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
-					//mapRecord->SetMonsterInMap(indexX, --indexY, CName::MUD_FOOD);
-					mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
-					isFood = true;
-					isHit = false;
-					hitCount = 0;
+					mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
+					movingDownCount = 0;
+					isMovingDown = false;
+				}
+			}
+			else
+			{
+				if (faceTo == CDirection::LEFT)
+				{
+					hitLeftAnimation.OnMove();
+					//x += HIT_STEP_SIZE_X;
+					hitCount++;
+					if (hitCount == HIT_TARGET)
+					{
+						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+						//mapRecord->SetMonsterInMap(++indexX, indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						isFood = true;
+						isHit = false;
+						hitCount = 0;
+					}
+				}
+				else if (faceTo == CDirection::RIGHT)
+				{
+					hitRightAnimation.OnMove();
+					//x -= HIT_STEP_SIZE_X;
+					hitCount++;
+					if (hitCount == HIT_TARGET)
+					{
+						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+						//mapRecord->SetMonsterInMap(--indexX, indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						isFood = true;
+						isHit = false;
+						hitCount = 0;
+					}
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					hitUpAnimation.OnMove();
+					//y += HIT_STEP_SIZE_Y;
+					hitCount++;
+					if (hitCount == HIT_TARGET)
+					{
+						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+						//mapRecord->SetMonsterInMap(indexX, ++indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						isFood = true;
+						isHit = false;
+						hitCount = 0;
+					}
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					hitDownAnimation.OnMove();
+					//y -= HIT_STEP_SIZE_Y;
+					hitCount++;
+					if (hitCount == HIT_TARGET)
+					{
+						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+						//mapRecord->SetMonsterInMap(indexX, --indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						isFood = true;
+						isHit = false;
+						hitCount = 0;
+					}
 				}
 			}
 		}
@@ -230,7 +281,8 @@ namespace game_framework {
 						movingLeftCount = 0;
 					}
 				}
-				else {
+				else
+				{
 					isMovingLeft = false;
 				}
 			}
@@ -413,7 +465,7 @@ namespace game_framework {
 	{
 		if (!isHit && !isFood)
 		{
-			ReturnBack();
+			//ReturnBack();
 			hitCount = 0;
 			faceTo = tempDir;
 			isHit = true;

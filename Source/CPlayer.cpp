@@ -323,6 +323,7 @@ namespace game_framework {
 							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
+							return;
 						}
 					}
 					if (mud->GetIndexX() == indexX - 1 && mud->GetIndexY() == indexY && mud->IsFood())
@@ -339,6 +340,7 @@ namespace game_framework {
 							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
+							return;
 						}
 					}
 					if (mud->GetIndexX() == indexX + 1 && mud->GetIndexY() == indexY && mud->IsFood())
@@ -355,6 +357,7 @@ namespace game_framework {
 							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
+							return;
 						}
 					}
 					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY - 1 && mud->IsFood())
@@ -371,8 +374,10 @@ namespace game_framework {
 							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
+							return;
 						}
 					}
+
 					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY + 1 && mud->IsFood())
 					{
 						mud->Swallowed();
