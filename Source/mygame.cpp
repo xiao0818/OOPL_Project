@@ -85,7 +85,9 @@ namespace game_framework {
 		//
 		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 		//
-	}
+		CAudio::Instance()->Load(AUDIO_MENU, ".\\Resources\\sound\\Square_Meal_Menu.mp3");
+		CAudio::Instance()->Load(AUDIO_MAIN, ".\\Resources\\sound\\Square_Meal_Main.mp3");
+	}		
 
 	void CGameStateInit::OnBeginState()
 	{
@@ -167,11 +169,18 @@ namespace game_framework {
 	{
 		counter--;
 		if (counter < 0)
+		{
+			CAudio::Instance()->Play(AUDIO_MENU, true);
+			CAudio::Instance()->Stop(AUDIO_MAIN);
 			GotoGameState(GAME_STATE_INIT);
+		}
 	}
 
 	void CGameStateOver::OnBeginState()
 	{
+		CAudio::Instance()->Stop(AUDIO_MENU);
+		CAudio::Instance()->Stop(AUDIO_MAIN);
+
 		counter = 30 * 5; // 5 seconds
 	}
 
@@ -190,6 +199,9 @@ namespace game_framework {
 		// 最終進度為100%
 		//
 		ShowInitProgress(100);
+
+		CAudio::Instance()->Play(AUDIO_MENU, true);
+		CAudio::Instance()->Stop(AUDIO_MAIN);
 	}
 
 	void CGameStateOver::OnShow()
@@ -222,6 +234,9 @@ namespace game_framework {
 
 	void CGameStateRun::OnBeginState()
 	{
+		CAudio::Instance()->Stop(AUDIO_MENU);
+		CAudio::Instance()->Play(AUDIO_MAIN, true);
+
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
