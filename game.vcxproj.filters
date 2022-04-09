@@ -132,6 +132,9 @@
     <ClCompile Include="Source\CMap.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CFood.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -192,6 +195,9 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CMap.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CFood.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -748,6 +754,33 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\turtle\right\turtle_move_right_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Apple.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Bread.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Carrot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Egg.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Grape.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Mutton.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Pie.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Tomato.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\food\Turkey.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

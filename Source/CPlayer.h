@@ -5,6 +5,7 @@
 #include "CDirection.h"
 #include "CMap.h"
 #include "CBrick.h"
+#include "CFood.h"
 
 namespace game_framework {
 	class CPlayer
@@ -20,7 +21,7 @@ namespace game_framework {
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
-		void PressKeySpace(list<CBrick> &brick, CMud *mud);
+		void PressKeySpace(list<CBrick> &brick, list<CFood> &food, CMud *mud);
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:

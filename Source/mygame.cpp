@@ -245,6 +245,7 @@ namespace game_framework {
 
 		wall.clear();
 		brick.clear();
+		food.clear();
 		//mud.clear();
 		mud.Reset();
 
@@ -301,6 +302,14 @@ namespace game_framework {
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);
 				}
+				else if (map.GetFoodInMap(i, j) == CName::APPLE || map.GetFoodInMap(i, j) == CName::BREAD || map.GetFoodInMap(i, j) == CName::CARROT || map.GetFoodInMap(i, j) == CName::EGG || map.GetFoodInMap(i, j) == CName::GRAPE || map.GetFoodInMap(i, j) == CName::MUTTON || map.GetFoodInMap(i, j) == CName::PIE || map.GetFoodInMap(i, j) == CName::TOMATO || map.GetFoodInMap(i, j) == CName::TURKEY)
+				{
+					CFood tempFood;
+					tempFood.Initialize(&map);
+					tempFood.LoadBitmap(map.GetFoodInMap(i, j));
+					tempFood.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					food.push_back(tempFood);
+				}
 			}
 		}
 	}
@@ -310,6 +319,10 @@ namespace game_framework {
 		player.OnMove();
 		mud.OnMove();
 		for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
+		{
+			k->OnMove();
+		}
+		for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
 		{
 			k->OnMove();
 		}
@@ -351,7 +364,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace(brick, &mud);
+			player.PressKeySpace(brick, food, &mud);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -405,6 +418,13 @@ namespace game_framework {
 				}
 			}
 			for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
+			{
+				if (k->GetIndexY() == j)
+				{
+					k->OnShow();
+				}
+			}
+			for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
 			{
 				if (k->GetIndexY() == j)
 				{

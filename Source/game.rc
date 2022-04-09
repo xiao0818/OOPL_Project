@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (繁體，台灣) resources
+// Chinese (Traditional, Taiwan) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -458,6 +458,24 @@ IDB_TURTLE_MOVE_RIGHT_007 BITMAP                  "..\\Resources\\turtle\\right\
 
 IDB_TURTLE_MOVE_RIGHT_008 BITMAP                  "..\\Resources\\turtle\\right\\turtle_move_right_007.bmp"
 
+IDB_APPLE               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Apple.bmp"
+
+IDB_BREAD               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Bread.bmp"
+
+IDB_CARROT              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Carrot.bmp"
+
+IDB_EGG                 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Egg.bmp"
+
+IDB_GRAPE               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Grape.bmp"
+
+IDB_MUTTON              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Mutton.bmp"
+
+IDB_PIE                 BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Pie.bmp"
+
+IDB_TOMATO              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Tomato.bmp"
+
+IDB_TURKEY              BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\food\\Turkey.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -466,12 +484,12 @@ IDB_TURTLE_MOVE_RIGHT_008 BITMAP                  "..\\Resources\\turtle\\right\
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // 中文 (繁體，台灣) resources
+#endif    // Chinese (Traditional, Taiwan) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 英文 (美國) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -769,7 +787,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // 英文 (美國) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

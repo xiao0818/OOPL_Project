@@ -203,7 +203,7 @@ namespace game_framework {
 
 		if (isMovingLeft)
 		{
-			if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MUD_FOOD) || movingLeftCount != 0)
+			if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MUD_FOOD && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 			{
 				leftAnimation.OnMove();
 				leftWithFullAnimation.OnMove();
@@ -224,7 +224,7 @@ namespace game_framework {
 		}
 		else if (isMovingRight)
 		{
-			if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MUD_FOOD) || movingRightCount != 0)
+			if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MUD_FOOD && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 			{
 				rightAnimation.OnMove();
 				rightWithFullAnimation.OnMove();
@@ -245,7 +245,7 @@ namespace game_framework {
 		}
 		else if (isMovingUp)
 		{
-			if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MUD_FOOD) || movingUpCount != 0)
+			if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MUD_FOOD && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 			{
 				upAnimation.OnMove();
 				upWithFullAnimation.OnMove();
@@ -266,7 +266,7 @@ namespace game_framework {
 		}
 		else if (isMovingDown)
 		{
-			if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MUD_FOOD) || movingDownCount != 0)
+			if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MUD_FOOD && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
 			{
 				downAnimation.OnMove();
 				downWithFullAnimation.OnMove();
@@ -307,7 +307,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(list<CBrick> &brick, CMud *mud)
+	void CPlayer::PressKeySpace(list<CBrick> &brick, list<CFood> &food, CMud *mud)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -323,6 +323,14 @@ namespace game_framework {
 							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
+							return;
+						}
+					}
+					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					{
+						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
+						{
+							k->Swallowed(faceTo);
 							return;
 						}
 					}
@@ -343,6 +351,14 @@ namespace game_framework {
 							return;
 						}
 					}
+					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					{
+						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
+						{
+							k->Swallowed(faceTo);
+							return;
+						}
+					}
 					if (mud->GetIndexX() == indexX + 1 && mud->GetIndexY() == indexY && mud->IsFood())
 					{
 						mud->Swallowed();
@@ -357,6 +373,14 @@ namespace game_framework {
 							k->Swallowed(faceTo);
 							swallowedBrick = k;
 							isSwallowed = true;
+							return;
+						}
+					}
+					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					{
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
+						{
+							k->Swallowed(faceTo);
 							return;
 						}
 					}
@@ -377,7 +401,14 @@ namespace game_framework {
 							return;
 						}
 					}
-
+					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					{
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
+						{
+							k->Swallowed(faceTo);
+							return;
+						}
+					}
 					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY + 1 && mud->IsFood())
 					{
 						mud->Swallowed();

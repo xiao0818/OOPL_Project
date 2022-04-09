@@ -269,7 +269,7 @@ namespace game_framework {
 		{
 			if (isMovingLeft)
 			{
-				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 				{
 					leftAnimation.OnMove();
 					x -= STEP_SIZE_X;
@@ -288,7 +288,7 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 				{
 					rightAnimation.OnMove();
 					x += STEP_SIZE_X;
@@ -307,7 +307,7 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 				{
 					upAnimation.OnMove();
 					y -= STEP_SIZE_Y;
@@ -326,7 +326,7 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
 				{
 					downAnimation.OnMove();
 					y += STEP_SIZE_Y;

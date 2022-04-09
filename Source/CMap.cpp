@@ -10,7 +10,7 @@ namespace game_framework {
 	CMap::CMap()
 	{
 		CName mapInit[14][14] = { {CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
-								{CName::WALL, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::MUD, CName::APPLE, CName::BREAD, CName::CARROT, CName::EGG, CName::GRAPE, CName::MUTTON, CName::PIE, CName::TOMATO, CName::TURKEY, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
@@ -41,6 +41,7 @@ namespace game_framework {
 			{
 				playerMap[i][j] = CName::SPACE;
 				brickMap[i][j] = CName::SPACE;
+				foodMap[i][j] = CName::SPACE;
 				monsterMap[i][j] = CName::SPACE;
 
 				if (map[j][i] == CName::PLAYER)
@@ -50,6 +51,10 @@ namespace game_framework {
 				else if (map[j][i] == CName::WALL || map[j][i] == CName::STONE || map[j][i] == CName::WOODEN || map[j][i] == CName::STEEL)
 				{
 					brickMap[i][j] = map[j][i];
+				}
+				else if (map[j][i] == CName::APPLE || map[j][i] == CName::BREAD || map[j][i] == CName::CARROT || map[j][i] == CName::EGG || map[j][i] == CName::GRAPE || map[j][i] == CName::MUTTON || map[j][i] == CName::PIE || map[j][i] == CName::TOMATO || map[j][i] == CName::TURKEY)
+				{
+					foodMap[i][j] = map[j][i];
 				}
 				else if (map[j][i] == CName::MUD)
 				{
@@ -77,6 +82,16 @@ namespace game_framework {
 	CName CMap::GetBrickInMap(int nx, int ny)
 	{
 		return brickMap[nx][ny];
+	}
+
+	void CMap::SetFoodInMap(int nx, int ny, CName name)
+	{
+		foodMap[nx][ny] = name;
+	}
+
+	CName CMap::GetFoodInMap(int nx, int ny)
+	{
+		return foodMap[nx][ny];
 	}
 
 	void CMap::SetMonsterInMap(int nx, int ny, CName name)

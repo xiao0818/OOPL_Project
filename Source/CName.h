@@ -10,6 +10,15 @@ namespace game_framework {
 		STONE,
 		WOODEN,
 		STEEL,
+		APPLE,
+		BREAD,
+		CARROT,
+		EGG,
+		GRAPE,
+		MUTTON,
+		PIE,
+		TOMATO,
+		TURKEY,
 		MUD,
 		MUD_FOOD
 	};
