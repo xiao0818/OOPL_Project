@@ -249,6 +249,8 @@ namespace game_framework {
 		//mud.clear();
 		mud.Reset();
 
+		gameEndConut = 0;
+
 		grade.SetInteger(0);
 		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
 
@@ -335,7 +337,11 @@ namespace game_framework {
 		}*/
 		if (mud.IsAlive() == false)
 		{
-			GotoGameState(GAME_STATE_OVER);
+			gameEndConut++;
+			if (gameEndConut == 5 * 30)
+			{
+				GotoGameState(GAME_STATE_OVER);
+			}
 		}
 	}
 

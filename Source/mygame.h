@@ -112,6 +112,7 @@ namespace game_framework {
 		list<CFood>			food;
 		//list<CMud>			mud;
 		CMud				mud;
+		int					gameEndConut;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
