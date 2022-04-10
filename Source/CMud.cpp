@@ -140,6 +140,10 @@ namespace game_framework {
 
 		if (isFood)
 		{
+			hitLeftAnimation.OnMove();
+			hitRightAnimation.OnMove();
+			hitUpAnimation.OnMove();
+			hitDownAnimation.OnMove();
 			foodTime++;
 			if (foodTime == FOOD_TIME_LIMIT)
 			{
@@ -154,6 +158,7 @@ namespace game_framework {
 		{
 			if (isMovingLeft && movingLeftCount != 0)
 			{
+				hitLeftAnimation.OnMove();
 				x -= STEP_SIZE_X;
 				movingLeftCount++;
 				mapRecord->SetMonsterInMap(indexX - 1, indexY, CName::MUD);
@@ -166,6 +171,7 @@ namespace game_framework {
 			}
 			else if (isMovingRight && movingRightCount != 0)
 			{
+				hitRightAnimation.OnMove();
 				x += STEP_SIZE_X;
 				movingRightCount++;
 				mapRecord->SetMonsterInMap(indexX + 1, indexY, CName::MUD);
@@ -178,6 +184,7 @@ namespace game_framework {
 			}
 			else if (isMovingUp && movingUpCount != 0)
 			{
+				hitUpAnimation.OnMove();
 				y -= STEP_SIZE_Y;
 				movingUpCount++;
 				mapRecord->SetMonsterInMap(indexX, indexY - 1, CName::MUD);
@@ -190,6 +197,7 @@ namespace game_framework {
 			}
 			else if (isMovingDown && movingDownCount != 0)
 			{
+				hitDownAnimation.OnMove();
 				y += STEP_SIZE_Y;
 				movingDownCount++;
 				mapRecord->SetMonsterInMap(indexX, indexY + 1, CName::MUD);
@@ -384,37 +392,21 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					if (!isMovingLeft)
-					{
-						hitLeftAnimation.Reset();
-					}
 					hitLeftAnimation.SetTopLeft(x + (72 / 2) - (hitLeftAnimation.Width() / 2), y + 46 - hitLeftAnimation.Height());
 					hitLeftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					if (!isMovingRight)
-					{
-						hitRightAnimation.Reset();
-					}
 					hitRightAnimation.SetTopLeft(x + (72 / 2) - (hitRightAnimation.Width() / 2), y + 46 - hitRightAnimation.Height());
 					hitRightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					if (!isMovingUp)
-					{
-						hitUpAnimation.Reset();
-					}
 					hitUpAnimation.SetTopLeft(x + (72 / 2) - (hitUpAnimation.Width() / 2), y + 46 - hitUpAnimation.Height());
 					hitUpAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					if (!isMovingDown)
-					{
-						hitDownAnimation.Reset();
-					}
 					hitDownAnimation.SetTopLeft(x + (72 / 2) - (hitDownAnimation.Width() / 2), y + 46 - hitDownAnimation.Height());
 					hitDownAnimation.OnShow();
 				}
