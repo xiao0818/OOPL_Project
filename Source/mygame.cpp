@@ -249,6 +249,9 @@ namespace game_framework {
 		//mud.clear();
 		mud.Reset();
 
+		grade.SetInteger(0);
+		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
+
 		map.Initialize();
 
 		player.Initialize(&map);
@@ -341,6 +344,7 @@ namespace game_framework {
 		ShowInitProgress(33);
 
 		ground.LoadBitmap();
+		grade.LoadBitmap();
 		player.LoadBitmap();
 		mud.LoadBitmap();
 
@@ -364,7 +368,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace(brick, food, &mud);
+			player.PressKeySpace(&grade, brick, food, &mud);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -407,6 +411,7 @@ namespace game_framework {
 	void CGameStateRun::OnShow()
 	{
 		ground.OnShow();
+		grade.ShowBitmap();
 
 		for (int j = 0; j < 14; j++)
 		{

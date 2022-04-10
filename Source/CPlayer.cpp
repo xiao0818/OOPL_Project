@@ -307,7 +307,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(list<CBrick> &brick, list<CFood> &food, CMud *mud)
+	void CPlayer::PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, CMud *mud)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -331,6 +331,7 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
 						{
 							k->Swallowed(faceTo);
+							grade->Add(50);
 							return;
 						}
 					}
@@ -356,6 +357,7 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
 						{
 							k->Swallowed(faceTo);
+							grade->Add(50);
 							return;
 						}
 					}
@@ -381,6 +383,7 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
 						{
 							k->Swallowed(faceTo);
+							grade->Add(50);
 							return;
 						}
 					}
@@ -406,12 +409,14 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
 						{
 							k->Swallowed(faceTo);
+							grade->Add(50);
 							return;
 						}
 					}
 					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY + 1 && mud->IsFood())
 					{
 						mud->Swallowed();
+						grade->Add(100);
 					}
 				}
 			}

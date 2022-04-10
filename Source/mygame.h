@@ -104,6 +104,7 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CMap				map;
+		CInteger			grade;
 		CGround				ground;
 		CPlayer				player;
 		list<CWall>			wall;
