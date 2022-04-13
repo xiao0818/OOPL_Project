@@ -29,7 +29,7 @@ namespace game_framework {
 		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	}
 
-	void CBrick::Initialize(CMap *map, CMud *mud)
+	void CBrick::Initialize(CMap *map, list<CMud> *mud)
 	{
 		mapRecord = map;
 		mudRecord = mud;
@@ -106,8 +106,14 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
 					if (movingLeftCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MUD) {
-							mudRecord->HitByBrick(CDirection::LEFT);
+						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
+							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							{
+								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+								{
+									k->HitByBrick(CDirection::LEFT);
+								}
+							}
 						}
 						mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
 						movingLeftCount = 0;
@@ -128,8 +134,14 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
 					if (movingRightCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MUD) {
-							mudRecord->HitByBrick(CDirection::RIGHT);
+						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
+							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							{
+								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+								{
+									k->HitByBrick(CDirection::LEFT);
+								}
+							}
 						}
 						mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
 						movingRightCount = 0;
@@ -150,8 +162,14 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
 					if (movingUpCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MUD) {
-							mudRecord->HitByBrick(CDirection::UP);
+						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
+							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							{
+								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+								{
+									k->HitByBrick(CDirection::LEFT);
+								}
+							}
 						}
 						mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
 						movingUpCount = 0;
@@ -172,8 +190,14 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
 					if (movingDownCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MUD) {
-							mudRecord->HitByBrick(CDirection::DOWN);
+						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
+							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							{
+								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+								{
+									k->HitByBrick(CDirection::LEFT);
+								}
+							}
 						}
 						mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
 						movingDownCount = 0;

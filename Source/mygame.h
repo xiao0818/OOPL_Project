@@ -110,8 +110,8 @@ namespace game_framework {
 		list<CWall>			wall;
 		list<CBrick>		brick;
 		list<CFood>			food;
-		//list<CMud>			mud;
-		CMud				mud;
+		list<CMud>			mud;
+		//CMud				mud;
 		int					gameEndConut;
 	};
 

@@ -307,7 +307,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, CMud *mud)
+	void CPlayer::PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, list<CMud> &mud)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -335,9 +335,13 @@ namespace game_framework {
 							return;
 						}
 					}
-					if (mud->GetIndexX() == indexX - 1 && mud->GetIndexY() == indexY && mud->IsFood())
+					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
 					{
-						mud->Swallowed();
+						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsFood())
+						{
+							k->Swallowed();
+							grade->Add(100);
+						}
 					}
 				}
 				else if (faceTo == CDirection::RIGHT)
@@ -361,9 +365,13 @@ namespace game_framework {
 							return;
 						}
 					}
-					if (mud->GetIndexX() == indexX + 1 && mud->GetIndexY() == indexY && mud->IsFood())
+					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
 					{
-						mud->Swallowed();
+						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsFood())
+						{
+							k->Swallowed();
+							grade->Add(100);
+						}
 					}
 				}
 				else if (faceTo == CDirection::UP)
@@ -387,9 +395,13 @@ namespace game_framework {
 							return;
 						}
 					}
-					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY - 1 && mud->IsFood())
+					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
 					{
-						mud->Swallowed();
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsFood())
+						{
+							k->Swallowed();
+							grade->Add(100);
+						}
 					}
 				}
 				else if (faceTo == CDirection::DOWN)
@@ -413,10 +425,13 @@ namespace game_framework {
 							return;
 						}
 					}
-					if (mud->GetIndexX() == indexX && mud->GetIndexY() == indexY + 1 && mud->IsFood())
+					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
 					{
-						mud->Swallowed();
-						grade->Add(100);
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsFood())
+						{
+							k->Swallowed();
+							grade->Add(100);
+						}
 					}
 				}
 			}

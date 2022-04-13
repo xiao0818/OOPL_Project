@@ -237,8 +237,7 @@ public:
 
 	void  ClearBitmapList();
 private:
-	list<CMovingBitmap>				bmp;			// list of CMovingBitmap
-	list<CMovingBitmap>::iterator	bmp_iter;		// list iterator
+	vector<CMovingBitmap>			bmp;			// list of CMovingBitmap
 	int								bmp_counter;	// 儲存bmp_iter為第n個bmp
 	int								delay_counter;	// 延緩動畫播放速度的計數器
 	int								delay_count;	// 動畫播放速度的常數

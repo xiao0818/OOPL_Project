@@ -246,8 +246,7 @@ namespace game_framework {
 		wall.clear();
 		brick.clear();
 		food.clear();
-		//mud.clear();
-		mud.Reset();
+		mud.clear();
 
 		gameEndConut = 0;
 
@@ -257,7 +256,6 @@ namespace game_framework {
 		map.Initialize();
 
 		player.Initialize(&map);
-		mud.Initialize(&map);
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -269,12 +267,11 @@ namespace game_framework {
 				}
 				else if(map.GetMonsterInMap(i, j) == CName::MUD)
 				{
-					mud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					/*CMud tempMud;
-					tempMud.Initialize(map);
+					CMud tempMud;
+					tempMud.Initialize(&map);
 					tempMud.LoadBitmap();
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					mud.push_back(tempMud);*/
+					mud.push_back(tempMud);
 				}
 				else if (map.GetBrickInMap(i, j) == CName::WALL)
 				{
@@ -322,7 +319,6 @@ namespace game_framework {
 	void CGameStateRun::OnMove()
 	{
 		player.OnMove();
-		mud.OnMove();
 		for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 		{
 			k->OnMove();
@@ -331,11 +327,17 @@ namespace game_framework {
 		{
 			k->OnMove();
 		}
-		/*for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+		for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
 		{
 			m->OnMove();
-		}*/
-		if (mud.IsAlive() == false)
+		}
+
+		bool gameAliveFlag = false;
+		for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+		{
+			gameAliveFlag = gameAliveFlag || m->IsAlive();
+		}
+		if (gameAliveFlag == false)
 		{
 			gameEndConut++;
 			if (gameEndConut == 5 * 30)
@@ -352,7 +354,6 @@ namespace game_framework {
 		ground.LoadBitmap();
 		grade.LoadBitmap();
 		player.LoadBitmap();
-		mud.LoadBitmap();
 
 		ShowInitProgress(50);
 		Sleep(300);
@@ -374,7 +375,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace(&grade, brick, food, &mud);
+			player.PressKeySpace(&grade, brick, food, mud);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -442,21 +443,17 @@ namespace game_framework {
 					k->OnShow();
 				}
 			}
-			if (player.GetIndexY() == j)
-			{
-				player.OnShow();
-			}
-			if (mud.GetIndexY() == j)
-			{
-				mud.OnShow();
-			}
-			/*for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+			for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
 			{
 				if (m->GetIndexY() == j)
 				{
 					m->OnShow();
 				}
-			}*/
+			}
+			if (player.GetIndexY() == j)
+			{
+				player.OnShow();
+			}
 		}
 	}
 }
