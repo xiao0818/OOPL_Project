@@ -121,7 +121,6 @@ namespace game_framework {
 						}
 						mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
 						movingLeftCount = 0;
-						isMovingLeft = (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE);
 					}
 				}
 				else
@@ -149,7 +148,6 @@ namespace game_framework {
 						}
 						mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
 						movingRightCount = 0;
-						isMovingRight = (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE);
 					}
 				}
 				else
@@ -177,7 +175,6 @@ namespace game_framework {
 						}
 						mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
 						movingUpCount = 0;
-						isMovingUp = (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE);
 					}
 				}
 				else
@@ -205,7 +202,6 @@ namespace game_framework {
 						}
 						mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
 						movingDownCount = 0;
-						isMovingDown = (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE);
 					}
 				}
 				else
