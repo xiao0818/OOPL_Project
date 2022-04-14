@@ -33,18 +33,22 @@ namespace game_framework {
 	{
 		mapRecord = map;
 		mudRecord = mud;
+		SetStep();
 	}
 
 	void CBrick::LoadBitmap()
 	{
-		//bitmap.LoadBitmap(IDB_STONE_BRICK);
+	}
+
+	void CBrick::SetStep()
+	{
 	}
 
 	void CBrick::OnMove()
 	{
-		const int STEP_TARGET = 6;
-		const int STEP_SIZE_X = 12;
-		const int STEP_SIZE_Y = 8;
+		const int SWALLOWED_STEP_TARGET = 6;
+		const int SWALLOWED_STEP_SIZE_X = 12;
+		const int SWALLOWED_STEP_SIZE_Y = 8;
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
 
@@ -52,9 +56,9 @@ namespace game_framework {
 		{
 			if (isMovingLeft)
 			{
-				x -= STEP_SIZE_X;
+				x -= SWALLOWED_STEP_SIZE_X;
 				movingLeftCount++;
-				if (movingLeftCount == STEP_TARGET)
+				if (movingLeftCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingLeftCount = 0;
@@ -63,9 +67,9 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				x += STEP_SIZE_X;
+				x += SWALLOWED_STEP_SIZE_X;
 				movingRightCount++;
-				if (movingRightCount == STEP_TARGET)
+				if (movingRightCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingRightCount = 0;
@@ -74,9 +78,9 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				y -= STEP_SIZE_Y;
+				y -= SWALLOWED_STEP_SIZE_Y;
 				movingUpCount++;
-				if (movingUpCount == STEP_TARGET)
+				if (movingUpCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingUpCount = 0;
@@ -85,9 +89,9 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				y += STEP_SIZE_Y;
+				y += SWALLOWED_STEP_SIZE_Y;
 				movingDownCount++;
-				if (movingDownCount == STEP_TARGET)
+				if (movingDownCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 					movingDownCount = 0;

@@ -38,6 +38,13 @@ namespace game_framework {
 		bitmap.LoadBitmap(IDB_STONE_BRICK);
 	}
 
+	void CStone::SetStep()
+	{
+		STEP_TARGET = 6;
+		STEP_SIZE_X = 12;
+		STEP_SIZE_Y = 8;
+	}
+
 	//void CStone::OnMove()
 	//{
 	//	const int STEP_TARGET = 6;

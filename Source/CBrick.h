@@ -16,6 +16,7 @@ namespace game_framework {
 		bool IsMove();
 		void Initialize(CMap *map, list<CMud> *mud);
 		virtual void LoadBitmap();
+		virtual void SetStep();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 		void SetXY(int ni, int nj, int nx, int ny);
@@ -37,6 +38,9 @@ namespace game_framework {
 		int movingDownCount;
 		bool isAlive;
 		bool isSwallowed;
+		int STEP_TARGET;
+		int STEP_SIZE_X;
+		int STEP_SIZE_Y;
 	};
 }
 

@@ -38,6 +38,13 @@ namespace game_framework {
 		bitmap.LoadBitmap(IDB_STEEL_BRICK);
 	}
 
+	void CSteel::SetStep()
+	{
+		STEP_TARGET = 12;
+		STEP_SIZE_X = 6;
+		STEP_SIZE_Y = 4;
+	}
+
 	//void CSteel::OnMove()
 	//{
 	//	const int STEP_TARGET = 6;
