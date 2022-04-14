@@ -99,7 +99,7 @@ namespace game_framework {
 		{
 			if (isMovingLeft)
 			{
-				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 				{
 					x -= STEP_SIZE_X;
 					movingLeftCount++;
@@ -127,7 +127,7 @@ namespace game_framework {
 			}
 			else if (isMovingRight)
 			{
-				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 				{
 					x += STEP_SIZE_X;
 					movingRightCount++;
@@ -155,7 +155,7 @@ namespace game_framework {
 			}
 			else if (isMovingUp)
 			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 				{
 					y -= STEP_SIZE_Y;
 					movingUpCount++;
@@ -183,7 +183,7 @@ namespace game_framework {
 			}
 			else if (isMovingDown)
 			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
+				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
 				{
 					y += STEP_SIZE_Y;
 					movingDownCount++;

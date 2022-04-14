@@ -439,7 +439,7 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE)
+					if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
@@ -447,7 +447,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE)
+					if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
@@ -455,7 +455,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE)
+					if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;
@@ -463,7 +463,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE)
+					if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
 						isSwallowed = false;

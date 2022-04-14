@@ -14,7 +14,7 @@ namespace game_framework {
 								{CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
+								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::STEEL, CName::STONE, CName::WOODEN, CName::SPACE, CName::STONE, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::BREAD, CName::SPACE, CName::SPACE, CName::SPACE, CName::PLAYER, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::APPLE, CName::SPACE, CName::WALL},
 								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::MUTTON, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
