@@ -258,6 +258,7 @@
     <ClCompile Include="Source\CFood.cpp" />
     <ClCompile Include="Source\CGround.cpp" />
     <ClCompile Include="Source\CMap.cpp" />
+    <ClCompile Include="Source\CMonster.cpp" />
     <ClCompile Include="Source\CMud.cpp" />
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CSteel.cpp" />
@@ -312,6 +313,7 @@
     <ClInclude Include="Source\CFood.h" />
     <ClInclude Include="Source\CGround.h" />
     <ClInclude Include="Source\CMap.h" />
+    <ClInclude Include="Source\CMonster.h" />
     <ClInclude Include="Source\CMud.h" />
     <ClInclude Include="Source\CName.h" />
     <ClInclude Include="Source\CPlayer.h" />

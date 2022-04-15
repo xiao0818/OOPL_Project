@@ -20,7 +20,9 @@ namespace game_framework {
 		TOMATO,
 		TURKEY,
 		MUD,
-		MUD_FOOD
+		MUD_FOOD,
+		TURTLE,
+		TURTLE_FOOD
 	};
 }
 
