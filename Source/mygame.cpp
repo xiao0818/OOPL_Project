@@ -85,8 +85,8 @@ namespace game_framework {
 		//
 		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 		//
-		CAudio::Instance()->Load(AUDIO_MENU, ".\\Resources\\sound\\Square_Meal_Menu.mp3");
-		CAudio::Instance()->Load(AUDIO_MAIN, ".\\Resources\\sound\\Square_Meal_Main.mp3");
+		CAudio::Instance()->Load(AUDIO_MENU, ".\\Resources\\audio\\Square_Meal_Menu.mp3");
+		CAudio::Instance()->Load(AUDIO_MAIN, ".\\Resources\\audio\\Square_Meal_Main.mp3");
 	}		
 
 	void CGameStateInit::OnBeginState()

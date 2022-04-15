@@ -29,6 +29,11 @@ namespace game_framework {
 		mapRecord = map;
 	}
 
+	bool CFood::IsAlive()
+	{
+		return isAlive;
+	}
+
 	void CFood::LoadBitmap(CName name)
 	{
 		if (name == CName::APPLE)

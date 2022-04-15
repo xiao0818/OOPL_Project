@@ -508,7 +508,7 @@ namespace game_framework {
 
 	void CMud::Swallowed()
 	{
-		isAlive = false;
+		isAlive = isFood = false;
 		mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 	}
 	void CMud::Reset()

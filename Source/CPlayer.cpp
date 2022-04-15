@@ -328,7 +328,7 @@ namespace game_framework {
 					}
 					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
 					{
-						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY)
+						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							grade->Add(50);
@@ -358,7 +358,7 @@ namespace game_framework {
 					}
 					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
 					{
-						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY)
+						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							grade->Add(50);
@@ -388,7 +388,7 @@ namespace game_framework {
 					}
 					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
 					{
-						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1)
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							grade->Add(50);
@@ -418,7 +418,7 @@ namespace game_framework {
 					}
 					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
 					{
-						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1)
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							grade->Add(50);

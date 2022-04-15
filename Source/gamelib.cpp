@@ -165,7 +165,6 @@ int CAnimation::GetCurrentBitmapNumber()
 
 int CAnimation::Height()
 {
-	TRACE("Height\n");
 	GAME_ASSERT(bmp.size() != 0,"CAnimation: Bitmaps must be loaded first.");
 	return bmp.at(bmp_counter).Height();
 }
@@ -184,7 +183,6 @@ int CAnimation::Left()
 
 void CAnimation::OnMove()
 {
-	TRACE("OnMove\n");
 	GAME_ASSERT(bmp.size() != 0,"CAnimation: Bitmaps must be loaded first.");
 	if (--delay_counter <= 0)  {
 		delay_counter = delay_count;
@@ -197,7 +195,6 @@ void CAnimation::OnMove()
 
 void CAnimation::Reset()
 {
-	TRACE("Reset\n");
 	GAME_ASSERT(bmp.size() != 0,"CAnimation: Bitmaps must be loaded first.");
 	delay_counter = delay_count;
 	bmp_counter = 0;
@@ -211,14 +208,12 @@ void CAnimation::SetDelayCount(int dc)
 
 void CAnimation::SetTopLeft(int nx, int ny)
 {
-	TRACE("SetTopLeft\n");
 	x = nx, y = ny;
 	bmp.at(bmp_counter).SetTopLeft(x, y);
 }
 
 void CAnimation::OnShow()
 {
-	TRACE("OnShow\n");
 	GAME_ASSERT(bmp.size() != 0,"CAnimation: Bitmaps must be loaded before they are shown.");
 	bmp.at(bmp_counter).SetTopLeft(x,y);
 	bmp.at(bmp_counter).ShowBitmap();
@@ -232,7 +227,6 @@ int CAnimation::Top()
 
 int CAnimation::Width()
 {
-	TRACE("Width\n");
 	GAME_ASSERT(bmp.size() != 0,"CAnimation: Bitmaps must be loaded first.");
 	return bmp.at(bmp_counter).Width();
 }
