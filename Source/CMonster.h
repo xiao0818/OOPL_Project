@@ -10,6 +10,8 @@ namespace game_framework {
 		CMonster();
 		int  GetIndexX();
 		int  GetIndexY();
+		int  GetNextIndexX();
+		int  GetNextIndexY();
 		bool IsFood();
 		bool IsAlive();
 		void Initialize(CMap *map);

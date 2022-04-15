@@ -22,12 +22,46 @@ namespace game_framework {
 		downAnimation.SetDelayCount(2);
 	}
 
-	int CMonster::GetIndexX() {
+	int CMonster::GetIndexX()
+	{
 		return indexX;
 	}
 
-	int CMonster::GetIndexY() {
+	int CMonster::GetIndexY()
+	{
 		return indexY;
+	}
+
+	int CMonster::GetNextIndexX()
+	{
+		if (faceTo == CDirection::LEFT)
+		{
+			return indexX - 1;
+		}
+		else if (faceTo == CDirection::RIGHT)
+		{
+			return indexX + 1;
+		}
+		else
+		{
+			return indexX;
+		}
+	}
+
+	int CMonster::GetNextIndexY()
+	{
+		if (faceTo == CDirection::UP)
+		{
+			return indexY - 1;
+		}
+		else if (faceTo == CDirection::DOWN)
+		{
+			return indexY + 1;
+		}
+		else
+		{
+			return indexY;
+		}
 	}
 
 	bool CMonster::IsFood()
