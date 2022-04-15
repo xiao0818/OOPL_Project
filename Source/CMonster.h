@@ -12,9 +12,10 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsFood();
 		bool IsAlive();
+		bool IsInvincible();
 		void Initialize(CMap *map);
 		virtual void LoadBitmap();
-		void OnMove();
+		virtual void OnMove();
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
@@ -39,7 +40,7 @@ namespace game_framework {
 		bool isMovingUp;
 		bool isHit;
 		bool isFood;
-		int foodTime;
+		int invincibleTime;
 		int movingLeftCount;
 		int movingRightCount;
 		int movingUpCount;
