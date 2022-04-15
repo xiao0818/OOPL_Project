@@ -17,10 +17,11 @@ namespace game_framework {
 		//	bool IsAlive();
 		//	void Initialize(CMap *map);
 		virtual void LoadBitmap() override;
-		//	void OnMove();
+		//virtual	void OnMove() override;
+		bool changeInvincible();
 		//	CDirection SetMovingDirection();
 		//	void SetXY(int ni, int nj, int nx, int ny);
-		//	void OnShow();
+		//virtual	void OnShow() override;
 		//	void HitByBrick(CDirection tempDir);
 		//	void ReturnBack();
 		//	void Swallowed();

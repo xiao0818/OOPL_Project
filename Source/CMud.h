@@ -17,7 +17,7 @@ namespace game_framework {
 	//	bool IsAlive();
 	//	void Initialize(CMap *map);
 		virtual void LoadBitmap() override;
-	//	void OnMove();
+	//	virtual void OnMove() override;
 	//	CDirection SetMovingDirection();
 	//	void SetXY(int ni, int nj, int nx, int ny);
 	//	void OnShow();
