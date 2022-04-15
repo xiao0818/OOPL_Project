@@ -4,7 +4,8 @@
 #include "CName.h"
 #include "CDirection.h"
 #include "CMap.h"
-#include "CMud.h"
+#include "CMonster.h"
+//#include "CMud.h"
 
 namespace game_framework {
 	class CBrick
@@ -14,7 +15,8 @@ namespace game_framework {
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsMove();
-		void Initialize(CMap *map, list<CMud> *mud);
+		//void Initialize(CMap *map, list<CMud> *mud);
+		void Initialize(CMap *map, list<CMonster> *monster);
 		virtual void LoadBitmap();
 		virtual void SetStep();
 		void OnMove();
@@ -27,7 +29,8 @@ namespace game_framework {
 		int indexX, indexY;
 		int x, y;
 		CMap *mapRecord;
-		list<CMud> *mudRecord;
+		//list<CMud> *mudRecord;
+		list<CMonster> *monsterRecord;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;

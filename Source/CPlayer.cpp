@@ -307,7 +307,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, list<CMud> &mud)
+	void CPlayer::PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, list<CMonster> &monster)
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -335,7 +335,7 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
+					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
@@ -365,7 +365,7 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
+					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
@@ -395,7 +395,7 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
+					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsFood())
 						{
@@ -425,7 +425,7 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CMud>::iterator k = mud.begin(); k != mud.end(); k++)
+					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsFood())
 						{

@@ -48,7 +48,9 @@
 #include "CWooden.h"
 #include "CSteel.h"
 #include "CFood.h"
+#include "CMonster.h"
 #include "CMud.h"
+#include "CTurtle.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -110,7 +112,8 @@ namespace game_framework {
 		list<CWall>			wall;
 		list<CBrick>		brick;
 		list<CFood>			food;
-		list<CMud>			mud;
+		list<CMonster>		monster;
+		//list<CMud>			mud;
 		//CMud				mud;
 		int					gameEndConut;
 	};

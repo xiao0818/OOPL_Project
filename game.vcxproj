@@ -263,6 +263,7 @@
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CSteel.cpp" />
     <ClCompile Include="Source\CStone.cpp" />
+    <ClCompile Include="Source\CTurtle.cpp" />
     <ClCompile Include="Source\CWall.cpp" />
     <ClCompile Include="Source\CWooden.cpp" />
     <ClCompile Include="Source\game.cpp">
@@ -319,6 +320,7 @@
     <ClInclude Include="Source\CPlayer.h" />
     <ClInclude Include="Source\CSteel.h" />
     <ClInclude Include="Source\CStone.h" />
+    <ClInclude Include="Source\CTurtle.h" />
     <ClInclude Include="Source\CWall.h" />
     <ClInclude Include="Source\CWooden.h" />
     <ClInclude Include="Source\game.h" />

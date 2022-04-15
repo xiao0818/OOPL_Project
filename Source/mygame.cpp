@@ -246,7 +246,7 @@ namespace game_framework {
 		wall.clear();
 		brick.clear();
 		food.clear();
-		mud.clear();
+		monster.clear();
 
 		gameEndConut = 0;
 
@@ -271,7 +271,14 @@ namespace game_framework {
 					tempMud.Initialize(&map);
 					tempMud.LoadBitmap();
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					mud.push_back(tempMud);
+					monster.push_back(tempMud);
+				}
+				else if (map.GetMonsterInMap(i, j) == CName::TURTLE) {
+					CTurtle tempTurtle;
+					tempTurtle.Initialize(&map);
+					tempTurtle.LoadBitmap();
+					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					monster.push_back(tempTurtle);
 				}
 				else if (map.GetBrickInMap(i, j) == CName::WALL)
 				{
@@ -283,7 +290,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(&map, &mud);
+					tempStone.Initialize(&map, &monster);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -291,7 +298,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(&map, &mud);
+					tempWooden.Initialize(&map, &monster);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -299,7 +306,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(&map, &mud);
+					tempSteel.Initialize(&map, &monster);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);
@@ -327,13 +334,13 @@ namespace game_framework {
 		{
 			k->OnMove();
 		}
-		for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+		for (list<CMonster>::iterator m = monster.begin(); m != monster.end(); m++)
 		{
 			m->OnMove();
 		}
 
 		bool gameAliveFlag = false;
-		for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+		for (list<CMonster>::iterator m = monster.begin(); m != monster.end(); m++)
 		{
 			gameAliveFlag = gameAliveFlag || m->IsAlive();
 		}
@@ -375,7 +382,7 @@ namespace game_framework {
 		if (nChar == KEY_DOWN)
 			player.SetMovingDown(true);
 		if (nChar == KEY_SPACE)
-			player.PressKeySpace(&grade, brick, food, mud);
+			player.PressKeySpace(&grade, brick, food, monster);
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -443,7 +450,7 @@ namespace game_framework {
 					k->OnShow();
 				}
 			}
-			for (list<CMud>::iterator m = mud.begin(); m != mud.end(); m++)
+			for (list<CMonster>::iterator m = monster.begin(); m != monster.end(); m++)
 			{
 				if (m->GetIndexY() == j)
 				{

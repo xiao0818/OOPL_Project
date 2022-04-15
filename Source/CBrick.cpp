@@ -29,10 +29,10 @@ namespace game_framework {
 		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	}
 
-	void CBrick::Initialize(CMap *map, list<CMud> *mud)
+	void CBrick::Initialize(CMap *map, list<CMonster> *monster)
 	{
 		mapRecord = map;
-		mudRecord = mud;
+		monsterRecord = monster;
 		SetStep();
 	}
 
@@ -111,7 +111,7 @@ namespace game_framework {
 					if (movingLeftCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
-							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
 								{
@@ -138,7 +138,7 @@ namespace game_framework {
 					if (movingRightCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
-							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
 								{
@@ -165,7 +165,7 @@ namespace game_framework {
 					if (movingUpCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
-							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
 								{
@@ -192,7 +192,7 @@ namespace game_framework {
 					if (movingDownCount == STEP_TARGET)
 					{
 						if (mapRecord->GetMonsterInMap(indexX, indexY) == CName::MUD) {
-							for (list<CMud>::iterator k = mudRecord->begin(); k != mudRecord->end(); k++)
+							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
 								{
