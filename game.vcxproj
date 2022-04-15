@@ -309,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h" />
+    <ClInclude Include="Source\CAudioId.h" />
     <ClInclude Include="Source\CBrick.h" />
     <ClInclude Include="Source\CDirection.h" />
     <ClInclude Include="Source\CFood.h" />
