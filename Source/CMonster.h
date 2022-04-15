@@ -43,6 +43,7 @@ namespace game_framework {
 		bool isMovingUp;
 		bool isHit;
 		bool isFood;
+		int foodTime;
 		int invincibleTime;
 		int movingLeftCount;
 		int movingRightCount;
