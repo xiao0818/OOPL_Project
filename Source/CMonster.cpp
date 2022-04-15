@@ -431,6 +431,10 @@ namespace game_framework {
 			faceTo = tempDir;
 			isHit = true;
 		}
+		else if (isFood)
+		{
+			foodTime = 0;
+		}
 	}
 
 	void CMonster::ReturnBack()
