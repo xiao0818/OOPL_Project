@@ -13,6 +13,7 @@ namespace game_framework {
 		int  GetIndexX();
 		int  GetIndexY();
 		void Initialize(CMap *map);
+		bool IsAlive();
 		virtual void LoadBitmap(CName name);
 		void OnMove();
 		void SetXY(int ni, int nj, int nx, int ny);

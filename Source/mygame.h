@@ -59,7 +59,11 @@ namespace game_framework {
 
 	enum AUDIO_ID {				// 定義各種音效的編號
 		AUDIO_MENU,				// 0
-		AUDIO_MAIN				// 1
+		AUDIO_MAIN,				// 1
+		SOUND_SWALLOW,
+		SOUND_BRICK_HIT,
+		SOUND_BRICK_HIT_MONSTER,
+		SOUND_FAIL
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

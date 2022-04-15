@@ -443,7 +443,7 @@ namespace game_framework {
 
 	void CMonster::Swallowed()
 	{
-		isAlive = false;
+		isAlive = isFood = false;
 		mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 	}
 	void CMonster::Reset()
