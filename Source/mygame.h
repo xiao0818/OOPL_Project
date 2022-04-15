@@ -61,8 +61,8 @@ namespace game_framework {
 		AUDIO_MENU,				// 0
 		AUDIO_MAIN,				// 1
 		SOUND_SWALLOW,
+		SOUND_SPIT_OUT,
 		SOUND_BRICK_HIT,
-		SOUND_BRICK_HIT_MONSTER,
 		SOUND_FAIL
 	};
 

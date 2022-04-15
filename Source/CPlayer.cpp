@@ -314,6 +314,7 @@ namespace game_framework {
 			isEating = true;
 			if (isSwallowed == false)
 			{
+				CAudio::Instance()->Play(2, false);
 				if (faceTo == CDirection::LEFT)
 				{
 					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
@@ -442,6 +443,7 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						CAudio::Instance()->Play(3, false);
 						isSwallowed = false;
 					}
 				}
@@ -450,6 +452,7 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						CAudio::Instance()->Play(3, false);
 						isSwallowed = false;
 					}
 				}
@@ -458,6 +461,7 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						CAudio::Instance()->Play(3, false);
 						isSwallowed = false;
 					}
 				}
@@ -466,6 +470,7 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						CAudio::Instance()->Play(3, false);
 						isSwallowed = false;
 					}
 				}
