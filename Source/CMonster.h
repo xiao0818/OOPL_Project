@@ -36,6 +36,7 @@ namespace game_framework {
 		CAnimation hitDownAnimation;
 		int indexX, indexY;
 		int x, y;
+		bool isInvincible;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;

@@ -74,6 +74,10 @@ namespace game_framework {
 		return isAlive;
 	}
 
+	bool CMonster::IsInvincible() {
+		return isInvincible;
+	}
+
 	void CMonster::Initialize(CMap *map)
 	{
 		mapRecord = map;
