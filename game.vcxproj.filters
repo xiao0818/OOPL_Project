@@ -212,6 +212,9 @@
     <ClInclude Include="Source\CTurtle.h">
       <Filter>MyGame</Filter>
     </ClInclude>
+    <ClInclude Include="Source\CAudioId.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Source\game.rc">

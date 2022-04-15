@@ -57,15 +57,6 @@ namespace game_framework {
 	// Constants
 	/////////////////////////////////////////////////////////////////////////////
 
-	enum AUDIO_ID {				// 定義各種音效的編號
-		AUDIO_MENU,				// 0
-		AUDIO_MAIN,				// 1
-		SOUND_SWALLOW,
-		SOUND_SPIT_OUT,
-		SOUND_BRICK_HIT,
-		SOUND_FAIL
-	};
-
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class為遊戲的遊戲開頭畫面物件
 	// 每個Member function的Implementation都要弄懂

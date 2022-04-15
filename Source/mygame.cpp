@@ -58,6 +58,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "mygame.h"
+#include "CAudioId.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
