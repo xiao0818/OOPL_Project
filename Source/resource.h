@@ -144,9 +144,7 @@
 #define IDB_MUD_MOVE_UP_006             290
 #define IDB_MUD_MOVE_UP_007             291
 #define IDB_MUD_MOVE_UP_008             292
-#define IDB_START_TITLE                 293
 #define IDB_BITMAP2                     294
-#define IDB_START_TITLE_WITH_PLAY       294
 #define IDB_STEEL_BRICK                 295
 #define IDB_BITMAP4                     296
 #define IDB_WOODEN_BRICK                296
@@ -226,6 +224,15 @@
 #define IDB_PIE                         367
 #define IDB_TOMATO                      368
 #define IDB_TURKEY                      369
+#define IDB_BITMAP1                     370
+#define IDB_COVER                       370
+#define IDB_BITMAP5                     371
+#define IDB_PLAY                        371
+#define IDB_BITMAP6                     372
+#define IDB_CROSS                       372
+#define IDB_MUSIC                       373
+#define IDB_BITMAP7                     374
+#define IDB_SOUND                       374
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -238,7 +245,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        370
+#define _APS_NEXT_RESOURCE_VALUE        375
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

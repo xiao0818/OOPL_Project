@@ -80,8 +80,13 @@ namespace game_framework {
 		//
 		// 開始載入資料
 		//
-		logo.LoadBitmap(IDB_START_TITLE);
-		logoWithPlay.LoadBitmap(IDB_START_TITLE_WITH_PLAY);
+		isMusicEnable = isSoundEnable = true;
+
+		logo.LoadBitmap(IDB_COVER);
+		cross.LoadBitmap(IDB_CROSS, RGB(255, 255, 255));
+		musicButton.LoadBitmap(IDB_MUSIC, RGB(0, 0, 0));
+		soundButton.LoadBitmap(IDB_SOUND, RGB(0, 0, 0));
+		playButton.LoadBitmap(IDB_PLAY, RGB(0, 0, 0));
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
 		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
@@ -96,6 +101,7 @@ namespace game_framework {
 
 	void CGameStateInit::OnBeginState()
 	{
+		isOnMusicButton = isOnSoundButton = isOnPlayButton = false;
 	}
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -110,7 +116,38 @@ namespace game_framework {
 
 	void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)
 	{
-		if ((300 + 445) < point.x && point.x < (300 + 555) && (88 + 496) < point.y && point.y < (88 + 526))
+		const int GROUND_X = (SIZE_X - 1000) / 2;
+		const int GROUND_Y = (SIZE_Y - 725) / 2;
+		const int CROSS_LENGTH = 40;
+		const int CROSS_HEIGHT = 40;
+		const int MUSIC_INDEX_X = 860;
+		const int MUSIC_INDEX_Y = 10;
+		const int SOUND_INDEX_X = 920;
+		const int SOUND_INDEX_Y = 10;
+		const int PLAY_BUTTON_LENGTH = 111;
+		const int PLAY_BUTTON_HEIGHT = 30;
+		const int PLAY_BUTTON_INDEX_X = 445;
+		const int PLAY_BUTTON_INDEX_Y = 496;
+
+		if ((GROUND_X + MUSIC_INDEX_X) < point.x && point.x < (GROUND_X + MUSIC_INDEX_X + CROSS_LENGTH) && (GROUND_Y + MUSIC_INDEX_Y) < point.y && point.y < (GROUND_Y + MUSIC_INDEX_Y + CROSS_HEIGHT))
+		{
+			isOnMusicButton = true;
+		}
+		else
+		{
+			isOnMusicButton = false;
+		}
+
+		if ((GROUND_X + SOUND_INDEX_X) < point.x && point.x < (GROUND_X + SOUND_INDEX_X + CROSS_LENGTH) && (GROUND_Y + SOUND_INDEX_Y) < point.y && point.y < (GROUND_Y + SOUND_INDEX_Y + CROSS_HEIGHT))
+		{
+			isOnSoundButton = true;
+		}
+		else
+		{
+			isOnSoundButton = false;
+		}
+
+		if ((GROUND_X + PLAY_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAY_BUTTON_INDEX_X + PLAY_BUTTON_LENGTH) && (GROUND_Y + PLAY_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAY_BUTTON_INDEX_Y + PLAY_BUTTON_HEIGHT))
 		{
 			isOnPlayButton = true;
 		}
@@ -126,22 +163,72 @@ namespace game_framework {
 		{
 			GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 		}
+		if (isOnMusicButton)
+		{
+			isMusicEnable = !isMusicEnable;
+			if (isMusicEnable)
+			{
+				CAudio::Instance()->Play(AUDIO_MENU, true);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			else
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+		}
+		if (isOnSoundButton)
+		{
+			isSoundEnable = !isSoundEnable;
+		}
 	}
 
 	void CGameStateInit::OnShow()
 	{
+		const int GROUND_X = (SIZE_X - logo.Width()) / 2;
+		const int GROUND_Y = (SIZE_Y - logo.Height()) / 2;
+		const int CROSS_LENGTH = 40;
+		const int CROSS_HEIGHT = 40;
+		const int MUSIC_INDEX_X = 860;
+		const int MUSIC_INDEX_Y = 10;
+		const int SOUND_INDEX_X = 920;
+		const int SOUND_INDEX_Y = 10;
+		const int PLAY_BUTTON_LENGTH = 111;
+		const int PLAY_BUTTON_HEIGHT = 30;
+		const int PLAY_BUTTON_INDEX_X = 445;
+		const int PLAY_BUTTON_INDEX_Y = 496;
 		//
 		// 貼上logo
 		//
+		logo.SetTopLeft(GROUND_X, GROUND_Y);
+		logo.ShowBitmap();
+
+		if (isOnMusicButton)
+		{
+			musicButton.SetTopLeft(GROUND_X + MUSIC_INDEX_X, GROUND_Y + MUSIC_INDEX_Y);
+			musicButton.ShowBitmap();
+		}
+		if (isOnSoundButton)
+		{
+			soundButton.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
+			soundButton.ShowBitmap();
+		}
+
+		if (!isMusicEnable)
+		{
+			cross.SetTopLeft(GROUND_X + MUSIC_INDEX_X, GROUND_Y + MUSIC_INDEX_Y);
+			cross.ShowBitmap();
+		}
+		if (!isSoundEnable)
+		{
+			cross.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
+			cross.ShowBitmap();
+		}
+		
 		if (isOnPlayButton)
 		{
-			logoWithPlay.SetTopLeft((SIZE_X - logo.Width()) / 2, (SIZE_Y - logo.Height()) / 2);
-			logoWithPlay.ShowBitmap();
-		}
-		else
-		{
-			logo.SetTopLeft((SIZE_X - logo.Width()) / 2, (SIZE_Y - logo.Height()) / 2);
-			logo.ShowBitmap();
+			playButton.SetTopLeft(GROUND_X + PLAY_BUTTON_INDEX_X, GROUND_Y + PLAY_BUTTON_INDEX_Y);
+			playButton.ShowBitmap();
 		}
 		//
 		// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
@@ -200,13 +287,14 @@ namespace game_framework {
 		// 開始載入資料
 		//
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+
+		CAudio::Instance()->Play(AUDIO_MENU, true);
+		CAudio::Instance()->Stop(AUDIO_MAIN);
+
 		//
 		// 最終進度為100%
 		//
 		ShowInitProgress(100);
-
-		CAudio::Instance()->Play(AUDIO_MENU, true);
-		CAudio::Instance()->Stop(AUDIO_MAIN);
 	}
 
 	void CGameStateOver::OnShow()
@@ -241,7 +329,7 @@ namespace game_framework {
 	{
 		CAudio::Instance()->Stop(AUDIO_MENU);
 		CAudio::Instance()->Play(AUDIO_MAIN, true);
-
+		
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;

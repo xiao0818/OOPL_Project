@@ -74,8 +74,15 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		CMovingBitmap logo;
-		CMovingBitmap logoWithPlay;
+		CMovingBitmap cross;
+		CMovingBitmap musicButton;
+		CMovingBitmap soundButton;
+		CMovingBitmap playButton;
 		bool isOnPlayButton;
+		bool isOnMusicButton;
+		bool isOnSoundButton;
+		bool isMusicEnable;
+		bool isSoundEnable;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

@@ -73,9 +73,6 @@
     <None Include="RES\loading.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="RES\ntutcsie.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
     </None>
@@ -567,12 +564,6 @@
     <Image Include="Resources\mud\up\mud_move_up_007.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\Title.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\TitleWithPlay.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\brick\SteelBrick.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -796,6 +787,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\food\Turkey.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ntutcsie.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\cover.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\cross.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\music.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\sound.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -62,8 +62,6 @@ END
 // Bitmap
 //
 
-IDB_BACKGROUND          BITMAP                  "..\\res\\ntutcsie.bmp"
-
 IDB_CORNER              BITMAP                  "..\\res\\corner.bmp"
 
 IDB_0                   BITMAP                  "..\\res\\bmp0.bmp"
@@ -322,10 +320,6 @@ IDB_MUD_MOVE_UP_007     BITMAP                  "..\\Resources\\mud\\up\\mud_mov
 
 IDB_MUD_MOVE_UP_008     BITMAP                  "..\\Resources\\mud\\up\\mud_move_up_007.bmp"
 
-IDB_START_TITLE         BITMAP                  "..\\Resources\\Title.bmp"
-
-IDB_START_TITLE_WITH_PLAY BITMAP                  "..\\Resources\\TitleWithPlay.bmp"
-
 IDB_STEEL_BRICK         BITMAP                  "..\\Resources\\brick\\SteelBrick.bmp"
 
 IDB_WOODEN_BRICK        BITMAP                  "..\\Resources\\brick\\WoodenBrick.bmp"
@@ -475,6 +469,16 @@ IDB_PIE                 BITMAP                  "..\\Resources\\food\\Pie.bmp"
 IDB_TOMATO              BITMAP                  "..\\Resources\\food\\Tomato.bmp"
 
 IDB_TURKEY              BITMAP                  "..\\Resources\\food\\Turkey.bmp"
+
+IDB_COVER               BITMAP                  "..\\Resources\\start\\cover.bmp"
+
+IDB_PLAY                BITMAP                  "..\\Resources\\start\\play.bmp"
+
+IDB_CROSS               BITMAP                  "..\\Resources\\start\\cross.bmp"
+
+IDB_MUSIC               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\start\\music.bmp"
+
+IDB_SOUND               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\start\\sound.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
