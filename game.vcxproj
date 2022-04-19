@@ -535,7 +535,6 @@
     <Image Include="Resources\turtle\up\turtle_move_up_006.bmp" />
     <Image Include="Resources\turtle\up\turtle_move_up_007.bmp" />
     <Image Include="Resources\Wall.bmp" />
-    <Image Include="res\ntutcsie.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

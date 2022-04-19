@@ -474,11 +474,11 @@ IDB_COVER               BITMAP                  "..\\Resources\\start\\cover.bmp
 
 IDB_PLAY                BITMAP                  "..\\Resources\\start\\play.bmp"
 
+IDB_MUSIC               BITMAP                  "..\\Resources\\start\\music.bmp"
+
+IDB_SOUND               BITMAP                  "..\\Resources\\start\\sound.bmp"
+
 IDB_CROSS               BITMAP                  "..\\Resources\\start\\cross.bmp"
-
-IDB_MUSIC               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\start\\music.bmp"
-
-IDB_SOUND               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\start\\sound.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

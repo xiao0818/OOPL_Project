@@ -83,10 +83,10 @@ namespace game_framework {
 		isMusicEnable = isSoundEnable = true;
 
 		logo.LoadBitmap(IDB_COVER);
-		cross.LoadBitmap(IDB_CROSS, RGB(255, 255, 255));
-		musicButton.LoadBitmap(IDB_MUSIC, RGB(0, 0, 0));
-		soundButton.LoadBitmap(IDB_SOUND, RGB(0, 0, 0));
-		playButton.LoadBitmap(IDB_PLAY, RGB(0, 0, 0));
+		cross.LoadBitmap(IDB_CROSS,RGB(255, 255, 255));
+		musicButton.LoadBitmap(IDB_MUSIC);
+		soundButton.LoadBitmap(IDB_SOUND);
+		playButton.LoadBitmap(IDB_PLAY);
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
 		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
@@ -125,8 +125,8 @@ namespace game_framework {
 		const int SOUND_INDEX_X = 920;
 		const int SOUND_INDEX_Y = 10;
 		const int PLAY_BUTTON_LENGTH = 111;
-		const int PLAY_BUTTON_HEIGHT = 30;
-		const int PLAY_BUTTON_INDEX_X = 445;
+		const int PLAY_BUTTON_HEIGHT = 29;
+		const int PLAY_BUTTON_INDEX_X = 444;
 		const int PLAY_BUTTON_INDEX_Y = 496;
 
 		if ((GROUND_X + MUSIC_INDEX_X) < point.x && point.x < (GROUND_X + MUSIC_INDEX_X + CROSS_LENGTH) && (GROUND_Y + MUSIC_INDEX_Y) < point.y && point.y < (GROUND_Y + MUSIC_INDEX_Y + CROSS_HEIGHT))

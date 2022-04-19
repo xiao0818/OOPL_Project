@@ -789,22 +789,19 @@
     <Image Include="Resources\food\Turkey.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\ntutcsie.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\start\cover.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\play.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\start\cross.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\start\music.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\sound.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\cross.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
