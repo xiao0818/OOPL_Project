@@ -431,7 +431,15 @@ namespace game_framework {
 		{
 			m->OnMove();
 		}
-		if (player.IsSuccess())
+
+		for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+		{
+			if (k->GetIndexX() == player.GetIndexX() && k->GetIndexY() == player.GetIndexY())
+			{
+				player.Fail();
+			}
+		}
+		if (player.IsSuccess() || player.IsFail())
 		{
 			gameEndConut++;
 			if (gameEndConut == 5 * 30)
@@ -461,7 +469,7 @@ namespace game_framework {
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
 		const char KEY_SPACE = ' ';
 
-		if (!player.IsSuccess())
+		if (!player.IsSuccess() && !player.IsFail())
 		{
 			if (nChar == KEY_LEFT)
 				player.SetMovingLeft(true);
@@ -482,7 +490,7 @@ namespace game_framework {
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
-		if (!player.IsSuccess())
+		if (!player.IsSuccess() && !player.IsFail())
 		{
 			if (nChar == KEY_LEFT)
 				player.SetMovingLeft(false);

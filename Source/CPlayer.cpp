@@ -28,9 +28,8 @@ namespace game_framework {
 		eatDownAnimation.SetDelayCount(2);
 		successAnimation.SetDelayCount(2);
 		failAnimation.SetDelayCount(2);
-		isSwallowed = false;
-		isEating = false;
-		isSuccess = false;
+		isSwallowed = isEating = false;
+		isSuccess = isFail = false;
 	}
 
 	int CPlayer::GetIndexX() {
@@ -44,6 +43,11 @@ namespace game_framework {
 	bool CPlayer::IsSuccess()
 	{
 		return isSuccess;
+	}
+
+	bool CPlayer::IsFail()
+	{
+		return isFail;
 	}
 
 	void CPlayer::Initialize(CMap *map)
@@ -514,6 +518,11 @@ namespace game_framework {
 		}
 	}
 
+	void CPlayer::Fail()
+	{
+		isFail = true;
+	}
+
 	void CPlayer::SetXY(int ni, int nj, int nx, int ny)
 	{
 		indexX = ni;
@@ -524,7 +533,16 @@ namespace game_framework {
 
 	void CPlayer::OnShow()
 	{
-		if (isSuccess)
+		if (isFail)
+		{
+			failAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
+			failAnimation.OnShow();
+			if (!failAnimation.IsFinalBitmap())
+			{
+				failAnimation.OnMove();
+			}
+		}
+		else if (isSuccess)
 		{
 			successAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
 			successAnimation.OnShow();
