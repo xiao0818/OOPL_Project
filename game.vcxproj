@@ -449,6 +449,9 @@
     <Image Include="Resources\player\eat_up\player_eat_up_002.bmp" />
     <Image Include="Resources\player\eat_up\player_eat_up_003.bmp" />
     <Image Include="Resources\player\eat_up\player_eat_up_004.bmp" />
+    <Image Include="Resources\player\fail\player_fail_001.bmp" />
+    <Image Include="Resources\player\fail\player_fail_002.bmp" />
+    <Image Include="Resources\player\fail\player_fail_003.bmp" />
     <Image Include="Resources\player\left\player_move_left_001.bmp" />
     <Image Include="Resources\player\left\player_move_left_002.bmp" />
     <Image Include="Resources\player\left\player_move_left_003.bmp" />
@@ -481,6 +484,12 @@
     <Image Include="Resources\player\right_with_full\player_move_with_full_right_006.bmp" />
     <Image Include="Resources\player\right_with_full\player_move_with_full_right_007.bmp" />
     <Image Include="Resources\player\right_with_full\player_move_with_full_right_008.bmp" />
+    <Image Include="Resources\player\success\player_success_001.bmp" />
+    <Image Include="Resources\player\success\player_success_002.bmp" />
+    <Image Include="Resources\player\success\player_success_003.bmp" />
+    <Image Include="Resources\player\success\player_success_004.bmp" />
+    <Image Include="Resources\player\success\player_success_005.bmp" />
+    <Image Include="Resources\player\success\player_success_006.bmp" />
     <Image Include="Resources\player\up\player_move_up_001.bmp" />
     <Image Include="Resources\player\up\player_move_up_002.bmp" />
     <Image Include="Resources\player\up\player_move_up_003.bmp" />
