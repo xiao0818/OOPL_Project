@@ -50,9 +50,13 @@ namespace game_framework {
 		return isFail;
 	}
 
-	void CPlayer::Initialize(CMap *map)
+	void CPlayer::Initialize(CMap *map, CInteger *grade, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
+		gradeRecord = grade;
+		brickRecord = brick;
+		foodRecord = food;
+		monsterRecord = monster;
 	}
 
 	void CPlayer::LoadBitmap()
@@ -330,7 +334,7 @@ namespace game_framework {
 		isKeyDownPressed = flag;
 	}
 
-	void CPlayer::PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, list<CMonster> &monster)
+	void CPlayer::PressKeySpace()
 	{
 		if (!isMovingLeft && !isMovingRight && !isMovingUp && !isMovingDown)
 		{
@@ -339,7 +343,7 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
+					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
@@ -350,29 +354,29 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					for (list<CFood>::iterator k = foodRecord->begin(); k != foodRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(50);
+							gradeRecord->Add(50);
 							return;
 						}
 					}
-					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+					for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
 							k->Swallowed();
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(100);
+							gradeRecord->Add(100);
 						}
 					}
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
+					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
@@ -383,29 +387,29 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					for (list<CFood>::iterator k = foodRecord->begin(); k != foodRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(50);
+							gradeRecord->Add(50);
 							return;
 						}
 					}
-					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+					for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
 							k->Swallowed();
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(100);
+							gradeRecord->Add(100);
 						}
 					}
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
+					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
 						{
@@ -416,29 +420,29 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					for (list<CFood>::iterator k = foodRecord->begin(); k != foodRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(50);
+							gradeRecord->Add(50);
 							return;
 						}
 					}
-					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+					for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsFood())
 						{
 							k->Swallowed();
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(100);
+							gradeRecord->Add(100);
 						}
 					}
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
+					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
 						{
@@ -449,23 +453,23 @@ namespace game_framework {
 							return;
 						}
 					}
-					for (list<CFood>::iterator k = food.begin(); k != food.end(); k++)
+					for (list<CFood>::iterator k = foodRecord->begin(); k != foodRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(50);
+							gradeRecord->Add(50);
 							return;
 						}
 					}
-					for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+					for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsFood())
 						{
 							k->Swallowed();
 							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							grade->Add(100);
+							gradeRecord->Add(100);
 						}
 					}
 				}
@@ -511,16 +515,19 @@ namespace game_framework {
 			}
 		}
 
+		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+		{
+			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+			{
+				isFail = true;
+			}
+		}
+
 		isSuccess = true;
-		for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 		{
 			isSuccess = isSuccess && !k->IsAlive();
 		}
-	}
-
-	void CPlayer::Fail()
-	{
-		isFail = true;
 	}
 
 	void CPlayer::SetXY(int ni, int nj, int nx, int ny)

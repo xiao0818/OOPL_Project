@@ -15,7 +15,6 @@ namespace game_framework {
 		int  GetIndexX();
 		int  GetIndexY();
 		bool IsMove();
-		//void Initialize(CMap *map, list<CMud> *mud);
 		void Initialize(CMap *map, list<CMonster> *monster);
 		virtual void LoadBitmap();
 		virtual void SetStep();
@@ -29,7 +28,6 @@ namespace game_framework {
 		int indexX, indexY;
 		int x, y;
 		CMap *mapRecord;
-		//list<CMud> *mudRecord;
 		list<CMonster> *monsterRecord;
 		bool isMovingDown;
 		bool isMovingLeft;

@@ -348,7 +348,7 @@ namespace game_framework {
 
 		map.Initialize();
 
-		player.Initialize(&map);
+		player.Initialize(&map, &grade, &brick, &food, &monster);
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -431,14 +431,6 @@ namespace game_framework {
 		{
 			m->OnMove();
 		}
-
-		for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
-		{
-			if (k->GetIndexX() == player.GetIndexX() && k->GetIndexY() == player.GetIndexY())
-			{
-				player.Fail();
-			}
-		}
 		if (player.IsSuccess() || player.IsFail())
 		{
 			gameEndConut++;
@@ -480,7 +472,7 @@ namespace game_framework {
 			if (nChar == KEY_DOWN)
 				player.SetMovingDown(true);
 			if (nChar == KEY_SPACE)
-				player.PressKeySpace(&grade, brick, food, monster);
+				player.PressKeySpace();
 		}
 	}
 

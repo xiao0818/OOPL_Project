@@ -16,15 +16,14 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsSuccess();
 		bool IsFail();
-		void Initialize(CMap *map);
+		void Initialize(CMap *map, CInteger *grade, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
 		void LoadBitmap();
 		void OnMove();
 		void SetMovingLeft(bool flag);
 		void SetMovingRight(bool flag);
 		void SetMovingUp(bool flag);
 		void SetMovingDown(bool flag);
-		void PressKeySpace(CInteger *grade, list<CBrick> &brick, list<CFood> &food, list<CMonster> &monster);
-		void Fail();
+		void PressKeySpace();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:
@@ -57,6 +56,10 @@ namespace game_framework {
 		int movingUpCount;
 		int movingDownCount;
 		CMap *mapRecord;
+		CInteger *gradeRecord;
+		list<CBrick> *brickRecord;
+		list<CFood> *foodRecord;
+		list<CMonster> *monsterRecord;
 		CDirection faceTo;
 		list<CBrick>::iterator swallowedBrick;
 		bool isSwallowed;
