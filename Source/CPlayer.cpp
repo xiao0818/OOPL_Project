@@ -13,6 +13,8 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
+		isSwallowed = isEating = false;
+		isSuccess = isFail = false;
 		faceTo = CDirection::DOWN;
 		leftAnimation.SetDelayCount(2);
 		rightAnimation.SetDelayCount(2);
@@ -28,8 +30,6 @@ namespace game_framework {
 		eatDownAnimation.SetDelayCount(2);
 		successAnimation.SetDelayCount(2);
 		failAnimation.SetDelayCount(2);
-		isSwallowed = isEating = false;
-		isSuccess = isFail = false;
 	}
 
 	int CPlayer::GetIndexX() {
@@ -57,6 +57,13 @@ namespace game_framework {
 		brickRecord = brick;
 		foodRecord = food;
 		monsterRecord = monster;
+
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
+		faceTo = CDirection::DOWN;
+		isSwallowed = isEating = false;
+		isSuccess = isFail = false;
 	}
 
 	void CPlayer::LoadBitmap()
@@ -312,6 +319,14 @@ namespace game_framework {
 				isMovingDown = isKeyDownPressed;
 			}
 		}
+
+		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+		{
+			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+			{
+				isFail = true;
+			}
+		}
 	}
 
 	void CPlayer::SetMovingLeft(bool flag)
@@ -512,14 +527,6 @@ namespace game_framework {
 						isSwallowed = false;
 					}
 				}
-			}
-		}
-
-		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
-		{
-			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
-			{
-				isFail = true;
 			}
 		}
 
