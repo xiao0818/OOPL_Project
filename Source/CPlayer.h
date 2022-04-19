@@ -14,6 +14,7 @@ namespace game_framework {
 		CPlayer();
 		int  GetIndexX();
 		int  GetIndexY();
+		bool IsSuccess();
 		void Initialize(CMap *map);
 		void LoadBitmap();
 		void OnMove();
@@ -38,6 +39,8 @@ namespace game_framework {
 		CAnimation eatRightAnimation;
 		CAnimation eatUpAnimation;
 		CAnimation eatDownAnimation;
+		CAnimation successAnimation;
+		CAnimation failAnimation;
 		int indexX, indexY;
 		int x, y;
 		bool isMovingDown;
@@ -57,6 +60,7 @@ namespace game_framework {
 		list<CBrick>::iterator swallowedBrick;
 		bool isSwallowed;
 		bool isEating;
+		bool isSuccess;
 	};
 }
 

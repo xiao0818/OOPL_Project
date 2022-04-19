@@ -431,13 +431,7 @@ namespace game_framework {
 		{
 			m->OnMove();
 		}
-
-		bool gameAliveFlag = false;
-		for (list<CMonster>::iterator m = monster.begin(); m != monster.end(); m++)
-		{
-			gameAliveFlag = gameAliveFlag || m->IsAlive();
-		}
-		if (gameAliveFlag == false)
+		if (player.IsSuccess())
 		{
 			gameEndConut++;
 			if (gameEndConut == 5 * 30)
@@ -466,16 +460,20 @@ namespace game_framework {
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
 		const char KEY_SPACE = ' ';
-		if (nChar == KEY_LEFT)
-			player.SetMovingLeft(true);
-		if (nChar == KEY_RIGHT)
-			player.SetMovingRight(true);
-		if (nChar == KEY_UP)
-			player.SetMovingUp(true);
-		if (nChar == KEY_DOWN)
-			player.SetMovingDown(true);
-		if (nChar == KEY_SPACE)
-			player.PressKeySpace(&grade, brick, food, monster);
+
+		if (!player.IsSuccess())
+		{
+			if (nChar == KEY_LEFT)
+				player.SetMovingLeft(true);
+			if (nChar == KEY_RIGHT)
+				player.SetMovingRight(true);
+			if (nChar == KEY_UP)
+				player.SetMovingUp(true);
+			if (nChar == KEY_DOWN)
+				player.SetMovingDown(true);
+			if (nChar == KEY_SPACE)
+				player.PressKeySpace(&grade, brick, food, monster);
+		}
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -484,14 +482,17 @@ namespace game_framework {
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
-		if (nChar == KEY_LEFT)
-			player.SetMovingLeft(false);
-		if (nChar == KEY_RIGHT)
-			player.SetMovingRight(false);
-		if (nChar == KEY_UP)
-			player.SetMovingUp(false);
-		if (nChar == KEY_DOWN)
-			player.SetMovingDown(false);
+		if (!player.IsSuccess())
+		{
+			if (nChar == KEY_LEFT)
+				player.SetMovingLeft(false);
+			if (nChar == KEY_RIGHT)
+				player.SetMovingRight(false);
+			if (nChar == KEY_UP)
+				player.SetMovingUp(false);
+			if (nChar == KEY_DOWN)
+				player.SetMovingDown(false);
+		}
 	}
 
 	void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)

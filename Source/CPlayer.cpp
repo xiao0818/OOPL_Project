@@ -26,8 +26,11 @@ namespace game_framework {
 		eatRightAnimation.SetDelayCount(2);
 		eatUpAnimation.SetDelayCount(2);
 		eatDownAnimation.SetDelayCount(2);
+		successAnimation.SetDelayCount(2);
+		failAnimation.SetDelayCount(2);
 		isSwallowed = false;
 		isEating = false;
+		isSuccess = false;
 	}
 
 	int CPlayer::GetIndexX() {
@@ -36,6 +39,11 @@ namespace game_framework {
 
 	int CPlayer::GetIndexY() {
 		return indexY;
+	}
+
+	bool CPlayer::IsSuccess()
+	{
+		return isSuccess;
 	}
 
 	void CPlayer::Initialize(CMap *map)
@@ -127,6 +135,16 @@ namespace game_framework {
 		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_002, RGB(0, 0, 0));
 		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_003, RGB(0, 0, 0));
 		eatDownAnimation.AddBitmap(IDB_PLAYER_EAT_DOWN_004, RGB(0, 0, 0));
+
+		successAnimation.AddBitmap(IDB_PLAYER_SUCCESS_001, RGB(0, 0, 0));
+		successAnimation.AddBitmap(IDB_PLAYER_SUCCESS_002, RGB(0, 0, 0));
+		successAnimation.AddBitmap(IDB_PLAYER_SUCCESS_003, RGB(0, 0, 0));
+		successAnimation.AddBitmap(IDB_PLAYER_SUCCESS_004, RGB(0, 0, 0));
+		successAnimation.AddBitmap(IDB_PLAYER_SUCCESS_005, RGB(0, 0, 0));
+		successAnimation.AddBitmap(IDB_PLAYER_SUCCESS_006, RGB(0, 0, 0));
+		failAnimation.AddBitmap(IDB_PLAYER_FAIL_001, RGB(0, 0, 0));
+		failAnimation.AddBitmap(IDB_PLAYER_FAIL_002, RGB(0, 0, 0));
+		failAnimation.AddBitmap(IDB_PLAYER_FAIL_003, RGB(0, 0, 0));
 	}
 
 	void CPlayer::OnMove()
@@ -488,6 +506,12 @@ namespace game_framework {
 				}
 			}
 		}
+
+		isSuccess = true;
+		for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
+		{
+			isSuccess = isSuccess && !k->IsAlive();
+		}
 	}
 
 	void CPlayer::SetXY(int ni, int nj, int nx, int ny)
@@ -500,105 +524,114 @@ namespace game_framework {
 
 	void CPlayer::OnShow()
 	{
-		if (isEating)
+		if (isSuccess)
 		{
-			if (faceTo == CDirection::LEFT)
-			{
-				eatLeftAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
-				eatLeftAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::RIGHT)
-			{
-				eatRightAnimation.SetTopLeft(x + (72 / 2) - (eatRightAnimation.Width() / 2), y + 46 - eatRightAnimation.Height());
-				eatRightAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::UP)
-			{
-				eatUpAnimation.SetTopLeft(x + (72 / 2) - (eatUpAnimation.Width() / 2), y + 46 - eatUpAnimation.Height());
-				eatUpAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::DOWN)
-			{
-				eatDownAnimation.SetTopLeft(x + (72 / 2) - (eatDownAnimation.Width() / 2), y + 46 - eatDownAnimation.Height());
-				eatDownAnimation.OnShow();
-			}
+			successAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
+			successAnimation.OnShow();
+			successAnimation.OnMove();
 		}
-		else if (!isSwallowed)
+		else
 		{
-			if (faceTo == CDirection::LEFT)
+			if (isEating)
 			{
-				if (!isMovingLeft)
+				if (faceTo == CDirection::LEFT)
 				{
-					leftAnimation.Reset();
+					eatLeftAnimation.SetTopLeft(x + (72 / 2) - (eatLeftAnimation.Width() / 2), y + 46 - eatLeftAnimation.Height());
+					eatLeftAnimation.OnShow();
 				}
-				leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
-				leftAnimation.OnShow();
+				else if (faceTo == CDirection::RIGHT)
+				{
+					eatRightAnimation.SetTopLeft(x + (72 / 2) - (eatRightAnimation.Width() / 2), y + 46 - eatRightAnimation.Height());
+					eatRightAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					eatUpAnimation.SetTopLeft(x + (72 / 2) - (eatUpAnimation.Width() / 2), y + 46 - eatUpAnimation.Height());
+					eatUpAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					eatDownAnimation.SetTopLeft(x + (72 / 2) - (eatDownAnimation.Width() / 2), y + 46 - eatDownAnimation.Height());
+					eatDownAnimation.OnShow();
+				}
 			}
-			else if (faceTo == CDirection::RIGHT)
+			else if (!isSwallowed)
 			{
-				if (!isMovingRight)
+				if (faceTo == CDirection::LEFT)
 				{
-					rightAnimation.Reset();
+					if (!isMovingLeft)
+					{
+						leftAnimation.Reset();
+					}
+					leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
+					leftAnimation.OnShow();
 				}
-				rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
-				rightAnimation.OnShow();
+				else if (faceTo == CDirection::RIGHT)
+				{
+					if (!isMovingRight)
+					{
+						rightAnimation.Reset();
+					}
+					rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
+					rightAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					if (!isMovingUp)
+					{
+						upAnimation.Reset();
+					}
+					upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
+					upAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					if (!isMovingDown)
+					{
+						downAnimation.Reset();
+					}
+					downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
+					downAnimation.OnShow();
+				}
 			}
-			else if (faceTo == CDirection::UP)
+			else if (isSwallowed)
 			{
-				if (!isMovingUp)
+				if (faceTo == CDirection::LEFT)
 				{
-					upAnimation.Reset();
+					if (!isMovingLeft)
+					{
+						leftWithFullAnimation.Reset();
+					}
+					leftWithFullAnimation.SetTopLeft(x + (72 / 2) - (leftWithFullAnimation.Width() / 2), y + 46 - leftWithFullAnimation.Height());
+					leftWithFullAnimation.OnShow();
 				}
-				upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
-				upAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::DOWN)
-			{
-				if (!isMovingDown)
+				else if (faceTo == CDirection::RIGHT)
 				{
-					downAnimation.Reset();
+					if (!isMovingRight)
+					{
+						rightWithFullAnimation.Reset();
+					}
+					rightWithFullAnimation.SetTopLeft(x + (72 / 2) - (rightWithFullAnimation.Width() / 2), y + 46 - rightWithFullAnimation.Height());
+					rightWithFullAnimation.OnShow();
 				}
-				downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
-				downAnimation.OnShow();
-			}
-		}
-		else if(isSwallowed)
-		{
-			if (faceTo == CDirection::LEFT)
-			{
-				if (!isMovingLeft)
+				else if (faceTo == CDirection::UP)
 				{
-					leftWithFullAnimation.Reset();
+					if (!isMovingUp)
+					{
+						upWithFullAnimation.Reset();
+					}
+					upWithFullAnimation.SetTopLeft(x + (72 / 2) - (upWithFullAnimation.Width() / 2), y + 46 - upWithFullAnimation.Height());
+					upWithFullAnimation.OnShow();
 				}
-				leftWithFullAnimation.SetTopLeft(x + (72 / 2) - (leftWithFullAnimation.Width() / 2), y + 46 - leftWithFullAnimation.Height());
-				leftWithFullAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::RIGHT)
-			{
-				if (!isMovingRight)
+				else if (faceTo == CDirection::DOWN)
 				{
-					rightWithFullAnimation.Reset();
+					if (!isMovingDown)
+					{
+						downWithFullAnimation.Reset();
+					}
+					downWithFullAnimation.SetTopLeft(x + (72 / 2) - (downWithFullAnimation.Width() / 2), y + 46 - downWithFullAnimation.Height());
+					downWithFullAnimation.OnShow();
 				}
-				rightWithFullAnimation.SetTopLeft(x + (72 / 2) - (rightWithFullAnimation.Width() / 2), y + 46 - rightWithFullAnimation.Height());
-				rightWithFullAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::UP)
-			{
-				if (!isMovingUp)
-				{
-					upWithFullAnimation.Reset();
-				}
-				upWithFullAnimation.SetTopLeft(x + (72 / 2) - (upWithFullAnimation.Width() / 2), y + 46 - upWithFullAnimation.Height());
-				upWithFullAnimation.OnShow();
-			}
-			else if (faceTo == CDirection::DOWN)
-			{
-				if (!isMovingDown)
-				{
-					downWithFullAnimation.Reset();
-				}
-				downWithFullAnimation.SetTopLeft(x + (72 / 2) - (downWithFullAnimation.Width() / 2), y + 46 - downWithFullAnimation.Height());
-				downWithFullAnimation.OnShow();
 			}
 		}
 	}

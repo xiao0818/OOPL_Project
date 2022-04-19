@@ -240,9 +240,12 @@
 #define IDB_PLAYER_SUCCESS_005          382
 #define IDB_PLAYER_SUCCESS_006          383
 #define IDB_PLAYER_FAILL_001            384
+#define IDB_PLAYER_FAIL_001             384
 #define IDB_PLAYER_FAILL_002            385
+#define IDB_PLAYER_FAIL_002             385
 #define IDB_BITMAP12                    386
 #define IDB_PLAYER_FAILL_003            386
+#define IDB_PLAYER_FAIL_003             386
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
