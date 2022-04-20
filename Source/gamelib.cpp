@@ -418,9 +418,10 @@ int CMovingBitmap::Width()
 // 這個class為遊戲的各種狀態之Base class(是一個abstract class)
 /////////////////////////////////////////////////////////////////////////////
 
-CGameState::CGameState(CGame *g)
+CGameState::CGameState(CGame *g, CShareData *data)
 {
 	game = g; 	// 設定game的pointer
+	shareData = data;
 }
 
 void CGameState::GotoGameState(int state)
@@ -502,9 +503,9 @@ CGame::CGame()
 {
 	running = true;
 	suspended = false;
-	gameStateTable[GAME_STATE_INIT] = new CGameStateInit(this);
-	gameStateTable[GAME_STATE_RUN]  = new CGameStateRun(this);
-	gameStateTable[GAME_STATE_OVER] = new CGameStateOver(this);
+	gameStateTable[GAME_STATE_INIT] = new CGameStateInit(this, &shareData);
+	gameStateTable[GAME_STATE_RUN]  = new CGameStateRun(this, &shareData);
+	gameStateTable[GAME_STATE_OVER] = new CGameStateOver(this, &shareData);
 	gameState = NULL;
 }
 

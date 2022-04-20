@@ -50,10 +50,10 @@ namespace game_framework {
 		return isFail;
 	}
 
-	void CPlayer::Initialize(CMap *map, CInteger *grade, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
+	void CPlayer::Initialize(CMap *map, CShareData *shareData, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
-		gradeRecord = grade;
+		shareDataRecord = shareData;
 		brickRecord = brick;
 		foodRecord = food;
 		monsterRecord = monster;
@@ -322,7 +322,7 @@ namespace game_framework {
 
 		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 		{
-			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+			if (k->IsAlive() && k->GetIndexX() == indexX && k->GetIndexY() == indexY)
 			{
 				isFail = true;
 			}
@@ -363,7 +363,10 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
 							swallowedBrick = k;
 							isSwallowed = true;
 							return;
@@ -374,8 +377,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(50);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(50);
 							return;
 						}
 					}
@@ -384,8 +390,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
 							k->Swallowed();
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(100);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(100);
 						}
 					}
 				}
@@ -396,7 +405,10 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
 							swallowedBrick = k;
 							isSwallowed = true;
 							return;
@@ -407,8 +419,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(50);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(50);
 							return;
 						}
 					}
@@ -417,8 +432,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
 							k->Swallowed();
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(100);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(100);
 						}
 					}
 				}
@@ -429,7 +447,10 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
 							swallowedBrick = k;
 							isSwallowed = true;
 							return;
@@ -440,8 +461,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(50);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(50);
 							return;
 						}
 					}
@@ -450,8 +474,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsFood())
 						{
 							k->Swallowed();
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(100);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(100);
 						}
 					}
 				}
@@ -462,7 +489,10 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
 							swallowedBrick = k;
 							isSwallowed = true;
 							return;
@@ -473,8 +503,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(50);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(50);
 							return;
 						}
 					}
@@ -483,8 +516,11 @@ namespace game_framework {
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsFood())
 						{
 							k->Swallowed();
-							CAudio::Instance()->Play(SOUND_SWALLOW, false);
-							gradeRecord->Add(100);
+							if (shareDataRecord->IsSoundEnable())
+							{
+								CAudio::Instance()->Play(SOUND_SWALLOW, false);
+							}
+							shareDataRecord->AddGrade(100);
 						}
 					}
 				}
@@ -496,7 +532,10 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
-						CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						if (shareDataRecord->IsSoundEnable())
+						{
+							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						}
 						isSwallowed = false;
 					}
 				}
@@ -505,7 +544,10 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
-						CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						if (shareDataRecord->IsSoundEnable())
+						{
+							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						}
 						isSwallowed = false;
 					}
 				}
@@ -514,7 +556,10 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
-						CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						if (shareDataRecord->IsSoundEnable())
+						{
+							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						}
 						isSwallowed = false;
 					}
 				}
@@ -523,7 +568,10 @@ namespace game_framework {
 					if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE)
 					{
 						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
-						CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						if (shareDataRecord->IsSoundEnable())
+						{
+							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
+						}
 						isSwallowed = false;
 					}
 				}

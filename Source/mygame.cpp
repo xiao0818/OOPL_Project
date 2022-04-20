@@ -65,8 +65,8 @@ namespace game_framework {
 	// 這個class為遊戲的遊戲開頭畫面物件
 	/////////////////////////////////////////////////////////////////////////////
 
-	CGameStateInit::CGameStateInit(CGame *g)
-	: CGameState(g)
+	CGameStateInit::CGameStateInit(CGame *g, CShareData *data)
+	: CGameState(g, data)
 	{
 	}
 
@@ -80,8 +80,6 @@ namespace game_framework {
 		//
 		// 開始載入資料
 		//
-		isMusicEnable = isSoundEnable = true;
-
 		logo.LoadBitmap(IDB_COVER);
 		cross.LoadBitmap(IDB_CROSS,RGB(255, 255, 255));
 		musicButton.LoadBitmap(IDB_MUSIC);
@@ -102,6 +100,7 @@ namespace game_framework {
 	void CGameStateInit::OnBeginState()
 	{
 		isOnMusicButton = isOnSoundButton = isOnPlayButton = false;
+		shareData->InitializeState();
 	}
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -165,8 +164,8 @@ namespace game_framework {
 		}
 		if (isOnMusicButton)
 		{
-			isMusicEnable = !isMusicEnable;
-			if (isMusicEnable)
+			shareData->IsMusicEnable(!shareData->IsMusicEnable());
+			if (shareData->IsMusicEnable())
 			{
 				CAudio::Instance()->Play(AUDIO_MENU, true);
 				CAudio::Instance()->Stop(AUDIO_MAIN);
@@ -179,7 +178,7 @@ namespace game_framework {
 		}
 		if (isOnSoundButton)
 		{
-			isSoundEnable = !isSoundEnable;
+			shareData->IsSoundEnable(!shareData->IsSoundEnable());
 		}
 	}
 
@@ -214,12 +213,12 @@ namespace game_framework {
 			soundButton.ShowBitmap();
 		}
 
-		if (!isMusicEnable)
+		if (!shareData->IsMusicEnable())
 		{
 			cross.SetTopLeft(GROUND_X + MUSIC_INDEX_X, GROUND_Y + MUSIC_INDEX_Y);
 			cross.ShowBitmap();
 		}
-		if (!isSoundEnable)
+		if (!shareData->IsSoundEnable())
 		{
 			cross.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
 			cross.ShowBitmap();
@@ -252,8 +251,8 @@ namespace game_framework {
 	// 這個class為遊戲的結束狀態(Game Over)
 	/////////////////////////////////////////////////////////////////////////////
 
-	CGameStateOver::CGameStateOver(CGame *g)
-	: CGameState(g)
+	CGameStateOver::CGameStateOver(CGame *g, CShareData *data)
+	: CGameState(g, data)
 	{
 	}
 
@@ -262,8 +261,16 @@ namespace game_framework {
 		counter--;
 		if (counter < 0)
 		{
-			CAudio::Instance()->Play(AUDIO_MENU, true);
-			CAudio::Instance()->Stop(AUDIO_MAIN);
+			if (shareData->IsMusicEnable())
+			{
+				CAudio::Instance()->Play(AUDIO_MENU, true);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			else
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
 			GotoGameState(GAME_STATE_INIT);
 		}
 	}
@@ -287,10 +294,17 @@ namespace game_framework {
 		// 開始載入資料
 		//
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-
-		CAudio::Instance()->Play(AUDIO_MENU, true);
-		CAudio::Instance()->Stop(AUDIO_MAIN);
-
+		
+		if (shareData->IsMusicEnable())
+		{
+			CAudio::Instance()->Play(AUDIO_MENU, true);
+			CAudio::Instance()->Stop(AUDIO_MAIN);
+		}
+		else
+		{
+			CAudio::Instance()->Stop(AUDIO_MENU);
+			CAudio::Instance()->Stop(AUDIO_MAIN);
+		}
 		//
 		// 最終進度為100%
 		//
@@ -316,8 +330,8 @@ namespace game_framework {
 	// 這個class為遊戲的遊戲執行物件，主要的遊戲程式都在這裡
 	/////////////////////////////////////////////////////////////////////////////
 
-	CGameStateRun::CGameStateRun(CGame *g)
-	: CGameState(g)
+	CGameStateRun::CGameStateRun(CGame *g, CShareData *data)
+	: CGameState(g, data)
 	{
 	}
 
@@ -327,8 +341,16 @@ namespace game_framework {
 
 	void CGameStateRun::OnBeginState()
 	{
-		CAudio::Instance()->Stop(AUDIO_MENU);
-		CAudio::Instance()->Play(AUDIO_MAIN, true);
+		if (shareData->IsMusicEnable())
+		{
+			CAudio::Instance()->Stop(AUDIO_MENU);
+			CAudio::Instance()->Play(AUDIO_MAIN, true);
+		}
+		else
+		{
+			CAudio::Instance()->Stop(AUDIO_MENU);
+			CAudio::Instance()->Stop(AUDIO_MAIN);
+		}
 		
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
@@ -342,13 +364,12 @@ namespace game_framework {
 		monster.clear();
 
 		gameEndConut = 0;
-
-		grade.SetInteger(0);
+		
 		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
 
 		map.Initialize();
 
-		player.Initialize(&map, &grade, &brick, &food, &monster);
+		player.Initialize(&map, shareData, &brick, &food, &monster);
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -436,6 +457,8 @@ namespace game_framework {
 			gameEndConut++;
 			if (gameEndConut == 5 * 30)
 			{
+				shareData->IsSuccess(player.IsSuccess());
+				shareData->IsFail(player.IsFail());
 				GotoGameState(GAME_STATE_OVER);
 			}
 		}
@@ -519,6 +542,8 @@ namespace game_framework {
 	void CGameStateRun::OnShow()
 	{
 		ground.OnShow();
+
+		grade.SetInteger(shareData->GetGrade());
 		grade.ShowBitmap();
 
 		for (int j = 0; j < 14; j++)

@@ -93,6 +93,7 @@ enum GAME_STATES {
 #include <list>
 #include <vector>
 #include <map>
+#include "CShareData.h"
 using namespace std;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -282,7 +283,7 @@ class CGameStateOver;
 
 class CGameState {
 public:
-	CGameState(CGame *g);
+	CGameState(CGame *g, CShareData *data);
 	void OnDraw();			// Template Method
 	void OnCycle();			// Template Method
 	//
@@ -307,6 +308,7 @@ protected:
 	virtual void OnMove() {}								// 移動這個狀態的遊戲元素
 	virtual void OnShow() = 0;								// 顯示這個狀態的遊戲畫面
 	CGame *game;
+	CShareData *shareData;
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -344,6 +346,7 @@ private:
 	CGameState		*gameState;			// pointer指向目前的遊戲狀態
 	CGameState		*gameStateTable[3];	// 遊戲狀態物件的pointer
 	static CGame	instance;			// 遊戲唯一的instance
+	CShareData		shareData;
 };
 
 }

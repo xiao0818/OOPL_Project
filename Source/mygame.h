@@ -64,7 +64,7 @@ namespace game_framework {
 
 	class CGameStateInit : public CGameState {
 	public:
-		CGameStateInit(CGame *g);
+		CGameStateInit(CGame *g, CShareData *data);
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
@@ -81,8 +81,6 @@ namespace game_framework {
 		bool isOnPlayButton;
 		bool isOnMusicButton;
 		bool isOnSoundButton;
-		bool isMusicEnable;
-		bool isSoundEnable;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -92,7 +90,7 @@ namespace game_framework {
 
 	class CGameStateRun : public CGameState {
 	public:
-		CGameStateRun(CGame *g);
+		CGameStateRun(CGame *g, CShareData *data);
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();  								// 遊戲的初值及圖形設定
@@ -115,8 +113,6 @@ namespace game_framework {
 		list<CBrick>		brick;
 		list<CFood>			food;
 		list<CMonster>		monster;
-		//list<CMud>			mud;
-		//CMud				mud;
 		int					gameEndConut;
 	};
 
@@ -127,7 +123,7 @@ namespace game_framework {
 
 	class CGameStateOver : public CGameState {
 	public:
-		CGameStateOver(CGame *g);
+		CGameStateOver(CGame *g, CShareData *data);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();
 	protected:
