@@ -12,12 +12,14 @@ namespace game_framework {
 		int  GetIndexY();
 		int  GetNextIndexX();
 		int  GetNextIndexY();
+		CName GetTypeFlag();
 		bool IsFood();
 		bool IsAlive();
 		bool IsInvincible();
 		void Initialize(CMap *map);
 		virtual void LoadBitmap();
-		virtual void OnMove();
+		void OnMove();
+		virtual void SetTypeFlag();
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
@@ -36,6 +38,7 @@ namespace game_framework {
 		CAnimation hitDownAnimation;
 		int indexX, indexY;
 		int x, y;
+		CName typeFlag;
 		bool isInvincible;
 		bool isMovingDown;
 		bool isMovingLeft;

@@ -114,6 +114,9 @@ namespace game_framework {
 		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_008, RGB(0, 0, 0));
 	}
 
+	void CMud::SetTypeFlag() {
+		typeFlag = CName::MUD;
+	}
 
 	/*void CMud::OnMove()
 	{

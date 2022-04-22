@@ -79,6 +79,10 @@ namespace game_framework {
 		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_008, RGB(0, 0, 0));
 	}
 
+	void CTurtle::SetTypeFlag() {
+		typeFlag = CName::TURTLE;
+	}
+
 	/*bool CTurtle::changeInvincible() {
 
 		srand((unsigned int)time(NULL));

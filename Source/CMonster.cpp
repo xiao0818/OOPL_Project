@@ -64,6 +64,10 @@ namespace game_framework {
 		}
 	}
 
+	CName CMonster::GetTypeFlag() {
+		return typeFlag;
+	}
+
 	bool CMonster::IsFood()
 	{
 		return isFood;
@@ -325,6 +329,10 @@ namespace game_framework {
 				}
 			}
 		}
+	}
+	
+	void CMonster::SetTypeFlag() {
+
 	}
 
 	CDirection CMonster::SetMovingDirection()

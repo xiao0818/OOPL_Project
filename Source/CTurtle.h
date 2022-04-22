@@ -16,8 +16,9 @@ namespace game_framework {
 		//	bool IsFood();
 		//	bool IsAlive();
 		//	void Initialize(CMap *map);
-		virtual void LoadBitmap() override;
+		void LoadBitmap() override;
 		//virtual	void OnMove() override;
+		void SetTypeFlag() override;
 		//	CDirection SetMovingDirection();
 		//	void SetXY(int ni, int nj, int nx, int ny);
 		//virtual	void OnShow() override;
