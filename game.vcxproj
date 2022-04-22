@@ -529,6 +529,7 @@
     <Image Include="Resources\turtle\left\turtle_move_left_005.bmp" />
     <Image Include="Resources\turtle\left\turtle_move_left_006.bmp" />
     <Image Include="Resources\turtle\left\turtle_move_left_007.bmp" />
+    <Image Include="Resources\turtle\rest\turtle_rest_right.bmp" />
     <Image Include="Resources\turtle\right\turtle_move_right_000.bmp" />
     <Image Include="Resources\turtle\right\turtle_move_right_001.bmp" />
     <Image Include="Resources\turtle\right\turtle_move_right_002.bmp" />

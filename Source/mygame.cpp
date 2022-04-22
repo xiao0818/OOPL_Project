@@ -384,6 +384,7 @@ namespace game_framework {
 					CMud tempMud;
 					tempMud.Initialize(&map);
 					tempMud.LoadBitmap();
+					tempMud.SetTypeFlag();
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempMud);
 				}
@@ -391,6 +392,7 @@ namespace game_framework {
 					CTurtle tempTurtle;
 					tempTurtle.Initialize(&map);
 					tempTurtle.LoadBitmap();
+					tempTurtle.SetTypeFlag();
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempTurtle);
 				}

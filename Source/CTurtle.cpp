@@ -11,6 +11,9 @@
 namespace game_framework {
 
 	void CTurtle::LoadBitmap() {
+
+		turtleRestRight.LoadBitmap(IDB_TURTLE_REST_RIGHT, RGB(0, 0, 0));
+
 		leftAnimation.AddBitmap(IDB_TURTLE_MOVE_LEFT_001, RGB(0, 0, 0));
 		leftAnimation.AddBitmap(IDB_TURTLE_MOVE_LEFT_002, RGB(0, 0, 0));
 		leftAnimation.AddBitmap(IDB_TURTLE_MOVE_LEFT_003, RGB(0, 0, 0));

@@ -837,5 +837,8 @@
     <Image Include="Resources\player\fail\player_fail_003.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\turtle\rest\turtle_rest_right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

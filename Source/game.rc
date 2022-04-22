@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (Traditional, Taiwan) resources
+// 中文 (繁體，台灣) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -498,6 +498,8 @@ IDB_PLAYER_FAIL_002     BITMAP                  "..\\Resources\\player\\fail\\pl
 
 IDB_PLAYER_FAIL_003     BITMAP                  "..\\Resources\\player\\fail\\player_fail_003.bmp"
 
+IDB_TURTLE_REST_RIGHT   BITMAP                  "..\\Resources\\turtle\\rest\\turtle_rest_right.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -506,12 +508,12 @@ IDB_PLAYER_FAIL_003     BITMAP                  "..\\Resources\\player\\fail\\pl
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // Chinese (Traditional, Taiwan) resources
+#endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// 英文 (美國) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -809,7 +811,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // English (United States) resources
+#endif    // 英文 (美國) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -27,6 +27,7 @@ namespace game_framework {
 		void ReturnBack();
 		void Swallowed();
 		void Reset();
+		bool SetInvincible();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -36,6 +37,7 @@ namespace game_framework {
 		CAnimation hitRightAnimation;
 		CAnimation hitUpAnimation;
 		CAnimation hitDownAnimation;
+		CMovingBitmap turtleRestRight;
 		int indexX, indexY;
 		int x, y;
 		CName typeFlag;
