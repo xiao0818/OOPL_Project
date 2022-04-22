@@ -18,7 +18,6 @@ namespace game_framework {
 		//	void Initialize(CMap *map);
 		virtual void LoadBitmap() override;
 		//virtual	void OnMove() override;
-		bool changeInvincible();
 		//	CDirection SetMovingDirection();
 		//	void SetXY(int ni, int nj, int nx, int ny);
 		//virtual	void OnShow() override;

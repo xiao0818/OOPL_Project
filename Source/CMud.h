@@ -9,22 +9,22 @@
 namespace game_framework {
 	class CMud : public CMonster
 	{
-	public:
-	//	CMud();
-	//	int  GetIndexX();
-	//	int  GetIndexY();
-	//	bool IsFood();
-	//	bool IsAlive();
-	//	void Initialize(CMap *map);
-		virtual void LoadBitmap() override;
-	//	virtual void OnMove() override;
-	//	CDirection SetMovingDirection();
-	//	void SetXY(int ni, int nj, int nx, int ny);
-	//	void OnShow();
-	//	void HitByBrick(CDirection tempDir);
-	//	void ReturnBack();
-	//	void Swallowed();
-	//	void Reset();
+		public:
+		//	CMud();
+		//	int  GetIndexX();
+		//	int  GetIndexY();
+		//	bool IsFood();
+		//	bool IsAlive();
+		//	void Initialize(CMap *map);
+			void LoadBitmap() override;
+		//	void OnMove() override;
+		//	CDirection SetMovingDirection();
+		//	void SetXY(int ni, int nj, int nx, int ny);
+		//	void OnShow();
+		//	void HitByBrick(CDirection tempDir);
+		//	void ReturnBack();
+		//	void Swallowed();
+		//	void Reset();
 	protected:
 	//	CAnimation leftAnimation;
 	//	CAnimation rightAnimation;

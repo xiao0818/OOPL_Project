@@ -79,10 +79,9 @@ namespace game_framework {
 		hitUpAnimation.AddBitmap(IDB_MUD_HIT_UP_008, RGB(0, 0, 0));
 	}
 
-	bool CTurtle::changeInvincible() {
+	/*bool CTurtle::changeInvincible() {
 
-		return true;
-		/*srand((unsigned int)time(NULL));
+		srand((unsigned int)time(NULL));
 
 		int x = rand();
 		int flag = x % 2;
@@ -92,8 +91,8 @@ namespace game_framework {
 			return true;
 		default:
 			return false;
-		}*/
-	}
+		}
+	}*/
 
 	/*void CTurtle::OnMove()
 	{
