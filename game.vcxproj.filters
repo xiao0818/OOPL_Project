@@ -840,5 +840,14 @@
     <Image Include="Resources\turtle\rest\turtle_rest_right.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\turtle\rest\turtle_rest_left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\turtle\rest\turtle_rest_up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\turtle\rest\turtle_rest_down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

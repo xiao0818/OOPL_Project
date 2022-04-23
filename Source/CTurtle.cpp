@@ -12,7 +12,10 @@ namespace game_framework {
 
 	void CTurtle::LoadBitmap() {
 
-		turtleRestRight.LoadBitmap(IDB_TURTLE_REST_RIGHT, RGB(0, 0, 0));
+		invincibleRight.LoadBitmap(IDB_TURTLE_REST_RIGHT, RGB(0, 0, 0));
+		invincibleLeft.LoadBitmap(IDB_TURTLE_REST_LEFT, RGB(0, 0, 0));
+		invincibleUp.LoadBitmap(IDB_TURTLE_REST_UP, RGB(0, 0, 0));
+		invincibleDown.LoadBitmap(IDB_TURTLE_REST_DOWN, RGB(0, 0, 0));
 
 		leftAnimation.AddBitmap(IDB_TURTLE_MOVE_LEFT_001, RGB(0, 0, 0));
 		leftAnimation.AddBitmap(IDB_TURTLE_MOVE_LEFT_002, RGB(0, 0, 0));

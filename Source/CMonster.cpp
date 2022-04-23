@@ -136,8 +136,27 @@ namespace game_framework {
 		if (isAlive)
 		{
 			if (isInvincible) {
-				turtleRestRight.SetTopLeft(x, y - 24);
-				turtleRestRight.ShowBitmap();
+				if (faceTo == CDirection::LEFT)
+				{
+					invincibleLeft.SetTopLeft(x, y - 24);
+					invincibleLeft.ShowBitmap();
+				}
+				else if (faceTo == CDirection::RIGHT)
+				{
+					invincibleRight.SetTopLeft(x, y - 24);
+					invincibleRight.ShowBitmap();
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					invincibleUp.SetTopLeft(x, y - 24);
+					invincibleUp.ShowBitmap();
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					invincibleDown.SetTopLeft(x, y - 24);
+					invincibleDown.ShowBitmap();
+				}
+
 			}
 			else if (isHit || isFood)
 			{

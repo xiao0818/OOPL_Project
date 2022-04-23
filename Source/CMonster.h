@@ -38,7 +38,10 @@ namespace game_framework {
 		CAnimation hitRightAnimation;
 		CAnimation hitUpAnimation;
 		CAnimation hitDownAnimation;
-		CMovingBitmap turtleRestRight;
+		CMovingBitmap invincibleRight;
+		CMovingBitmap invincibleLeft;
+		CMovingBitmap invincibleUp;
+		CMovingBitmap invincibleDown;
 		int indexX, indexY;
 		int x, y;
 		CName typeFlag;
