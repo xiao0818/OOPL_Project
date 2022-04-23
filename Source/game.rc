@@ -500,6 +500,12 @@ IDB_PLAYER_FAIL_003     BITMAP                  "..\\Resources\\player\\fail\\pl
 
 IDB_TURTLE_REST_RIGHT   BITMAP                  "..\\Resources\\turtle\\rest\\turtle_rest_right.bmp"
 
+IDB_TURTLE_REST_LEFT    BITMAP                  "..\\Resources\\turtle\\rest\\turtle_rest_left.bmp"
+
+IDB_TURTLE_REST_UP      BITMAP                  "..\\Resources\\turtle\\rest\\turtle_rest_up.bmp"
+
+IDB_TURTLE_REST_DOWN    BITMAP                  "..\\Resources\\turtle\\rest\\turtle_rest_down.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
