@@ -93,6 +93,210 @@ namespace game_framework {
 
 	void CMonster::OnMove()
 	{
+		if (GetTypeFlag() == CName::MUD || GetTypeFlag() == CName::TURTLE)
+			MudAndTurtleMove();
+	}
+	
+	void CMonster::SetTypeFlag() {
+
+	}
+
+	CDirection CMonster::SetMovingDirection()
+	{
+		srand((unsigned int)time(NULL));
+
+		int x = rand();
+		int flag = x % 4;
+
+		switch (flag) {
+		case 0:
+			return CDirection::RIGHT;
+		case 1:
+			return CDirection::LEFT;
+		case 2:
+			return CDirection::DOWN;
+		case 3:
+			return CDirection::UP;
+		default:
+			printf("ERROR!! in CMonster.cpp function SetMoveingDirection switch case to default");
+			return CDirection::LEFT;
+		};
+	}
+
+	void CMonster::SetXY(int ni, int nj, int nx, int ny)
+	{
+		indexX = ni;
+		indexY = nj;
+		x = nx;
+		y = ny;
+	}
+
+	void CMonster::OnShow()
+	{
+		if (isAlive)
+		{
+			if (isInvincible) {
+				turtleRestRight.SetTopLeft(x, y - 24);
+				turtleRestRight.ShowBitmap();
+			}
+			else if (isHit || isFood)
+			{
+				if (faceTo == CDirection::LEFT)
+				{
+					hitLeftAnimation.SetTopLeft(x + (72 / 2) - (hitLeftAnimation.Width() / 2), y + 46 - hitLeftAnimation.Height());
+					hitLeftAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::RIGHT)
+				{
+					hitRightAnimation.SetTopLeft(x + (72 / 2) - (hitRightAnimation.Width() / 2), y + 46 - hitRightAnimation.Height());
+					hitRightAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					hitUpAnimation.SetTopLeft(x + (72 / 2) - (hitUpAnimation.Width() / 2), y + 46 - hitUpAnimation.Height());
+					hitUpAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					hitDownAnimation.SetTopLeft(x + (72 / 2) - (hitDownAnimation.Width() / 2), y + 46 - hitDownAnimation.Height());
+					hitDownAnimation.OnShow();
+				}
+			}
+			else
+			{
+				if (faceTo == CDirection::LEFT)
+				{
+					if (!isMovingLeft)
+					{
+						leftAnimation.Reset();
+					}
+					leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
+					leftAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::RIGHT)
+				{
+					if (!isMovingRight)
+					{
+						rightAnimation.Reset();
+					}
+					rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
+					rightAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					if (!isMovingUp)
+					{
+						upAnimation.Reset();
+					}
+					upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
+					upAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					if (!isMovingDown)
+					{
+						downAnimation.Reset();
+					}
+					downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
+					downAnimation.OnShow();
+				}
+			}
+		}
+	}
+
+	void CMonster::HitByBrick(CDirection tempDir)
+	{
+		if (!isHit && !isFood)
+		{
+			//ReturnBack();
+			hitCount = 0;
+			faceTo = tempDir;
+			isHit = true;
+		}
+		else if (isFood)
+		{
+			foodTime = 0;
+		}
+	}
+
+	void CMonster::ReturnBack()
+	{
+		const int STEP_SIZE_X = 3;
+		const int STEP_SIZE_Y = 2;
+		if (faceTo == CDirection::LEFT)
+		{
+			hitLeftAnimation.OnMove();
+			//x += STEP_SIZE_X;
+			//movingCount--;
+			x += STEP_SIZE_X * movingLeftCount;
+			movingLeftCount = 0;
+			mapRecord->SetMonsterInMap(indexX - 1, indexY, CName::SPACE);
+		}
+		else if (faceTo == CDirection::RIGHT)
+		{
+			hitRightAnimation.OnMove();
+			//x -= STEP_SIZE_X;
+			//movingCount--;
+			x -= STEP_SIZE_X * movingRightCount;
+			movingRightCount = 0;
+			mapRecord->SetMonsterInMap(indexX + 1, indexY, CName::SPACE);
+		}
+		else if (faceTo == CDirection::UP)
+		{
+			hitUpAnimation.OnMove();
+			//y += STEP_SIZE_Y;
+			//movingCount--;
+			y += STEP_SIZE_Y * movingUpCount;
+			movingUpCount = 0;
+			mapRecord->SetMonsterInMap(indexX, indexY - 1, CName::SPACE);
+		}
+		else if (faceTo == CDirection::DOWN)
+		{
+			hitDownAnimation.OnMove();
+			//y -= STEP_SIZE_Y;
+			//movingCount--;
+			y -= STEP_SIZE_Y * movingDownCount;
+			movingDownCount = 0;
+			mapRecord->SetMonsterInMap(indexX, indexY + 1, CName::SPACE);
+		}
+	}
+
+	void CMonster::Swallowed()
+	{
+		isAlive = isFood = false;
+		mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+	}
+
+	void CMonster::Reset()
+	{
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		isHit = isFood = false;
+		isAlive = true;
+		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = 0;
+		faceTo = SetMovingDirection();
+	}
+
+	bool CMonster::SetInvincible() {
+		if (typeFlag == CName::TURTLE) {
+			//50%
+			srand((unsigned int)time(NULL));
+
+			int x = rand();
+			int flag = x % 5;
+
+			switch (flag) {
+			case 1:
+				return true;
+			default:
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+
+	void CMonster::MudAndTurtleMove() {
 		const int FOOD_TIME_LIMIT = 90;
 		const int INVINCIBLE_TIME_LIMIT = 60;
 		const int STEP_TARGET = 24;
@@ -342,205 +546,6 @@ namespace game_framework {
 					isMovingDown = false;
 				}
 			}
-		}
-	}
-	
-	void CMonster::SetTypeFlag() {
-
-	}
-
-	CDirection CMonster::SetMovingDirection()
-	{
-		srand((unsigned int)time(NULL));
-
-		int x = rand();
-		int flag = x % 4;
-
-		switch (flag) {
-		case 0:
-			return CDirection::RIGHT;
-		case 1:
-			return CDirection::LEFT;
-		case 2:
-			return CDirection::DOWN;
-		case 3:
-			return CDirection::UP;
-		default:
-			printf("ERROR!! in CMonster.cpp function SetMoveingDirection switch case to default");
-			return CDirection::LEFT;
-		};
-	}
-
-	void CMonster::SetXY(int ni, int nj, int nx, int ny)
-	{
-		indexX = ni;
-		indexY = nj;
-		x = nx;
-		y = ny;
-	}
-
-	void CMonster::OnShow()
-	{
-		if (isAlive)
-		{
-			if (isInvincible) {
-				turtleRestRight.SetTopLeft(x, y - 24);
-				turtleRestRight.ShowBitmap();
-			}
-			else if (isHit || isFood)
-			{
-				if (faceTo == CDirection::LEFT)
-				{
-					hitLeftAnimation.SetTopLeft(x + (72 / 2) - (hitLeftAnimation.Width() / 2), y + 46 - hitLeftAnimation.Height());
-					hitLeftAnimation.OnShow();
-				}
-				else if (faceTo == CDirection::RIGHT)
-				{
-					hitRightAnimation.SetTopLeft(x + (72 / 2) - (hitRightAnimation.Width() / 2), y + 46 - hitRightAnimation.Height());
-					hitRightAnimation.OnShow();
-				}
-				else if (faceTo == CDirection::UP)
-				{
-					hitUpAnimation.SetTopLeft(x + (72 / 2) - (hitUpAnimation.Width() / 2), y + 46 - hitUpAnimation.Height());
-					hitUpAnimation.OnShow();
-				}
-				else if (faceTo == CDirection::DOWN)
-				{
-					hitDownAnimation.SetTopLeft(x + (72 / 2) - (hitDownAnimation.Width() / 2), y + 46 - hitDownAnimation.Height());
-					hitDownAnimation.OnShow();
-				}
-			}
-			else
-			{
-				if (faceTo == CDirection::LEFT)
-				{
-					if (!isMovingLeft)
-					{
-						leftAnimation.Reset();
-					}
-					leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
-					leftAnimation.OnShow();
-				}
-				else if (faceTo == CDirection::RIGHT)
-				{
-					if (!isMovingRight)
-					{
-						rightAnimation.Reset();
-					}
-					rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
-					rightAnimation.OnShow();
-				}
-				else if (faceTo == CDirection::UP)
-				{
-					if (!isMovingUp)
-					{
-						upAnimation.Reset();
-					}
-					upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
-					upAnimation.OnShow();
-				}
-				else if (faceTo == CDirection::DOWN)
-				{
-					if (!isMovingDown)
-					{
-						downAnimation.Reset();
-					}
-					downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
-					downAnimation.OnShow();
-				}
-			}
-		}
-	}
-
-	void CMonster::HitByBrick(CDirection tempDir)
-	{
-		if (!isHit && !isFood)
-		{
-			//ReturnBack();
-			hitCount = 0;
-			faceTo = tempDir;
-			isHit = true;
-		}
-		else if (isFood)
-		{
-			foodTime = 0;
-		}
-	}
-
-	void CMonster::ReturnBack()
-	{
-		const int STEP_SIZE_X = 3;
-		const int STEP_SIZE_Y = 2;
-		if (faceTo == CDirection::LEFT)
-		{
-			hitLeftAnimation.OnMove();
-			//x += STEP_SIZE_X;
-			//movingCount--;
-			x += STEP_SIZE_X * movingLeftCount;
-			movingLeftCount = 0;
-			mapRecord->SetMonsterInMap(indexX - 1, indexY, CName::SPACE);
-		}
-		else if (faceTo == CDirection::RIGHT)
-		{
-			hitRightAnimation.OnMove();
-			//x -= STEP_SIZE_X;
-			//movingCount--;
-			x -= STEP_SIZE_X * movingRightCount;
-			movingRightCount = 0;
-			mapRecord->SetMonsterInMap(indexX + 1, indexY, CName::SPACE);
-		}
-		else if (faceTo == CDirection::UP)
-		{
-			hitUpAnimation.OnMove();
-			//y += STEP_SIZE_Y;
-			//movingCount--;
-			y += STEP_SIZE_Y * movingUpCount;
-			movingUpCount = 0;
-			mapRecord->SetMonsterInMap(indexX, indexY - 1, CName::SPACE);
-		}
-		else if (faceTo == CDirection::DOWN)
-		{
-			hitDownAnimation.OnMove();
-			//y -= STEP_SIZE_Y;
-			//movingCount--;
-			y -= STEP_SIZE_Y * movingDownCount;
-			movingDownCount = 0;
-			mapRecord->SetMonsterInMap(indexX, indexY + 1, CName::SPACE);
-		}
-	}
-
-	void CMonster::Swallowed()
-	{
-		isAlive = isFood = false;
-		mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
-	}
-
-	void CMonster::Reset()
-	{
-		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		isHit = isFood = false;
-		isAlive = true;
-		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = 0;
-		faceTo = SetMovingDirection();
-	}
-
-	bool CMonster::SetInvincible() {
-		if (typeFlag == CName::TURTLE) {
-			//50%
-			srand((unsigned int)time(NULL));
-
-			int x = rand();
-			int flag = x % 5;
-
-			switch (flag) {
-			case 1:
-				return true;
-			default:
-				return false;
-			}
-		}
-		else {
-			return false;
 		}
 	}
 }
