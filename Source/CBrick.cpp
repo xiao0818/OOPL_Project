@@ -142,7 +142,7 @@ namespace game_framework {
 							{
 								if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX + 1 && k->GetNextIndexY() == indexY))
 								{
-									k->HitByBrick(CDirection::LEFT);
+									k->HitByBrick(CDirection::RIGHT);
 								}
 							}
 						}
@@ -169,7 +169,7 @@ namespace game_framework {
 							{
 								if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY - 1))
 								{
-									k->HitByBrick(CDirection::LEFT);
+									k->HitByBrick(CDirection::UP);
 								}
 							}
 						}
@@ -196,7 +196,7 @@ namespace game_framework {
 							{
 								if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY + 1))
 								{
-									k->HitByBrick(CDirection::LEFT);
+									k->HitByBrick(CDirection::DOWN);
 								}
 							}
 						}

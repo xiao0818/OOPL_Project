@@ -160,6 +160,12 @@ namespace game_framework {
 			}
 			else if (isHit || isFood)
 			{
+				if (isHit) {
+					hitLeftAnimation.Reset();
+					hitDownAnimation.Reset();
+					hitRightAnimation.Reset();
+					hitUpAnimation.Reset();
+				}
 				if (faceTo == CDirection::LEFT)
 				{
 					hitLeftAnimation.SetTopLeft(x + (72 / 2) - (hitLeftAnimation.Width() / 2), y + 46 - hitLeftAnimation.Height());
