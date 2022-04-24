@@ -280,7 +280,7 @@ namespace game_framework {
 		CAudio::Instance()->Stop(AUDIO_MENU);
 		CAudio::Instance()->Stop(AUDIO_MAIN);
 
-		counter = 30 * 5; // 5 seconds
+		counter = 30 * 3; // 3 seconds
 	}
 
 	void CGameStateOver::OnInit()
@@ -457,7 +457,7 @@ namespace game_framework {
 		if (player.IsSuccess() || player.IsFail())
 		{
 			gameEndConut++;
-			if (gameEndConut == 5 * 30)
+			if (gameEndConut == 3 * 30)
 			{
 				shareData->IsSuccess(player.IsSuccess());
 				shareData->IsFail(player.IsFail());

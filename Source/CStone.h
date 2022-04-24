@@ -14,8 +14,8 @@ namespace game_framework {
 	//	int  GetIndexY();
 	//	bool IsMove();
 	//	void Initialize(CName **map);
-		virtual void LoadBitmap() override;
-		virtual void SetStep() override;
+		void LoadBitmap() override;
+		void SetStep() override;
 	//	void OnMove();
 	//	void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 	//	void SetXY(int ni, int nj, int nx, int ny);

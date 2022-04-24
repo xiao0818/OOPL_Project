@@ -431,7 +431,7 @@ namespace game_framework {
 					{
 						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 						//mapRecord->SetMonsterInMap(++indexX, indexY, CName::MUD_FOOD);
-						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MONSTER_FOOD);
 						isFood = true;
 						isHit = false;
 						hitCount = 0;
@@ -446,7 +446,7 @@ namespace game_framework {
 					{
 						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 						//mapRecord->SetMonsterInMap(--indexX, indexY, CName::MUD_FOOD);
-						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MONSTER_FOOD);
 						isFood = true;
 						isHit = false;
 						hitCount = 0;
@@ -461,7 +461,7 @@ namespace game_framework {
 					{
 						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 						//mapRecord->SetMonsterInMap(indexX, ++indexY, CName::MUD_FOOD);
-						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MONSTER_FOOD);
 						isFood = true;
 						isHit = false;
 						hitCount = 0;
@@ -476,7 +476,7 @@ namespace game_framework {
 					{
 						//mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
 						//mapRecord->SetMonsterInMap(indexX, --indexY, CName::MUD_FOOD);
-						mapRecord->SetMonsterInMap(indexX, indexY, CName::MUD_FOOD);
+						mapRecord->SetMonsterInMap(indexX, indexY, CName::MONSTER_FOOD);
 						isFood = true;
 						isHit = false;
 						hitCount = 0;

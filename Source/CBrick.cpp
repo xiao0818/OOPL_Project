@@ -110,7 +110,7 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
 					if (movingLeftCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MUD || mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MUD_FOOD) {
+						if (mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MUD || mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::MONSTER_FOOD) {
 							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX - 1 && k->GetNextIndexY() == indexY))
@@ -137,7 +137,7 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
 					if (movingRightCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MUD || mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MUD_FOOD) {
+						if (mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MUD || mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::MONSTER_FOOD) {
 							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX + 1 && k->GetNextIndexY() == indexY))
@@ -164,7 +164,7 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
 					if (movingUpCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MUD || mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MUD_FOOD) {
+						if (mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MUD || mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::MONSTER_FOOD) {
 							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY - 1))
@@ -191,7 +191,7 @@ namespace game_framework {
 					mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
 					if (movingDownCount == STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MUD || mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MUD_FOOD) {
+						if (mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MUD || mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::MONSTER_FOOD) {
 							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 							{
 								if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY + 1))

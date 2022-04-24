@@ -9,7 +9,6 @@
 #include <time.h>
 
 namespace game_framework {
-
 	void CTurtle::LoadBitmap() {
 
 		invincibleRight.LoadBitmap(IDB_TURTLE_REST_RIGHT, RGB(0, 0, 0));
