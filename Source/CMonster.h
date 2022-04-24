@@ -12,23 +12,20 @@ namespace game_framework {
 		int  GetIndexY();
 		int  GetNextIndexX();
 		int  GetNextIndexY();
-		CName GetTypeFlag();
 		bool IsFood();
 		bool IsAlive();
 		bool IsInvincible();
 		void Initialize(CMap *map);
 		virtual void LoadBitmap();
 		void OnMove();
-		virtual void SetTypeFlag();
+		virtual void SetTypeFlag(CName name);
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 		void HitByBrick(CDirection tempDir);
-		void ReturnBack();
 		void Swallowed();
 		void Reset();
-		bool SetInvincible();
-		void MudAndTurtleMove(); 
+		void SetInvincible();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -44,7 +41,7 @@ namespace game_framework {
 		CMovingBitmap invincibleDown;
 		int indexX, indexY;
 		int x, y;
-		CName typeFlag;
+		CName type;
 		bool isInvincible;
 		bool isMovingDown;
 		bool isMovingLeft;
