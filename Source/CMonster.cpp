@@ -244,6 +244,7 @@ namespace game_framework {
 			invincibleTime++;
 			if (invincibleTime == INVINCIBLE_TIME_LIMIT) {
 				isInvincible = false;
+				mapRecord->SetMonsterInMap(indexX, indexY, type);
 				invincibleTime = 0;
 			}
 		}
@@ -502,10 +503,11 @@ namespace game_framework {
 			switch (flag)
 			{
 			case 0:
-				isInvincible = false;
+				isInvincible = true;
+				mapRecord->SetMonsterInMap(indexX, indexY, CName::INVINCIBLE_TURTLE);
 				break;
 			default:
-				isInvincible = true;
+				isInvincible = false;
 			}
 		}
 		else

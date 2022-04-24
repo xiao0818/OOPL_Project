@@ -5,7 +5,6 @@
 #include "CDirection.h"
 #include "CMap.h"
 #include "CMonster.h"
-//#include "CMud.h"
 
 namespace game_framework {
 	class CBrick
@@ -18,6 +17,7 @@ namespace game_framework {
 		void Initialize(CMap *map, list<CMonster> *monster);
 		virtual void LoadBitmap();
 		virtual void SetStep();
+		void SetTypeFlag(CName name);
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 		void SetXY(int ni, int nj, int nx, int ny);
@@ -29,6 +29,7 @@ namespace game_framework {
 		int x, y;
 		CMap *mapRecord;
 		list<CMonster> *monsterRecord;
+		CName type;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;

@@ -18,7 +18,7 @@ namespace game_framework {
 		void Initialize(CMap *map);
 		virtual void LoadBitmap();
 		void OnMove();
-		virtual void SetTypeFlag(CName name);
+		void SetTypeFlag(CName name);
 		CDirection SetMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
