@@ -69,6 +69,11 @@ namespace game_framework {
 		return isFood;
 	}
 
+	bool CMonster::IsHit()
+	{
+		return isHit;
+	}
+
 	bool CMonster::IsAlive()
 	{
 		return isAlive;

@@ -101,6 +101,7 @@ namespace game_framework {
 	{
 		isOnMusicButton = isOnSoundButton = isOnPlayButton = false;
 		shareData->InitializeState();
+		shareData->SetSelectedLevelIndex(1);
 	}
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -352,11 +353,17 @@ namespace game_framework {
 			CAudio::Instance()->Stop(AUDIO_MAIN);
 		}
 		
+		map.SelectLevel(shareData->GetSelectedLevelIndex());
+		map.Initialize();
+		player.Initialize(&map, shareData, &brick, &food, &monster);
+
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
-		const int GROUND_X = (SIZE_X - BRICK_LENGTH * 14) / 2;
-		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * 14) / 2;
+		const int GROUND_X = (SIZE_X - BRICK_LENGTH * map.GetBrickNumberX()) / 2;
+		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * map.GetBrickNumberY()) / 2 + 24;
+		ground.Initialize(map.GetBrickNumberX(), map.GetBrickNumberY());
 		ground.SetXY(GROUND_X, GROUND_Y);
+		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
 
 		wall.clear();
 		brick.clear();
@@ -364,16 +371,10 @@ namespace game_framework {
 		monster.clear();
 
 		gameEndConut = 0;
-		
-		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
 
-		map.Initialize();
-
-		player.Initialize(&map, shareData, &brick, &food, &monster);
-
-		for (int i = 0; i < 14; i++)
+		for (int i = 0; i < map.GetBrickNumberX(); i++)
 		{
-			for (int j = 0; j < 14; j++)
+			for (int j = 0; j < map.GetBrickNumberY(); j++)
 			{
 				if (map.GetPlayerInMap(i, j) == CName::PLAYER)
 				{
@@ -545,10 +546,7 @@ namespace game_framework {
 	{
 		ground.OnShow();
 
-		grade.SetInteger(shareData->GetGrade());
-		grade.ShowBitmap();
-
-		for (int j = 0; j < 14; j++)
+		for (int j = 0; j < map.GetBrickNumberY(); j++)
 		{
 			for (list<CWall>::iterator k = wall.begin(); k != wall.end(); k++)
 			{
@@ -583,5 +581,8 @@ namespace game_framework {
 				player.OnShow();
 			}
 		}
+
+		grade.SetInteger(shareData->GetGrade());
+		grade.ShowBitmap();
 	}
 }

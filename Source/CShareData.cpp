@@ -13,47 +13,68 @@ namespace game_framework {
 		isMusicEnable = isSoundEnable = true;
 		isSuccess = isFail = false;
 	}
+
 	void CShareData::InitializeState()
 	{
 		selectedLevelIndex = grade = 0;
 		isSuccess = isFail = false;
 	}
+
+	void CShareData::SetSelectedLevelIndex(int level)
+	{
+		selectedLevelIndex = level;
+	}
+
+	int CShareData::GetSelectedLevelIndex()
+	{
+		return selectedLevelIndex;
+	}
+
 	int CShareData::GetGrade()
 	{
 		return grade;
 	}
+
 	void CShareData::AddGrade(int point)
 	{
 		grade += point;
 	}
+
 	bool CShareData::IsSuccess()
 	{
 		return isSuccess;
 	}
+
 	void CShareData::IsSuccess(bool flag)
 	{
 		isSuccess = flag;
 	}
+
 	bool CShareData::IsFail()
 	{
 		return isFail;
 	}
+
 	void CShareData::IsFail(bool flag)
 	{
 		isFail = flag;
 	}
+
 	bool CShareData::IsMusicEnable()
 	{
 		return isMusicEnable;
 	}
+
 	bool CShareData::IsSoundEnable()
 	{
 		return isSoundEnable;
 	}
+
 	void CShareData::IsMusicEnable(bool flag)
 	{
 		isMusicEnable = flag;
 	}
+
 	void CShareData::IsSoundEnable(bool flag)
 	{
 		isSoundEnable = flag;

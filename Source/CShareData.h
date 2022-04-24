@@ -7,6 +7,8 @@ namespace game_framework {
 	public:
 		CShareData();
 		void InitializeState();
+		void SetSelectedLevelIndex(int level);
+		int GetSelectedLevelIndex();
 		int GetGrade();
 		void AddGrade(int point);
 		bool IsSuccess();

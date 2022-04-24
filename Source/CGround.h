@@ -7,12 +7,14 @@ namespace game_framework {
 	public:
 		CGround();
 		void LoadBitmap();
+		void Initialize(int nx, int ny);
 		void OnShow();
 		void SetXY(int nx ,int ny);
 	protected:
 		CMovingBitmap ground;
 		int x, y;
 		int brickLength, brickWidth;
+		int brickNumberX, brickNumberY;
 	};
 }
 

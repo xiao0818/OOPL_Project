@@ -11,6 +11,7 @@ namespace game_framework {
 	CGround::CGround()
 	{
 		x = y = 0;
+		brickNumberX = brickNumberY = 0;
 		brickLength = 72;
 		brickWidth = 48;
 	}
@@ -18,6 +19,12 @@ namespace game_framework {
 	void CGround::LoadBitmap()
 	{
 		ground.LoadBitmap(IDB_GROUND);
+	}
+
+	void CGround::Initialize(int nx, int ny)
+	{
+		brickNumberX = nx;
+		brickNumberY = ny;
 	}
 
 	void CGround::SetXY(int nx, int ny)
@@ -28,9 +35,9 @@ namespace game_framework {
 
 	void CGround::OnShow()
 	{
-		for (int i = 0; i < 14; i++)
+		for (int i = 0; i < brickNumberY; i++)
 		{
-			for (int j = 0; j < 14; j++)
+			for (int j = 0; j < brickNumberX; j++)
 			{
 				ground.SetTopLeft(x + brickLength * j, y + brickWidth * i);
 				ground.ShowBitmap();

@@ -13,6 +13,7 @@ namespace game_framework {
 		int  GetNextIndexX();
 		int  GetNextIndexY();
 		bool IsFood();
+		bool IsHit();
 		bool IsAlive();
 		bool IsInvincible();
 		void Initialize(CMap *map);
