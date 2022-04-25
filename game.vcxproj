@@ -510,8 +510,10 @@
     <Image Include="Resources\player\up_with_full\player_move_with_full_up_008.bmp" />
     <Image Include="Resources\start\cover.bmp" />
     <Image Include="Resources\start\cross.bmp" />
+    <Image Include="Resources\start\level.bmp" />
     <Image Include="Resources\start\music.bmp" />
     <Image Include="Resources\start\play.bmp" />
+    <Image Include="Resources\start\player.bmp" />
     <Image Include="Resources\start\sound.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_000.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_001.bmp" />

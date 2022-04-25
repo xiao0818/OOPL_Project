@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 產生的 Include 檔案。
-// 由 game.rc 使用
+// Microsoft Visual C++ generated include file.
+// Used by game.rc
 //
 #define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
@@ -285,6 +285,9 @@
 #define IDB_TURTLE_HIT_UP_006           423
 #define IDB_TURTLE_HIT_UP_007           424
 #define IDB_TURTLE_HIT_UP_008           425
+#define IDB_LEVEL                       426
+#define IDB_BITMAP16                    427
+#define IDB_PLAYER                      427
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -297,7 +300,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        426
+#define _APS_NEXT_RESOURCE_VALUE        428
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

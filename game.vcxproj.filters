@@ -945,5 +945,11 @@
     <Image Include="Resources\turtle\hit_up\turtle_hit_up_007.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\start\level.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\player.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
