@@ -9,74 +9,108 @@
 namespace game_framework {
 	CMap::CMap()
 	{
-		CName mapInitLevel1[14][14] = { {CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL},
-								{CName::WALL, CName::MUD, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::MUD, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::BREAD, CName::SPACE, CName::SPACE, CName::SPACE, CName::PLAYER, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::APPLE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::STONE, CName::MUTTON, CName::SPACE, CName::STONE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::MUD, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::WALL, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::MUD, CName::WALL, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::STONE, CName::SPACE, CName::SPACE, CName::WALL},
-								{CName::WALL, CName::SPACE, CName::SPACE, CName::TURTLE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::SPACE, CName::MUD, CName::WALL},
-								{CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL, CName::WALL} };
+		brickNumberX = 0;
+		brickNumberY = 0;
+		undeleteFlag = false;
+	}
 
-		for (int i = 0; i < 14; i++)
+	CMap::~CMap()
+	{
+		if (undeleteFlag)
 		{
-			for (int j = 0; j < 14; j++)
-			{
-				map[i][j] = mapInitLevel1[i][j];
-			}
+			DeleteMap();
 		}
 	}
 
 	int CMap::GetBrickNumberX()
 	{
-		return 14;
+		return brickNumberX;
 	}
 
 	int CMap::GetBrickNumberY()
 	{
-		return 14;
+		return brickNumberY;
 	}
 
 	void CMap::SelectLevel(int levelNumber)
 	{
 		level = levelNumber;
+		brickNumberX = levelBrickNumberX[level - 1];
+		brickNumberY = levelBrickNumberY[level - 1];
+
+		undeleteFlag = true;
+
+		map = new CName *[brickNumberX];
+		playerMap = new CName *[brickNumberX];
+		brickMap = new CName *[brickNumberX];
+		foodMap = new CName *[brickNumberX];
+		monsterMap = new CName *[brickNumberX];
+		for (int i = 0; i < brickNumberX; i++)
+		{
+			map[i] = new CName[brickNumberY];
+			playerMap[i] = new CName [brickNumberY];
+			brickMap[i] = new CName [brickNumberY];
+			foodMap[i] = new CName [brickNumberY];
+			monsterMap[i] = new CName [brickNumberY];
+		}
+
+		for (int i = 0; i < brickNumberX; i++)
+		{
+			for (int j = 0; j < brickNumberY; j++)
+			{
+				map[i][j] = mapInitLevel[level - 1][j][i];
+			}
+		}
 	}
 
 	void CMap::Initialize()
 	{
-		for (int i = 0; i < 14; i++)
+		for (int i = 0; i < brickNumberX; i++)
 		{
-			for (int j = 0; j < 14; j++)
+			for (int j = 0; j < brickNumberY; j++)
 			{
 				playerMap[i][j] = CName::SPACE;
 				brickMap[i][j] = CName::SPACE;
 				foodMap[i][j] = CName::SPACE;
 				monsterMap[i][j] = CName::SPACE;
 
-				if (map[j][i] == CName::PLAYER)
+				if (map[i][j] == CName::PLAYER)
 				{
-					playerMap[i][j] = map[j][i];
+					playerMap[i][j] = map[i][j];
 				}
-				else if (map[j][i] == CName::WALL || map[j][i] == CName::STONE || map[j][i] == CName::WOODEN || map[j][i] == CName::STEEL)
+				else if (map[i][j] == CName::WALL || map[i][j] == CName::STONE || map[i][j] == CName::WOODEN || map[i][j] == CName::STEEL)
 				{
-					brickMap[i][j] = map[j][i];
+					brickMap[i][j] = map[i][j];
 				}
-				else if (map[j][i] == CName::APPLE || map[j][i] == CName::BREAD || map[j][i] == CName::CARROT || map[j][i] == CName::EGG || map[j][i] == CName::GRAPE || map[j][i] == CName::MUTTON || map[j][i] == CName::PIE || map[j][i] == CName::TOMATO || map[j][i] == CName::TURKEY)
+				else if (map[i][j] == CName::APPLE || map[i][j] == CName::BREAD || map[i][j] == CName::CARROT || map[i][j] == CName::EGG || map[i][j] == CName::GRAPE || map[i][j] == CName::MUTTON || map[i][j] == CName::PIE || map[i][j] == CName::TOMATO || map[i][j] == CName::TURKEY)
 				{
-					foodMap[i][j] = map[j][i];
+					foodMap[i][j] = map[i][j];
 				}
-				else if (map[j][i] == CName::MUD || map[j][i] == CName::TURTLE)
+				else if (map[i][j] == CName::MUD || map[i][j] == CName::TURTLE)
 				{
-					monsterMap[i][j] = map[j][i];
+					monsterMap[i][j] = map[i][j];
 				}
 			}
 		}
+	}
+
+	void CMap::DeleteMap()
+	{
+		for (int i = 0; i < brickNumberX; i++)
+		{
+			delete [] map[i];
+			delete [] playerMap[i];
+			delete [] brickMap[i];
+			delete [] foodMap[i];
+			delete [] monsterMap[i];
+		}
+		delete [] map;
+		delete [] playerMap;
+		delete [] brickMap;
+		delete [] foodMap;
+		delete [] monsterMap;
+
+		undeleteFlag = false;
 	}
 
 	void CMap::SetPlayerInMap(int nx, int ny, CName name)

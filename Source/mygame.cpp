@@ -462,6 +462,7 @@ namespace game_framework {
 			{
 				shareData->IsSuccess(player.IsSuccess());
 				shareData->IsFail(player.IsFail());
+				map.DeleteMap();
 				GotoGameState(GAME_STATE_OVER);
 			}
 		}
@@ -539,6 +540,7 @@ namespace game_framework {
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 	{
+		map.DeleteMap();
 		GotoGameState(GAME_STATE_OVER);
 	}
 
