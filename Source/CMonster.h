@@ -24,7 +24,7 @@ namespace game_framework {
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 		void HitByBrick(CDirection tempDir);
-		void Swallowed();
+		void Swallowed(CDirection faceTo);
 		void Reset();
 		void SetInvincible();
 	protected:
@@ -50,6 +50,7 @@ namespace game_framework {
 		bool isMovingUp;
 		bool isHit;
 		bool isFood;
+		bool isSwallowed;
 		int foodTime;
 		int invincibleTime;
 		int movingLeftCount;

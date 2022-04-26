@@ -389,7 +389,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
-							k->Swallowed();
+							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
 							{
 								CAudio::Instance()->Play(SOUND_SWALLOW, false);
@@ -431,7 +431,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && k->IsFood())
 						{
-							k->Swallowed();
+							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
 							{
 								CAudio::Instance()->Play(SOUND_SWALLOW, false);
@@ -473,7 +473,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && k->IsFood())
 						{
-							k->Swallowed();
+							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
 							{
 								CAudio::Instance()->Play(SOUND_SWALLOW, false);
@@ -515,7 +515,7 @@ namespace game_framework {
 					{
 						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && k->IsFood())
 						{
-							k->Swallowed();
+							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
 							{
 								CAudio::Instance()->Play(SOUND_SWALLOW, false);
