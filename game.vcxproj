@@ -261,6 +261,7 @@
     <ClCompile Include="Source\CMud.cpp" />
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CShareData.cpp" />
+    <ClCompile Include="Source\CSkeleton.cpp" />
     <ClCompile Include="Source\CSteel.cpp" />
     <ClCompile Include="Source\CStone.cpp" />
     <ClCompile Include="Source\CTrap.cpp" />
@@ -321,6 +322,7 @@
     <ClInclude Include="Source\CName.h" />
     <ClInclude Include="Source\CPlayer.h" />
     <ClInclude Include="Source\CShareData.h" />
+    <ClInclude Include="Source\CSkeleton.h" />
     <ClInclude Include="Source\CSteel.h" />
     <ClInclude Include="Source\CStone.h" />
     <ClInclude Include="Source\CTrap.h" />
