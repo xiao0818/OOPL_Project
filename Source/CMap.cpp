@@ -42,6 +42,7 @@ namespace game_framework {
 
 		map = new CName *[brickNumberX];
 		playerMap = new CName *[brickNumberX];
+		trapMap = new CName *[brickNumberX];
 		brickMap = new CName *[brickNumberX];
 		foodMap = new CName *[brickNumberX];
 		monsterMap = new CName *[brickNumberX];
@@ -49,8 +50,9 @@ namespace game_framework {
 		{
 			map[i] = new CName[brickNumberY];
 			playerMap[i] = new CName [brickNumberY];
+			trapMap[i] = new CName [brickNumberY];
 			brickMap[i] = new CName [brickNumberY];
-			foodMap[i] = new CName [brickNumberY];
+			foodMap[i] = new CName[brickNumberY];
 			monsterMap[i] = new CName [brickNumberY];
 		}
 
@@ -70,6 +72,7 @@ namespace game_framework {
 			for (int j = 0; j < brickNumberY; j++)
 			{
 				playerMap[i][j] = CName::SPACE;
+				trapMap[i][j] = CName::SPACE;
 				brickMap[i][j] = CName::SPACE;
 				foodMap[i][j] = CName::SPACE;
 				monsterMap[i][j] = CName::SPACE;
@@ -77,6 +80,10 @@ namespace game_framework {
 				if (map[i][j] == CName::PLAYER)
 				{
 					playerMap[i][j] = map[i][j];
+				}
+				else if (map[i][j] == CName::SPIKE)
+				{
+					trapMap[i][j] = map[i][j];
 				}
 				else if (map[i][j] == CName::WALL || map[i][j] == CName::STONE || map[i][j] == CName::WOODEN || map[i][j] == CName::STEEL)
 				{
@@ -100,12 +107,14 @@ namespace game_framework {
 		{
 			delete [] map[i];
 			delete [] playerMap[i];
+			delete [] trapMap[i];
 			delete [] brickMap[i];
 			delete [] foodMap[i];
 			delete [] monsterMap[i];
 		}
 		delete [] map;
 		delete [] playerMap;
+		delete [] trapMap;
 		delete [] brickMap;
 		delete [] foodMap;
 		delete [] monsterMap;
@@ -121,6 +130,16 @@ namespace game_framework {
 	CName CMap::GetPlayerInMap(int nx, int ny)
 	{
 		return playerMap[nx][ny];
+	}
+
+	void CMap::SetTrapInMap(int nx, int ny, CName name)
+	{
+		trapMap[nx][ny] = name;
+	}
+
+	CName CMap::GetTrapInMap(int nx, int ny)
+	{
+		return trapMap[nx][ny];
 	}
 
 	void CMap::SetBrickInMap(int nx, int ny, CName name)

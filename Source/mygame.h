@@ -42,6 +42,7 @@
 #include "CGround.h"
 #include "CMap.h"
 #include "CPlayer.h"
+#include "CTrap.h"
 #include "CWall.h"
 #include "CBrick.h"
 #include "CStone.h"
@@ -119,6 +120,7 @@ namespace game_framework {
 		list<CWall>			wall;
 		list<CBrick>		brick;
 		list<CFood>			food;
+		list<CTrap>			trap;
 		list<CMonster>		monster;
 		int					gameEndConut;
 	};

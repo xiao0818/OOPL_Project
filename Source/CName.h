@@ -19,6 +19,7 @@ namespace game_framework {
 		PIE,
 		TOMATO,
 		TURKEY,
+		SPIKE,
 		MUD,
 		TURTLE,
 		MONSTER_FOOD,

@@ -16,11 +16,13 @@ namespace game_framework {
 		isSwallowed = false;
 	}
 
-	int CFood::GetIndexX() {
+	int CFood::GetIndexX()
+	{
 		return indexX;
 	}
 
-	int CFood::GetIndexY() {
+	int CFood::GetIndexY()
+	{
 		return indexY;
 	}
 

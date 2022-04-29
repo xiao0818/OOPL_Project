@@ -16,11 +16,13 @@ namespace game_framework {
 		isSwallowed = false;
 	}
 
-	int CBrick::GetIndexX() {
+	int CBrick::GetIndexX()
+	{
 		return indexX;
 	}
 
-	int CBrick::GetIndexY() {
+	int CBrick::GetIndexY()
+	{
 		return indexY;
 	}
 

@@ -4,8 +4,10 @@
 #include "CName.h"
 #include "CDirection.h"
 #include "CMap.h"
+#include "CTrap.h"
 #include "CBrick.h"
 #include "CFood.h"
+#include "CMonster.h"
 
 namespace game_framework {
 	class CPlayer
@@ -16,7 +18,7 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsSuccess();
 		bool IsFail();
-		void Initialize(CMap *map, CShareData *shareData, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
+		void Initialize(CMap *map, CShareData *shareData, list<CTrap> *trap, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
 		void LoadBitmap();
 		void OnMove();
 		void SetMovingLeft(bool flag);
@@ -57,6 +59,7 @@ namespace game_framework {
 		int movingDownCount;
 		CMap *mapRecord;
 		CShareData *shareDataRecord;
+		list<CTrap> *trapRecord;
 		list<CBrick> *brickRecord;
 		list<CFood> *foodRecord;
 		list<CMonster> *monsterRecord;

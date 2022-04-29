@@ -50,10 +50,11 @@ namespace game_framework {
 		return isFail;
 	}
 
-	void CPlayer::Initialize(CMap *map, CShareData *shareData, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
+	void CPlayer::Initialize(CMap *map, CShareData *shareData, list<CTrap> *trap, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
 		shareDataRecord = shareData;
+		trapRecord = trap;
 		brickRecord = brick;
 		foodRecord = food;
 		monsterRecord = monster;
@@ -323,6 +324,14 @@ namespace game_framework {
 		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 		{
 			if (k->IsAlive() && k->GetIndexX() == indexX && k->GetIndexY() == indexY && !k->IsHit() && !k->IsFood())
+			{
+				isFail = true;
+			}
+		}
+
+		for (list<CTrap>::iterator k = trapRecord->begin(); k != trapRecord->end(); k++)
+		{
+			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
 			{
 				isFail = true;
 			}
