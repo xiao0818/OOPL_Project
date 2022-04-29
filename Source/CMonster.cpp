@@ -15,7 +15,7 @@ namespace game_framework {
 		isHit = isFood = isSwallowed = isInvincible = false;
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = invincibleTime = 0;
-		faceTo = SetMovingDirection();
+		faceTo = GetNewMovingDirection();
 		leftAnimation.SetDelayCount(2);
 		rightAnimation.SetDelayCount(2);
 		upAnimation.SetDelayCount(2);
@@ -108,7 +108,7 @@ namespace game_framework {
 
 		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp && !isHit && !isFood && !isSwallowed && isAlive && !isInvincible)
 		{
-			faceTo = SetMovingDirection();
+			faceTo = GetNewMovingDirection();
 			if (type == CName::TURTLE)
 			{
 				SetInvincible();
@@ -390,7 +390,7 @@ namespace game_framework {
 		type = name;
 	}
 
-	CDirection CMonster::SetMovingDirection()
+	CDirection CMonster::GetNewMovingDirection()
 	{
 		srand((unsigned int)time(NULL));
 
@@ -563,7 +563,7 @@ namespace game_framework {
 		isHit = isFood = isSwallowed = isInvincible = false;
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = invincibleTime = 0;
-		faceTo = SetMovingDirection();
+		faceTo = GetNewMovingDirection();
 	}
 
 	void CMonster::SetInvincible()
