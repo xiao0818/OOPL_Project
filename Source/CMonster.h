@@ -27,6 +27,7 @@ namespace game_framework {
 		void Swallowed(CDirection faceTo);
 		void Reset();
 		void SetInvincible();
+		void MudAndTurtleMove();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
