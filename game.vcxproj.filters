@@ -141,6 +141,9 @@
     <ClCompile Include="Source\CShareData.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CTrap.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -216,6 +219,9 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CShareData.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CTrap.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -949,6 +955,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\player.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\spike.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -263,6 +263,7 @@
     <ClCompile Include="Source\CShareData.cpp" />
     <ClCompile Include="Source\CSteel.cpp" />
     <ClCompile Include="Source\CStone.cpp" />
+    <ClCompile Include="Source\CTrap.cpp" />
     <ClCompile Include="Source\CTurtle.cpp" />
     <ClCompile Include="Source\CWall.cpp" />
     <ClCompile Include="Source\CWooden.cpp" />
@@ -322,6 +323,7 @@
     <ClInclude Include="Source\CShareData.h" />
     <ClInclude Include="Source\CSteel.h" />
     <ClInclude Include="Source\CStone.h" />
+    <ClInclude Include="Source\CTrap.h" />
     <ClInclude Include="Source\CTurtle.h" />
     <ClInclude Include="Source\CWall.h" />
     <ClInclude Include="Source\CWooden.h" />
@@ -515,6 +517,7 @@
     <Image Include="Resources\start\play.bmp" />
     <Image Include="Resources\start\player.bmp" />
     <Image Include="Resources\start\sound.bmp" />
+    <Image Include="Resources\trap\spike.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_000.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_001.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_002.bmp" />

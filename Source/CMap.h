@@ -16,6 +16,8 @@ namespace game_framework {
 		void DeleteMap();
 		void SetPlayerInMap(int nx, int ny, CName name);
 		CName GetPlayerInMap(int nx, int ny);
+		void SetTrapInMap(int nx, int ny, CName name);
+		CName GetTrapInMap(int nx, int ny);
 		void SetBrickInMap(int nx, int ny, CName name);
 		CName GetBrickInMap(int nx, int ny);
 		void SetFoodInMap(int nx, int ny, CName name);
@@ -26,6 +28,7 @@ namespace game_framework {
 		int level;
 		CName **map;
 		CName **playerMap;
+		CName **trapMap;
 		CName **brickMap;
 		CName **foodMap;
 		CName **monsterMap;

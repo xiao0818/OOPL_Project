@@ -428,7 +428,7 @@ namespace game_framework {
 		
 		map.SelectLevel(shareData->GetSelectedLevelIndex());
 		map.Initialize();
-		player.Initialize(&map, shareData, &brick, &food, &monster);
+		player.Initialize(&map, shareData, &trap, &brick, &food, &monster);
 
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
@@ -453,22 +453,13 @@ namespace game_framework {
 				{
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 				}
-				else if(map.GetMonsterInMap(i, j) == CName::MUD)
+				else if (map.GetTrapInMap(i, j) == CName::SPIKE)
 				{
-					CMud tempMud;
-					tempMud.Initialize(&map);
-					tempMud.LoadBitmap();
-					tempMud.SetTypeFlag(CName::MUD);
-					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					monster.push_back(tempMud);
-				}
-				else if (map.GetMonsterInMap(i, j) == CName::TURTLE) {
-					CTurtle tempTurtle;
-					tempTurtle.Initialize(&map);
-					tempTurtle.LoadBitmap();
-					tempTurtle.SetTypeFlag(CName::TURTLE);
-					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					monster.push_back(tempTurtle);
+					CTrap tempTrap;
+					tempTrap.Initialize(&map);
+					tempTrap.LoadBitmap(CName::SPIKE);
+					tempTrap.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					trap.push_back(tempTrap);
 				}
 				else if (map.GetBrickInMap(i, j) == CName::WALL)
 				{
@@ -509,6 +500,23 @@ namespace game_framework {
 					tempFood.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					food.push_back(tempFood);
 				}
+				else if(map.GetMonsterInMap(i, j) == CName::MUD)
+				{
+					CMud tempMud;
+					tempMud.Initialize(&map);
+					tempMud.LoadBitmap();
+					tempMud.SetTypeFlag(CName::MUD);
+					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					monster.push_back(tempMud);
+				}
+				else if (map.GetMonsterInMap(i, j) == CName::TURTLE) {
+					CTurtle tempTurtle;
+					tempTurtle.Initialize(&map);
+					tempTurtle.LoadBitmap();
+					tempTurtle.SetTypeFlag(CName::TURTLE);
+					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					monster.push_back(tempTurtle);
+				}
 			}
 		}
 	}
@@ -516,6 +524,10 @@ namespace game_framework {
 	void CGameStateRun::OnMove()
 	{
 		player.OnMove();
+		for (list<CTrap>::iterator k = trap.begin(); k != trap.end(); k++)
+		{
+			k->OnMove();
+		}
 		for (list<CBrick>::iterator k = brick.begin(); k != brick.end(); k++)
 		{
 			k->OnMove();
@@ -524,9 +536,9 @@ namespace game_framework {
 		{
 			k->OnMove();
 		}
-		for (list<CMonster>::iterator m = monster.begin(); m != monster.end(); m++)
+		for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 		{
-			m->OnMove();
+			k->OnMove();
 		}
 		if (player.IsSuccess() || player.IsFail())
 		{
@@ -623,6 +635,13 @@ namespace game_framework {
 
 		for (int j = 0; j < map.GetBrickNumberY(); j++)
 		{
+			for (list<CTrap>::iterator k = trap.begin(); k != trap.end(); k++)
+			{
+				if (k->GetIndexY() == j)
+				{
+					k->OnShow();
+				}
+			}
 			for (list<CWall>::iterator k = wall.begin(); k != wall.end(); k++)
 			{
 				if (k->GetIndexY() == j)
@@ -644,11 +663,11 @@ namespace game_framework {
 					k->OnShow();
 				}
 			}
-			for (list<CMonster>::iterator m = monster.begin(); m != monster.end(); m++)
+			for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 			{
-				if (m->GetIndexY() == j)
+				if (k->GetIndexY() == j)
 				{
-					m->OnShow();
+					k->OnShow();
 				}
 			}
 			if (player.GetIndexY() == j)
