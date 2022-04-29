@@ -37,6 +37,10 @@ namespace game_framework {
 		CAnimation hitRightAnimation;
 		CAnimation hitUpAnimation;
 		CAnimation hitDownAnimation;
+		CAnimation rushLeftAnimation;
+		CAnimation rushRightAnimation;
+		CAnimation rushUpAnimation;
+		CAnimation rushDownAnimation;
 		CMovingBitmap invincibleRight;
 		CMovingBitmap invincibleLeft;
 		CMovingBitmap invincibleUp;

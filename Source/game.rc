@@ -574,7 +574,7 @@ IDB_LEVEL               BITMAP                  "..\\Resources\\start\\level.bmp
 
 IDB_PLAYER              BITMAP                  "..\\Resources\\start\\player.bmp"
 
-IDB_SPIKE               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\trap\\spike.bmp"
+IDB_SPIKE               BITMAP                  "..\\Resources\\trap\\spike.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
