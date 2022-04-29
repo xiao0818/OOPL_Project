@@ -12,14 +12,15 @@ namespace game_framework {
 		CTrap();
 		int  GetIndexX();
 		int  GetIndexY();
-		void Initialize(CMap *map);
-		bool IsAlive();
-		virtual void LoadBitmap(CName name);
+		bool IsAggressive();
+		virtual void Initialize(CMap *map);
+		virtual void LoadBitmap();
 		void OnMove();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:
-		CMovingBitmap bitmap;
+		CAnimation animation;
+		bool isAggressive;
 		int indexX, indexY;
 		int x, y;
 		CMap *mapRecord;

@@ -13,7 +13,7 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
-		isSwallowed = isEating = false;
+		isOnMucus = isSwallowed = isEating = false;
 		isSuccess = isFail = false;
 		faceTo = CDirection::DOWN;
 		leftAnimation.SetDelayCount(2);
@@ -32,11 +32,13 @@ namespace game_framework {
 		failAnimation.SetDelayCount(2);
 	}
 
-	int CPlayer::GetIndexX() {
+	int CPlayer::GetIndexX()
+	{
 		return indexX;
 	}
 
-	int CPlayer::GetIndexY() {
+	int CPlayer::GetIndexY()
+	{
 		return indexY;
 	}
 
@@ -63,7 +65,7 @@ namespace game_framework {
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		faceTo = CDirection::DOWN;
-		isSwallowed = isEating = false;
+		isOnMucus = isSwallowed = isEating = false;
 		isSuccess = isFail = false;
 	}
 
@@ -175,6 +177,7 @@ namespace game_framework {
 			eatUpAnimation.OnMove();
 			eatDownAnimation.OnMove();
 		}
+
 		if (eatLeftAnimation.IsFinalBitmap() && eatRightAnimation.IsFinalBitmap() && eatUpAnimation.IsFinalBitmap() && eatDownAnimation.IsFinalBitmap())
 		{
 			isEating = false;
@@ -240,6 +243,7 @@ namespace game_framework {
 		{
 			if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 			{
+				isOnMucus = (mapRecord->GetTrapInMap(indexX - 1, indexY) == CName::MUCUS);
 				leftAnimation.OnMove();
 				leftWithFullAnimation.OnMove();
 				x -= STEP_SIZE_X;
@@ -249,11 +253,12 @@ namespace game_framework {
 				{
 					mapRecord->SetPlayerInMap(indexX--, indexY, CName::SPACE);
 					movingLeftCount = 0;
-					isMovingLeft = isKeyLeftPressed;
+					isMovingLeft = isKeyLeftPressed || isOnMucus;
 				}
 			}
 			else
 			{
+				isOnMucus = false;
 				isMovingLeft = isKeyLeftPressed;
 			}
 		}
@@ -261,6 +266,7 @@ namespace game_framework {
 		{
 			if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 			{
+				isOnMucus = (mapRecord->GetTrapInMap(indexX + 1, indexY) == CName::MUCUS);
 				rightAnimation.OnMove();
 				rightWithFullAnimation.OnMove();
 				x += STEP_SIZE_X;
@@ -270,11 +276,12 @@ namespace game_framework {
 				{
 					mapRecord->SetPlayerInMap(indexX++, indexY, CName::SPACE);
 					movingRightCount = 0;
-					isMovingRight = isKeyRightPressed;
+					isMovingRight = isKeyRightPressed || isOnMucus;
 				}
 			}
 			else
 			{
+				isOnMucus = false;
 				isMovingRight = isKeyRightPressed;
 			}
 		}
@@ -282,6 +289,7 @@ namespace game_framework {
 		{
 			if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 			{
+				isOnMucus = (mapRecord->GetTrapInMap(indexX, indexY - 1) == CName::MUCUS);
 				upAnimation.OnMove();
 				upWithFullAnimation.OnMove();
 				y -= STEP_SIZE_Y;
@@ -291,11 +299,12 @@ namespace game_framework {
 				{
 					mapRecord->SetPlayerInMap(indexX, indexY--, CName::SPACE);
 					movingUpCount = 0;
-					isMovingUp = isKeyUpPressed;
+					isMovingUp = isKeyUpPressed || isOnMucus;
 				}
 			}
 			else
 			{
+				isOnMucus = false;
 				isMovingUp = isKeyUpPressed;
 			}
 		}
@@ -303,6 +312,7 @@ namespace game_framework {
 		{
 			if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
 			{
+				isOnMucus = (mapRecord->GetTrapInMap(indexX, indexY + 1) == CName::MUCUS);
 				downAnimation.OnMove();
 				downWithFullAnimation.OnMove();
 				y += STEP_SIZE_Y;
@@ -312,11 +322,12 @@ namespace game_framework {
 				{
 					mapRecord->SetPlayerInMap(indexX, indexY++, CName::SPACE);
 					movingDownCount = 0;
-					isMovingDown = isKeyDownPressed;
+					isMovingDown = isKeyDownPressed || isOnMucus;
 				}
 			}
 			else
 			{
+				isOnMucus = false;
 				isMovingDown = isKeyDownPressed;
 			}
 		}
@@ -331,7 +342,7 @@ namespace game_framework {
 
 		for (list<CTrap>::iterator k = trapRecord->begin(); k != trapRecord->end(); k++)
 		{
-			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY && k->IsAggressive())
 			{
 				isFail = true;
 			}
@@ -648,7 +659,7 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					if (!isMovingLeft)
+					if (!isMovingLeft || isOnMucus)
 					{
 						leftAnimation.Reset();
 					}
@@ -657,7 +668,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					if (!isMovingRight)
+					if (!isMovingRight || isOnMucus)
 					{
 						rightAnimation.Reset();
 					}
@@ -666,7 +677,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					if (!isMovingUp)
+					if (!isMovingUp || isOnMucus)
 					{
 						upAnimation.Reset();
 					}
@@ -675,7 +686,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					if (!isMovingDown)
+					if (!isMovingDown || isOnMucus)
 					{
 						downAnimation.Reset();
 					}
@@ -687,7 +698,7 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					if (!isMovingLeft)
+					if (!isMovingLeft || isOnMucus)
 					{
 						leftWithFullAnimation.Reset();
 					}
@@ -696,7 +707,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					if (!isMovingRight)
+					if (!isMovingRight || isOnMucus)
 					{
 						rightWithFullAnimation.Reset();
 					}
@@ -705,7 +716,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					if (!isMovingUp)
+					if (!isMovingUp || isOnMucus)
 					{
 						upWithFullAnimation.Reset();
 					}
@@ -714,7 +725,7 @@ namespace game_framework {
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					if (!isMovingDown)
+					if (!isMovingDown || isOnMucus)
 					{
 						downWithFullAnimation.Reset();
 					}

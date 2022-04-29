@@ -22,14 +22,17 @@ namespace game_framework {
 		return indexY;
 	}
 
-	void CTrap::Initialize(CMap *map)
+	bool CTrap::IsAggressive()
 	{
-		mapRecord = map;
+		return isAggressive;
 	}
 
-	void CTrap::LoadBitmap(CName name)
+	void CTrap::Initialize(CMap *map)
 	{
-		bitmap.LoadBitmap(IDB_SPIKE);
+	}
+
+	void CTrap::LoadBitmap()
+	{
 	}
 
 	void CTrap::OnMove()
@@ -46,7 +49,7 @@ namespace game_framework {
 
 	void CTrap::OnShow()
 	{
-		bitmap.SetTopLeft(x, y);
-		bitmap.ShowBitmap();
+		animation.SetTopLeft(x, y);
+		animation.OnShow();
 	}
 }

@@ -455,11 +455,19 @@ namespace game_framework {
 				}
 				else if (map.GetTrapInMap(i, j) == CName::SPIKE)
 				{
-					CTrap tempTrap;
-					tempTrap.Initialize(&map);
-					tempTrap.LoadBitmap(CName::SPIKE);
-					tempTrap.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					trap.push_back(tempTrap);
+					CSpike tempSpike;
+					tempSpike.Initialize(&map);
+					tempSpike.LoadBitmap();
+					tempSpike.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					trap.push_back(tempSpike);
+				}
+				else if (map.GetTrapInMap(i, j) == CName::MUCUS)
+				{
+					CMucus tempMucus;
+					tempMucus.Initialize(&map);
+					tempMucus.LoadBitmap();
+					tempMucus.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					trap.push_back(tempMucus);
 				}
 				else if (map.GetBrickInMap(i, j) == CName::WALL)
 				{

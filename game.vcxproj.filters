@@ -144,6 +144,12 @@
     <ClCompile Include="Source\CTrap.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CSpike.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CMucus.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -222,6 +228,12 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CTrap.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CSpike.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CMucus.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -958,6 +970,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\trap\spike.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\mucus.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

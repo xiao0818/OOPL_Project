@@ -6,6 +6,8 @@ namespace game_framework {
 	{
 		SPACE,
 		PLAYER,
+		SPIKE,
+		MUCUS,
 		WALL,
 		STONE,
 		WOODEN,
@@ -19,7 +21,6 @@ namespace game_framework {
 		PIE,
 		TOMATO,
 		TURKEY,
-		SPIKE,
 		MUD,
 		TURTLE,
 		MONSTER_FOOD,

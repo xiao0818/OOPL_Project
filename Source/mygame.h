@@ -43,6 +43,8 @@
 #include "CMap.h"
 #include "CPlayer.h"
 #include "CTrap.h"
+#include "CSpike.h"
+#include "CMucus.h"
 #include "CWall.h"
 #include "CBrick.h"
 #include "CStone.h"

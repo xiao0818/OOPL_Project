@@ -65,6 +65,7 @@ namespace game_framework {
 		list<CMonster> *monsterRecord;
 		list<CBrick>::iterator swallowedBrick;
 		CDirection faceTo;
+		bool isOnMucus;
 		bool isSwallowed;
 		bool isEating;
 		bool isSuccess;

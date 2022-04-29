@@ -258,9 +258,11 @@
     <ClCompile Include="Source\CGround.cpp" />
     <ClCompile Include="Source\CMap.cpp" />
     <ClCompile Include="Source\CMonster.cpp" />
+    <ClCompile Include="Source\CMucus.cpp" />
     <ClCompile Include="Source\CMud.cpp" />
     <ClCompile Include="Source\CPlayer.cpp" />
     <ClCompile Include="Source\CShareData.cpp" />
+    <ClCompile Include="Source\CSpike.cpp" />
     <ClCompile Include="Source\CSteel.cpp" />
     <ClCompile Include="Source\CStone.cpp" />
     <ClCompile Include="Source\CTrap.cpp" />
@@ -317,10 +319,12 @@
     <ClInclude Include="Source\CGround.h" />
     <ClInclude Include="Source\CMap.h" />
     <ClInclude Include="Source\CMonster.h" />
+    <ClInclude Include="Source\CMucus.h" />
     <ClInclude Include="Source\CMud.h" />
     <ClInclude Include="Source\CName.h" />
     <ClInclude Include="Source\CPlayer.h" />
     <ClInclude Include="Source\CShareData.h" />
+    <ClInclude Include="Source\CSpike.h" />
     <ClInclude Include="Source\CSteel.h" />
     <ClInclude Include="Source\CStone.h" />
     <ClInclude Include="Source\CTrap.h" />
@@ -517,6 +521,7 @@
     <Image Include="Resources\start\play.bmp" />
     <Image Include="Resources\start\player.bmp" />
     <Image Include="Resources\start\sound.bmp" />
+    <Image Include="Resources\trap\mucus.bmp" />
     <Image Include="Resources\trap\spike.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_000.bmp" />
     <Image Include="Resources\turtle\down\turtle_move_down_001.bmp" />
