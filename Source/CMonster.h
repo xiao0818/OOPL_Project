@@ -20,7 +20,7 @@ namespace game_framework {
 		virtual void LoadBitmap();
 		void OnMove();
 		void SetTypeFlag(CName name);
-		CDirection SetMovingDirection();
+		CDirection GetNewMovingDirection();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 		void HitByBrick(CDirection tempDir);
