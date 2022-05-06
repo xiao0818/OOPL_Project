@@ -16,6 +16,8 @@ namespace game_framework {
 		void DeleteMap();
 		void SetPlayerInMap(int nx, int ny, CName name);
 		CName GetPlayerInMap(int nx, int ny);
+		int GetPlayerIndexX();
+		int GetPlayerIndexY();
 		void SetTrapInMap(int nx, int ny, CName name);
 		CName GetTrapInMap(int nx, int ny);
 		void SetBrickInMap(int nx, int ny, CName name);
@@ -36,6 +38,8 @@ namespace game_framework {
 		const int levelBrickNumberY[5] = { 14, 14, 18, 14, 17};
 		int brickNumberX;
 		int brickNumberY;
+		int playerIndexX;
+		int playerIndexY;
 		bool undeleteFlag;
 		CName mapInitLevel[5][18][22] =
 		{

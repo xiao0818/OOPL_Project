@@ -83,10 +83,9 @@ namespace game_framework {
 		return isInvincible;
 	}
 
-	void CMonster::Initialize(CMap *map, CPlayer *player)
+	void CMonster::Initialize(CMap *map)
 	{
 		mapRecord = map;
-		playerRecord = player;
 	}
 
 	void CMonster::LoadBitmap()
@@ -885,20 +884,20 @@ namespace game_framework {
 	}
 
 	void CMonster::ChangeRushStatus() {
-		if (playerRecord->GetIndexX() == GetIndexX()) {
+		if (mapRecord->GetPlayerIndexX() == GetIndexX()) {
 			if (faceTo == CDirection::UP) {
-				isRush = playerRecord->GetIndexY() < GetIndexY();
+				isRush = mapRecord->GetPlayerIndexY() < GetIndexY();
 			}
 			if (faceTo == CDirection::DOWN) {
-				isRush = playerRecord->GetIndexY() > GetIndexY();
+				isRush = mapRecord->GetPlayerIndexY() > GetIndexY();
 			}
 		}
-		else if(playerRecord->GetIndexY() == GetIndexY()){
+		else if(mapRecord->GetPlayerIndexY() == GetIndexY()){
 			if (faceTo == CDirection::RIGHT) {
-				isRush = playerRecord->GetIndexX() > GetIndexX();
+				isRush = mapRecord->GetPlayerIndexX() > GetIndexX();
 			}
 			if (faceTo == CDirection::LEFT) {
-				isRush = playerRecord->GetIndexX() < GetIndexX();
+				isRush = mapRecord->GetPlayerIndexX() < GetIndexX();
 			}
 		}
 	}
