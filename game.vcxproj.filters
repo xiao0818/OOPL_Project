@@ -975,5 +975,36 @@
     <Image Include="Resources\trap\mucus.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\start\play\play1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\play\play8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\credits.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\scores.png" />
+    <Image Include="Resources\start\scores.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

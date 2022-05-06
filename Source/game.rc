@@ -572,11 +572,31 @@ IDB_TURTLE_HIT_UP_008   BITMAP                  "..\\Resources\\turtle\\hit_up\\
 
 IDB_LEVEL               BITMAP                  "..\\Resources\\start\\level.bmp"
 
-IDB_PLAYER              BITMAP                  "..\\Resources\\start\\player.bmp"
+IDB_PLAYER_PAGE         BITMAP                  "..\\Resources\\start\\player.bmp"
 
 IDB_SPIKE               BITMAP                  "..\\Resources\\trap\\spike.bmp"
 
-IDB_MUCUS               BITMAP                  "D:\\Desktop\\110-2\\OOPL\\OOPL_Project\\Resources\\trap\\mucus.bmp"
+IDB_MUCUS               BITMAP                  "..\\Resources\\trap\\mucus.bmp"
+
+IDB_PLAYER_BUTTON_001   BITMAP                  "..\\Resources\\start\\play\\play1.bmp"
+
+IDB_PLAYER_BUTTON_002   BITMAP                  "..\\Resources\\start\\play\\play2.bmp"
+
+IDB_PLAYER_BUTTON_003   BITMAP                  "..\\Resources\\start\\play\\play3.bmp"
+
+IDB_PLAYER_BUTTON_004   BITMAP                  "..\\Resources\\start\\play\\play4.bmp"
+
+IDB_PLAYER_BUTTON_005   BITMAP                  "..\\Resources\\start\\play\\play5.bmp"
+
+IDB_PLAYER_BUTTON_006   BITMAP                  "..\\Resources\\start\\play\\play6.bmp"
+
+IDB_PLAYER_BUTTON_007   BITMAP                  "..\\Resources\\start\\play\\play7.bmp"
+
+IDB_PLAYER_BUTTON_008   BITMAP                  "..\\Resources\\start\\play\\play8.bmp"
+
+IDB_CREDITS_PAGE        BITMAP                  "..\\Resources\\start\\credits.bmp"
+
+IDB_SCORES_PAGE         BITMAP                  "..\\Resources\\start\\scores.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

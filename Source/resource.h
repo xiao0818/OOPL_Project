@@ -288,9 +288,21 @@
 #define IDB_LEVEL                       426
 #define IDB_BITMAP16                    427
 #define IDB_PLAYER                      427
+#define IDB_PLAYER_PAGE                 427
 #define IDB_SPIKE                       428
 #define IDB_BITMAP15                    429
 #define IDB_MUCUS                       429
+#define IDB_PLAYER_BUTTON_001           430
+#define IDB_PLAYER_BUTTON_002           431
+#define IDB_PLAYER_BUTTON_003           432
+#define IDB_PLAYER_BUTTON_004           433
+#define IDB_PLAYER_BUTTON_005           434
+#define IDB_PLAYER_BUTTON_006           435
+#define IDB_PLAYER_BUTTON_007           436
+#define IDB_PLAYER_BUTTON_008           437
+#define IDB_CREDITS_PAGE                438
+#define IDB_SCORES                      441
+#define IDB_SCORES_PAGE                 441
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -303,7 +315,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        430
+#define _APS_NEXT_RESOURCE_VALUE        442
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
