@@ -511,7 +511,7 @@ namespace game_framework {
 				else if(map.GetMonsterInMap(i, j) == CName::MUD)
 				{
 					CMud tempMud;
-					tempMud.Initialize(&map);
+					tempMud.Initialize(&map, &player);
 					tempMud.LoadBitmap();
 					tempMud.SetTypeFlag(CName::MUD);
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -519,7 +519,7 @@ namespace game_framework {
 				}
 				else if (map.GetMonsterInMap(i, j) == CName::TURTLE) {
 					CTurtle tempTurtle;
-					tempTurtle.Initialize(&map);
+					tempTurtle.Initialize(&map, &player);
 					tempTurtle.LoadBitmap();
 					tempTurtle.SetTypeFlag(CName::TURTLE);
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);

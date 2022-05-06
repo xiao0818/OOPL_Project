@@ -3,6 +3,7 @@
 
 #include "CDirection.h"
 #include "CMap.h"
+#include "CPlayer.h"
 
 namespace game_framework {
 	class CMonster {
@@ -16,7 +17,7 @@ namespace game_framework {
 		bool IsHit();
 		bool IsAlive();
 		bool IsInvincible();
-		void Initialize(CMap *map);
+		void Initialize(CMap *map, CPlayer *player);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SetTypeFlag(CName name);
@@ -28,6 +29,8 @@ namespace game_framework {
 		void Reset();
 		void SetInvincible();
 		void MudAndTurtleMove();
+		void SkeletonMove();
+		void ChangeRushStatus();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -64,8 +67,10 @@ namespace game_framework {
 		int movingDownCount;
 		int hitCount;
 		CMap *mapRecord;
+		CPlayer *playerRecord;
 		CDirection faceTo;
 		bool isAlive;
+		bool isRush;
 	};
 };
 
