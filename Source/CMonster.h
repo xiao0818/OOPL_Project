@@ -4,6 +4,7 @@
 #include "CDirection.h"
 #include "CMap.h"
 
+
 namespace game_framework {
 	class CMonster {
 	public:
@@ -28,6 +29,8 @@ namespace game_framework {
 		void Reset();
 		void SetInvincible();
 		void MudAndTurtleMove();
+		void SkeletonMove();
+		void ChangeRushStatus();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -66,6 +69,7 @@ namespace game_framework {
 		CMap *mapRecord;
 		CDirection faceTo;
 		bool isAlive;
+		bool isRush;
 	};
 };
 

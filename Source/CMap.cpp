@@ -125,11 +125,23 @@ namespace game_framework {
 	void CMap::SetPlayerInMap(int nx, int ny, CName name)
 	{
 		playerMap[nx][ny] = name;
+		if (name == CName::PLAYER) {
+			playerIndexX = nx;
+			playerIndexY = ny;
+		}
 	}
 
 	CName CMap::GetPlayerInMap(int nx, int ny)
 	{
 		return playerMap[nx][ny];
+	}
+
+	int CMap::GetPlayerIndexX() {
+		return playerIndexX;
+	}
+
+	int CMap::GetPlayerIndexY() {
+		return playerIndexY;
 	}
 
 	void CMap::SetTrapInMap(int nx, int ny, CName name)
