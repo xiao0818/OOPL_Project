@@ -525,6 +525,14 @@ namespace game_framework {
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempTurtle);
 				}
+				else if (map.GetMonsterInMap(i, j) == CName::SKELE) {
+					CSkeleton tempSkeleton;
+					tempSkeleton.Initialize(&map);
+					tempSkeleton.LoadBitmap();
+					tempSkeleton.SetTypeFlag(CName::SKELE);
+					tempSkeleton.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					monster.push_back(tempSkeleton);
+				}
 			}
 		}
 	}

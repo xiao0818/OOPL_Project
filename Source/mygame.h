@@ -54,6 +54,7 @@
 #include "CMonster.h"
 #include "CMud.h"
 #include "CTurtle.h"
+#include "CSkeleton.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////

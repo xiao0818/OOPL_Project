@@ -97,8 +97,8 @@ namespace game_framework {
 		if (type == CName::MUD || type == CName::TURTLE) {
 			MudAndTurtleMove();
 		}
-		else if (type == CName::SKELETON) {
-
+		else if (type == CName::SKELE) {
+			SkeletonMove();
 		}
 	}
 	
@@ -191,6 +191,45 @@ namespace game_framework {
 				{
 					hitDownAnimation.SetTopLeft(x + (72 / 2) - (hitDownAnimation.Width() / 2), y + 46 - hitDownAnimation.Height());
 					hitDownAnimation.OnShow();
+				}
+			}
+			else if (isRush)
+			{
+				if (faceTo == CDirection::LEFT)
+				{
+					if (!isMovingLeft)
+					{
+						rushLeftAnimation.Reset();
+					}
+					rushLeftAnimation.SetTopLeft(x + (72 / 2) - (rushLeftAnimation.Width() / 2), y + 46 - rushLeftAnimation.Height());
+					rushLeftAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::RIGHT)
+				{
+					if (!isMovingRight)
+					{
+						rushRightAnimation.Reset();
+					}
+					rushRightAnimation.SetTopLeft(x + (72 / 2) - (rushRightAnimation.Width() / 2), y + 46 - rushRightAnimation.Height());
+					rushRightAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::UP)
+				{
+					if (!isMovingUp)
+					{
+						rushUpAnimation.Reset();
+					}
+					rushUpAnimation.SetTopLeft(x + (72 / 2) - (rushUpAnimation.Width() / 2), y + 46 - rushUpAnimation.Height());
+					rushUpAnimation.OnShow();
+				}
+				else if (faceTo == CDirection::DOWN)
+				{
+					if (!isMovingDown)
+					{
+						rushDownAnimation.Reset();
+					}
+					rushDownAnimation.SetTopLeft(x + (72 / 2) - (rushDownAnimation.Width() / 2), y + 46 - rushDownAnimation.Height());
+					rushDownAnimation.OnShow();
 				}
 			}
 			else
@@ -605,6 +644,9 @@ namespace game_framework {
 		const int STEP_TARGET = 24;
 		const int STEP_SIZE_X = 3;
 		const int STEP_SIZE_Y = 2;
+		const int RUSH_STEP_TARGET = 6;
+		const int RUSH_STEP_SIZE_X = 12;
+		const int RUSH_STEP_SIZE_Y = 8;
 		const int HIT_TARGET = 8;
 		const int HIT_STEP_SIZE_X = 9;
 		const int HIT_STEP_SIZE_Y = 6;
@@ -615,7 +657,8 @@ namespace game_framework {
 		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp && !isHit && !isFood && !isSwallowed && isAlive && !isInvincible)
 		{
 			faceTo = GetNewMovingDirection();
-
+			isRush = false;
+			
 			movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 			if (!isInvincible)
 			{
@@ -800,84 +843,164 @@ namespace game_framework {
 		}
 		else if (!isHit && !isFood && !isInvincible)
 		{
-			if (isMovingLeft)
-			{
-				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
+			if (isRush) {
+				if (isMovingLeft)
 				{
-					leftAnimation.OnMove();
-					x -= STEP_SIZE_X;
-					movingLeftCount++;
-					mapRecord->SetMonsterInMap(indexX - 1, indexY, type);
-					if (movingLeftCount == STEP_TARGET)
+					if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 					{
-						mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
-						movingLeftCount = 0;
-						ChangeRushStatus();
+						rushLeftAnimation.OnMove();
+						x -= RUSH_STEP_SIZE_X;
+						movingLeftCount++;
+						mapRecord->SetMonsterInMap(indexX - 1, indexY, type);
+						if (movingLeftCount == RUSH_STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
+							movingLeftCount = 0;
+						}
+					}
+					else
+					{
+						isMovingLeft = false;
 					}
 				}
-				else
+				else if (isMovingRight)
 				{
-					isMovingLeft = false;
+					if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
+					{
+						rushRightAnimation.OnMove();
+						x += RUSH_STEP_SIZE_X;
+						movingRightCount++;
+						mapRecord->SetMonsterInMap(indexX + 1, indexY, type);
+						if (movingRightCount == RUSH_STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
+							movingRightCount = 0;
+						}
+					}
+					else
+					{
+						isMovingRight = false;
+					}
+				}
+				else if (isMovingUp)
+				{
+					if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
+					{
+						rushUpAnimation.OnMove();
+						y -= RUSH_STEP_SIZE_Y;
+						movingUpCount++;
+						mapRecord->SetMonsterInMap(indexX, indexY - 1, type);
+						if (movingUpCount == RUSH_STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
+							movingUpCount = 0;
+						}
+					}
+					else
+					{
+						isMovingUp = false;
+					}
+				}
+				else if (isMovingDown)
+				{
+					if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
+					{
+						rushDownAnimation.OnMove();
+						y += RUSH_STEP_SIZE_Y;
+						movingDownCount++;
+						mapRecord->SetMonsterInMap(indexX, indexY + 1, type);
+						if (movingDownCount == RUSH_STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
+							movingDownCount = 0;
+						}
+					}
+					else
+					{
+						isMovingDown = false;
+					}
 				}
 			}
-			else if (isMovingRight)
-			{
-				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
+			else {
+				if (isMovingLeft)
 				{
-					rightAnimation.OnMove();
-					x += STEP_SIZE_X;
-					movingRightCount++;
-					mapRecord->SetMonsterInMap(indexX + 1, indexY, type);
-					if (movingRightCount == STEP_TARGET)
+					if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 					{
-						mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
-						movingRightCount = 0;
-						ChangeRushStatus();
+						leftAnimation.OnMove();
+						x -= STEP_SIZE_X;
+						movingLeftCount++;
+						mapRecord->SetMonsterInMap(indexX - 1, indexY, type);
+						if (movingLeftCount == STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
+							movingLeftCount = 0;
+							ChangeRushStatus();
+						}
+					}
+					else
+					{
+						isMovingLeft = false;
 					}
 				}
-				else
+				else if (isMovingRight)
 				{
-					isMovingRight = false;
-				}
-			}
-			else if (isMovingUp)
-			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
-				{
-					upAnimation.OnMove();
-					y -= STEP_SIZE_Y;
-					movingUpCount++;
-					mapRecord->SetMonsterInMap(indexX, indexY - 1, type);
-					if (movingUpCount == STEP_TARGET)
+					if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 					{
-						mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
-						movingUpCount = 0;
-						ChangeRushStatus();
+						rightAnimation.OnMove();
+						x += STEP_SIZE_X;
+						movingRightCount++;
+						mapRecord->SetMonsterInMap(indexX + 1, indexY, type);
+						if (movingRightCount == STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
+							movingRightCount = 0;
+							ChangeRushStatus();
+						}
+					}
+					else
+					{
+						isMovingRight = false;
 					}
 				}
-				else
+				else if (isMovingUp)
 				{
-					isMovingUp = false;
-				}
-			}
-			else if (isMovingDown)
-			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
-				{
-					downAnimation.OnMove();
-					y += STEP_SIZE_Y;
-					movingDownCount++;
-					mapRecord->SetMonsterInMap(indexX, indexY + 1, type);
-					if (movingDownCount == STEP_TARGET)
+					if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 					{
-						mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
-						movingDownCount = 0;
-						ChangeRushStatus();
+						upAnimation.OnMove();
+						y -= STEP_SIZE_Y;
+						movingUpCount++;
+						mapRecord->SetMonsterInMap(indexX, indexY - 1, type);
+						if (movingUpCount == STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
+							movingUpCount = 0;
+							ChangeRushStatus();
+						}
+					}
+					else
+					{
+						isMovingUp = false;
 					}
 				}
-				else
+				else if (isMovingDown)
 				{
-					isMovingDown = false;
+					if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
+					{
+						downAnimation.OnMove();
+						y += STEP_SIZE_Y;
+						movingDownCount++;
+						mapRecord->SetMonsterInMap(indexX, indexY + 1, type);
+						if (movingDownCount == STEP_TARGET)
+						{
+							mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
+							movingDownCount = 0;
+							ChangeRushStatus();
+						}
+					}
+					else
+					{
+						isMovingDown = false;
+					}
 				}
 			}
 		}

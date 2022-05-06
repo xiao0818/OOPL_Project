@@ -25,7 +25,7 @@ namespace game_framework {
 		TURTLE,
 		MONSTER_FOOD,
 		INVINCIBLE_TURTLE,
-		SKELETON
+		SKELE
 	};
 }
 
