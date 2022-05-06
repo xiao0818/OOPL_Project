@@ -84,6 +84,7 @@ namespace game_framework {
 		CMovingBitmap playButton;
 		CMovingBitmap playerPage;
 		CMovingBitmap levelPage;
+		CAnimation playerButton;
 		int levelSelect;
 		bool isOnPlayButton;
 		bool isOnMusicButton;

@@ -85,8 +85,17 @@ namespace game_framework {
 		musicButton.LoadBitmap(IDB_MUSIC);
 		soundButton.LoadBitmap(IDB_SOUND);
 		playButton.LoadBitmap(IDB_PLAY);
-		playerPage.LoadBitmap(IDB_PLAYER);
+		playerPage.LoadBitmap(IDB_PLAYER_PAGE);
 		levelPage.LoadBitmap(IDB_LEVEL);
+
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_001);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_002);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_003);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_004);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_005);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_006);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_007);
+		playerButton.AddBitmap(IDB_PLAYER_BUTTON_008);
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
 		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
@@ -106,6 +115,7 @@ namespace game_framework {
 		isPlayerPage = isLevelPage = false;
 		levelSelect = 0;
 		shareData->InitializeState();
+		playerButton.SetDelayCount(2);
 	}
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -134,8 +144,8 @@ namespace game_framework {
 		const int PLAY_BUTTON_HEIGHT = 29;
 		const int PLAYER_BUTTON_INDEX_X = 120;
 		const int PLAYER_BUTTON_INDEX_Y = 80;
-		const int PLAYER_BUTTON_LENGTH = 245;
-		const int PLAYER_BUTTON_HEIGHT = 170;
+		const int PLAYER_BUTTON_LENGTH = 770;
+		const int PLAYER_BUTTON_HEIGHT = 258;
 		const int FIRST_LEVEL_BUTTON_INDEX_X = 132;
 		const int FIRST_LEVEL_BUTTON_INDEX_Y = 228;
 		const int FIRST_LEVEL_BUTTON_LENGTH = 60;
@@ -255,6 +265,10 @@ namespace game_framework {
 		const int PLAY_BUTTON_HEIGHT = 30;
 		const int PLAY_BUTTON_INDEX_X = 445;
 		const int PLAY_BUTTON_INDEX_Y = 496;
+		const int PLAYER_BUTTON_INDEX_X = 120;
+		const int PLAYER_BUTTON_INDEX_Y = 80;
+		const int PLAYER_BUTTON_LENGTH = 770;
+		const int PLAYER_BUTTON_HEIGHT = 258;
 		//
 		// 貼上logo
 		//
@@ -267,6 +281,17 @@ namespace game_framework {
 		{
 			playerPage.SetTopLeft(GROUND_X, GROUND_Y);
 			playerPage.ShowBitmap();
+
+			if (isOnPlayerButton)
+			{
+				playerButton.OnMove();
+			}
+			else
+			{
+				playerButton.Reset();
+			}
+			playerButton.SetTopLeft(GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH / 2 - playerButton.Width() / 2, GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT / 2 - playerButton.Height() / 2);
+			playerButton.OnShow();
 		}
 		else
 		{
@@ -649,15 +674,13 @@ namespace game_framework {
 	{
 		ground.OnShow();
 
+		for (list<CTrap>::iterator k = trap.begin(); k != trap.end(); k++)
+		{
+			k->OnShow();
+		}
+
 		for (int j = 0; j < map.GetBrickNumberY(); j++)
 		{
-			for (list<CTrap>::iterator k = trap.begin(); k != trap.end(); k++)
-			{
-				if (k->GetIndexY() == j)
-				{
-					k->OnShow();
-				}
-			}
 			for (list<CWall>::iterator k = wall.begin(); k != wall.end(); k++)
 			{
 				if (k->GetIndexY() == j)
