@@ -84,9 +84,15 @@ namespace game_framework {
 		cross.LoadBitmap(IDB_CROSS,RGB(255, 255, 255));
 		musicButton.LoadBitmap(IDB_MUSIC);
 		soundButton.LoadBitmap(IDB_SOUND);
+		backButton.LoadBitmap(IDB_BACK);
 		playButton.LoadBitmap(IDB_PLAY);
+		scoresButton.LoadBitmap(IDB_SCORES);
+		helpButton.LoadBitmap(IDB_HELP);
+		creditsButton.LoadBitmap(IDB_CREDITS);
 		playerPage.LoadBitmap(IDB_PLAYER_PAGE);
 		levelPage.LoadBitmap(IDB_LEVEL);
+		scoresPage.LoadBitmap(IDB_SCORES_PAGE);
+		creditsPage.LoadBitmap(IDB_CREDITS_PAGE);
 
 		playerButton.AddBitmap(IDB_PLAYER_BUTTON_001);
 		playerButton.AddBitmap(IDB_PLAYER_BUTTON_002);
@@ -96,6 +102,66 @@ namespace game_framework {
 		playerButton.AddBitmap(IDB_PLAYER_BUTTON_006);
 		playerButton.AddBitmap(IDB_PLAYER_BUTTON_007);
 		playerButton.AddBitmap(IDB_PLAYER_BUTTON_008);
+
+		helpPage.AddBitmap(IDB_HELP_PAGE_001);
+		helpPage.AddBitmap(IDB_HELP_PAGE_002);
+		helpPage.AddBitmap(IDB_HELP_PAGE_003);
+		helpPage.AddBitmap(IDB_HELP_PAGE_004);
+		helpPage.AddBitmap(IDB_HELP_PAGE_005);
+		helpPage.AddBitmap(IDB_HELP_PAGE_006);
+		helpPage.AddBitmap(IDB_HELP_PAGE_007);
+		helpPage.AddBitmap(IDB_HELP_PAGE_008);
+		helpPage.AddBitmap(IDB_HELP_PAGE_009);
+		helpPage.AddBitmap(IDB_HELP_PAGE_010);
+		helpPage.AddBitmap(IDB_HELP_PAGE_011);
+		helpPage.AddBitmap(IDB_HELP_PAGE_012);
+		helpPage.AddBitmap(IDB_HELP_PAGE_013);
+		helpPage.AddBitmap(IDB_HELP_PAGE_014);
+		helpPage.AddBitmap(IDB_HELP_PAGE_015);
+		helpPage.AddBitmap(IDB_HELP_PAGE_016);
+		helpPage.AddBitmap(IDB_HELP_PAGE_017);
+		helpPage.AddBitmap(IDB_HELP_PAGE_018);
+		helpPage.AddBitmap(IDB_HELP_PAGE_019);
+		helpPage.AddBitmap(IDB_HELP_PAGE_020);
+		helpPage.AddBitmap(IDB_HELP_PAGE_021);
+		helpPage.AddBitmap(IDB_HELP_PAGE_022);
+		helpPage.AddBitmap(IDB_HELP_PAGE_023);
+		helpPage.AddBitmap(IDB_HELP_PAGE_024);
+		helpPage.AddBitmap(IDB_HELP_PAGE_025);
+		helpPage.AddBitmap(IDB_HELP_PAGE_026);
+		helpPage.AddBitmap(IDB_HELP_PAGE_027);
+		helpPage.AddBitmap(IDB_HELP_PAGE_028);
+		helpPage.AddBitmap(IDB_HELP_PAGE_029);
+		helpPage.AddBitmap(IDB_HELP_PAGE_030);
+		helpPage.AddBitmap(IDB_HELP_PAGE_031);
+		helpPage.AddBitmap(IDB_HELP_PAGE_032);
+		helpPage.AddBitmap(IDB_HELP_PAGE_033);
+		helpPage.AddBitmap(IDB_HELP_PAGE_034);
+		helpPage.AddBitmap(IDB_HELP_PAGE_035);
+		helpPage.AddBitmap(IDB_HELP_PAGE_036);
+		helpPage.AddBitmap(IDB_HELP_PAGE_037);
+		helpPage.AddBitmap(IDB_HELP_PAGE_038);
+		helpPage.AddBitmap(IDB_HELP_PAGE_039);
+		helpPage.AddBitmap(IDB_HELP_PAGE_040);
+		helpPage.AddBitmap(IDB_HELP_PAGE_041);
+		helpPage.AddBitmap(IDB_HELP_PAGE_042);
+		helpPage.AddBitmap(IDB_HELP_PAGE_043);
+		helpPage.AddBitmap(IDB_HELP_PAGE_044);
+		helpPage.AddBitmap(IDB_HELP_PAGE_045);
+		helpPage.AddBitmap(IDB_HELP_PAGE_046);
+		helpPage.AddBitmap(IDB_HELP_PAGE_047);
+		helpPage.AddBitmap(IDB_HELP_PAGE_048);
+		helpPage.AddBitmap(IDB_HELP_PAGE_049);
+		helpPage.AddBitmap(IDB_HELP_PAGE_050);
+		helpPage.AddBitmap(IDB_HELP_PAGE_051);
+		helpPage.AddBitmap(IDB_HELP_PAGE_052);
+		helpPage.AddBitmap(IDB_HELP_PAGE_053);
+		helpPage.AddBitmap(IDB_HELP_PAGE_054);
+		helpPage.AddBitmap(IDB_HELP_PAGE_055);
+		helpPage.AddBitmap(IDB_HELP_PAGE_056);
+		helpPage.AddBitmap(IDB_HELP_PAGE_057);
+		helpPage.AddBitmap(IDB_HELP_PAGE_058);
+
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
 		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
@@ -110,12 +176,15 @@ namespace game_framework {
 
 	void CGameStateInit::OnBeginState()
 	{
-		isOnMusicButton = isOnSoundButton = isOnPlayButton = false;
+		isOnMusicButton = isOnSoundButton = isOnBackButton = false;
+		isOnPlayButton = isOnScoresButton = isOnHelpButton = isOnCreditsButton = false;
 		isOnPlayerButton = isOnLevelButton = false;
 		isPlayerPage = isLevelPage = false;
+		isScoresPage = isHelpPage = isCreditsPage = false;
 		levelSelect = 0;
 		shareData->InitializeState();
 		playerButton.SetDelayCount(2);
+		helpPage.SetDelayCount(2);
 	}
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -132,16 +201,32 @@ namespace game_framework {
 	{
 		const int GROUND_X = (SIZE_X - 1000) / 2;
 		const int GROUND_Y = (SIZE_Y - 725) / 2;
+		const int CROSS_LENGTH = 40;
+		const int CROSS_HEIGHT = 40;
 		const int MUSIC_INDEX_X = 860;
 		const int MUSIC_INDEX_Y = 10;
 		const int SOUND_INDEX_X = 920;
 		const int SOUND_INDEX_Y = 10;
-		const int CROSS_LENGTH = 40;
-		const int CROSS_HEIGHT = 40;
-		const int PLAY_BUTTON_INDEX_X = 444;
+		const int BACK_BUTTON_INDEX_X = 446;
+		const int BACK_BUTTON_INDEX_Y = 629;
+		const int BACK_BUTTON_LENGTH = 108;
+		const int BACK_BUTTON_HEIGHT = 26;
+		const int PLAY_BUTTON_INDEX_X = 445;
 		const int PLAY_BUTTON_INDEX_Y = 496;
 		const int PLAY_BUTTON_LENGTH = 111;
 		const int PLAY_BUTTON_HEIGHT = 29;
+		const int CREDITS_BUTTON_INDEX_X = 410;
+		const int CREDITS_BUTTON_INDEX_Y = 613;
+		const int CREDITS_BUTTON_LENGTH = 180;
+		const int CREDITS_BUTTON_HEIGHT = 29;
+		const int HELP_BUTTON_INDEX_X = 443;
+		const int HELP_BUTTON_INDEX_Y = 574;
+		const int HELP_BUTTON_LENGTH = 113;
+		const int HELP_BUTTON_HEIGHT = 29;
+		const int SCORES_BUTTON_INDEX_X = 415;
+		const int SCORES_BUTTON_INDEX_Y = 535;
+		const int SCORES_BUTTON_LENGTH = 166;
+		const int SCORES_BUTTON_HEIGHT = 29;
 		const int PLAYER_BUTTON_INDEX_X = 120;
 		const int PLAYER_BUTTON_INDEX_Y = 80;
 		const int PLAYER_BUTTON_LENGTH = 770;
@@ -170,35 +255,7 @@ namespace game_framework {
 			isOnSoundButton = false;
 		}
 
-		if (isLevelPage)
-		{
-			for (int i = 0; i < 5; i++)
-			{
-				if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + FIRST_LEVEL_BUTTON_HEIGHT))
-				{
-					levelSelect = i + 1;
-					isOnLevelButton = true;
-					break;
-				}
-				else
-				{
-					levelSelect = 0;
-					isOnLevelButton = false;
-				}
-			}
-		}
-		else if (isPlayerPage)
-		{
-			if ((GROUND_X + PLAYER_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH) && (GROUND_Y + PLAYER_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT))
-			{
-				isOnPlayerButton = true;
-			}
-			else
-			{
-				isOnPlayerButton = false;
-			}
-		}
-		else
+		if (!isPlayerPage && !isLevelPage && !isScoresPage && !isHelpPage && !isCreditsPage)
 		{
 			if ((GROUND_X + PLAY_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAY_BUTTON_INDEX_X + PLAY_BUTTON_LENGTH) && (GROUND_Y + PLAY_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAY_BUTTON_INDEX_Y + PLAY_BUTTON_HEIGHT))
 			{
@@ -208,28 +265,78 @@ namespace game_framework {
 			{
 				isOnPlayButton = false;
 			}
+
+			if ((GROUND_X + SCORES_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + SCORES_BUTTON_INDEX_X + SCORES_BUTTON_LENGTH) && (GROUND_Y + SCORES_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + SCORES_BUTTON_INDEX_Y + SCORES_BUTTON_HEIGHT))
+			{
+				isOnScoresButton = true;
+			}
+			else
+			{
+				isOnScoresButton = false;
+			}
+
+			if ((GROUND_X + HELP_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + HELP_BUTTON_INDEX_X + HELP_BUTTON_LENGTH) && (GROUND_Y + HELP_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + HELP_BUTTON_INDEX_Y + HELP_BUTTON_HEIGHT))
+			{
+				isOnHelpButton = true;
+			}
+			else
+			{
+				isOnHelpButton = false;
+			}
+
+			if ((GROUND_X + CREDITS_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + CREDITS_BUTTON_INDEX_X + CREDITS_BUTTON_LENGTH) && (GROUND_Y + CREDITS_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + CREDITS_BUTTON_INDEX_Y + CREDITS_BUTTON_HEIGHT))
+			{
+				isOnCreditsButton = true;
+			}
+			else
+			{
+				isOnCreditsButton = false;
+			}
+		}
+		else
+		{
+			if ((GROUND_X + BACK_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + BACK_BUTTON_INDEX_X + BACK_BUTTON_LENGTH) && (GROUND_Y + BACK_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + BACK_BUTTON_INDEX_Y + BACK_BUTTON_HEIGHT))
+			{
+				isOnBackButton = true;
+			}
+			else
+			{
+				isOnBackButton = false;
+			}
+			
+			if (isLevelPage)
+			{
+				for (int i = 0; i < 5; i++)
+				{
+					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + FIRST_LEVEL_BUTTON_HEIGHT))
+					{
+						levelSelect = i + 1;
+						isOnLevelButton = true;
+						break;
+					}
+					else
+					{
+						levelSelect = 0;
+						isOnLevelButton = false;
+					}
+				}
+			}
+			else if (isPlayerPage)
+			{
+				if ((GROUND_X + PLAYER_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH) && (GROUND_Y + PLAYER_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT))
+				{
+					isOnPlayerButton = true;
+				}
+				else
+				{
+					isOnPlayerButton = false;
+				}
+			}
 		}
 	}
 
 	void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 	{
-		if (isOnLevelButton)
-		{
-			shareData->SetSelectedLevelIndex(levelSelect);
-			GotoGameState(GAME_STATE_RUN);
-		}
-
-		if (isOnPlayerButton)
-		{
-			isLevelPage = true;
-			isPlayerPage = false;
-		}
-
-		if (isOnPlayButton)
-		{
-			isPlayerPage = true;
-		}
-
 		if (isOnMusicButton)
 		{
 			shareData->IsMusicEnable(!shareData->IsMusicEnable());
@@ -243,11 +350,58 @@ namespace game_framework {
 				CAudio::Instance()->Stop(AUDIO_MENU);
 				CAudio::Instance()->Stop(AUDIO_MAIN);
 			}
+			isOnMusicButton = false;
 		}
-
-		if (isOnSoundButton)
+		else if (isOnSoundButton)
 		{
 			shareData->IsSoundEnable(!shareData->IsSoundEnable());
+			isOnSoundButton = false;
+		}
+		else if (isOnBackButton)
+		{
+			if (isLevelPage)
+			{
+				isLevelPage = false;
+				isPlayerPage = true;
+			}
+			else if (isPlayerPage || isScoresPage || isHelpPage || isCreditsPage)
+			{
+				isPlayerPage = isScoresPage = isHelpPage = isCreditsPage = false;
+			}
+			isOnBackButton = false;
+		}
+		else if (isOnLevelButton)
+		{
+			shareData->SetSelectedLevelIndex(levelSelect);
+			GotoGameState(GAME_STATE_RUN);
+			isOnLevelButton = false;
+		}
+		else if (isOnPlayerButton)
+		{
+			isLevelPage = true;
+			isPlayerPage = false;
+			isOnPlayerButton = false;
+		}
+		else if (isOnPlayButton)
+		{
+			isPlayerPage = true;
+			isOnPlayButton = false;
+		}
+		else if (isOnScoresButton)
+		{
+			isScoresPage = true;
+			isOnScoresButton = false;
+		}
+		else if (isOnHelpButton)
+		{
+			isHelpPage = true;
+			helpPage.Reset();
+			isOnHelpButton = false;
+		}
+		else if (isOnCreditsButton)
+		{
+			isCreditsPage = true;
+			isOnCreditsButton = false;
 		}
 	}
 
@@ -255,16 +409,20 @@ namespace game_framework {
 	{
 		const int GROUND_X = (SIZE_X - startPage.Width()) / 2;
 		const int GROUND_Y = (SIZE_Y - startPage.Height()) / 2;
-		const int CROSS_LENGTH = 40;
-		const int CROSS_HEIGHT = 40;
 		const int MUSIC_INDEX_X = 860;
 		const int MUSIC_INDEX_Y = 10;
 		const int SOUND_INDEX_X = 920;
 		const int SOUND_INDEX_Y = 10;
-		const int PLAY_BUTTON_LENGTH = 111;
-		const int PLAY_BUTTON_HEIGHT = 30;
+		const int BACK_BUTTON_INDEX_X = 446;
+		const int BACK_BUTTON_INDEX_Y = 629;
 		const int PLAY_BUTTON_INDEX_X = 445;
 		const int PLAY_BUTTON_INDEX_Y = 496;
+		const int CREDITS_BUTTON_INDEX_X = 410;
+		const int CREDITS_BUTTON_INDEX_Y = 613;
+		const int HELP_BUTTON_INDEX_X = 443;
+		const int HELP_BUTTON_INDEX_Y = 574;
+		const int SCORES_BUTTON_INDEX_X = 415;
+		const int SCORES_BUTTON_INDEX_Y = 535;
 		const int PLAYER_BUTTON_INDEX_X = 120;
 		const int PLAYER_BUTTON_INDEX_Y = 80;
 		const int PLAYER_BUTTON_LENGTH = 770;
@@ -272,26 +430,51 @@ namespace game_framework {
 		//
 		// 貼上logo
 		//
-		if (isLevelPage)
+		if (isPlayerPage || isScoresPage || isHelpPage || isCreditsPage || isLevelPage)
 		{
-			levelPage.SetTopLeft(GROUND_X, GROUND_Y);
-			levelPage.ShowBitmap();
-		}
-		else if (isPlayerPage)
-		{
-			playerPage.SetTopLeft(GROUND_X, GROUND_Y);
-			playerPage.ShowBitmap();
+			if (isLevelPage)
+			{
+				levelPage.SetTopLeft(GROUND_X, GROUND_Y);
+				levelPage.ShowBitmap();
+			}
+			else if (isPlayerPage)
+			{
+				playerPage.SetTopLeft(GROUND_X, GROUND_Y);
+				playerPage.ShowBitmap();
 
-			if (isOnPlayerButton)
-			{
-				playerButton.OnMove();
+				if (isOnPlayerButton)
+				{
+					playerButton.OnMove();
+				}
+				else
+				{
+					playerButton.Reset();
+				}
+				playerButton.SetTopLeft(GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH / 2 - playerButton.Width() / 2, GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT / 2 - playerButton.Height() / 2);
+				playerButton.OnShow();
 			}
-			else
+			else if (isScoresPage)
 			{
-				playerButton.Reset();
+				scoresPage.SetTopLeft(GROUND_X, GROUND_Y);
+				scoresPage.ShowBitmap();
 			}
-			playerButton.SetTopLeft(GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH / 2 - playerButton.Width() / 2, GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT / 2 - playerButton.Height() / 2);
-			playerButton.OnShow();
+			else if (isHelpPage)
+			{
+				helpPage.OnMove();
+				helpPage.SetTopLeft(GROUND_X, GROUND_Y);
+				helpPage.OnShow();
+			}
+			else if (isCreditsPage)
+			{
+				creditsPage.SetTopLeft(GROUND_X, GROUND_Y);
+				creditsPage.ShowBitmap();
+			}
+
+			if (isOnBackButton)
+			{
+				backButton.SetTopLeft(GROUND_X + BACK_BUTTON_INDEX_X, GROUND_Y + BACK_BUTTON_INDEX_Y);
+				backButton.ShowBitmap();
+			}
 		}
 		else
 		{
@@ -302,6 +485,21 @@ namespace game_framework {
 			{
 				playButton.SetTopLeft(GROUND_X + PLAY_BUTTON_INDEX_X, GROUND_Y + PLAY_BUTTON_INDEX_Y);
 				playButton.ShowBitmap();
+			}
+			else if (isOnScoresButton)
+			{
+				scoresButton.SetTopLeft(GROUND_X + SCORES_BUTTON_INDEX_X, GROUND_Y + SCORES_BUTTON_INDEX_Y);
+				scoresButton.ShowBitmap();
+			}
+			else if (isOnHelpButton)
+			{
+				helpButton.SetTopLeft(GROUND_X + HELP_BUTTON_INDEX_X, GROUND_Y + HELP_BUTTON_INDEX_Y);
+				helpButton.ShowBitmap();
+			}
+			else if (isOnCreditsButton)
+			{
+				creditsButton.SetTopLeft(GROUND_X + CREDITS_BUTTON_INDEX_X, GROUND_Y + CREDITS_BUTTON_INDEX_Y);
+				creditsButton.ShowBitmap();
 			}
 		}
 

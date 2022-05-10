@@ -969,12 +969,6 @@
     <Image Include="Resources\turtle\hit_up\turtle_hit_up_007.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\start\level.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\start\player.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\trap\spike.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -1008,7 +1002,198 @@
     <Image Include="Resources\start\credits.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\start\scores.png" />
+    <Image Include="Resources\start\helpPage\help_page_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_009.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_010.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_011.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_012.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_013.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_014.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_015.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_016.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_017.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_018.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_019.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_020.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_021.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_022.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_023.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_024.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_025.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_026.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_027.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_028.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_029.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_030.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_031.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_032.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_033.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_034.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_035.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_036.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_037.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_038.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_039.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_040.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_041.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_042.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_043.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_044.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_045.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_046.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_047.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_048.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_049.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_050.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_051.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_052.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_053.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_054.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_055.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_056.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_057.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\helpPage\help_page_058.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\credits_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\scores_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\player_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\back.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\help.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="Resources\start\scores.bmp">
       <Filter>Resource Files</Filter>
     </Image>

@@ -81,18 +81,32 @@ namespace game_framework {
 		CMovingBitmap cross;
 		CMovingBitmap musicButton;
 		CMovingBitmap soundButton;
+		CMovingBitmap backButton;
 		CMovingBitmap playButton;
+		CMovingBitmap scoresButton;
+		CMovingBitmap helpButton;
+		CMovingBitmap creditsButton;
 		CMovingBitmap playerPage;
 		CMovingBitmap levelPage;
+		CMovingBitmap scoresPage;
+		CMovingBitmap creditsPage;
 		CAnimation playerButton;
+		CAnimation helpPage;
 		int levelSelect;
-		bool isOnPlayButton;
 		bool isOnMusicButton;
 		bool isOnSoundButton;
+		bool isOnBackButton;
+		bool isOnPlayButton;
+		bool isOnScoresButton;
+		bool isOnHelpButton;
+		bool isOnCreditsButton;
 		bool isOnPlayerButton;
 		bool isOnLevelButton;
 		bool isPlayerPage;
 		bool isLevelPage;
+		bool isScoresPage;
+		bool isHelpPage;
+		bool isCreditsPage;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

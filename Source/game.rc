@@ -570,9 +570,9 @@ IDB_TURTLE_HIT_UP_007   BITMAP                  "..\\Resources\\turtle\\hit_up\\
 
 IDB_TURTLE_HIT_UP_008   BITMAP                  "..\\Resources\\turtle\\hit_up\\turtle_hit_up_007.bmp"
 
-IDB_LEVEL               BITMAP                  "..\\Resources\\start\\level.bmp"
+IDB_LEVEL               BITMAP                  "..\\Resources\\start\\level_page.bmp"
 
-IDB_PLAYER_PAGE         BITMAP                  "..\\Resources\\start\\player.bmp"
+IDB_PLAYER_PAGE         BITMAP                  "..\\Resources\\start\\player_page.bmp"
 
 IDB_SPIKE               BITMAP                  "..\\Resources\\trap\\spike.bmp"
 
@@ -594,9 +594,133 @@ IDB_PLAYER_BUTTON_007   BITMAP                  "..\\Resources\\start\\play\\pla
 
 IDB_PLAYER_BUTTON_008   BITMAP                  "..\\Resources\\start\\play\\play8.bmp"
 
-IDB_CREDITS_PAGE        BITMAP                  "..\\Resources\\start\\credits.bmp"
+IDB_CREDITS_PAGE        BITMAP                  "..\\Resources\\start\\credits_page.bmp"
 
-IDB_SCORES_PAGE         BITMAP                  "..\\Resources\\start\\scores.bmp"
+IDB_SCORES_PAGE         BITMAP                  "..\\Resources\\start\\scores_page.bmp"
+
+IDB_HELP_PAGE_001       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_001.bmp"
+
+IDB_HELP_PAGE_002       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_002.bmp"
+
+IDB_HELP_PAGE_003       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_003.bmp"
+
+IDB_HELP_PAGE_004       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_004.bmp"
+
+IDB_HELP_PAGE_005       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_005.bmp"
+
+IDB_HELP_PAGE_006       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_006.bmp"
+
+IDB_HELP_PAGE_007       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_007.bmp"
+
+IDB_HELP_PAGE_008       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_008.bmp"
+
+IDB_HELP_PAGE_009       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_009.bmp"
+
+IDB_HELP_PAGE_010       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_010.bmp"
+
+IDB_HELP_PAGE_011       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_011.bmp"
+
+IDB_HELP_PAGE_012       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_012.bmp"
+
+IDB_HELP_PAGE_013       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_013.bmp"
+
+IDB_HELP_PAGE_014       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_014.bmp"
+
+IDB_HELP_PAGE_015       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_015.bmp"
+
+IDB_HELP_PAGE_016       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_016.bmp"
+
+IDB_HELP_PAGE_017       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_017.bmp"
+
+IDB_HELP_PAGE_018       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_018.bmp"
+
+IDB_HELP_PAGE_019       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_019.bmp"
+
+IDB_HELP_PAGE_020       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_020.bmp"
+
+IDB_HELP_PAGE_021       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_021.bmp"
+
+IDB_HELP_PAGE_022       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_022.bmp"
+
+IDB_HELP_PAGE_023       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_023.bmp"
+
+IDB_HELP_PAGE_024       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_024.bmp"
+
+IDB_HELP_PAGE_025       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_025.bmp"
+
+IDB_HELP_PAGE_026       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_026.bmp"
+
+IDB_HELP_PAGE_027       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_027.bmp"
+
+IDB_HELP_PAGE_028       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_028.bmp"
+
+IDB_HELP_PAGE_029       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_029.bmp"
+
+IDB_HELP_PAGE_030       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_030.bmp"
+
+IDB_HELP_PAGE_031       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_031.bmp"
+
+IDB_HELP_PAGE_032       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_032.bmp"
+
+IDB_HELP_PAGE_033       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_033.bmp"
+
+IDB_HELP_PAGE_034       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_034.bmp"
+
+IDB_HELP_PAGE_035       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_035.bmp"
+
+IDB_HELP_PAGE_036       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_036.bmp"
+
+IDB_HELP_PAGE_037       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_037.bmp"
+
+IDB_HELP_PAGE_038       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_038.bmp"
+
+IDB_HELP_PAGE_039       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_039.bmp"
+
+IDB_HELP_PAGE_040       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_040.bmp"
+
+IDB_HELP_PAGE_041       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_041.bmp"
+
+IDB_HELP_PAGE_042       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_042.bmp"
+
+IDB_HELP_PAGE_043       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_043.bmp"
+
+IDB_HELP_PAGE_044       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_044.bmp"
+
+IDB_HELP_PAGE_045       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_045.bmp"
+
+IDB_HELP_PAGE_046       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_046.bmp"
+
+IDB_HELP_PAGE_047       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_047.bmp"
+
+IDB_HELP_PAGE_048       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_048.bmp"
+
+IDB_HELP_PAGE_049       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_049.bmp"
+
+IDB_HELP_PAGE_050       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_050.bmp"
+
+IDB_HELP_PAGE_051       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_051.bmp"
+
+IDB_HELP_PAGE_052       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_052.bmp"
+
+IDB_HELP_PAGE_053       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_053.bmp"
+
+IDB_HELP_PAGE_054       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_054.bmp"
+
+IDB_HELP_PAGE_055       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_055.bmp"
+
+IDB_HELP_PAGE_056       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_056.bmp"
+
+IDB_HELP_PAGE_057       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_057.bmp"
+
+IDB_HELP_PAGE_058       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_058.bmp"
+
+IDB_BACK                BITMAP                  "..\\Resources\\start\\back.bmp"
+
+IDB_CREDITS             BITMAP                  "..\\Resources\\start\\credits.bmp"
+
+IDB_HELP                BITMAP                  "..\\Resources\\start\\help.bmp"
+
+IDB_SCORES              BITMAP                  "..\\Resources\\start\\scores.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
