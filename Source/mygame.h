@@ -45,6 +45,8 @@
 #include "CTrap.h"
 #include "CSpike.h"
 #include "CMucus.h"
+#include "CMovingSpike.h"
+#include "CSteppingSpike.h"
 #include "CWall.h"
 #include "CBrick.h"
 #include "CStone.h"

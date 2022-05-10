@@ -332,6 +332,14 @@ namespace game_framework {
 			}
 		}
 
+		for (list<CTrap>::iterator k = trapRecord->begin(); k != trapRecord->end(); k++)
+		{
+			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)
+			{
+				k->SteppedByPlayer();
+			}
+		}
+
 		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 		{
 			if (k->IsAlive() && k->GetIndexX() == indexX && k->GetIndexY() == indexY && !k->IsHit() && !k->IsFood())

@@ -10,6 +10,8 @@ namespace game_framework {
 	CTrap::CTrap()
 	{
 		x = y = 0;
+		indexX = indexY = 0;
+		isStepped = false;
 	}
 
 	int CTrap::GetIndexX()
@@ -37,6 +39,45 @@ namespace game_framework {
 
 	void CTrap::OnMove()
 	{
+		if (type == CName::MOVING)
+		{
+			animation.OnMove();
+			if (animation.GetCurrentBitmapNumber() >= 4 && animation.GetCurrentBitmapNumber() <= 9)
+			{
+				isAggressive = true;
+			}
+			else
+			{
+				isAggressive = false;
+			}
+		}
+
+		if (type == CName::STEPPING)
+		{
+			if (isStepped)
+			{
+				animation.OnMove();
+				if (animation.GetCurrentBitmapNumber() >= 4 && animation.GetCurrentBitmapNumber() <= 9)
+				{
+					isAggressive = true;
+				}
+				else
+				{
+					isAggressive = false;
+				}
+				if (animation.GetCurrentBitmapNumber() == 0)
+				{
+					isStepped = false;
+					animation.OnMove();
+				}
+			}
+		}
+	}
+
+	void CTrap::SteppedByPlayer()
+	{
+		TRACE("asdf\n");
+		isStepped = true;
 	}
 
 	void CTrap::SetXY(int ni, int nj, int nx, int ny)

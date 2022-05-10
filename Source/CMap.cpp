@@ -81,7 +81,7 @@ namespace game_framework {
 				{
 					playerMap[i][j] = map[i][j];
 				}
-				else if (map[i][j] == CName::SPIKE || map[i][j] == CName::MUCUS)
+				else if (map[i][j] == CName::SPIKE || map[i][j] == CName::MUCUS || map[i][j] == CName::MOVING || map[i][j] == CName::STEPPING)
 				{
 					trapMap[i][j] = map[i][j];
 				}

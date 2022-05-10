@@ -608,6 +608,7 @@ namespace game_framework {
 		ground.SetXY(GROUND_X, GROUND_Y);
 		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
 
+		trap.clear();
 		wall.clear();
 		brick.clear();
 		food.clear();
@@ -638,6 +639,22 @@ namespace game_framework {
 					tempMucus.LoadBitmap();
 					tempMucus.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					trap.push_back(tempMucus);
+				}
+				else if (map.GetTrapInMap(i, j) == CName::MOVING)
+				{
+					CMovingSpike tempMovingSpike;
+					tempMovingSpike.Initialize(&map);
+					tempMovingSpike.LoadBitmap();
+					tempMovingSpike.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					trap.push_back(tempMovingSpike);
+				}
+				else if (map.GetTrapInMap(i, j) == CName::STEPPING)
+				{
+					CSteppingSpike tempSteppingSpike;
+					tempSteppingSpike.Initialize(&map);
+					tempSteppingSpike.LoadBitmap();
+					tempSteppingSpike.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					trap.push_back(tempSteppingSpike);
 				}
 				else if (map.GetBrickInMap(i, j) == CName::WALL)
 				{

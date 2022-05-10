@@ -11,6 +11,7 @@ namespace game_framework {
 	{
 		mapRecord = map;
 		isAggressive = false;
+		type = CName::MUCUS;
 	}
 
 	void CMucus::LoadBitmap()

@@ -11,6 +11,7 @@ namespace game_framework {
 	{
 		mapRecord = map;
 		isAggressive = true;
+		type = CName::SPIKE;
 	}
 
 	void CSpike::LoadBitmap()

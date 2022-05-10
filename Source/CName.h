@@ -8,6 +8,8 @@ namespace game_framework {
 		PLAYER,
 		SPIKE,
 		MUCUS,
+		MOVING,
+		STEPPING,
 		WALL,
 		STONE,
 		WOODEN,

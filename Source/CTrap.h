@@ -4,6 +4,7 @@
 #include "CName.h"
 #include "CDirection.h"
 #include "CMap.h"
+#include "CName.h"
 
 namespace game_framework {
 	class CTrap
@@ -16,6 +17,7 @@ namespace game_framework {
 		virtual void Initialize(CMap *map);
 		virtual void LoadBitmap();
 		void OnMove();
+		void SteppedByPlayer();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:
@@ -24,6 +26,8 @@ namespace game_framework {
 		int indexX, indexY;
 		int x, y;
 		CMap *mapRecord;
+		CName type;
+		bool isStepped;
 	};
 }
 

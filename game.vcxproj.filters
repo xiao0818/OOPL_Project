@@ -153,6 +153,12 @@
     <ClCompile Include="Source\CSkeleton.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CMovingSpike.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CSteppingSpike.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -240,6 +246,12 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CSkeleton.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CMovingSpike.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CSteppingSpike.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1195,6 +1207,63 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\scores.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\moving_spike\moving_spike_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\moving_spike\moving_spike_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\moving_spike\moving_spike_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\moving_spike\moving_spike_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\moving_spike\moving_spike_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\moving_spike\moving_spike_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_009.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_010.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_011.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_012.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\trap\stepping_spike\stepping_spike_013.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

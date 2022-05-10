@@ -722,6 +722,44 @@ IDB_HELP                BITMAP                  "..\\Resources\\start\\help.bmp"
 
 IDB_SCORES              BITMAP                  "..\\Resources\\start\\scores.bmp"
 
+IDB_MOVING_SPIKE_001    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_001.bmp"
+
+IDB_MOVING_SPIKE_002    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_002.bmp"
+
+IDB_MOVING_SPIKE_003    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_003.bmp"
+
+IDB_MOVING_SPIKE_004    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_004.bmp"
+
+IDB_MOVING_SPIKE_005    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_005.bmp"
+
+IDB_MOVING_SPIKE_006    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_006.bmp"
+
+IDB_STEPPING_SPIKE_001  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_001.bmp"
+
+IDB_STEPPING_SPIKE_002  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_002.bmp"
+
+IDB_STEPPING_SPIKE_003  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_003.bmp"
+
+IDB_STEPPING_SPIKE_004  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_004.bmp"
+
+IDB_STEPPING_SPIKE_005  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_005.bmp"
+
+IDB_STEPPING_SPIKE_006  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_006.bmp"
+
+IDB_STEPPING_SPIKE_007  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_007.bmp"
+
+IDB_STEPPING_SPIKE_008  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_008.bmp"
+
+IDB_STEPPING_SPIKE_009  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_009.bmp"
+
+IDB_STEPPING_SPIKE_010  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_010.bmp"
+
+IDB_STEPPING_SPIKE_011  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_011.bmp"
+
+IDB_STEPPING_SPIKE_012  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_012.bmp"
+
+IDB_STEPPING_SPIKE_013  BITMAP                  "..\\Resources\\trap\\stepping_spike\\stepping_spike_013.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

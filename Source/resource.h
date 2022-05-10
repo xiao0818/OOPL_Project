@@ -349,6 +349,27 @@
 #define IDB_HELP                        502
 #define IDB_BITMAP20                    503
 #define IDB_SCORES                      503
+#define IDB_MOVING_SPIKE_001            504
+#define IDB_MOVING_SPIKE_002            505
+#define IDB_MOVING_SPIKE_003            506
+#define IDB_MOVING_SPIKE_004            507
+#define IDB_MOVING_SPIKE_005            508
+#define IDB_MOVING_SPIKE_006            509
+#define IDB_STEPPING_SPIKE_001          510
+#define IDB_STEPPING_SPIKE_002          511
+#define IDB_STEPPING_SPIKE_003          512
+#define IDB_STEPPING_SPIKE_004          513
+#define IDB_STEPPING_SPIKE_005          514
+#define IDB_STEPPING_SPIKE_006          515
+#define IDB_STEPPING_SPIKE_007          516
+#define IDB_STEPPING_SPIKE_008          517
+#define IDB_STEPPING_SPIKE_009          518
+#define IDB_STEPPING_SPIKE_010          519
+#define IDB_STEPPING_SPIKE_011          520
+#define IDB_BITMAP12                    521
+#define IDB_STEPPING_SPIKE_012          521
+#define IDB_BITMAP1                     522
+#define IDB_STEPPING_SPIKE_013          522
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -361,7 +382,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        504
+#define _APS_NEXT_RESOURCE_VALUE        523
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
