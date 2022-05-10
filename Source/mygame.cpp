@@ -201,41 +201,6 @@ namespace game_framework {
 	{
 		const int GROUND_X = (SIZE_X - 1000) / 2;
 		const int GROUND_Y = (SIZE_Y - 725) / 2;
-		const int CROSS_LENGTH = 40;
-		const int CROSS_HEIGHT = 40;
-		const int MUSIC_INDEX_X = 860;
-		const int MUSIC_INDEX_Y = 10;
-		const int SOUND_INDEX_X = 920;
-		const int SOUND_INDEX_Y = 10;
-		const int BACK_BUTTON_INDEX_X = 446;
-		const int BACK_BUTTON_INDEX_Y = 629;
-		const int BACK_BUTTON_LENGTH = 108;
-		const int BACK_BUTTON_HEIGHT = 26;
-		const int PLAY_BUTTON_INDEX_X = 445;
-		const int PLAY_BUTTON_INDEX_Y = 496;
-		const int PLAY_BUTTON_LENGTH = 111;
-		const int PLAY_BUTTON_HEIGHT = 29;
-		const int CREDITS_BUTTON_INDEX_X = 410;
-		const int CREDITS_BUTTON_INDEX_Y = 613;
-		const int CREDITS_BUTTON_LENGTH = 180;
-		const int CREDITS_BUTTON_HEIGHT = 29;
-		const int HELP_BUTTON_INDEX_X = 443;
-		const int HELP_BUTTON_INDEX_Y = 574;
-		const int HELP_BUTTON_LENGTH = 113;
-		const int HELP_BUTTON_HEIGHT = 29;
-		const int SCORES_BUTTON_INDEX_X = 415;
-		const int SCORES_BUTTON_INDEX_Y = 535;
-		const int SCORES_BUTTON_LENGTH = 166;
-		const int SCORES_BUTTON_HEIGHT = 29;
-		const int PLAYER_BUTTON_INDEX_X = 120;
-		const int PLAYER_BUTTON_INDEX_Y = 80;
-		const int PLAYER_BUTTON_LENGTH = 770;
-		const int PLAYER_BUTTON_HEIGHT = 258;
-		const int FIRST_LEVEL_BUTTON_INDEX_X = 132;
-		const int FIRST_LEVEL_BUTTON_INDEX_Y = 228;
-		const int FIRST_LEVEL_BUTTON_LENGTH = 60;
-		const int FIRST_LEVEL_BUTTON_HEIGHT = 60;
-		const int NEXT_LEVEL_BUTTON_DISTANCE_X = 75;
 
 		if ((GROUND_X + MUSIC_INDEX_X) < point.x && point.x < (GROUND_X + MUSIC_INDEX_X + CROSS_LENGTH) && (GROUND_Y + MUSIC_INDEX_Y) < point.y && point.y < (GROUND_Y + MUSIC_INDEX_Y + CROSS_HEIGHT))
 		{
@@ -409,24 +374,6 @@ namespace game_framework {
 	{
 		const int GROUND_X = (SIZE_X - startPage.Width()) / 2;
 		const int GROUND_Y = (SIZE_Y - startPage.Height()) / 2;
-		const int MUSIC_INDEX_X = 860;
-		const int MUSIC_INDEX_Y = 10;
-		const int SOUND_INDEX_X = 920;
-		const int SOUND_INDEX_Y = 10;
-		const int BACK_BUTTON_INDEX_X = 446;
-		const int BACK_BUTTON_INDEX_Y = 629;
-		const int PLAY_BUTTON_INDEX_X = 445;
-		const int PLAY_BUTTON_INDEX_Y = 496;
-		const int CREDITS_BUTTON_INDEX_X = 410;
-		const int CREDITS_BUTTON_INDEX_Y = 613;
-		const int HELP_BUTTON_INDEX_X = 443;
-		const int HELP_BUTTON_INDEX_Y = 574;
-		const int SCORES_BUTTON_INDEX_X = 415;
-		const int SCORES_BUTTON_INDEX_Y = 535;
-		const int PLAYER_BUTTON_INDEX_X = 120;
-		const int PLAYER_BUTTON_INDEX_Y = 80;
-		const int PLAYER_BUTTON_LENGTH = 770;
-		const int PLAYER_BUTTON_HEIGHT = 258;
 		//
 		// ¶K¤Wlogo
 		//
@@ -748,11 +695,11 @@ namespace game_framework {
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempTurtle);
 				}
-				else if (map.GetMonsterInMap(i, j) == CName::SKELE) {
+				else if (map.GetMonsterInMap(i, j) == CName::SKELETON) {
 					CSkeleton tempSkeleton;
 					tempSkeleton.Initialize(&map);
 					tempSkeleton.LoadBitmap();
-					tempSkeleton.SetTypeFlag(CName::SKELE);
+					tempSkeleton.SetTypeFlag(CName::SKELETON);
 					tempSkeleton.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempSkeleton);
 				}

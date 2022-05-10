@@ -97,7 +97,7 @@ namespace game_framework {
 		if (type == CName::MUD || type == CName::TURTLE) {
 			MudAndTurtleMove();
 		}
-		else if (type == CName::SKELE) {
+		else if (type == CName::SKELETON) {
 			SkeletonMove();
 		}
 	}

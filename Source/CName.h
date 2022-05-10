@@ -23,7 +23,7 @@ namespace game_framework {
 		TURKEY,
 		MUD,
 		TURTLE,
-		SKELE,
+		SKELETON,
 		MONSTER_FOOD,
 		INVINCIBLE_TURTLE
 	};
