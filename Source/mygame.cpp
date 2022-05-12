@@ -666,7 +666,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(&map, &monster);
+					tempStone.Initialize(&map, &brick, &monster);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -674,7 +674,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(&map, &monster);
+					tempWooden.Initialize(&map, &brick, &monster);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -682,7 +682,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(&map, &monster);
+					tempSteel.Initialize(&map, &brick, &monster);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);

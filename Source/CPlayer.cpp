@@ -388,7 +388,7 @@ namespace game_framework {
 				{
 					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
-						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove())
+						if (k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY && !k->IsMove() && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
@@ -430,7 +430,7 @@ namespace game_framework {
 				{
 					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
-						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove())
+						if (k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY && !k->IsMove() && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
@@ -472,7 +472,7 @@ namespace game_framework {
 				{
 					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
-						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove())
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1 && !k->IsMove() && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
@@ -514,7 +514,7 @@ namespace game_framework {
 				{
 					for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 					{
-						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove())
+						if (k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1 && !k->IsMove() && k->IsAlive())
 						{
 							k->Swallowed(faceTo);
 							if (shareDataRecord->IsSoundEnable())
