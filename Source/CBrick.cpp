@@ -120,28 +120,31 @@ namespace game_framework {
 						mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
 						if (movingLeftCount == STEP_TARGET)
 						{
-							if (mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::SPACE) {
+							mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
+							movingLeftCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX - 1 && k->GetNextIndexY() == indexY))
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
 									{
 										k->HitByBrick(CDirection::LEFT);
-										Hit();
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
 									}
 								}
 							}
-							mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
 							if (mapRecord->GetBrickInMap(indexX - 1, indexY) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY))
+									if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) && k->IsAlive())
 									{
 										k->Hit();
 										Hit();
 									}
 								}
 							}
-							movingLeftCount = 0;
 						}
 					}
 					else
@@ -159,28 +162,31 @@ namespace game_framework {
 						mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
 						if (movingRightCount == STEP_TARGET)
 						{
-							if (mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::SPACE) {
+							mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
+							movingRightCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX + 1 && k->GetNextIndexY() == indexY))
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
 									{
 										k->HitByBrick(CDirection::RIGHT);
-										Hit();
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
 									}
 								}
 							}
-							mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
 							if (mapRecord->GetBrickInMap(indexX + 1, indexY) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY))
+									if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) && k->IsAlive())
 									{
 										k->Hit();
 										Hit();
 									}
 								}
 							}
-							movingRightCount = 0;
 						}
 					}
 					else
@@ -198,28 +204,31 @@ namespace game_framework {
 						mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
 						if (movingUpCount == STEP_TARGET)
 						{
-							if (mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::SPACE) {
+							mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
+							movingUpCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY - 1))
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
 									{
 										k->HitByBrick(CDirection::UP);
-										Hit();
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
 									}
 								}
 							}
-							mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
 							if (mapRecord->GetBrickInMap(indexX, indexY - 1) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1))
+									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) && k->IsAlive())
 									{
 										k->Hit();
 										Hit();
 									}
 								}
 							}
-							movingUpCount = 0;
 						}
 					}
 					else
@@ -237,28 +246,31 @@ namespace game_framework {
 						mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
 						if (movingDownCount == STEP_TARGET)
 						{
-							if (mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::SPACE) {
+							mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
+							movingDownCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY + 1))
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
 									{
 										k->HitByBrick(CDirection::DOWN);
-										Hit();
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
 									}
 								}
 							}
-							mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
 							if (mapRecord->GetBrickInMap(indexX, indexY + 1) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
-									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1))
+									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) && k->IsAlive())
 									{
 										k->Hit();
 										Hit();
 									}
 								}
 							}
-							movingDownCount = 0;
 						}
 					}
 					else
