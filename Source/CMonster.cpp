@@ -20,6 +20,10 @@ namespace game_framework {
 		rightAnimation.SetDelayCount(2);
 		upAnimation.SetDelayCount(2);
 		downAnimation.SetDelayCount(2);
+		rushDownAnimation.SetDelayCount(2);
+		rushLeftAnimation.SetDelayCount(2);
+		rushRightAnimation.SetDelayCount(2);
+		rushUpAnimation.SetDelayCount(2);
 	}
 
 	int CMonster::GetIndexX()
@@ -1014,6 +1018,12 @@ namespace game_framework {
 
 	void CMonster::ChangeRushStatus()
 	{
+		if (!isRush) {
+			rushDownAnimation.Reset();
+			rushLeftAnimation.Reset();
+			rushRightAnimation.Reset();
+			rushUpAnimation.Reset();
+		}
 		if (mapRecord->GetPlayerIndexX() == GetIndexX())
 		{
 			if (faceTo == CDirection::UP)
