@@ -31,24 +31,25 @@ namespace game_framework {
 		return isMovingLeft || isMovingRight || isMovingUp || isMovingDown;
 	}
 
-	void CBrick::Initialize(CMap *map, list<CMonster> *monster)
+	bool CBrick::IsAlive()
+	{
+		return isAlive;
+	}
+
+	void CBrick::Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster)
 	{
 		mapRecord = map;
+		brickRecord = brick;
 		monsterRecord = monster;
-		SetStep();
+		SetStepAndType();
 	}
 
 	void CBrick::LoadBitmap()
 	{
 	}
 
-	void CBrick::SetStep()
+	void CBrick::SetStepAndType()
 	{
-	}
-
-	void CBrick::SetTypeFlag(CName name)
-	{
-		type = name;
 	}
 
 	void CBrick::OnMove()
@@ -59,161 +60,224 @@ namespace game_framework {
 		const int BRICK_LENGTH = 72;
 		const int BRICK_WIDTH = 48;
 
-		if (isSwallowed)
+		if (isAlive)
 		{
-			if (isMovingLeft)
+			if (isSwallowed)
 			{
-				x -= SWALLOWED_STEP_SIZE_X;
-				movingLeftCount++;
-				if (movingLeftCount == SWALLOWED_STEP_TARGET)
+				if (isMovingLeft)
 				{
-					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingLeftCount = 0;
-					isMovingLeft = isSwallowed = isAlive = false;
-				}
-			}
-			else if (isMovingRight)
-			{
-				x += SWALLOWED_STEP_SIZE_X;
-				movingRightCount++;
-				if (movingRightCount == SWALLOWED_STEP_TARGET)
-				{
-					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingRightCount = 0;
-					isMovingRight = isSwallowed = isAlive = false;
-				}
-			}
-			else if (isMovingUp)
-			{
-				y -= SWALLOWED_STEP_SIZE_Y;
-				movingUpCount++;
-				if (movingUpCount == SWALLOWED_STEP_TARGET)
-				{
-					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingUpCount = 0;
-					isMovingUp = isSwallowed = isAlive = false;
-				}
-			}
-			else if (isMovingDown)
-			{
-				y += SWALLOWED_STEP_SIZE_Y;
-				movingDownCount++;
-				if (movingDownCount == SWALLOWED_STEP_TARGET)
-				{
-					mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-					movingDownCount = 0;
-					isMovingDown = isSwallowed = isAlive = false;
-				}
-			}
-		}
-		else
-		{
-			if (isMovingLeft)
-			{
-				if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::INVINCIBLE_TURTLE) || movingLeftCount != 0)
-				{
-					x -= STEP_SIZE_X;
+					x -= SWALLOWED_STEP_SIZE_X;
 					movingLeftCount++;
-					mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
-					if (movingLeftCount == STEP_TARGET)
+					if (movingLeftCount == SWALLOWED_STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::SPACE) {
-							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
-							{
-								if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX - 1 && k->GetNextIndexY() == indexY))
-								{
-									k->HitByBrick(CDirection::LEFT);
-								}
-							}
-						}
-						mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 						movingLeftCount = 0;
+						isMovingLeft = isSwallowed = isAlive = false;
 					}
 				}
-				else
+				else if (isMovingRight)
 				{
-					isMovingLeft = false;
-				}
-			}
-			else if (isMovingRight)
-			{
-				if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::INVINCIBLE_TURTLE) || movingRightCount != 0)
-				{
-					x += STEP_SIZE_X;
+					x += SWALLOWED_STEP_SIZE_X;
 					movingRightCount++;
-					mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
-					if (movingRightCount == STEP_TARGET)
+					if (movingRightCount == SWALLOWED_STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::SPACE) {
-							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
-							{
-								if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX + 1 && k->GetNextIndexY() == indexY))
-								{
-									k->HitByBrick(CDirection::RIGHT);
-								}
-							}
-						}
-						mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 						movingRightCount = 0;
+						isMovingRight = isSwallowed = isAlive = false;
 					}
 				}
-				else
+				else if (isMovingUp)
 				{
-					isMovingRight = false;
-				}
-			}
-			else if (isMovingUp)
-			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::INVINCIBLE_TURTLE) || movingUpCount != 0)
-				{
-					y -= STEP_SIZE_Y;
+					y -= SWALLOWED_STEP_SIZE_Y;
 					movingUpCount++;
-					mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
-					if (movingUpCount == STEP_TARGET)
+					if (movingUpCount == SWALLOWED_STEP_TARGET)
 					{
-						if (mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::SPACE) {
-							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
-							{
-								if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY - 1))
-								{
-									k->HitByBrick(CDirection::UP);
-								}
-							}
-						}
-						mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 						movingUpCount = 0;
+						isMovingUp = isSwallowed = isAlive = false;
 					}
 				}
-				else
+				else if (isMovingDown)
 				{
-					isMovingUp = false;
+					y += SWALLOWED_STEP_SIZE_Y;
+					movingDownCount++;
+					if (movingDownCount == SWALLOWED_STEP_TARGET)
+					{
+						mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+						movingDownCount = 0;
+						isMovingDown = isSwallowed = isAlive = false;
+					}
 				}
 			}
-			else if (isMovingDown)
+			else
 			{
-				if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::INVINCIBLE_TURTLE) || movingDownCount != 0)
+				if (isMovingLeft)
 				{
-					y += STEP_SIZE_Y;
-					movingDownCount++;
-					mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
-					if (movingDownCount == STEP_TARGET)
+					if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::INVINCIBLE_TURTLE) || movingLeftCount != 0)
 					{
-						if (mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::SPACE) {
-							for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
-							{
-								if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY + 1))
+						x -= STEP_SIZE_X;
+						movingLeftCount++;
+						mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
+						if (movingLeftCount == STEP_TARGET)
+						{
+							mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
+							movingLeftCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
+								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
-									k->HitByBrick(CDirection::DOWN);
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
+									{
+										k->HitByBrick(CDirection::LEFT);
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX - 1, indexY) != CName::SPACE) {
+								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
+								{
+									if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) && k->IsAlive())
+									{
+										k->Hit();
+										Hit();
+									}
 								}
 							}
 						}
-						mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
-						movingDownCount = 0;
+					}
+					else
+					{
+						isMovingLeft = false;
+						Hit();
 					}
 				}
-				else
+				else if (isMovingRight)
 				{
-					isMovingDown = false;
+					if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::INVINCIBLE_TURTLE) || movingRightCount != 0)
+					{
+						x += STEP_SIZE_X;
+						movingRightCount++;
+						mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
+						if (movingRightCount == STEP_TARGET)
+						{
+							mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
+							movingRightCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
+								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+								{
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
+									{
+										k->HitByBrick(CDirection::RIGHT);
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX + 1, indexY) != CName::SPACE) {
+								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
+								{
+									if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) && k->IsAlive())
+									{
+										k->Hit();
+										Hit();
+									}
+								}
+							}
+						}
+					}
+					else
+					{
+						isMovingRight = false;
+						Hit();
+					}
+				}
+				else if (isMovingUp)
+				{
+					if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::INVINCIBLE_TURTLE) || movingUpCount != 0)
+					{
+						y -= STEP_SIZE_Y;
+						movingUpCount++;
+						mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
+						if (movingUpCount == STEP_TARGET)
+						{
+							mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
+							movingUpCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
+								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+								{
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
+									{
+										k->HitByBrick(CDirection::UP);
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX, indexY - 1) != CName::SPACE) {
+								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
+								{
+									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) && k->IsAlive())
+									{
+										k->Hit();
+										Hit();
+									}
+								}
+							}
+						}
+					}
+					else
+					{
+						isMovingUp = false;
+						Hit();
+					}
+				}
+				else if (isMovingDown)
+				{
+					if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::INVINCIBLE_TURTLE) || movingDownCount != 0)
+					{
+						y += STEP_SIZE_Y;
+						movingDownCount++;
+						mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
+						if (movingDownCount == STEP_TARGET)
+						{
+							mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
+							movingDownCount = 0;
+							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
+								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+								{
+									if (((k->GetIndexX() == indexX && k->GetIndexY() == indexY) || (k->GetNextIndexX() == indexX && k->GetNextIndexY() == indexY)) && k->IsAlive())
+									{
+										k->HitByBrick(CDirection::DOWN);
+										if (type == CName::WOODEN)
+										{
+											Hit();
+										}
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX, indexY + 1) != CName::SPACE) {
+								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
+								{
+									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) && k->IsAlive())
+									{
+										k->Hit();
+										Hit();
+									}
+								}
+							}
+						}
+					}
+					else
+					{
+						isMovingDown = false;
+						Hit();
+					}
 				}
 			}
 		}
@@ -243,6 +307,19 @@ namespace game_framework {
 		else if (faceTo == CDirection::DOWN)
 		{
 			isMovingDown = true;
+		}
+	}
+
+	void CBrick::Hit()
+	{
+		if (type == CName::WOODEN)
+		{
+			mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+			isAlive = false;
+		}
+		else if (type == CName::STONE || type == CName::STEEL)
+		{
+			isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		}
 	}
 

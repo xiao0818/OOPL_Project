@@ -14,6 +14,8 @@ namespace game_framework {
 		STONE,
 		WOODEN,
 		STEEL,
+		SLIME,
+		BOMB,
 		APPLE,
 		BREAD,
 		CARROT,
@@ -26,6 +28,7 @@ namespace game_framework {
 		MUD,
 		TURTLE,
 		SKELETON,
+		FISH_MAN,
 		MONSTER_FOOD,
 		INVINCIBLE_TURTLE
 	};

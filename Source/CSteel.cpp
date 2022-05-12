@@ -12,10 +12,11 @@ namespace game_framework {
 		bitmap.LoadBitmap(IDB_STEEL_BRICK);
 	}
 
-	void CSteel::SetStep()
+	void CSteel::SetStepAndType()
 	{
 		STEP_TARGET = 12;
 		STEP_SIZE_X = 6;
 		STEP_SIZE_Y = 4;
+		type = CName::STEEL;
 	}
 }

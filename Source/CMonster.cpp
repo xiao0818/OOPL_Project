@@ -34,11 +34,11 @@ namespace game_framework {
 
 	int CMonster::GetNextIndexX()
 	{
-		if (faceTo == CDirection::LEFT)
+		if (faceTo == CDirection::LEFT && movingLeftCount != 0)
 		{
 			return indexX - 1;
 		}
-		else if (faceTo == CDirection::RIGHT)
+		else if (faceTo == CDirection::RIGHT && movingRightCount != 0)
 		{
 			return indexX + 1;
 		}
@@ -50,11 +50,11 @@ namespace game_framework {
 
 	int CMonster::GetNextIndexY()
 	{
-		if (faceTo == CDirection::UP)
+		if (faceTo == CDirection::UP && movingUpCount != 0)
 		{
 			return indexY - 1;
 		}
-		else if (faceTo == CDirection::DOWN)
+		else if (faceTo == CDirection::DOWN && movingDownCount != 0)
 		{
 			return indexY + 1;
 		}
@@ -79,7 +79,8 @@ namespace game_framework {
 		return isAlive;
 	}
 
-	bool CMonster::IsInvincible() {
+	bool CMonster::IsInvincible()
+	{
 		return isInvincible;
 	}
 
@@ -94,15 +95,18 @@ namespace game_framework {
 
 	void CMonster::OnMove()
 	{
-		if (type == CName::MUD || type == CName::TURTLE) {
+		if (type == CName::MUD || type == CName::TURTLE)
+		{
 			MudAndTurtleMove();
 		}
-		else if (type == CName::SKELETON) {
+		else if (type == CName::SKELETON)
+		{
 			SkeletonMove();
 		}
 	}
 	
-	void CMonster::SetTypeFlag(CName name) {
+	void CMonster::SetTypeFlag(CName name)
+	{
 		type = name;
 	}
 
@@ -113,7 +117,8 @@ namespace game_framework {
 		int x = rand();
 		int flag = x % 4;
 
-		switch (flag) {
+		switch (flag)
+		{
 		case 0:
 			return CDirection::LEFT;
 		case 1:
@@ -166,7 +171,8 @@ namespace game_framework {
 			}
 			else if (isHit || isFood || isSwallowed)
 			{
-				if (isHit) {
+				if (isHit)
+				{
 					hitLeftAnimation.Reset();
 					hitDownAnimation.Reset();
 					hitRightAnimation.Reset();
@@ -1006,20 +1012,27 @@ namespace game_framework {
 		}
 	}
 
-	void CMonster::ChangeRushStatus() {
-		if (mapRecord->GetPlayerIndexX() == GetIndexX()) {
-			if (faceTo == CDirection::UP) {
+	void CMonster::ChangeRushStatus()
+	{
+		if (mapRecord->GetPlayerIndexX() == GetIndexX())
+		{
+			if (faceTo == CDirection::UP)
+			{
 				isRush = mapRecord->GetPlayerIndexY() < GetIndexY();
 			}
-			if (faceTo == CDirection::DOWN) {
+			if (faceTo == CDirection::DOWN)
+			{
 				isRush = mapRecord->GetPlayerIndexY() > GetIndexY();
 			}
 		}
-		else if(mapRecord->GetPlayerIndexY() == GetIndexY()){
-			if (faceTo == CDirection::RIGHT) {
+		else if(mapRecord->GetPlayerIndexY() == GetIndexY())
+		{
+			if (faceTo == CDirection::RIGHT)
+			{
 				isRush = mapRecord->GetPlayerIndexX() > GetIndexX();
 			}
-			if (faceTo == CDirection::LEFT) {
+			if (faceTo == CDirection::LEFT)
+			{
 				isRush = mapRecord->GetPlayerIndexX() < GetIndexX();
 			}
 		}

@@ -268,10 +268,10 @@ namespace game_framework {
 			{
 				isOnBackButton = false;
 			}
-			
+
 			if (isLevelPage)
 			{
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 10; i++)
 				{
 					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + FIRST_LEVEL_BUTTON_HEIGHT))
 					{
@@ -666,7 +666,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(&map, &monster);
+					tempStone.Initialize(&map, &brick, &monster);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -674,7 +674,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(&map, &monster);
+					tempWooden.Initialize(&map, &brick, &monster);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -682,7 +682,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(&map, &monster);
+					tempSteel.Initialize(&map, &brick, &monster);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);
@@ -775,6 +775,7 @@ namespace game_framework {
 		const char KEY_RIGHT = 0x27; // keyboard¥k½bÀY
 		const char KEY_DOWN = 0x28; // keyboard¤U½bÀY
 		const char KEY_SPACE = ' ';
+		const char KEY_R = 'R';
 
 		if (!player.IsSuccess() && !player.IsFail())
 		{
@@ -788,6 +789,8 @@ namespace game_framework {
 				player.SetMovingDown(true);
 			if (nChar == KEY_SPACE)
 				player.PressKeySpace();
+			if (nChar == KEY_R)
+				player.Fail();
 		}
 	}
 
@@ -828,8 +831,7 @@ namespace game_framework {
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 	{
-		map.DeleteMap();
-		GotoGameState(GAME_STATE_OVER);
+		player.Success();
 	}
 
 	void CGameStateRun::OnShow()

@@ -10,7 +10,7 @@ namespace game_framework {
 	{
 	public:
 		void LoadBitmap() override;
-		void SetStep() override;
+		void SetStepAndType() override;
 	};
 }
 
