@@ -1266,5 +1266,293 @@
     <Image Include="Resources\trap\stepping_spike\stepping_spike_013.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_down\skeleton_hit_down_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_left\skeleton_hit_left_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_right\skeleton_hit_right_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_hit_up\skeleton_hit_up_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_down\skeleton_move_down_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_left\skeleton_move_left_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_right\skeleton_move_right_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_move_up\skeleton_move_up_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_down\skeleton_rush_down_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_left\skeleton_rush_left_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_right\skeleton_rush_right_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_007.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
