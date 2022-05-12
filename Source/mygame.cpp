@@ -268,10 +268,10 @@ namespace game_framework {
 			{
 				isOnBackButton = false;
 			}
-			
+
 			if (isLevelPage)
 			{
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 10; i++)
 				{
 					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + FIRST_LEVEL_BUTTON_HEIGHT))
 					{

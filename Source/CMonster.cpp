@@ -34,11 +34,11 @@ namespace game_framework {
 
 	int CMonster::GetNextIndexX()
 	{
-		if (faceTo == CDirection::LEFT)
+		if (faceTo == CDirection::LEFT && movingLeftCount != 0)
 		{
 			return indexX - 1;
 		}
-		else if (faceTo == CDirection::RIGHT)
+		else if (faceTo == CDirection::RIGHT && movingRightCount != 0)
 		{
 			return indexX + 1;
 		}
@@ -50,11 +50,11 @@ namespace game_framework {
 
 	int CMonster::GetNextIndexY()
 	{
-		if (faceTo == CDirection::UP)
+		if (faceTo == CDirection::UP && movingUpCount != 0)
 		{
 			return indexY - 1;
 		}
-		else if (faceTo == CDirection::DOWN)
+		else if (faceTo == CDirection::DOWN && movingDownCount != 0)
 		{
 			return indexY + 1;
 		}
