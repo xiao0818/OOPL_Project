@@ -775,6 +775,7 @@ namespace game_framework {
 		const char KEY_RIGHT = 0x27; // keyboard•kΩb¿Y
 		const char KEY_DOWN = 0x28; // keyboard§UΩb¿Y
 		const char KEY_SPACE = ' ';
+		const char KEY_R = 'R';
 
 		if (!player.IsSuccess() && !player.IsFail())
 		{
@@ -788,6 +789,8 @@ namespace game_framework {
 				player.SetMovingDown(true);
 			if (nChar == KEY_SPACE)
 				player.PressKeySpace();
+			if (nChar == KEY_R)
+				player.Fail();
 		}
 	}
 
@@ -828,8 +831,7 @@ namespace game_framework {
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 	{
-		map.DeleteMap();
-		GotoGameState(GAME_STATE_OVER);
+		player.Success();
 	}
 
 	void CGameStateRun::OnShow()

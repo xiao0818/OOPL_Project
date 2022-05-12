@@ -18,6 +18,8 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsSuccess();
 		bool IsFail();
+		void Fail();
+		void Success();
 		void Initialize(CMap *map, CShareData *shareData, list<CTrap> *trap, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
 		void LoadBitmap();
 		void OnMove();

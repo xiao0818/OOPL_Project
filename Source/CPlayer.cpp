@@ -52,6 +52,16 @@ namespace game_framework {
 		return isFail;
 	}
 
+	void CPlayer::Fail()
+	{
+		isFail = true;
+	}
+
+	void CPlayer::Success()
+	{
+		isSuccess = true;
+	}
+
 	void CPlayer::Initialize(CMap *map, CShareData *shareData, list<CTrap> *trap, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
