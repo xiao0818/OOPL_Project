@@ -55,10 +55,10 @@ namespace game_framework {
 	void CBrick::OnMove()
 	{
 		const int SWALLOWED_STEP_TARGET = 6;
-		const int SWALLOWED_STEP_SIZE_X = 12;
-		const int SWALLOWED_STEP_SIZE_Y = 8;
-		const int BRICK_LENGTH = 72;
-		const int BRICK_WIDTH = 48;
+		const int SWALLOWED_STEP_SIZE_X = 6;
+		const int SWALLOWED_STEP_SIZE_Y = 4;
+		const int BRICK_LENGTH = 36;
+		const int BRICK_WIDTH = 24;
 
 		if (isAlive)
 		{
@@ -356,7 +356,7 @@ namespace game_framework {
 	void CBrick::OnShow()
 	{
 		if (isAlive) {
-			bitmap.SetTopLeft(x, y - 24);
+			bitmap.SetTopLeft(x, y - 12);
 			bitmap.ShowBitmap();
 		}
 	}

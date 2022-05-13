@@ -79,10 +79,10 @@ namespace game_framework {
 	void CFood::OnMove()
 	{
 		const int STEP_TARGET = 6;
-		const int STEP_SIZE_X = 12;
-		const int STEP_SIZE_Y = 8;
-		const int BRICK_LENGTH = 72;
-		const int BRICK_WIDTH = 48;
+		const int STEP_SIZE_X = 6;
+		const int STEP_SIZE_Y = 4;
+		const int BRICK_LENGTH = 36;
+		const int BRICK_WIDTH = 24;
 
 		if (isMovingLeft)
 		{
@@ -163,7 +163,7 @@ namespace game_framework {
 	void CFood::OnShow()
 	{
 		if (isAlive) {
-			bitmap.SetTopLeft(x, y - 24);
+			bitmap.SetTopLeft(x, y - 12);
 			bitmap.ShowBitmap();
 		}
 	}

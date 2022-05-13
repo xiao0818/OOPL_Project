@@ -15,8 +15,8 @@ namespace game_framework {
 	void CWooden::SetStepAndType()
 	{
 		STEP_TARGET = 6;
-		STEP_SIZE_X = 12;
-		STEP_SIZE_Y = 8;
+		STEP_SIZE_X = 6;
+		STEP_SIZE_Y = 4;
 		type = CName::WOODEN;
 	}
 }

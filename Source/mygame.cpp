@@ -600,13 +600,13 @@ namespace game_framework {
 		map.Initialize();
 		player.Initialize(&map, shareData, &trap, &brick, &food, &monster);
 
-		const int BRICK_LENGTH = 72;
-		const int BRICK_WIDTH = 48;
+		const int BRICK_LENGTH = 36;
+		const int BRICK_WIDTH = 24;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * map.GetBrickNumberX()) / 2;
-		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * map.GetBrickNumberY()) / 2 + 24;
+		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * map.GetBrickNumberY()) / 2;
 		ground.Initialize(map.GetBrickNumberX(), map.GetBrickNumberY());
 		ground.SetXY(GROUND_X, GROUND_Y);
-		grade.SetTopLeft(GROUND_X, GROUND_Y - 48);
+		grade.SetTopLeft(GROUND_X, GROUND_Y - 36);
 
 		trap.clear();
 		wall.clear();

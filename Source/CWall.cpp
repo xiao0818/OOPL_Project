@@ -35,7 +35,7 @@ namespace game_framework {
 
 	void CWall::OnShow()
 	{
-		bitmap.SetTopLeft(x, y - 24);
+		bitmap.SetTopLeft(x, y - 12);
 		bitmap.ShowBitmap();
 	}
 }

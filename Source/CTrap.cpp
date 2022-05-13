@@ -76,7 +76,6 @@ namespace game_framework {
 
 	void CTrap::SteppedByPlayer()
 	{
-		TRACE("asdf\n");
 		isStepped = true;
 	}
 

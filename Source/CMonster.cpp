@@ -147,28 +147,30 @@ namespace game_framework {
 
 	void CMonster::OnShow()
 	{
+		const int BRICK_LENGTH = 36;
+		const int BRICK_WIDTH = 24;
 		if (isAlive || isSwallowed)
 		{
 			if (isInvincible)
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					invincibleLeft.SetTopLeft(x + (72 / 2) - (invincibleLeft.Width() / 2), y + 46 - invincibleLeft.Height());
+					invincibleLeft.SetTopLeft(x + (BRICK_LENGTH / 2) - (invincibleLeft.Width() / 2), y + BRICK_WIDTH - invincibleLeft.Height());
 					invincibleLeft.ShowBitmap();
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					invincibleRight.SetTopLeft(x + (72 / 2) - (invincibleRight.Width() / 2), y + 46 - invincibleRight.Height());
+					invincibleRight.SetTopLeft(x + (BRICK_LENGTH / 2) - (invincibleRight.Width() / 2), y + BRICK_WIDTH - invincibleRight.Height());
 					invincibleRight.ShowBitmap();
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					invincibleUp.SetTopLeft(x + (72 / 2) - (invincibleUp.Width() / 2), y + 46 - invincibleUp.Height());
+					invincibleUp.SetTopLeft(x + (BRICK_LENGTH / 2) - (invincibleUp.Width() / 2), y + BRICK_WIDTH - invincibleUp.Height());
 					invincibleUp.ShowBitmap();
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					invincibleDown.SetTopLeft(x + (72 / 2) - (invincibleDown.Width() / 2), y + 46 - invincibleDown.Height());
+					invincibleDown.SetTopLeft(x + (BRICK_LENGTH / 2) - (invincibleDown.Width() / 2), y + BRICK_WIDTH - invincibleDown.Height());
 					invincibleDown.ShowBitmap();
 				}
 
@@ -184,22 +186,22 @@ namespace game_framework {
 				}
 				if (faceTo == CDirection::LEFT)
 				{
-					hitLeftAnimation.SetTopLeft(x + (72 / 2) - (hitLeftAnimation.Width() / 2), y + 46 - hitLeftAnimation.Height());
+					hitLeftAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (hitLeftAnimation.Width() / 2), y + BRICK_WIDTH - hitLeftAnimation.Height());
 					hitLeftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					hitRightAnimation.SetTopLeft(x + (72 / 2) - (hitRightAnimation.Width() / 2), y + 46 - hitRightAnimation.Height());
+					hitRightAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (hitRightAnimation.Width() / 2), y + BRICK_WIDTH - hitRightAnimation.Height());
 					hitRightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					hitUpAnimation.SetTopLeft(x + (72 / 2) - (hitUpAnimation.Width() / 2), y + 46 - hitUpAnimation.Height());
+					hitUpAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (hitUpAnimation.Width() / 2), y + BRICK_WIDTH - hitUpAnimation.Height());
 					hitUpAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					hitDownAnimation.SetTopLeft(x + (72 / 2) - (hitDownAnimation.Width() / 2), y + 46 - hitDownAnimation.Height());
+					hitDownAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (hitDownAnimation.Width() / 2), y + BRICK_WIDTH - hitDownAnimation.Height());
 					hitDownAnimation.OnShow();
 				}
 			}
@@ -211,7 +213,7 @@ namespace game_framework {
 					{
 						rushLeftAnimation.Reset();
 					}
-					rushLeftAnimation.SetTopLeft(x + (72 / 2) - (rushLeftAnimation.Width() / 2), y + 46 - rushLeftAnimation.Height());
+					rushLeftAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rushLeftAnimation.Width() / 2), y + BRICK_WIDTH - rushLeftAnimation.Height());
 					rushLeftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
@@ -220,7 +222,7 @@ namespace game_framework {
 					{
 						rushRightAnimation.Reset();
 					}
-					rushRightAnimation.SetTopLeft(x + (72 / 2) - (rushRightAnimation.Width() / 2), y + 46 - rushRightAnimation.Height());
+					rushRightAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rushRightAnimation.Width() / 2), y + BRICK_WIDTH - rushRightAnimation.Height());
 					rushRightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
@@ -229,7 +231,7 @@ namespace game_framework {
 					{
 						rushUpAnimation.Reset();
 					}
-					rushUpAnimation.SetTopLeft(x + (72 / 2) - (rushUpAnimation.Width() / 2), y + 46 - rushUpAnimation.Height());
+					rushUpAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rushUpAnimation.Width() / 2), y + BRICK_WIDTH - rushUpAnimation.Height());
 					rushUpAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
@@ -238,7 +240,7 @@ namespace game_framework {
 					{
 						rushDownAnimation.Reset();
 					}
-					rushDownAnimation.SetTopLeft(x + (72 / 2) - (rushDownAnimation.Width() / 2), y + 46 - rushDownAnimation.Height());
+					rushDownAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rushDownAnimation.Width() / 2), y + BRICK_WIDTH - rushDownAnimation.Height());
 					rushDownAnimation.OnShow();
 				}
 			}
@@ -250,7 +252,7 @@ namespace game_framework {
 					{
 						leftAnimation.Reset();
 					}
-					leftAnimation.SetTopLeft(x + (72 / 2) - (leftAnimation.Width() / 2), y + 46 - leftAnimation.Height());
+					leftAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (leftAnimation.Width() / 2), y + BRICK_WIDTH - leftAnimation.Height());
 					leftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
@@ -259,7 +261,7 @@ namespace game_framework {
 					{
 						rightAnimation.Reset();
 					}
-					rightAnimation.SetTopLeft(x + (72 / 2) - (rightAnimation.Width() / 2), y + 46 - rightAnimation.Height());
+					rightAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rightAnimation.Width() / 2), y + BRICK_WIDTH - rightAnimation.Height());
 					rightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
@@ -268,7 +270,7 @@ namespace game_framework {
 					{
 						upAnimation.Reset();
 					}
-					upAnimation.SetTopLeft(x + (72 / 2) - (upAnimation.Width() / 2), y + 46 - upAnimation.Height());
+					upAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (upAnimation.Width() / 2), y + BRICK_WIDTH - upAnimation.Height());
 					upAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
@@ -277,7 +279,7 @@ namespace game_framework {
 					{
 						downAnimation.Reset();
 					}
-					downAnimation.SetTopLeft(x + (72 / 2) - (downAnimation.Width() / 2), y + 46 - downAnimation.Height());
+					downAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (downAnimation.Width() / 2), y + BRICK_WIDTH - downAnimation.Height());
 					downAnimation.OnShow();
 				}
 			}
@@ -358,15 +360,15 @@ namespace game_framework {
 	void CMonster::MudAndTurtleMove() {
 		const int FOOD_TIME_LIMIT = 30 * 3;
 		const int INVINCIBLE_TIME_LIMIT = 30 * 2;
-		const int STEP_TARGET = 24;
+		const int STEP_TARGET = 12;
 		const int STEP_SIZE_X = 3;
 		const int STEP_SIZE_Y = 2;
-		const int HIT_TARGET = 8;
-		const int HIT_STEP_SIZE_X = 9;
-		const int HIT_STEP_SIZE_Y = 6;
+		const int HIT_TARGET = 6;
+		const int HIT_STEP_SIZE_X = 6;
+		const int HIT_STEP_SIZE_Y = 4;
 		const int SWALLOWED_STEP_TARGET = 6;
-		const int SWALLOWED_STEP_SIZE_X = 12;
-		const int SWALLOWED_STEP_SIZE_Y = 8;
+		const int SWALLOWED_STEP_SIZE_X = 6;
+		const int SWALLOWED_STEP_SIZE_Y = 4;
 
 		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp && !isHit && !isFood && !isSwallowed && isAlive && !isInvincible)
 		{
@@ -651,18 +653,18 @@ namespace game_framework {
 	void CMonster::SkeletonMove() {
 		const int FOOD_TIME_LIMIT = 30 * 3;
 		const int INVINCIBLE_TIME_LIMIT = 30 * 2;
-		const int STEP_TARGET = 24;
+		const int STEP_TARGET = 12;
 		const int STEP_SIZE_X = 3;
 		const int STEP_SIZE_Y = 2;
 		const int RUSH_STEP_TARGET = 6;
-		const int RUSH_STEP_SIZE_X = 12;
-		const int RUSH_STEP_SIZE_Y = 8;
-		const int HIT_TARGET = 8;
-		const int HIT_STEP_SIZE_X = 9;
-		const int HIT_STEP_SIZE_Y = 6;
+		const int RUSH_STEP_SIZE_X = 6;
+		const int RUSH_STEP_SIZE_Y = 4;
+		const int HIT_TARGET = 6;
+		const int HIT_STEP_SIZE_X = 6;
+		const int HIT_STEP_SIZE_Y = 4;
 		const int SWALLOWED_STEP_TARGET = 6;
-		const int SWALLOWED_STEP_SIZE_X = 12;
-		const int SWALLOWED_STEP_SIZE_Y = 8;
+		const int SWALLOWED_STEP_SIZE_X = 6;
+		const int SWALLOWED_STEP_SIZE_Y = 4;
 
 		if (!isMovingLeft && !isMovingRight && !isMovingDown && !isMovingUp && !isHit && !isFood && !isSwallowed && isAlive && !isInvincible)
 		{

@@ -15,8 +15,8 @@ namespace game_framework {
 	void CSteel::SetStepAndType()
 	{
 		STEP_TARGET = 12;
-		STEP_SIZE_X = 6;
-		STEP_SIZE_Y = 4;
+		STEP_SIZE_X = 3;
+		STEP_SIZE_Y = 2;
 		type = CName::STEEL;
 	}
 }
