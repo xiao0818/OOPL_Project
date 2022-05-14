@@ -10,7 +10,7 @@ namespace game_framework {
 	{
 	public:
 		void LoadBitmap() override;
-		void SetStepAndType() override;
+		void Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster) override;
 	};
 }
 

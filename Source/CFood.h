@@ -22,7 +22,7 @@ namespace game_framework {
 	protected:
 		CMovingBitmap bitmap;
 		int indexX, indexY;
-		int x, y;
+		double x, y;
 		CMap *mapRecord;
 		bool isMovingDown;
 		bool isMovingLeft;

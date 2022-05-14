@@ -79,8 +79,8 @@ namespace game_framework {
 	void CFood::OnMove()
 	{
 		const int STEP_TARGET = 6;
-		const int STEP_SIZE_X = 6;
-		const int STEP_SIZE_Y = 4;
+		const double STEP_SIZE_X = 6;
+		const double STEP_SIZE_Y = 4;
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
 
@@ -134,8 +134,8 @@ namespace game_framework {
 	{
 		indexX = ni;
 		indexY = nj;
-		x = nx;
-		y = ny;
+		x = double(nx);
+		y = double(ny);
 	}
 
 	void CFood::Swallowed(CDirection faceTo)
@@ -163,7 +163,7 @@ namespace game_framework {
 	void CFood::OnShow()
 	{
 		if (isAlive) {
-			bitmap.SetTopLeft(x, y - 12);
+			bitmap.SetTopLeft(int(x), int(y) - 12);
 			bitmap.ShowBitmap();
 		}
 	}

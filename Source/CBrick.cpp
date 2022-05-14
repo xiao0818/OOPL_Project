@@ -38,25 +38,17 @@ namespace game_framework {
 
 	void CBrick::Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster)
 	{
-		mapRecord = map;
-		brickRecord = brick;
-		monsterRecord = monster;
-		SetStepAndType();
 	}
 
 	void CBrick::LoadBitmap()
 	{
 	}
 
-	void CBrick::SetStepAndType()
-	{
-	}
-
 	void CBrick::OnMove()
 	{
 		const int SWALLOWED_STEP_TARGET = 6;
-		const int SWALLOWED_STEP_SIZE_X = 6;
-		const int SWALLOWED_STEP_SIZE_Y = 4;
+		const double SWALLOWED_STEP_SIZE_X = 6;
+		const double SWALLOWED_STEP_SIZE_Y = 4;
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
 
@@ -122,6 +114,7 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
 							movingLeftCount = 0;
+							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -131,11 +124,12 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
+											hit = true;
 										}
 									}
 								}
 							}
-							if (mapRecord->GetBrickInMap(indexX - 1, indexY) != CName::SPACE) {
+							if (!hit && mapRecord->GetBrickInMap(indexX - 1, indexY) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) && k->IsAlive())
@@ -164,6 +158,7 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
 							movingRightCount = 0;
+							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -173,11 +168,12 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
+											hit = true;
 										}
 									}
 								}
 							}
-							if (mapRecord->GetBrickInMap(indexX + 1, indexY) != CName::SPACE) {
+							if (!hit && mapRecord->GetBrickInMap(indexX + 1, indexY) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) && k->IsAlive())
@@ -206,6 +202,7 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
 							movingUpCount = 0;
+							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -215,11 +212,12 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
+											hit = true;
 										}
 									}
 								}
 							}
-							if (mapRecord->GetBrickInMap(indexX, indexY - 1) != CName::SPACE) {
+							if (!hit && mapRecord->GetBrickInMap(indexX, indexY - 1) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) && k->IsAlive())
@@ -248,6 +246,7 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
 							movingDownCount = 0;
+							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -257,11 +256,12 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
+											hit = true;
 										}
 									}
 								}
 							}
-							if (mapRecord->GetBrickInMap(indexX, indexY + 1) != CName::SPACE) {
+							if (!hit && mapRecord->GetBrickInMap(indexX, indexY + 1) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) && k->IsAlive())
@@ -327,8 +327,8 @@ namespace game_framework {
 	{
 		indexX = ni;
 		indexY = nj;
-		x = nx;
-		y = ny;
+		x = double(nx);
+		y = double(ny);
 	}
 
 	void CBrick::Swallowed(CDirection faceTo)
@@ -356,7 +356,7 @@ namespace game_framework {
 	void CBrick::OnShow()
 	{
 		if (isAlive) {
-			bitmap.SetTopLeft(x, y - 12);
+			bitmap.SetTopLeft(int(x), int(y) - 12);
 			bitmap.ShowBitmap();
 		}
 	}

@@ -16,9 +16,8 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsMove();
 		bool IsAlive();
-		void Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster);
+		virtual void Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster);
 		virtual void LoadBitmap();
-		virtual void SetStepAndType();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
 		void Hit();
@@ -28,7 +27,7 @@ namespace game_framework {
 	protected:
 		CMovingBitmap bitmap;
 		int indexX, indexY;
-		int x, y;
+		double x, y;
 		CMap *mapRecord;
 		list<CBrick> *brickRecord;
 		list<CMonster> *monsterRecord;
@@ -43,8 +42,8 @@ namespace game_framework {
 		bool isAlive;
 		bool isSwallowed;
 		int STEP_TARGET;
-		int STEP_SIZE_X;
-		int STEP_SIZE_Y;
+		double STEP_SIZE_X;
+		double STEP_SIZE_Y;
 		CName type;
 	};
 }

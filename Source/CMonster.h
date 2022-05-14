@@ -49,7 +49,7 @@ namespace game_framework {
 		CMovingBitmap invincibleUp;
 		CMovingBitmap invincibleDown;
 		int indexX, indexY;
-		int x, y;
+		double x, y;
 		CName type;
 		bool isInvincible;
 		bool isMovingDown;

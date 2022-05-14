@@ -12,8 +12,11 @@ namespace game_framework {
 		bitmap.LoadBitmap(IDB_STEEL_BRICK);
 	}
 
-	void CSteel::SetStepAndType()
+	void CSteel::Initialize(CMap * map, list<CBrick>* brick, list<CMonster>* monster)
 	{
+		mapRecord = map;
+		brickRecord = brick;
+		monsterRecord = monster;
 		STEP_TARGET = 12;
 		STEP_SIZE_X = 3;
 		STEP_SIZE_Y = 2;

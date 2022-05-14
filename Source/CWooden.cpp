@@ -12,11 +12,14 @@ namespace game_framework {
 		bitmap.LoadBitmap(IDB_WOODEN_BRICK);
 	}
 
-	void CWooden::SetStepAndType()
+	void CWooden::Initialize(CMap * map, list<CBrick>* brick, list<CMonster>* monster)
 	{
-		STEP_TARGET = 6;
-		STEP_SIZE_X = 6;
-		STEP_SIZE_Y = 4;
+		mapRecord = map;
+		brickRecord = brick;
+		monsterRecord = monster;
+		STEP_TARGET = 8;
+		STEP_SIZE_X = 4.5;
+		STEP_SIZE_Y = 3;
 		type = CName::WOODEN;
 	}
 }

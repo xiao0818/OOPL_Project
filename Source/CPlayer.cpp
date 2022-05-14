@@ -177,9 +177,9 @@ namespace game_framework {
 
 	void CPlayer::OnMove()
 	{
-		const int STEP_TARGET = 6;
-		const int STEP_SIZE_X = 6;
-		const int STEP_SIZE_Y = 4;
+		const int STEP_TARGET = 8;
+		const double STEP_SIZE_X = 4.5;
+		const double STEP_SIZE_Y = 3;
 		
 		if (isEating) {
 			eatLeftAnimation.OnMove();
@@ -569,7 +569,7 @@ namespace game_framework {
 				{
 					if (mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE)
 					{
-						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, int(x), int(y));
 						if (shareDataRecord->IsSoundEnable())
 						{
 							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
@@ -581,7 +581,7 @@ namespace game_framework {
 				{
 					if (mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE)
 					{
-						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, int(x), int(y));
 						if (shareDataRecord->IsSoundEnable())
 						{
 							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
@@ -593,7 +593,7 @@ namespace game_framework {
 				{
 					if (mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE)
 					{
-						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, int(x), int(y));
 						if (shareDataRecord->IsSoundEnable())
 						{
 							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
@@ -605,7 +605,7 @@ namespace game_framework {
 				{
 					if (mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE)
 					{
-						swallowedBrick->SpitedOut(faceTo, indexX, indexY, x, y);
+						swallowedBrick->SpitedOut(faceTo, indexX, indexY, int(x), int(y));
 						if (shareDataRecord->IsSoundEnable())
 						{
 							CAudio::Instance()->Play(SOUND_SPIT_OUT, false);
@@ -627,8 +627,8 @@ namespace game_framework {
 	{
 		indexX = ni;
 		indexY = nj;
-		x = nx;
-		y = ny;
+		x = double(nx);
+		y = double(ny);
 	}
 
 	void CPlayer::OnShow()
@@ -637,7 +637,7 @@ namespace game_framework {
 		const int BRICK_WIDTH = 24;
 		if (isFail)
 		{
-			failAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), y + BRICK_WIDTH - eatLeftAnimation.Height());
+			failAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatLeftAnimation.Height());
 			failAnimation.OnShow();
 			if (!failAnimation.IsFinalBitmap())
 			{
@@ -646,7 +646,7 @@ namespace game_framework {
 		}
 		else if (isSuccess)
 		{
-			successAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), y + BRICK_WIDTH - eatLeftAnimation.Height());
+			successAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatLeftAnimation.Height());
 			successAnimation.OnShow();
 			successAnimation.OnMove();
 		}
@@ -656,22 +656,22 @@ namespace game_framework {
 			{
 				if (faceTo == CDirection::LEFT)
 				{
-					eatLeftAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), y + BRICK_WIDTH - eatLeftAnimation.Height());
+					eatLeftAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatLeftAnimation.Height());
 					eatLeftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
 				{
-					eatRightAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (eatRightAnimation.Width() / 2), y + BRICK_WIDTH - eatRightAnimation.Height());
+					eatRightAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatRightAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatRightAnimation.Height());
 					eatRightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
 				{
-					eatUpAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (eatUpAnimation.Width() / 2), y + BRICK_WIDTH - eatUpAnimation.Height());
+					eatUpAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatUpAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatUpAnimation.Height());
 					eatUpAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
 				{
-					eatDownAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (eatDownAnimation.Width() / 2), y + BRICK_WIDTH - eatDownAnimation.Height());
+					eatDownAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatDownAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatDownAnimation.Height());
 					eatDownAnimation.OnShow();
 				}
 			}
@@ -683,7 +683,7 @@ namespace game_framework {
 					{
 						leftAnimation.Reset();
 					}
-					leftAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (leftAnimation.Width() / 2), y + BRICK_WIDTH - leftAnimation.Height());
+					leftAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (leftAnimation.Width() / 2), int(y) + BRICK_WIDTH - leftAnimation.Height());
 					leftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
@@ -692,7 +692,7 @@ namespace game_framework {
 					{
 						rightAnimation.Reset();
 					}
-					rightAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rightAnimation.Width() / 2), y + BRICK_WIDTH - rightAnimation.Height());
+					rightAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (rightAnimation.Width() / 2), int(y) + BRICK_WIDTH - rightAnimation.Height());
 					rightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
@@ -701,7 +701,7 @@ namespace game_framework {
 					{
 						upAnimation.Reset();
 					}
-					upAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (upAnimation.Width() / 2), y + BRICK_WIDTH - upAnimation.Height());
+					upAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (upAnimation.Width() / 2), int(y) + BRICK_WIDTH - upAnimation.Height());
 					upAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
@@ -710,7 +710,7 @@ namespace game_framework {
 					{
 						downAnimation.Reset();
 					}
-					downAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (downAnimation.Width() / 2), y + BRICK_WIDTH - downAnimation.Height());
+					downAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (downAnimation.Width() / 2), int(y) + BRICK_WIDTH - downAnimation.Height());
 					downAnimation.OnShow();
 				}
 			}
@@ -722,7 +722,7 @@ namespace game_framework {
 					{
 						leftWithFullAnimation.Reset();
 					}
-					leftWithFullAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (leftWithFullAnimation.Width() / 2), y + BRICK_WIDTH - leftWithFullAnimation.Height());
+					leftWithFullAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (leftWithFullAnimation.Width() / 2), int(y) + BRICK_WIDTH - leftWithFullAnimation.Height());
 					leftWithFullAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
@@ -731,7 +731,7 @@ namespace game_framework {
 					{
 						rightWithFullAnimation.Reset();
 					}
-					rightWithFullAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (rightWithFullAnimation.Width() / 2), y + BRICK_WIDTH - rightWithFullAnimation.Height());
+					rightWithFullAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (rightWithFullAnimation.Width() / 2), int(y) + BRICK_WIDTH - rightWithFullAnimation.Height());
 					rightWithFullAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
@@ -740,7 +740,7 @@ namespace game_framework {
 					{
 						upWithFullAnimation.Reset();
 					}
-					upWithFullAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (upWithFullAnimation.Width() / 2), y + BRICK_WIDTH - upWithFullAnimation.Height());
+					upWithFullAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (upWithFullAnimation.Width() / 2), int(y) + BRICK_WIDTH - upWithFullAnimation.Height());
 					upWithFullAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
@@ -749,7 +749,7 @@ namespace game_framework {
 					{
 						downWithFullAnimation.Reset();
 					}
-					downWithFullAnimation.SetTopLeft(x + (BRICK_LENGTH / 2) - (downWithFullAnimation.Width() / 2), y + BRICK_WIDTH - downWithFullAnimation.Height());
+					downWithFullAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (downWithFullAnimation.Width() / 2), int(y) + BRICK_WIDTH - downWithFullAnimation.Height());
 					downWithFullAnimation.OnShow();
 				}
 			}

@@ -46,7 +46,7 @@ namespace game_framework {
 		CAnimation successAnimation;
 		CAnimation failAnimation;
 		int indexX, indexY;
-		int x, y;
+		double x, y;
 		bool isMovingDown;
 		bool isMovingLeft;
 		bool isMovingRight;
