@@ -77,7 +77,7 @@ namespace game_framework {
 				foodMap[i][j] = CName::SPACE;
 				monsterMap[i][j] = CName::SPACE;
 
-				if (map[i][j] == CName::PLAYER)
+				if (map[i][j] == CName::PLAYER1)
 				{
 					playerMap[i][j] = map[i][j];
 				}

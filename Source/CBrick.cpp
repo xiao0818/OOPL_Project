@@ -109,7 +109,7 @@ namespace game_framework {
 					{
 						x -= STEP_SIZE_X;
 						movingLeftCount++;
-						mapRecord->SetBrickInMap(indexX - 1, indexY, CName::STONE);
+						mapRecord->SetBrickInMap(indexX - 1, indexY, type);
 						if (movingLeftCount == STEP_TARGET)
 						{
 							mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
@@ -153,7 +153,7 @@ namespace game_framework {
 					{
 						x += STEP_SIZE_X;
 						movingRightCount++;
-						mapRecord->SetBrickInMap(indexX + 1, indexY, CName::STONE);
+						mapRecord->SetBrickInMap(indexX + 1, indexY, type);
 						if (movingRightCount == STEP_TARGET)
 						{
 							mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
@@ -197,7 +197,7 @@ namespace game_framework {
 					{
 						y -= STEP_SIZE_Y;
 						movingUpCount++;
-						mapRecord->SetBrickInMap(indexX, indexY - 1, CName::STONE);
+						mapRecord->SetBrickInMap(indexX, indexY - 1, type);
 						if (movingUpCount == STEP_TARGET)
 						{
 							mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
@@ -241,7 +241,7 @@ namespace game_framework {
 					{
 						y += STEP_SIZE_Y;
 						movingDownCount++;
-						mapRecord->SetBrickInMap(indexX, indexY + 1, CName::STONE);
+						mapRecord->SetBrickInMap(indexX, indexY + 1, type);
 						if (movingDownCount == STEP_TARGET)
 						{
 							mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
@@ -289,7 +289,7 @@ namespace game_framework {
 		indexY = nj;
 		x = nx;
 		y = ny;
-		mapRecord->SetBrickInMap(indexX, indexY, CName::STONE);
+		mapRecord->SetBrickInMap(indexX, indexY, type);
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		if (faceTo == CDirection::LEFT)

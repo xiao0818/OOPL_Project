@@ -620,7 +620,7 @@ namespace game_framework {
 		{
 			for (int j = 0; j < map.GetBrickNumberY(); j++)
 			{
-				if (map.GetPlayerInMap(i, j) == CName::PLAYER)
+				if (map.GetPlayerInMap(i, j) == CName::PLAYER1)
 				{
 					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 				}

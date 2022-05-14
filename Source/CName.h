@@ -6,6 +6,8 @@ namespace game_framework {
 	{
 		SPACE,
 		PLAYER,
+		PLAYER1,
+		PLAYER2,
 		SPIKE,
 		MUCUS,
 		MOVING,
