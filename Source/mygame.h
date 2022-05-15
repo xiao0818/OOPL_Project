@@ -92,9 +92,11 @@ namespace game_framework {
 		CMovingBitmap levelPage;
 		CMovingBitmap scoresPage;
 		CMovingBitmap creditsPage;
-		CAnimation playerButton;
+		CAnimation player1Button;
+		CAnimation player2Button;
 		CAnimation helpPage;
 		int levelSelect;
+		int playerNumber;
 		bool isOnMusicButton;
 		bool isOnSoundButton;
 		bool isOnBackButton;
@@ -135,10 +137,14 @@ namespace game_framework {
 		const int SCORES_BUTTON_INDEX_Y = 535;
 		const int SCORES_BUTTON_LENGTH = 166;
 		const int SCORES_BUTTON_HEIGHT = 29;
-		const int PLAYER_BUTTON_INDEX_X = 120;
-		const int PLAYER_BUTTON_INDEX_Y = 80;
-		const int PLAYER_BUTTON_LENGTH = 770;
-		const int PLAYER_BUTTON_HEIGHT = 258;
+		const int PLAYER1_BUTTON_INDEX_X = 120;
+		const int PLAYER1_BUTTON_INDEX_Y = 90;
+		const int PLAYER1_BUTTON_LENGTH = 362;
+		const int PLAYER1_BUTTON_HEIGHT = 244;
+		const int PLAYER2_BUTTON_INDEX_X = 504;
+		const int PLAYER2_BUTTON_INDEX_Y = 90;
+		const int PLAYER2_BUTTON_LENGTH = 384;
+		const int PLAYER2_BUTTON_HEIGHT = 244;
 		const int FIRST_LEVEL_BUTTON_INDEX_X = 132;
 		const int FIRST_LEVEL_BUTTON_INDEX_Y = 228;
 		const int FIRST_LEVEL_BUTTON_LENGTH = 60;
@@ -171,13 +177,18 @@ namespace game_framework {
 		CMap				map;
 		CInteger			grade;
 		CGround				ground;
-		CPlayer				player;
+		CPlayer				player1;
+		CPlayer				player2;
+		list<CPlayer>		player;
+		list<CTrap>			trap;
 		list<CWall>			wall;
 		list<CBrick>		brick;
 		list<CFood>			food;
-		list<CTrap>			trap;
 		list<CMonster>		monster;
 		int					gameEndConut;
+		int					playerNumber;
+		int					player1Count;
+		int					player2Count;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

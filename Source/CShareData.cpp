@@ -9,14 +9,14 @@
 namespace game_framework {
 	CShareData::CShareData()
 	{
-		selectedLevelIndex = grade = 0;
+		selectedLevelIndex = grade = playerNumber = 0;
 		isMusicEnable = isSoundEnable = true;
 		isSuccess = isFail = false;
 	}
 
 	void CShareData::InitializeState()
 	{
-		selectedLevelIndex = grade = 0;
+		selectedLevelIndex = grade = playerNumber = 0;
 		isSuccess = isFail = false;
 	}
 
@@ -33,6 +33,16 @@ namespace game_framework {
 	int CShareData::GetGrade()
 	{
 		return grade;
+	}
+
+	void CShareData::SetPlayerNumber(int number)
+	{
+		playerNumber = number;
+	}
+
+	int CShareData::GetPlayerNumber()
+	{
+		return playerNumber;
 	}
 
 	void CShareData::AddGrade(int point)

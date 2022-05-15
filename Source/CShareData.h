@@ -10,6 +10,8 @@ namespace game_framework {
 		void SetSelectedLevelIndex(int level);
 		int GetSelectedLevelIndex();
 		int GetGrade();
+		void SetPlayerNumber(int number);
+		int GetPlayerNumber();
 		void AddGrade(int point);
 		bool IsSuccess();
 		void IsSuccess(bool flag);
@@ -22,6 +24,7 @@ namespace game_framework {
 	protected:
 		int selectedLevelIndex;
 		int grade;
+		int playerNumber;
 		bool isSuccess;
 		bool isFail;
 		bool isMusicEnable;

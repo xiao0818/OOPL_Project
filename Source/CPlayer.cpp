@@ -42,6 +42,38 @@ namespace game_framework {
 		return indexY;
 	}
 
+	int CPlayer::GetNextIndexX()
+	{
+		if (faceTo == CDirection::LEFT && movingLeftCount != 0)
+		{
+			return indexX - 1;
+		}
+		else if (faceTo == CDirection::RIGHT && movingRightCount != 0)
+		{
+			return indexX + 1;
+		}
+		else
+		{
+			return indexX;
+		}
+	}
+
+	int CPlayer::GetNextIndexY()
+	{
+		if (faceTo == CDirection::UP && movingUpCount != 0)
+		{
+			return indexY - 1;
+		}
+		else if (faceTo == CDirection::DOWN && movingDownCount != 0)
+		{
+			return indexY + 1;
+		}
+		else
+		{
+			return indexY;
+		}
+	}
+
 	bool CPlayer::IsSuccess()
 	{
 		return isSuccess;
@@ -251,7 +283,7 @@ namespace game_framework {
 
 		if (isMovingLeft)
 		{
-			if ((mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
+			if ((mapRecord->GetPlayerInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetBrickInMap(indexX - 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX - 1, indexY) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX - 1, indexY) == CName::SPACE) || movingLeftCount != 0)
 			{
 				isOnMucus = (mapRecord->GetTrapInMap(indexX - 1, indexY) == CName::MUCUS);
 				leftAnimation.OnMove();
@@ -274,7 +306,7 @@ namespace game_framework {
 		}
 		else if (isMovingRight)
 		{
-			if ((mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
+			if ((mapRecord->GetPlayerInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetBrickInMap(indexX + 1, indexY) == CName::SPACE && mapRecord->GetMonsterInMap(indexX + 1, indexY) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX + 1, indexY) == CName::SPACE) || movingRightCount != 0)
 			{
 				isOnMucus = (mapRecord->GetTrapInMap(indexX + 1, indexY) == CName::MUCUS);
 				rightAnimation.OnMove();
@@ -297,7 +329,7 @@ namespace game_framework {
 		}
 		else if (isMovingUp)
 		{
-			if ((mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
+			if ((mapRecord->GetPlayerInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetBrickInMap(indexX, indexY - 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY - 1) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX, indexY - 1) == CName::SPACE) || movingUpCount != 0)
 			{
 				isOnMucus = (mapRecord->GetTrapInMap(indexX, indexY - 1) == CName::MUCUS);
 				upAnimation.OnMove();
@@ -320,7 +352,7 @@ namespace game_framework {
 		}
 		else if (isMovingDown)
 		{
-			if ((mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
+			if ((mapRecord->GetPlayerInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetBrickInMap(indexX, indexY + 1) == CName::SPACE && mapRecord->GetMonsterInMap(indexX, indexY + 1) != CName::MONSTER_FOOD && mapRecord->GetFoodInMap(indexX, indexY + 1) == CName::SPACE) || movingDownCount != 0)
 			{
 				isOnMucus = (mapRecord->GetTrapInMap(indexX, indexY + 1) == CName::MUCUS);
 				downAnimation.OnMove();

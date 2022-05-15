@@ -16,6 +16,8 @@ namespace game_framework {
 		CPlayer();
 		int  GetIndexX();
 		int  GetIndexY();
+		int  GetNextIndexX();
+		int  GetNextIndexY();
 		bool IsSuccess();
 		bool IsFail();
 		void Fail();

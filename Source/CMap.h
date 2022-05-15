@@ -36,8 +36,6 @@ namespace game_framework {
 		CName **monsterMap;
 		const int levelBrickNumberX[10] = { 14, 14, 11, 16, 12, 13, 14, 13, 13, 13};
 		const int levelBrickNumberY[10] = { 14, 14, 18, 14, 17, 15, 14, 16, 15, 15};
-		//const int levelBrickNumberX[10] = { 29, 29, 29, 29, 29, 29, 29, 29, 29, 29};
-		//const int levelBrickNumberY[10] = { 20, 20, 20, 20, 20, 20, 20, 20, 20, 20};
 		int brickNumberX;
 		int brickNumberY;
 		int playerIndexX;

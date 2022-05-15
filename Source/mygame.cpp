@@ -94,14 +94,22 @@ namespace game_framework {
 		scoresPage.LoadBitmap(IDB_SCORES_PAGE);
 		creditsPage.LoadBitmap(IDB_CREDITS_PAGE);
 
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_001);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_002);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_003);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_004);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_005);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_006);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_007);
-		playerButton.AddBitmap(IDB_PLAYER_BUTTON_008);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_001);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_002);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_003);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_004);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_005);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_006);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_007);
+		player1Button.AddBitmap(IDB_PLAYER_BUTTON_008);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_001);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_002);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_003);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_004);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_005);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_006);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_007);
+		player2Button.AddBitmap(IDB_PLAYER_BUTTON_008);
 
 		helpPage.AddBitmap(IDB_HELP_PAGE_001);
 		helpPage.AddBitmap(IDB_HELP_PAGE_002);
@@ -181,9 +189,10 @@ namespace game_framework {
 		isOnPlayerButton = isOnLevelButton = false;
 		isPlayerPage = isLevelPage = false;
 		isScoresPage = isHelpPage = isCreditsPage = false;
-		levelSelect = 0;
+		levelSelect = playerNumber = 0;
 		shareData->InitializeState();
-		playerButton.SetDelayCount(2);
+		player1Button.SetDelayCount(2);
+		player2Button.SetDelayCount(2);
 		helpPage.SetDelayCount(2);
 	}
 
@@ -288,13 +297,20 @@ namespace game_framework {
 			}
 			else if (isPlayerPage)
 			{
-				if ((GROUND_X + PLAYER_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH) && (GROUND_Y + PLAYER_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT))
+				if ((GROUND_X + PLAYER1_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAYER1_BUTTON_INDEX_X + PLAYER1_BUTTON_LENGTH) && (GROUND_Y + PLAYER1_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAYER1_BUTTON_INDEX_Y + PLAYER1_BUTTON_HEIGHT))
 				{
 					isOnPlayerButton = true;
+					playerNumber = 1;
+				}
+				else if ((GROUND_X + PLAYER2_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAYER2_BUTTON_INDEX_X + PLAYER2_BUTTON_LENGTH) && (GROUND_Y + PLAYER2_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAYER2_BUTTON_INDEX_Y + PLAYER2_BUTTON_HEIGHT))
+				{
+					isOnPlayerButton = true;
+					playerNumber = 2;
 				}
 				else
 				{
 					isOnPlayerButton = false;
+					playerNumber = 0;
 				}
 			}
 		}
@@ -343,6 +359,7 @@ namespace game_framework {
 		}
 		else if (isOnPlayerButton)
 		{
+			shareData->SetPlayerNumber(playerNumber);
 			isLevelPage = true;
 			isPlayerPage = false;
 			isOnPlayerButton = false;
@@ -391,14 +408,24 @@ namespace game_framework {
 
 				if (isOnPlayerButton)
 				{
-					playerButton.OnMove();
+					if (playerNumber == 1)
+					{
+						player1Button.OnMove();
+						player1Button.SetTopLeft(GROUND_X + PLAYER1_BUTTON_INDEX_X + PLAYER1_BUTTON_LENGTH / 2 - player1Button.Width() / 2, GROUND_Y + PLAYER1_BUTTON_INDEX_Y + PLAYER1_BUTTON_HEIGHT / 2 - player1Button.Height() / 2);
+						player1Button.OnShow();
+					}
+					else if (playerNumber == 2)
+					{
+						player2Button.OnMove();
+						player2Button.SetTopLeft(GROUND_X + PLAYER2_BUTTON_INDEX_X + PLAYER2_BUTTON_LENGTH / 2 - player2Button.Width() / 2, GROUND_Y + PLAYER2_BUTTON_INDEX_Y + PLAYER2_BUTTON_HEIGHT / 2 - player2Button.Height() / 2);
+						player2Button.OnShow();
+					}
 				}
 				else
 				{
-					playerButton.Reset();
+					player1Button.Reset();
+					player2Button.Reset();
 				}
-				playerButton.SetTopLeft(GROUND_X + PLAYER_BUTTON_INDEX_X + PLAYER_BUTTON_LENGTH / 2 - playerButton.Width() / 2, GROUND_Y + PLAYER_BUTTON_INDEX_Y + PLAYER_BUTTON_HEIGHT / 2 - playerButton.Height() / 2);
-				playerButton.OnShow();
 			}
 			else if (isScoresPage)
 			{
@@ -596,9 +623,11 @@ namespace game_framework {
 			CAudio::Instance()->Stop(AUDIO_MAIN);
 		}
 		
+		playerNumber = shareData->GetPlayerNumber();
 		map.SelectLevel(shareData->GetSelectedLevelIndex());
 		map.Initialize();
-		player.Initialize(&map, shareData, &trap, &brick, &food, &monster);
+		player1.Initialize(&map, shareData, &trap, &brick, &food, &monster);
+		player2.Initialize(&map, shareData, &trap, &brick, &food, &monster);
 
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
@@ -608,13 +637,16 @@ namespace game_framework {
 		ground.SetXY(GROUND_X, GROUND_Y);
 		grade.SetTopLeft(GROUND_X, GROUND_Y - 36);
 
+		player.clear();
 		trap.clear();
 		wall.clear();
 		brick.clear();
 		food.clear();
 		monster.clear();
 
-		gameEndConut = 0;
+		gameEndConut = 3 * 30;
+		player1Count = 3 * 30;
+		player2Count = 3 * 30;
 
 		for (int i = 0; i < map.GetBrickNumberX(); i++)
 		{
@@ -622,7 +654,20 @@ namespace game_framework {
 			{
 				if (map.GetPlayerInMap(i, j) == CName::PLAYER1)
 				{
-					player.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					player1.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					player.push_back(player1);
+				}
+				else if (map.GetPlayerInMap(i, j) == CName::PLAYER2)
+				{
+					if (playerNumber == 1)
+					{
+						map.SetPlayerInMap(i, j, CName::SPACE);
+					}
+					else if (playerNumber)
+					{
+						player2.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+						player.push_back(player2);
+					}
 				}
 				else if (map.GetTrapInMap(i, j) == CName::SPIKE)
 				{
@@ -726,7 +771,11 @@ namespace game_framework {
 
 	void CGameStateRun::OnMove()
 	{
-		player.OnMove();
+		player1.OnMove();
+		if (playerNumber == 2)
+		{
+			player2.OnMove();
+		}
 		for (list<CTrap>::iterator k = trap.begin(); k != trap.end(); k++)
 		{
 			k->OnMove();
@@ -743,15 +792,48 @@ namespace game_framework {
 		{
 			k->OnMove();
 		}
-		if (player.IsSuccess() || player.IsFail())
+		if (playerNumber == 1)
 		{
-			gameEndConut++;
-			if (gameEndConut == 3 * 30)
+			if (player1.IsSuccess() || player1.IsFail())
 			{
-				shareData->IsSuccess(player.IsSuccess());
-				shareData->IsFail(player.IsFail());
-				map.DeleteMap();
-				GotoGameState(GAME_STATE_OVER);
+				gameEndConut--;
+				if (gameEndConut == 0)
+				{
+					shareData->IsSuccess(player1.IsSuccess());
+					shareData->IsFail(player1.IsFail());
+					map.DeleteMap();
+					GotoGameState(GAME_STATE_OVER);
+				}
+			}
+		}
+		else if (playerNumber == 2)
+		{
+			if (player1.IsFail() && player1Count != 0)
+			{
+				player1Count--;
+			}
+			if (player2.IsFail() && player2Count!= 0)
+			{
+				player2Count--;
+			}
+			if (player1Count == 0)
+			{
+				map.SetPlayerInMap(player1.GetIndexX(), player1.GetIndexY(), CName::SPACE);
+			}
+			if (player2Count == 0)
+			{
+				map.SetPlayerInMap(player2.GetIndexX(), player2.GetIndexY(), CName::SPACE);
+			}
+			if (player1.IsSuccess() || player2.IsSuccess() || (player1.IsFail() && player2.IsFail()))
+			{
+				gameEndConut--;
+				if (gameEndConut == 0)
+				{
+					shareData->IsSuccess(player1.IsSuccess() || player2.IsSuccess());
+					shareData->IsFail(player1.IsFail() && player2.IsFail());
+					map.DeleteMap();
+					GotoGameState(GAME_STATE_OVER);
+				}
 			}
 		}
 	}
@@ -762,7 +844,8 @@ namespace game_framework {
 
 		ground.LoadBitmap();
 		grade.LoadBitmap();
-		player.LoadBitmap();
+		player1.LoadBitmap();
+		player2.LoadBitmap();
 
 		ShowInitProgress(50);
 		Sleep(300);
@@ -770,46 +853,131 @@ namespace game_framework {
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
+		const char KEY_R = 0x52;
 		const char KEY_LEFT = 0x25; // keyboard左箭頭
-		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
+		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
-		const char KEY_SPACE = ' ';
-		const char KEY_R = 'R';
+		const char KEY_SPACE = 0x20;
+		const char KEY_A = 0x41;
+		const char KEY_D = 0x44;
+		const char KEY_W = 0x57;
+		const char KEY_S = 0x53;
+		const char KEY_CTRL = 0x11;
 
-		if (!player.IsSuccess() && !player.IsFail())
+		if (nChar == KEY_R)
+		{
+			player1.Fail();
+			if (playerNumber == 2)
+			{
+				player2.Fail();
+			}
+		}
+
+		if (!player1.IsSuccess() && !player1.IsFail())
 		{
 			if (nChar == KEY_LEFT)
-				player.SetMovingLeft(true);
+			{
+				player1.SetMovingLeft(true);
+			}
 			if (nChar == KEY_RIGHT)
-				player.SetMovingRight(true);
+			{
+				player1.SetMovingRight(true);
+			}
 			if (nChar == KEY_UP)
-				player.SetMovingUp(true);
+			{
+				player1.SetMovingUp(true);
+			}
 			if (nChar == KEY_DOWN)
-				player.SetMovingDown(true);
+			{
+				player1.SetMovingDown(true);
+			}
 			if (nChar == KEY_SPACE)
-				player.PressKeySpace();
-			if (nChar == KEY_R)
-				player.Fail();
+			{
+				player1.PressKeySpace();
+			}
+		}
+
+		if (playerNumber == 2)
+		{
+			if (!player2.IsSuccess() && !player2.IsFail())
+			{
+				if (nChar == KEY_A)
+				{
+					player2.SetMovingLeft(true);
+				}
+				if (nChar == KEY_D)
+				{
+					player2.SetMovingRight(true);
+				}
+				if (nChar == KEY_W)
+				{
+					player2.SetMovingUp(true);
+				}
+				if (nChar == KEY_S)
+				{
+					player2.SetMovingDown(true);
+				}
+				if (nChar == KEY_CTRL)
+				{
+					player2.PressKeySpace();
+				}
+			}
 		}
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		const char KEY_LEFT = 0x25; // keyboard左箭頭
-		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
+		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
-		if (!player.IsSuccess() && !player.IsFail())
+		const char KEY_A = 0x41;
+		const char KEY_D = 0x44;
+		const char KEY_W = 0x57;
+		const char KEY_S = 0x53;
+
+		if (!player1.IsSuccess() && !player1.IsFail())
 		{
 			if (nChar == KEY_LEFT)
-				player.SetMovingLeft(false);
+			{
+				player1.SetMovingLeft(false);
+			}
 			if (nChar == KEY_RIGHT)
-				player.SetMovingRight(false);
+			{
+				player1.SetMovingRight(false);
+			}
 			if (nChar == KEY_UP)
-				player.SetMovingUp(false);
+			{
+				player1.SetMovingUp(false);
+			}
 			if (nChar == KEY_DOWN)
-				player.SetMovingDown(false);
+			{
+				player1.SetMovingDown(false);
+			}
+		}
+
+		if (playerNumber == 2)
+		{
+			if (!player2.IsSuccess() && !player2.IsFail())
+			{
+				if (nChar == KEY_A)
+				{
+					player2.SetMovingLeft(false);
+				}
+				if (nChar == KEY_D)
+				{
+					player2.SetMovingRight(false);
+				}
+				if (nChar == KEY_W)
+				{
+					player2.SetMovingUp(false);
+				}
+				if (nChar == KEY_S)
+				{
+					player2.SetMovingDown(false);
+				}
+			}
 		}
 	}
 
@@ -831,7 +999,11 @@ namespace game_framework {
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 	{
-		player.Success();
+		player1.Success();
+		if (playerNumber == 2)
+		{
+			player2.Success();
+		}
 	}
 
 	void CGameStateRun::OnShow()
@@ -873,9 +1045,16 @@ namespace game_framework {
 					k->OnShow();
 				}
 			}
-			if (player.GetIndexY() == j)
+			if (player1.GetIndexY() == j && player1Count != 0)
 			{
-				player.OnShow();
+				player1.OnShow();
+			}
+			if (playerNumber == 2)
+			{
+				if (player2.GetIndexY() == j && player2Count != 0)
+				{
+					player2.OnShow();
+				}
 			}
 		}
 

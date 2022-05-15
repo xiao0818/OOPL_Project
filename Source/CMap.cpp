@@ -11,6 +11,8 @@ namespace game_framework {
 	{
 		brickNumberX = 0;
 		brickNumberY = 0;
+		playerIndexX = 0;
+		playerIndexY = 0;
 		undeleteFlag = false;
 	}
 
@@ -77,7 +79,7 @@ namespace game_framework {
 				foodMap[i][j] = CName::SPACE;
 				monsterMap[i][j] = CName::SPACE;
 
-				if (map[i][j] == CName::PLAYER1)
+				if (map[i][j] == CName::PLAYER1 || map[i][j] == CName::PLAYER2)
 				{
 					playerMap[i][j] = map[i][j];
 				}
