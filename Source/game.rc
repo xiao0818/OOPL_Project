@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (繁體，台灣) resources
+// Chinese (Traditional, Taiwan) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -952,6 +952,22 @@ IDB_SKELETON_RUSH_UP_007 BITMAP                  "..\\Resources\\skeleton\\skele
 
 IDB_SKELETON_RUSH_UP_008 BITMAP                  "..\\Resources\\skeleton\\skeleton_rush_up\\skeleton_rush_up_008.bmp"
 
+IDB_PLAYER2_BUTTON_001  BITMAP                  "..\\Resources\\start\\play2\\play2_1.bmp"
+
+IDB_PLAYER2_BUTTON_002  BITMAP                  "..\\Resources\\start\\play2\\play2_2.bmp"
+
+IDB_PLAYER2_BUTTON_003  BITMAP                  "..\\Resources\\start\\play2\\play2_3.bmp"
+
+IDB_PLAYER2_BUTTON_004  BITMAP                  "..\\Resources\\start\\play2\\play2_4.bmp"
+
+IDB_PLAYER2_BUTTON_005  BITMAP                  "..\\Resources\\start\\play2\\play2_5.bmp"
+
+IDB_PLAYER2_BUTTON_006  BITMAP                  "..\\Resources\\start\\play2\\play2_6.bmp"
+
+IDB_PLAYER2_BUTTON_007  BITMAP                  "..\\Resources\\start\\play2\\play2_7.bmp"
+
+IDB_PLAYER2_BUTTON_008  BITMAP                  "..\\Resources\\start\\play2\\play2_8.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -960,12 +976,12 @@ IDB_SKELETON_RUSH_UP_008 BITMAP                  "..\\Resources\\skeleton\\skele
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
-#endif    // 中文 (繁體，台灣) resources
+#endif    // Chinese (Traditional, Taiwan) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 英文 (美國) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -1263,7 +1279,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // 英文 (美國) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

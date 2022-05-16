@@ -102,14 +102,14 @@ namespace game_framework {
 		player1Button.AddBitmap(IDB_PLAYER_BUTTON_006);
 		player1Button.AddBitmap(IDB_PLAYER_BUTTON_007);
 		player1Button.AddBitmap(IDB_PLAYER_BUTTON_008);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_001);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_002);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_003);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_004);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_005);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_006);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_007);
-		player2Button.AddBitmap(IDB_PLAYER_BUTTON_008);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_001);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_002);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_003);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_004);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_005);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_006);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_007);
+		player2Button.AddBitmap(IDB_PLAYER2_BUTTON_008);
 
 		helpPage.AddBitmap(IDB_HELP_PAGE_001);
 		helpPage.AddBitmap(IDB_HELP_PAGE_002);
