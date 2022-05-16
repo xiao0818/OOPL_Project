@@ -179,7 +179,6 @@ namespace game_framework {
 		CGround				ground;
 		CPlayer				player1;
 		CPlayer				player2;
-		list<CPlayer>		player;
 		list<CTrap>			trap;
 		list<CWall>			wall;
 		list<CBrick>		brick;

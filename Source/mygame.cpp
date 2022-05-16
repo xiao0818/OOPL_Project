@@ -637,7 +637,6 @@ namespace game_framework {
 		ground.SetXY(GROUND_X, GROUND_Y);
 		grade.SetTopLeft(GROUND_X, GROUND_Y - 36);
 
-		player.clear();
 		trap.clear();
 		wall.clear();
 		brick.clear();
@@ -655,18 +654,18 @@ namespace game_framework {
 				if (map.GetPlayerInMap(i, j) == CName::PLAYER1)
 				{
 					player1.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-					player.push_back(player1);
 				}
 				else if (map.GetPlayerInMap(i, j) == CName::PLAYER2)
 				{
 					if (playerNumber == 1)
 					{
 						map.SetPlayerInMap(i, j, CName::SPACE);
+						player2.Fail();
+						player2Count = 0;
 					}
 					else if (playerNumber)
 					{
 						player2.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-						player.push_back(player2);
 					}
 				}
 				else if (map.GetTrapInMap(i, j) == CName::SPIKE)
@@ -711,7 +710,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(&map, &brick, &monster);
+					tempStone.Initialize(&map, &player1, &player2, &brick, &monster);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -719,7 +718,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(&map, &brick, &monster);
+					tempWooden.Initialize(&map, &player1, &player2, &brick, &monster);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -727,7 +726,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(&map, &brick, &monster);
+					tempSteel.Initialize(&map, &player1, &player2, &brick, &monster);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);

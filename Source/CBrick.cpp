@@ -5,6 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CBrick.h"
+#include "CPlayer.h"
 
 namespace game_framework {
 	CBrick::CBrick()
@@ -36,7 +37,7 @@ namespace game_framework {
 		return isAlive;
 	}
 
-	void CBrick::Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster)
+	void CBrick::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)
 	{
 	}
 
@@ -114,7 +115,6 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX--, indexY, CName::SPACE);
 							movingLeftCount = 0;
-							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -124,12 +124,34 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
-											hit = true;
+											return;
 										}
 									}
 								}
 							}
-							if (!hit && mapRecord->GetBrickInMap(indexX - 1, indexY) != CName::SPACE) {
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player1Record->GetIndexX() == indexX && player1Record->GetIndexY() == indexY) || (player1Record->GetNextIndexX() == indexX && player1Record->GetNextIndexY() == indexY)) && !player1Record->IsFail())
+								{
+									player1Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player2Record->GetIndexX() == indexX && player2Record->GetIndexY() == indexY) || (player2Record->GetNextIndexX() == indexX && player2Record->GetNextIndexY() == indexY)) && !player2Record->IsFail())
+								{
+									player2Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX - 1, indexY) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX - 1 && k->GetIndexY() == indexY) && k->IsAlive())
@@ -158,7 +180,6 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX++, indexY, CName::SPACE);
 							movingRightCount = 0;
-							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -168,12 +189,34 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
-											hit = true;
+											return;
 										}
 									}
 								}
 							}
-							if (!hit && mapRecord->GetBrickInMap(indexX + 1, indexY) != CName::SPACE) {
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player1Record->GetIndexX() == indexX && player1Record->GetIndexY() == indexY) || (player1Record->GetNextIndexX() == indexX && player1Record->GetNextIndexY() == indexY)) && !player1Record->IsFail())
+								{
+									player1Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player2Record->GetIndexX() == indexX && player2Record->GetIndexY() == indexY) || (player2Record->GetNextIndexX() == indexX && player2Record->GetNextIndexY() == indexY)) && !player2Record->IsFail())
+								{
+									player2Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX + 1, indexY) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX + 1 && k->GetIndexY() == indexY) && k->IsAlive())
@@ -202,7 +245,6 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX, indexY--, CName::SPACE);
 							movingUpCount = 0;
-							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -212,12 +254,34 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
-											hit = true;
+											return;
 										}
 									}
 								}
 							}
-							if (!hit && mapRecord->GetBrickInMap(indexX, indexY - 1) != CName::SPACE) {
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player1Record->GetIndexX() == indexX && player1Record->GetIndexY() == indexY) || (player1Record->GetNextIndexX() == indexX && player1Record->GetNextIndexY() == indexY)) && !player1Record->IsFail())
+								{
+									player1Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player2Record->GetIndexX() == indexX && player2Record->GetIndexY() == indexY) || (player2Record->GetNextIndexX() == indexX && player2Record->GetNextIndexY() == indexY)) && !player2Record->IsFail())
+								{
+									player2Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX, indexY - 1) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY - 1) && k->IsAlive())
@@ -246,7 +310,6 @@ namespace game_framework {
 						{
 							mapRecord->SetBrickInMap(indexX, indexY++, CName::SPACE);
 							movingDownCount = 0;
-							bool hit = false;
 							if (mapRecord->GetMonsterInMap(indexX, indexY) != CName::SPACE) {
 								for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
 								{
@@ -256,12 +319,34 @@ namespace game_framework {
 										if (type == CName::WOODEN)
 										{
 											Hit();
-											hit = true;
+											return;
 										}
 									}
 								}
 							}
-							if (!hit && mapRecord->GetBrickInMap(indexX, indexY + 1) != CName::SPACE) {
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player1Record->GetIndexX() == indexX && player1Record->GetIndexY() == indexY) || (player1Record->GetNextIndexX() == indexX && player1Record->GetNextIndexY() == indexY)) && !player1Record->IsFail())
+								{
+									player1Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetPlayerInMap(indexX, indexY) != CName::SPACE) {
+								if (((player2Record->GetIndexX() == indexX && player2Record->GetIndexY() == indexY) || (player2Record->GetNextIndexX() == indexX && player2Record->GetNextIndexY() == indexY)) && !player2Record->IsFail())
+								{
+									player2Record->Fail();
+									if (type == CName::WOODEN)
+									{
+										Hit();
+										return;
+									}
+								}
+							}
+							if (mapRecord->GetBrickInMap(indexX, indexY + 1) != CName::SPACE) {
 								for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
 								{
 									if ((k->GetIndexX() == indexX && k->GetIndexY() == indexY + 1) && k->IsAlive())

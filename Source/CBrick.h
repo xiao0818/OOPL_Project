@@ -8,6 +8,8 @@
 #include "CMonster.h"
 
 namespace game_framework {
+	class CPlayer;
+
 	class CBrick
 	{
 	public:
@@ -16,7 +18,7 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsMove();
 		bool IsAlive();
-		virtual void Initialize(CMap *map, list<CBrick> *brick, list<CMonster> *monster);
+		virtual void Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
@@ -29,6 +31,8 @@ namespace game_framework {
 		int indexX, indexY;
 		double x, y;
 		CMap *mapRecord;
+		CPlayer *player1Record;
+		CPlayer *player2Record;
 		list<CBrick> *brickRecord;
 		list<CMonster> *monsterRecord;
 		bool isMovingDown;

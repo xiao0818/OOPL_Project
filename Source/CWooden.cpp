@@ -12,9 +12,11 @@ namespace game_framework {
 		bitmap.LoadBitmap(IDB_WOODEN_BRICK);
 	}
 
-	void CWooden::Initialize(CMap * map, list<CBrick>* brick, list<CMonster>* monster)
+	void CWooden::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)
 	{
 		mapRecord = map;
+		player1Record = player1;
+		player2Record = player2;
 		brickRecord = brick;
 		monsterRecord = monster;
 		STEP_TARGET = 8;

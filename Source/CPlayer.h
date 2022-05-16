@@ -10,6 +10,8 @@
 #include "CMonster.h"
 
 namespace game_framework {
+	class CBrick;
+
 	class CPlayer
 	{
 	public:
