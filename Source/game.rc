@@ -968,6 +968,30 @@ IDB_PLAYER2_BUTTON_007  BITMAP                  "..\\Resources\\start\\play2\\pl
 
 IDB_PLAYER2_BUTTON_008  BITMAP                  "..\\Resources\\start\\play2\\play2_8.bmp"
 
+IDB_NUMBER_1            BITMAP                  "..\\Resources\\score\\1.bmp"
+
+IDB_NUMBER_2            BITMAP                  "..\\Resources\\score\\2.bmp"
+
+IDB_NUMBER_3            BITMAP                  "..\\Resources\\score\\3.bmp"
+
+IDB_NUMBER_4            BITMAP                  "..\\Resources\\score\\4.bmp"
+
+IDB_NUMBER_5            BITMAP                  "..\\Resources\\score\\5.bmp"
+
+IDB_NUMBER_6            BITMAP                  "..\\Resources\\score\\6.bmp"
+
+IDB_NUMBER_7            BITMAP                  "..\\Resources\\score\\7.bmp"
+
+IDB_NUMBER_8            BITMAP                  "..\\Resources\\score\\8.bmp"
+
+IDB_NUMBER_9            BITMAP                  "..\\Resources\\score\\9.bmp"
+
+IDB_NUMBER_0            BITMAP                  "..\\Resources\\score\\0.bmp"
+
+IDB_FAIL_PAGE           BITMAP                  "..\\Resources\\end\\fail_page.bmp"
+
+IDB_SUCCESS_PAGE        BITMAP                  "..\\Resources\\end\\success_page.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

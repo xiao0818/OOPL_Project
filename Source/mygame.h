@@ -57,6 +57,7 @@
 #include "CMud.h"
 #include "CTurtle.h"
 #include "CSkeleton.h"
+#include "CScore.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -165,29 +166,29 @@ namespace game_framework {
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT);
+		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnLButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
-		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		CMap				map;
-		CInteger			grade;
-		CGround				ground;
-		CPlayer				player1;
-		CPlayer				player2;
-		list<CTrap>			trap;
-		list<CWall>			wall;
-		list<CBrick>		brick;
-		list<CFood>			food;
-		list<CMonster>		monster;
-		int					gameEndConut;
-		int					playerNumber;
-		int					player1Count;
-		int					player2Count;
+		CMap map;
+		CInteger grade;
+		CGround	ground;
+		CPlayer	player1;
+		CPlayer	player2;
+		list<CTrap>	trap;
+		list<CWall>	wall;
+		list<CBrick> brick;
+		list<CFood>	food;
+		list<CMonster> monster;
+		int	gameEndConut;
+		int	playerNumber;
+		int	player1Count;
+		int	player2Count;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -200,11 +201,31 @@ namespace game_framework {
 		CGameStateOver(CGame *g, CShareData *data);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();
+		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
+		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
+		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		int counter;	// 倒數之計數器
+		const int CROSS_LENGTH = 40;
+		const int CROSS_HEIGHT = 40;
+		const int MUSIC_INDEX_X = 860;
+		const int MUSIC_INDEX_Y = 10;
+		const int SOUND_INDEX_X = 920;
+		const int SOUND_INDEX_Y = 10;
+		
+		bool isSuccess;
+		bool isFail;
+		bool isOnMusicButton;
+		bool isOnSoundButton;
+		bool isOnBackButton;
+		CMovingBitmap successPage;
+		CMovingBitmap failPage;
+		CMovingBitmap cross;
+		CMovingBitmap musicButton;
+		CMovingBitmap soundButton;
+		CScore score;
 	};
 
 }

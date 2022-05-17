@@ -159,6 +159,9 @@
     <ClCompile Include="Source\CSteppingSpike.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CScore.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -252,6 +255,9 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CSteppingSpike.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CScore.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1576,6 +1582,42 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\play2\play2_8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\score\0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\fail_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\success_page.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

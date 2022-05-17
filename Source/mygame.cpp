@@ -72,14 +72,8 @@ namespace game_framework {
 
 	void CGameStateInit::OnInit()
 	{
-		//
-		// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-		//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-		//
-		ShowInitProgress(0);	// 一開始的loading進度為0%
-		//
-		// 開始載入資料
-		//
+		ShowInitProgress(0);
+
 		startPage.LoadBitmap(IDB_COVER);
 		cross.LoadBitmap(IDB_CROSS,RGB(255, 255, 255));
 		musicButton.LoadBitmap(IDB_MUSIC);
@@ -170,10 +164,6 @@ namespace game_framework {
 		helpPage.AddBitmap(IDB_HELP_PAGE_057);
 		helpPage.AddBitmap(IDB_HELP_PAGE_058);
 
-		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-		//
-		// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
-		//
 		CAudio::Instance()->Load(AUDIO_MENU, ".\\Resources\\audio\\Square_Meal_Menu.mp3");
 		CAudio::Instance()->Load(AUDIO_MAIN, ".\\Resources\\audio\\Square_Meal_Main.mp3");
 		CAudio::Instance()->Load(SOUND_SWALLOW, ".\\Resources\\sound\\swallow.mp3");
@@ -500,22 +490,6 @@ namespace game_framework {
 			cross.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
 			cross.ShowBitmap();
 		}
-		//
-		// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
-		//
-		//CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-		//CFont f,*fp;
-		//f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-		//fp=pDC->SelectObject(&f);					// 選用 font f
-		//pDC->SetBkColor(RGB(0,0,0));
-		//pDC->SetTextColor(RGB(255,255,0));
-		//pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
-		//pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
-		//if (ENABLE_GAME_PAUSE)
-		//	pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
-		//pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
-		//pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-		//CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 	}								
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -529,43 +503,28 @@ namespace game_framework {
 
 	void CGameStateOver::OnMove()
 	{
-		counter--;
-		if (counter < 0)
-		{
-			if (shareData->IsMusicEnable())
-			{
-				CAudio::Instance()->Play(AUDIO_MENU, true);
-				CAudio::Instance()->Stop(AUDIO_MAIN);
-			}
-			else
-			{
-				CAudio::Instance()->Stop(AUDIO_MENU);
-				CAudio::Instance()->Stop(AUDIO_MAIN);
-			}
-			GotoGameState(GAME_STATE_INIT);
-		}
 	}
 
 	void CGameStateOver::OnBeginState()
 	{
-		CAudio::Instance()->Stop(AUDIO_MENU);
-		CAudio::Instance()->Stop(AUDIO_MAIN);
-
-		counter = 30 * 3; // 3 seconds
+		isSuccess = shareData->IsSuccess();
+		isFail = shareData->IsFail();
+		isOnMusicButton = false;
+		isOnSoundButton = false;
+		score.SetInteger(shareData->GetGrade());
 	}
 
 	void CGameStateOver::OnInit()
 	{
-		//
-		// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-		//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-		//
-		ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
-		//
-		// 開始載入資料
-		//
-		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-		
+		ShowInitProgress(66);
+
+		successPage.LoadBitmap(IDB_SUCCESS_PAGE);
+		failPage.LoadBitmap(IDB_FAIL_PAGE);
+		cross.LoadBitmap(IDB_CROSS, RGB(255, 255, 255));
+		musicButton.LoadBitmap(IDB_MUSIC);
+		soundButton.LoadBitmap(IDB_SOUND);
+		score.LoadBitmap();
+
 		if (shareData->IsMusicEnable())
 		{
 			CAudio::Instance()->Play(AUDIO_MENU, true);
@@ -576,25 +535,115 @@ namespace game_framework {
 			CAudio::Instance()->Stop(AUDIO_MENU);
 			CAudio::Instance()->Stop(AUDIO_MAIN);
 		}
-		//
-		// 最終進度為100%
-		//
+
 		ShowInitProgress(100);
+	}
+
+	void CGameStateOver::OnMouseMove(UINT nFlags, CPoint point)
+	{
+		const int GROUND_X = (SIZE_X - successPage.Width()) / 2;
+		const int GROUND_Y = (SIZE_Y - successPage.Height()) / 2;
+
+		if ((GROUND_X + MUSIC_INDEX_X) < point.x && point.x < (GROUND_X + MUSIC_INDEX_X + CROSS_LENGTH) && (GROUND_Y + MUSIC_INDEX_Y) < point.y && point.y < (GROUND_Y + MUSIC_INDEX_Y + CROSS_HEIGHT))
+		{
+			isOnMusicButton = true;
+		}
+		else
+		{
+			isOnMusicButton = false;
+		}
+
+		if ((GROUND_X + SOUND_INDEX_X) < point.x && point.x < (GROUND_X + SOUND_INDEX_X + CROSS_LENGTH) && (GROUND_Y + SOUND_INDEX_Y) < point.y && point.y < (GROUND_Y + SOUND_INDEX_Y + CROSS_HEIGHT))
+		{
+			isOnSoundButton = true;
+		}
+		else
+		{
+			isOnSoundButton = false;
+		}
+	}
+
+	void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
+	{
+		if (isOnMusicButton)
+		{
+			shareData->IsMusicEnable(!shareData->IsMusicEnable());
+			if (shareData->IsMusicEnable())
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Play(AUDIO_MAIN, true);
+			}
+			else
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			isOnMusicButton = false;
+		}
+		else if (isOnSoundButton)
+		{
+			shareData->IsSoundEnable(!shareData->IsSoundEnable());
+			isOnSoundButton = false;
+		}
+	}
+
+	void CGameStateOver::OnRButtonDown(UINT nFlags, CPoint point)
+	{
+		if (shareData->IsMusicEnable())
+		{
+			CAudio::Instance()->Play(AUDIO_MENU, true);
+			CAudio::Instance()->Stop(AUDIO_MAIN);
+		}
+		else
+		{
+			CAudio::Instance()->Stop(AUDIO_MENU);
+			CAudio::Instance()->Stop(AUDIO_MAIN);
+		}
+		GotoGameState(GAME_STATE_INIT);
 	}
 
 	void CGameStateOver::OnShow()
 	{
-		CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-		CFont f,*fp;
-		f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-		fp=pDC->SelectObject(&f);					// 選用 font f
-		pDC->SetBkColor(RGB(0,0,0));
-		pDC->SetTextColor(RGB(255,255,0));
-		char str[80];								// Demo 數字對字串的轉換
-		sprintf(str, "Game Over ! (%d)", counter / 30);
-		pDC->TextOut(240,210,str);
-		pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-		CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+		const int GROUND_X = (SIZE_X - successPage.Width()) / 2;
+		const int GROUND_Y = (SIZE_Y - successPage.Height()) / 2;
+
+		if (isSuccess)
+		{
+			successPage.SetTopLeft(GROUND_X, GROUND_Y);
+			successPage.ShowBitmap();
+		}
+		else if (isFail)
+		{
+			failPage.SetTopLeft(GROUND_X, GROUND_Y);
+			failPage.ShowBitmap();
+		}
+
+		score.SetTopLeft(676, 476);
+		score.ShowBitmap();
+
+		if (isOnMusicButton)
+		{
+			musicButton.SetTopLeft(GROUND_X + MUSIC_INDEX_X, GROUND_Y + MUSIC_INDEX_Y);
+			musicButton.ShowBitmap();
+		}
+
+		if (isOnSoundButton)
+		{
+			soundButton.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
+			soundButton.ShowBitmap();
+		}
+
+		if (!shareData->IsMusicEnable())
+		{
+			cross.SetTopLeft(GROUND_X + MUSIC_INDEX_X, GROUND_Y + MUSIC_INDEX_Y);
+			cross.ShowBitmap();
+		}
+
+		if (!shareData->IsSoundEnable())
+		{
+			cross.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
+			cross.ShowBitmap();
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -847,7 +896,6 @@ namespace game_framework {
 		player2.LoadBitmap();
 
 		ShowInitProgress(50);
-		Sleep(300);
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -980,6 +1028,10 @@ namespace game_framework {
 		}
 	}
 
+	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)
+	{
+	}
+
 	void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)
 	{
 	}
@@ -988,21 +1040,17 @@ namespace game_framework {
 	{
 	}
 
-	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)
-	{
-	}
-
 	void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)
-	{
-	}
-
-	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
 	{
 		player1.Success();
 		if (playerNumber == 2)
 		{
 			player2.Success();
 		}
+	}
+
+	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
+	{
 	}
 
 	void CGameStateRun::OnShow()
