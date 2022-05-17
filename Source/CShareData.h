@@ -13,6 +13,7 @@ namespace game_framework {
 		void SetPlayerNumber(int number);
 		int GetPlayerNumber();
 		void AddGrade(int point);
+		void SetGrade(int point);
 		bool IsSuccess();
 		void IsSuccess(bool flag);
 		bool IsFail();

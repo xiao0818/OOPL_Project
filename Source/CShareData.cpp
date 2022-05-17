@@ -50,6 +50,11 @@ namespace game_framework {
 		grade += point;
 	}
 
+	void CShareData::SetGrade(int point)
+	{
+		grade = 0;
+	}
+
 	bool CShareData::IsSuccess()
 	{
 		return isSuccess;

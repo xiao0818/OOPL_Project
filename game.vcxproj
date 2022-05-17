@@ -359,8 +359,11 @@
     <Image Include="Resources\brick\SteelBrick.bmp" />
     <Image Include="Resources\brick\StoneBrick.bmp" />
     <Image Include="Resources\brick\WoodenBrick.bmp" />
+    <Image Include="Resources\end\end_page.bmp" />
     <Image Include="Resources\end\fail_page.bmp" />
+    <Image Include="Resources\end\next_level_button.bmp" />
     <Image Include="Resources\end\success_page.bmp" />
+    <Image Include="Resources\end\try_again_button.bmp" />
     <Image Include="Resources\food\Apple.bmp" />
     <Image Include="Resources\food\Bread.bmp" />
     <Image Include="Resources\food\Carrot.bmp" />

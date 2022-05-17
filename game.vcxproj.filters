@@ -1620,5 +1620,14 @@
     <Image Include="Resources\end\success_page.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\end\next_level_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\try_again_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\end_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -491,6 +491,11 @@
 #define IDB_FAIL_PAGE                   638
 #define IDB_BITMAP4                     639
 #define IDB_SUCCESS_PAGE                639
+#define IDB_NEXT_LEVEL_BUTTON           640
+#define IDB_NEXT_LEVEL                  640
+#define IDB_TRY_AGAIN                   641
+#define IDB_BITMAP3                     642
+#define IDB_END_PAGE                    642
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -503,7 +508,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        640
+#define _APS_NEXT_RESOURCE_VALUE        643
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

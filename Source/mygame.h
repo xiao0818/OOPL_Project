@@ -208,24 +208,42 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
+		CScore score;
+		CMovingBitmap successPage;
+		CMovingBitmap failPage;
+		CMovingBitmap endPage;
+		CMovingBitmap cross;
+		CMovingBitmap musicButton;
+		CMovingBitmap soundButton;
+		CMovingBitmap backButton;
+		CMovingBitmap nextLevelButton;
+		CMovingBitmap tryAgainButton;
+		bool isSuccess;
+		bool isFail;
+		bool isEnd;
+		bool isOnMusicButton;
+		bool isOnSoundButton;
+		bool isOnBackButton;
+		bool isOnNextLevelButton;
+		bool isOnTryAgainButton;
 		const int CROSS_LENGTH = 40;
 		const int CROSS_HEIGHT = 40;
 		const int MUSIC_INDEX_X = 860;
 		const int MUSIC_INDEX_Y = 10;
 		const int SOUND_INDEX_X = 920;
 		const int SOUND_INDEX_Y = 10;
-		
-		bool isSuccess;
-		bool isFail;
-		bool isOnMusicButton;
-		bool isOnSoundButton;
-		bool isOnBackButton;
-		CMovingBitmap successPage;
-		CMovingBitmap failPage;
-		CMovingBitmap cross;
-		CMovingBitmap musicButton;
-		CMovingBitmap soundButton;
-		CScore score;
+		const int BACK_BUTTON_INDEX_X = 164;
+		const int BACK_BUTTON_INDEX_Y = 630;
+		const int BACK_BUTTON_LENGTH = 108;
+		const int BACK_BUTTON_HEIGHT = 26;
+		const int NEXT_LEVEL_BUTTON_INDEX_X = 599;
+		const int NEXT_LEVEL_BUTTON_INDEX_Y = 630;
+		const int NEXT_LEVEL_BUTTON_LENGTH = 240;
+		const int NEXT_LEVEL_BUTTON_HEIGHT = 24;
+		const int TRY_AGAIN_BUTTON_INDEX_X = 655;
+		const int TRY_AGAIN_BUTTON_INDEX_Y = 630;
+		const int TRY_AGAIN_BUTTON_LENGTH = 200;
+		const int TRY_AGAIN_BUTTON_HEIGHT = 23;
 	};
 
 }

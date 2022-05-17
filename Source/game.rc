@@ -992,6 +992,12 @@ IDB_FAIL_PAGE           BITMAP                  "..\\Resources\\end\\fail_page.b
 
 IDB_SUCCESS_PAGE        BITMAP                  "..\\Resources\\end\\success_page.bmp"
 
+IDB_NEXT_LEVEL          BITMAP                  "..\\Resources\\end\\next_level_button.bmp"
+
+IDB_TRY_AGAIN           BITMAP                  "..\\Resources\\end\\try_again_button.bmp"
+
+IDB_END_PAGE            BITMAP                  "..\\Resources\\end\\end_page.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

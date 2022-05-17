@@ -507,10 +507,14 @@ namespace game_framework {
 
 	void CGameStateOver::OnBeginState()
 	{
-		isSuccess = shareData->IsSuccess();
+		isSuccess = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() != 10);
 		isFail = shareData->IsFail();
+		isEnd = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() == 10);
 		isOnMusicButton = false;
 		isOnSoundButton = false;
+		isOnBackButton = false;
+		isOnNextLevelButton = false;
+		isOnTryAgainButton = false;
 		score.SetInteger(shareData->GetGrade());
 	}
 
@@ -518,12 +522,16 @@ namespace game_framework {
 	{
 		ShowInitProgress(66);
 
+		score.LoadBitmap();
 		successPage.LoadBitmap(IDB_SUCCESS_PAGE);
 		failPage.LoadBitmap(IDB_FAIL_PAGE);
+		endPage.LoadBitmap(IDB_END_PAGE);
 		cross.LoadBitmap(IDB_CROSS, RGB(255, 255, 255));
 		musicButton.LoadBitmap(IDB_MUSIC);
 		soundButton.LoadBitmap(IDB_SOUND);
-		score.LoadBitmap();
+		backButton.LoadBitmap(IDB_BACK);
+		nextLevelButton.LoadBitmap(IDB_NEXT_LEVEL);
+		tryAgainButton.LoadBitmap(IDB_TRY_AGAIN);
 
 		if (shareData->IsMusicEnable())
 		{
@@ -561,6 +569,38 @@ namespace game_framework {
 		{
 			isOnSoundButton = false;
 		}
+
+		if ((GROUND_X + BACK_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + BACK_BUTTON_INDEX_X + BACK_BUTTON_LENGTH) && (GROUND_Y + BACK_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + BACK_BUTTON_INDEX_Y + BACK_BUTTON_HEIGHT))
+		{
+			isOnBackButton = true;
+		}
+		else
+		{
+			isOnBackButton = false;
+		}
+
+		if (isSuccess)
+		{
+			if ((GROUND_X + NEXT_LEVEL_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + NEXT_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_LENGTH) && (GROUND_Y + NEXT_LEVEL_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + NEXT_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_HEIGHT))
+			{
+				isOnNextLevelButton = true;
+			}
+			else
+			{
+				isOnNextLevelButton = false;
+			}
+		}
+		else if (isFail)
+		{
+			if ((GROUND_X + TRY_AGAIN_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + TRY_AGAIN_BUTTON_INDEX_X + TRY_AGAIN_BUTTON_LENGTH) && (GROUND_Y + TRY_AGAIN_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + TRY_AGAIN_BUTTON_INDEX_Y + TRY_AGAIN_BUTTON_HEIGHT))
+			{
+				isOnTryAgainButton = true;
+			}
+			else
+			{
+				isOnTryAgainButton = false;
+			}
+		}
 	}
 
 	void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
@@ -585,21 +625,55 @@ namespace game_framework {
 			shareData->IsSoundEnable(!shareData->IsSoundEnable());
 			isOnSoundButton = false;
 		}
+		else if (isOnBackButton)
+		{
+			if (shareData->IsMusicEnable())
+			{
+				CAudio::Instance()->Play(AUDIO_MENU, true);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			else
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			GotoGameState(GAME_STATE_INIT);
+		}
+		else if (isOnNextLevelButton)
+		{
+			shareData->SetSelectedLevelIndex(shareData->GetSelectedLevelIndex() + 1);
+			shareData->SetGrade(0);
+			if (shareData->IsMusicEnable())
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Play(AUDIO_MAIN, true);
+			}
+			else
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			GotoGameState(GAME_STATE_RUN);
+		}
+		else if (isOnTryAgainButton)
+		{
+			shareData->SetGrade(0);
+			if (shareData->IsMusicEnable())
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Play(AUDIO_MAIN, true);
+			}
+			else
+			{
+				CAudio::Instance()->Stop(AUDIO_MENU);
+				CAudio::Instance()->Stop(AUDIO_MAIN);
+			}
+			GotoGameState(GAME_STATE_RUN);
+		}
 	}
 
 	void CGameStateOver::OnRButtonDown(UINT nFlags, CPoint point)
 	{
-		if (shareData->IsMusicEnable())
-		{
-			CAudio::Instance()->Play(AUDIO_MENU, true);
-			CAudio::Instance()->Stop(AUDIO_MAIN);
-		}
-		else
-		{
-			CAudio::Instance()->Stop(AUDIO_MENU);
-			CAudio::Instance()->Stop(AUDIO_MAIN);
-		}
-		GotoGameState(GAME_STATE_INIT);
 	}
 
 	void CGameStateOver::OnShow()
@@ -607,7 +681,12 @@ namespace game_framework {
 		const int GROUND_X = (SIZE_X - successPage.Width()) / 2;
 		const int GROUND_Y = (SIZE_Y - successPage.Height()) / 2;
 
-		if (isSuccess)
+		if (isEnd)
+		{
+			endPage.SetTopLeft(GROUND_X, GROUND_Y);
+			endPage.ShowBitmap();
+		}
+		else if (isSuccess)
 		{
 			successPage.SetTopLeft(GROUND_X, GROUND_Y);
 			successPage.ShowBitmap();
@@ -618,8 +697,29 @@ namespace game_framework {
 			failPage.ShowBitmap();
 		}
 
-		score.SetTopLeft(676, 476);
-		score.ShowBitmap();
+		if (!isEnd)
+		{
+			score.SetTopLeft(676, 476);
+			score.ShowBitmap();
+		}
+
+		if (isOnBackButton)
+		{
+			backButton.SetTopLeft(GROUND_X + BACK_BUTTON_INDEX_X, GROUND_Y + BACK_BUTTON_INDEX_Y);
+			backButton.ShowBitmap();
+		}
+
+		if (isOnNextLevelButton)
+		{
+			nextLevelButton.SetTopLeft(GROUND_X + NEXT_LEVEL_BUTTON_INDEX_X, GROUND_Y + NEXT_LEVEL_BUTTON_INDEX_Y);
+			nextLevelButton.ShowBitmap();
+		}
+
+		if (isOnTryAgainButton)
+		{
+			tryAgainButton.SetTopLeft(GROUND_X + TRY_AGAIN_BUTTON_INDEX_X, GROUND_Y + TRY_AGAIN_BUTTON_INDEX_Y);
+			tryAgainButton.ShowBitmap();
+		}
 
 		if (isOnMusicButton)
 		{
