@@ -791,6 +791,7 @@
     <Image Include="Resources\start\helpPage\help_page_057.bmp" />
     <Image Include="Resources\start\helpPage\help_page_058.bmp" />
     <Image Include="Resources\start\level_page.bmp" />
+    <Image Include="Resources\start\level_page_2.bmp" />
     <Image Include="Resources\start\music.bmp" />
     <Image Include="Resources\start\play.bmp" />
     <Image Include="Resources\start\play2\play2_1.bmp" />

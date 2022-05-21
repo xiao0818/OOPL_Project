@@ -1176,6 +1176,8 @@ IDB_PLAYER2_MOVE_UP_WITH_FULL_007 BITMAP                  "..\\Resources\\player
 
 IDB_PLAYER2_MOVE_UP_WITH_FULL_008 BITMAP                  "..\\Resources\\player2\\up_with_full\\player2_move_with_full_up_008.bmp"
 
+IDB_LEVEL_2             BITMAP                  "..\\Resources\\start\\level_page_2.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

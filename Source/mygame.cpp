@@ -85,6 +85,7 @@ namespace game_framework {
 		creditsButton.LoadBitmap(IDB_CREDITS);
 		playerPage.LoadBitmap(IDB_PLAYER_PAGE);
 		levelPage.LoadBitmap(IDB_LEVEL);
+		levelPage_2.LoadBitmap(IDB_LEVEL_2);
 		scoresPage.LoadBitmap(IDB_SCORES_PAGE);
 		creditsPage.LoadBitmap(IDB_CREDITS_PAGE);
 
@@ -381,15 +382,21 @@ namespace game_framework {
 	{
 		const int GROUND_X = (SIZE_X - startPage.Width()) / 2;
 		const int GROUND_Y = (SIZE_Y - startPage.Height()) / 2;
-		//
-		// ¶K¤Wlogo
-		//
+
 		if (isPlayerPage || isScoresPage || isHelpPage || isCreditsPage || isLevelPage)
 		{
 			if (isLevelPage)
 			{
-				levelPage.SetTopLeft(GROUND_X, GROUND_Y);
-				levelPage.ShowBitmap();
+				if (playerNumber == 1)
+				{
+					levelPage.SetTopLeft(GROUND_X, GROUND_Y);
+					levelPage.ShowBitmap();
+				}
+				else if (playerNumber == 2)
+				{
+					levelPage_2.SetTopLeft(GROUND_X, GROUND_Y);
+					levelPage_2.ShowBitmap();
+				}
 			}
 			else if (isPlayerPage)
 			{

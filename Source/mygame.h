@@ -92,6 +92,7 @@ namespace game_framework {
 		CMovingBitmap creditsButton;
 		CMovingBitmap playerPage;
 		CMovingBitmap levelPage;
+		CMovingBitmap levelPage_2;
 		CMovingBitmap scoresPage;
 		CMovingBitmap creditsPage;
 		CAnimation player1Button;

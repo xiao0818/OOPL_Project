@@ -1908,5 +1908,8 @@
     <Image Include="Resources\player2\up_with_full\player2_move_with_full_up_008.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\start\level_page_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
