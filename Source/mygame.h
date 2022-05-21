@@ -41,7 +41,8 @@
 #include "CName.h"
 #include "CGround.h"
 #include "CMap.h"
-#include "CPlayer.h"
+#include "CPlayer1.h"
+#include "CPlayer2.h"
 #include "CTrap.h"
 #include "CSpike.h"
 #include "CMucus.h"
@@ -178,8 +179,8 @@ namespace game_framework {
 		CMap map;
 		CInteger grade;
 		CGround	ground;
-		CPlayer	player1;
-		CPlayer	player2;
+		CPlayer1	player1;
+		CPlayer2	player2;
 		list<CTrap>	trap;
 		list<CWall>	wall;
 		list<CBrick> brick;

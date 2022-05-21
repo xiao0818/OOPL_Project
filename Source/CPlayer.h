@@ -25,7 +25,7 @@ namespace game_framework {
 		void Fail();
 		void Success();
 		void Initialize(CMap *map, CShareData *shareData, list<CTrap> *trap, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
-		void LoadBitmap();
+		virtual void LoadBitmap();
 		void OnMove();
 		void SetMovingLeft(bool flag);
 		void SetMovingRight(bool flag);
