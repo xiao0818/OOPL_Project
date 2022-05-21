@@ -271,9 +271,11 @@ namespace game_framework {
 
 			if (isLevelPage)
 			{
-				for (int i = 0; i < 10; i++)
+				for (int i = 0; i < 50; i++)
 				{
-					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * i + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + FIRST_LEVEL_BUTTON_HEIGHT))
+					int tens = i / 10;
+					int digits = i % 10;
+					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens + FIRST_LEVEL_BUTTON_HEIGHT))
 					{
 						levelSelect = i + 1;
 						isOnLevelButton = true;
@@ -514,9 +516,9 @@ namespace game_framework {
 
 	void CGameStateOver::OnBeginState()
 	{
-		isSuccess = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() != 10);
+		isSuccess = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() != 50);
 		isFail = shareData->IsFail();
-		isEnd = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() == 10);
+		isEnd = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() == 50);
 		isOnMusicButton = false;
 		isOnSoundButton = false;
 		isOnBackButton = false;

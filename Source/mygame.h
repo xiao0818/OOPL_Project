@@ -153,6 +153,7 @@ namespace game_framework {
 		const int FIRST_LEVEL_BUTTON_LENGTH = 60;
 		const int FIRST_LEVEL_BUTTON_HEIGHT = 60;
 		const int NEXT_LEVEL_BUTTON_DISTANCE_X = 75;
+		const int NEXT_LEVEL_BUTTON_DISTANCE_Y = 75;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
