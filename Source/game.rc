@@ -1206,6 +1206,106 @@ IDB_END_PLAYER2_SUCCESS_006 BITMAP                  "..\\Resources\\end\\player2
 
 IDB_END_PLAYER2_FAIL_001 BITMAP                  "..\\Resources\\end\\player2\\fail\\player2_fail_001.bmp"
 
+IDB_LEVEL_001           BITMAP                  "..\\Resources\\start\\level\\level_1.bmp"
+
+IDB_LEVEL_002           BITMAP                  "..\\Resources\\start\\level\\level_2.bmp"
+
+IDB_LEVEL_003           BITMAP                  "..\\Resources\\start\\level\\level_3.bmp"
+
+IDB_LEVEL_004           BITMAP                  "..\\Resources\\start\\level\\level_4.bmp"
+
+IDB_LEVEL_005           BITMAP                  "..\\Resources\\start\\level\\level_5.bmp"
+
+IDB_LEVEL_006           BITMAP                  "..\\Resources\\start\\level\\level_6.bmp"
+
+IDB_LEVEL_007           BITMAP                  "..\\Resources\\start\\level\\level_7.bmp"
+
+IDB_LEVEL_008           BITMAP                  "..\\Resources\\start\\level\\level_8.bmp"
+
+IDB_LEVEL_009           BITMAP                  "..\\Resources\\start\\level\\level_9.bmp"
+
+IDB_LEVEL_010           BITMAP                  "..\\Resources\\start\\level\\level_10.bmp"
+
+IDB_LEVEL_011           BITMAP                  "..\\Resources\\start\\level\\level_11.bmp"
+
+IDB_LEVEL_012           BITMAP                  "..\\Resources\\start\\level\\level_12.bmp"
+
+IDB_LEVEL_013           BITMAP                  "..\\Resources\\start\\level\\level_13.bmp"
+
+IDB_LEVEL_014           BITMAP                  "..\\Resources\\start\\level\\level_14.bmp"
+
+IDB_LEVEL_015           BITMAP                  "..\\Resources\\start\\level\\level_15.bmp"
+
+IDB_LEVEL_016           BITMAP                  "..\\Resources\\start\\level\\level_16.bmp"
+
+IDB_LEVEL_017           BITMAP                  "..\\Resources\\start\\level\\level_17.bmp"
+
+IDB_LEVEL_018           BITMAP                  "..\\Resources\\start\\level\\level_18.bmp"
+
+IDB_LEVEL_019           BITMAP                  "..\\Resources\\start\\level\\level_19.bmp"
+
+IDB_LEVEL_020           BITMAP                  "..\\Resources\\start\\level\\level_20.bmp"
+
+IDB_LEVEL_021           BITMAP                  "..\\Resources\\start\\level\\level_21.bmp"
+
+IDB_LEVEL_022           BITMAP                  "..\\Resources\\start\\level\\level_22.bmp"
+
+IDB_LEVEL_023           BITMAP                  "..\\Resources\\start\\level\\level_23.bmp"
+
+IDB_LEVEL_024           BITMAP                  "..\\Resources\\start\\level\\level_24.bmp"
+
+IDB_LEVEL_025           BITMAP                  "..\\Resources\\start\\level\\level_25.bmp"
+
+IDB_LEVEL_026           BITMAP                  "..\\Resources\\start\\level\\level_26.bmp"
+
+IDB_LEVEL_027           BITMAP                  "..\\Resources\\start\\level\\level_27.bmp"
+
+IDB_LEVEL_028           BITMAP                  "..\\Resources\\start\\level\\level_28.bmp"
+
+IDB_LEVEL_029           BITMAP                  "..\\Resources\\start\\level\\level_29.bmp"
+
+IDB_LEVEL_030           BITMAP                  "..\\Resources\\start\\level\\level_30.bmp"
+
+IDB_LEVEL_031           BITMAP                  "..\\Resources\\start\\level\\level_31.bmp"
+
+IDB_LEVEL_032           BITMAP                  "..\\Resources\\start\\level\\level_32.bmp"
+
+IDB_LEVEL_033           BITMAP                  "..\\Resources\\start\\level\\level_33.bmp"
+
+IDB_LEVEL_034           BITMAP                  "..\\Resources\\start\\level\\level_34.bmp"
+
+IDB_LEVEL_035           BITMAP                  "..\\Resources\\start\\level\\level_35.bmp"
+
+IDB_LEVEL_036           BITMAP                  "..\\Resources\\start\\level\\level_36.bmp"
+
+IDB_LEVEL_037           BITMAP                  "..\\Resources\\start\\level\\level_37.bmp"
+
+IDB_LEVEL_038           BITMAP                  "..\\Resources\\start\\level\\level_38.bmp"
+
+IDB_LEVEL_039           BITMAP                  "..\\Resources\\start\\level\\level_39.bmp"
+
+IDB_LEVEL_040           BITMAP                  "..\\Resources\\start\\level\\level_40.bmp"
+
+IDB_LEVEL_041           BITMAP                  "..\\Resources\\start\\level\\level_41.bmp"
+
+IDB_LEVEL_042           BITMAP                  "..\\Resources\\start\\level\\level_42.bmp"
+
+IDB_LEVEL_043           BITMAP                  "..\\Resources\\start\\level\\level_43.bmp"
+
+IDB_LEVEL_044           BITMAP                  "..\\Resources\\start\\level\\level_44.bmp"
+
+IDB_LEVEL_045           BITMAP                  "..\\Resources\\start\\level\\level_45.bmp"
+
+IDB_LEVEL_046           BITMAP                  "..\\Resources\\start\\level\\level_46.bmp"
+
+IDB_LEVEL_047           BITMAP                  "..\\Resources\\start\\level\\level_47.bmp"
+
+IDB_LEVEL_048           BITMAP                  "..\\Resources\\start\\level\\level_48.bmp"
+
+IDB_LEVEL_049           BITMAP                  "..\\Resources\\start\\level\\level_49.bmp"
+
+IDB_LEVEL_050           BITMAP                  "..\\Resources\\start\\level\\level_50.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

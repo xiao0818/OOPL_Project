@@ -98,6 +98,7 @@ namespace game_framework {
 		CAnimation player1Button;
 		CAnimation player2Button;
 		CAnimation helpPage;
+		CMovingBitmap levelButton[50];
 		int levelSelect;
 		int playerNumber;
 		bool isOnMusicButton;
@@ -148,12 +149,12 @@ namespace game_framework {
 		const int PLAYER2_BUTTON_INDEX_Y = 90;
 		const int PLAYER2_BUTTON_LENGTH = 384;
 		const int PLAYER2_BUTTON_HEIGHT = 244;
-		const int FIRST_LEVEL_BUTTON_INDEX_X = 132;
+		const int FIRST_LEVEL_BUTTON_INDEX_X = 133;
 		const int FIRST_LEVEL_BUTTON_INDEX_Y = 228;
 		const int FIRST_LEVEL_BUTTON_LENGTH = 60;
 		const int FIRST_LEVEL_BUTTON_HEIGHT = 60;
 		const int NEXT_LEVEL_BUTTON_DISTANCE_X = 75;
-		const int NEXT_LEVEL_BUTTON_DISTANCE_Y = 75;
+		const int NEXT_LEVEL_BUTTON_DISTANCE_Y = 73;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

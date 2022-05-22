@@ -165,6 +165,14 @@ namespace game_framework {
 		helpPage.AddBitmap(IDB_HELP_PAGE_057);
 		helpPage.AddBitmap(IDB_HELP_PAGE_058);
 
+		int temp[50] = {IDB_LEVEL_001, IDB_LEVEL_002, IDB_LEVEL_003, IDB_LEVEL_004, IDB_LEVEL_005, IDB_LEVEL_006, IDB_LEVEL_007, IDB_LEVEL_008, IDB_LEVEL_009, IDB_LEVEL_010,
+						IDB_LEVEL_011, IDB_LEVEL_012, IDB_LEVEL_013, IDB_LEVEL_014, IDB_LEVEL_015, IDB_LEVEL_016, IDB_LEVEL_017, IDB_LEVEL_018, IDB_LEVEL_019, IDB_LEVEL_020,
+						IDB_LEVEL_021, IDB_LEVEL_022, IDB_LEVEL_023, IDB_LEVEL_024, IDB_LEVEL_025, IDB_LEVEL_026, IDB_LEVEL_027, IDB_LEVEL_028, IDB_LEVEL_029, IDB_LEVEL_030,
+						IDB_LEVEL_031, IDB_LEVEL_032, IDB_LEVEL_033, IDB_LEVEL_034, IDB_LEVEL_035, IDB_LEVEL_036, IDB_LEVEL_037, IDB_LEVEL_038, IDB_LEVEL_039, IDB_LEVEL_040,
+						IDB_LEVEL_041, IDB_LEVEL_042, IDB_LEVEL_043, IDB_LEVEL_044, IDB_LEVEL_045, IDB_LEVEL_046, IDB_LEVEL_047, IDB_LEVEL_048, IDB_LEVEL_049, IDB_LEVEL_050};
+		for (int i = 0; i < 50; i++)
+			levelButton[i].LoadBitmap(temp[i]);
+
 		CAudio::Instance()->Load(AUDIO_MENU, ".\\Resources\\audio\\Square_Meal_Menu.mp3");
 		CAudio::Instance()->Load(AUDIO_MAIN, ".\\Resources\\audio\\Square_Meal_Main.mp3");
 		CAudio::Instance()->Load(SOUND_SWALLOW, ".\\Resources\\sound\\swallow.mp3");
@@ -398,6 +406,15 @@ namespace game_framework {
 				{
 					levelPage_2.SetTopLeft(GROUND_X, GROUND_Y);
 					levelPage_2.ShowBitmap();
+				}
+
+				if (isOnLevelButton)
+				{
+					int level = levelSelect - 1;
+					int tens = level / 10;
+					int digits = level % 10;
+					levelButton[level].SetTopLeft(GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits, GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens);
+					levelButton[level].ShowBitmap();
 				}
 			}
 			else if (isPlayerPage)

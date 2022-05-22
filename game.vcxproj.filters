@@ -1953,5 +1953,155 @@
     <Image Include="Resources\end\player2\fail\player2_fail_001.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\start\level\level_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_12.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_13.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_14.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_15.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_16.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_17.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_18.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_19.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_20.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_21.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_22.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_23.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_24.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_25.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_26.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_27.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_28.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_29.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_30.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_31.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_32.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_33.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_34.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_35.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_36.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_37.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_38.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_39.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_40.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_41.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_42.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_43.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_44.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_45.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_46.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_47.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_48.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_49.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\level\level_50.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
