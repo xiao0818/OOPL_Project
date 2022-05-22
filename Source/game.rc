@@ -1178,6 +1178,34 @@ IDB_PLAYER2_MOVE_UP_WITH_FULL_008 BITMAP                  "..\\Resources\\player
 
 IDB_LEVEL_2             BITMAP                  "..\\Resources\\start\\level_page_2.bmp"
 
+IDB_END_PLAYER1_SUCCESS_001 BITMAP                  "..\\Resources\\end\\player\\success\\player_success_001.bmp"
+
+IDB_END_PLAYER1_SUCCESS_002 BITMAP                  "..\\Resources\\end\\player\\success\\player_success_002.bmp"
+
+IDB_END_PLAYER1_SUCCESS_003 BITMAP                  "..\\Resources\\end\\player\\success\\player_success_003.bmp"
+
+IDB_END_PLAYER1_SUCCESS_004 BITMAP                  "..\\Resources\\end\\player\\success\\player_success_004.bmp"
+
+IDB_END_PLAYER1_SUCCESS_005 BITMAP                  "..\\Resources\\end\\player\\success\\player_success_005.bmp"
+
+IDB_END_PLAYER1_SUCCESS_006 BITMAP                  "..\\Resources\\end\\player\\success\\player_success_006.bmp"
+
+IDB_END_PLAYER1_FAIL_001 BITMAP                  "..\\Resources\\end\\player\\fail\\player_fail_001.bmp"
+
+IDB_END_PLAYER2_SUCCESS_001 BITMAP                  "..\\Resources\\end\\player2\\success\\player2_success_001.bmp"
+
+IDB_END_PLAYER2_SUCCESS_002 BITMAP                  "..\\Resources\\end\\player2\\success\\player2_success_002.bmp"
+
+IDB_END_PLAYER2_SUCCESS_003 BITMAP                  "..\\Resources\\end\\player2\\success\\player2_success_003.bmp"
+
+IDB_END_PLAYER2_SUCCESS_004 BITMAP                  "..\\Resources\\end\\player2\\success\\player2_success_004.bmp"
+
+IDB_END_PLAYER2_SUCCESS_005 BITMAP                  "..\\Resources\\end\\player2\\success\\player2_success_005.bmp"
+
+IDB_END_PLAYER2_SUCCESS_006 BITMAP                  "..\\Resources\\end\\player2\\success\\player2_success_006.bmp"
+
+IDB_END_PLAYER2_FAIL_001 BITMAP                  "..\\Resources\\end\\player2\\fail\\player2_fail_001.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

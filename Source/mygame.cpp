@@ -512,6 +512,8 @@ namespace game_framework {
 
 	void CGameStateOver::OnMove()
 	{
+		player1Success.OnMove();
+		player2Success.OnMove();
 	}
 
 	void CGameStateOver::OnBeginState()
@@ -519,12 +521,15 @@ namespace game_framework {
 		isSuccess = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() != 50);
 		isFail = shareData->IsFail();
 		isEnd = shareData->IsSuccess() && (shareData->GetSelectedLevelIndex() == 50);
+		playerNumber = shareData->GetPlayerNumber();
 		isOnMusicButton = false;
 		isOnSoundButton = false;
 		isOnBackButton = false;
 		isOnNextLevelButton = false;
 		isOnTryAgainButton = false;
 		score.SetInteger(shareData->GetGrade());
+		player1Success.SetDelayCount(2);
+		player2Success.SetDelayCount(2);
 	}
 
 	void CGameStateOver::OnInit()
@@ -541,6 +546,22 @@ namespace game_framework {
 		backButton.LoadBitmap(IDB_BACK);
 		nextLevelButton.LoadBitmap(IDB_NEXT_LEVEL);
 		tryAgainButton.LoadBitmap(IDB_TRY_AGAIN);
+		
+		player1Success.AddBitmap(IDB_END_PLAYER1_SUCCESS_001);
+		player1Success.AddBitmap(IDB_END_PLAYER1_SUCCESS_002);
+		player1Success.AddBitmap(IDB_END_PLAYER1_SUCCESS_003);
+		player1Success.AddBitmap(IDB_END_PLAYER1_SUCCESS_004);
+		player1Success.AddBitmap(IDB_END_PLAYER1_SUCCESS_005);
+		player1Success.AddBitmap(IDB_END_PLAYER1_SUCCESS_006);
+		player1Fail.LoadBitmap(IDB_END_PLAYER1_FAIL_001);
+
+		player2Success.AddBitmap(IDB_END_PLAYER2_SUCCESS_001);
+		player2Success.AddBitmap(IDB_END_PLAYER2_SUCCESS_002);
+		player2Success.AddBitmap(IDB_END_PLAYER2_SUCCESS_003);
+		player2Success.AddBitmap(IDB_END_PLAYER2_SUCCESS_004);
+		player2Success.AddBitmap(IDB_END_PLAYER2_SUCCESS_005);
+		player2Success.AddBitmap(IDB_END_PLAYER2_SUCCESS_006);
+		player2Fail.LoadBitmap(IDB_END_PLAYER2_FAIL_001);
 
 		if (shareData->IsMusicEnable())
 		{
@@ -699,16 +720,40 @@ namespace game_framework {
 		{
 			successPage.SetTopLeft(GROUND_X, GROUND_Y);
 			successPage.ShowBitmap();
+			if (playerNumber == 1)
+			{
+				player1Success.SetTopLeft(GROUND_X + PLAYER_INDEX_X, GROUND_Y + PLAYER_INDEX_Y);
+				player1Success.OnShow();
+			}
+			else if (playerNumber == 2)
+			{
+				player1Success.SetTopLeft(GROUND_X + PLAYER1_INDEX_X, GROUND_Y + PLAYER_INDEX_Y);
+				player1Success.OnShow();
+				player2Success.SetTopLeft(GROUND_X + PLAYER2_INDEX_X, GROUND_Y + PLAYER_INDEX_Y);
+				player2Success.OnShow();
+			}
 		}
 		else if (isFail)
 		{
 			failPage.SetTopLeft(GROUND_X, GROUND_Y);
 			failPage.ShowBitmap();
+			if (playerNumber == 1)
+			{
+				player1Fail.SetTopLeft(GROUND_X + PLAYER_INDEX_X, GROUND_Y + PLAYER_INDEX_Y);
+				player1Fail.ShowBitmap();
+			}
+			else if (playerNumber == 2)
+			{
+				player1Fail.SetTopLeft(GROUND_X + PLAYER1_INDEX_X, GROUND_Y + PLAYER_INDEX_Y);
+				player1Fail.ShowBitmap();
+				player2Fail.SetTopLeft(GROUND_X + PLAYER2_INDEX_X, GROUND_Y + PLAYER_INDEX_Y);
+				player2Fail.ShowBitmap();
+			}
 		}
 
 		if (!isEnd)
 		{
-			score.SetTopLeft(676, 476);
+			score.SetTopLeft(GROUND_X + SCORE_INDEX_X, GROUND_Y + SCORE_INDEX_Y);
 			score.ShowBitmap();
 		}
 

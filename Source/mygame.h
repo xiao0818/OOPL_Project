@@ -221,6 +221,10 @@ namespace game_framework {
 		CMovingBitmap backButton;
 		CMovingBitmap nextLevelButton;
 		CMovingBitmap tryAgainButton;
+		CAnimation player1Success;
+		CMovingBitmap player1Fail;
+		CAnimation player2Success;
+		CMovingBitmap player2Fail;
 		bool isSuccess;
 		bool isFail;
 		bool isEnd;
@@ -229,6 +233,7 @@ namespace game_framework {
 		bool isOnBackButton;
 		bool isOnNextLevelButton;
 		bool isOnTryAgainButton;
+		int playerNumber;
 		const int CROSS_LENGTH = 40;
 		const int CROSS_HEIGHT = 40;
 		const int MUSIC_INDEX_X = 860;
@@ -247,6 +252,12 @@ namespace game_framework {
 		const int TRY_AGAIN_BUTTON_INDEX_Y = 630;
 		const int TRY_AGAIN_BUTTON_LENGTH = 200;
 		const int TRY_AGAIN_BUTTON_HEIGHT = 23;
+		const int SCORE_INDEX_X = 550;
+		const int SCORE_INDEX_Y = 361;
+		const int PLAYER_INDEX_X = 440;
+		const int PLAYER1_INDEX_X = 385;
+		const int PLAYER2_INDEX_X = 505;
+		const int PLAYER_INDEX_Y = 169;
 	};
 
 }

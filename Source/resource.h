@@ -576,6 +576,21 @@
 #define IDB_PLAYER2_MOVE_UP_WITH_FULL_008 731
 #define IDB_BITMAP1                     732
 #define IDB_LEVEL_2                     732
+#define IDB_END_PLAYER1_SUCCESS_001     733
+#define IDB_END_PLAYER1_SUCCESS_002     734
+#define IDB_END_PLAYER1_SUCCESS_003     735
+#define IDB_END_PLAYER1_SUCCESS_004     736
+#define IDB_END_PLAYER1_SUCCESS_005     737
+#define IDB_END_PLAYER1_SUCCESS_006     738
+#define IDB_END_PLAYER1_FAIL_001        739
+#define IDB_END_PLAYER2_SUCCESS_001     740
+#define IDB_END_PLAYER2_SUCCESS_002     741
+#define IDB_END_PLAYER2_SUCCESS_003     742
+#define IDB_END_PLAYER2_SUCCESS_004     743
+#define IDB_END_PLAYER2_SUCCESS_005     744
+#define IDB_END_PLAYER2_SUCCESS_006     745
+#define IDB_BITMAP2                     746
+#define IDB_END_PLAYER2_FAIL_001        746
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -588,7 +603,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        733
+#define _APS_NEXT_RESOURCE_VALUE        747
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

@@ -1911,5 +1911,47 @@
     <Image Include="Resources\start\level_page_2.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\end\player\success\player_success_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player\success\player_success_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player\success\player_success_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player\success\player_success_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player\success\player_success_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player\success\player_success_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player\fail\player_fail_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\success\player2_success_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\success\player2_success_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\success\player2_success_003.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\success\player2_success_004.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\success\player2_success_005.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\success\player2_success_006.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\end\player2\fail\player2_fail_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
