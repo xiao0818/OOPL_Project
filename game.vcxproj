@@ -253,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\audio.cpp" />
+    <ClCompile Include="Source\CBomb.cpp" />
     <ClCompile Include="Source\CBrick.cpp" />
     <ClCompile Include="Source\CFood.cpp" />
     <ClCompile Include="Source\CGround.cpp" />
@@ -267,6 +268,7 @@
     <ClCompile Include="Source\CScore.cpp" />
     <ClCompile Include="Source\CShareData.cpp" />
     <ClCompile Include="Source\CSkeleton.cpp" />
+    <ClCompile Include="Source\CSlime.cpp" />
     <ClCompile Include="Source\CSpike.cpp" />
     <ClCompile Include="Source\CSteel.cpp" />
     <ClCompile Include="Source\CSteppingSpike.cpp" />
@@ -319,6 +321,7 @@
   <ItemGroup>
     <ClInclude Include="Source\audio.h" />
     <ClInclude Include="Source\CAudioId.h" />
+    <ClInclude Include="Source\CBomb.h" />
     <ClInclude Include="Source\CBrick.h" />
     <ClInclude Include="Source\CDirection.h" />
     <ClInclude Include="Source\CFood.h" />
@@ -335,6 +338,7 @@
     <ClInclude Include="Source\CScore.h" />
     <ClInclude Include="Source\CShareData.h" />
     <ClInclude Include="Source\CSkeleton.h" />
+    <ClInclude Include="Source\CSlime.h" />
     <ClInclude Include="Source\CSpike.h" />
     <ClInclude Include="Source\CSteel.h" />
     <ClInclude Include="Source\CSteppingSpike.h" />
@@ -360,6 +364,8 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\brick\BombBrick.bmp" />
+    <Image Include="Resources\brick\SlimeBrick.bmp" />
     <Image Include="Resources\brick\SteelBrick.bmp" />
     <Image Include="Resources\brick\StoneBrick.bmp" />
     <Image Include="Resources\brick\WoodenBrick.bmp" />

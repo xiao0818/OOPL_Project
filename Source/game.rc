@@ -1306,6 +1306,10 @@ IDB_LEVEL_049           BITMAP                  "..\\Resources\\start\\level\\le
 
 IDB_LEVEL_050           BITMAP                  "..\\Resources\\start\\level\\level_50.bmp"
 
+IDB_BOMB_BRICK          BITMAP                  "..\\Resources\\brick\\BombBrick.bmp"
+
+IDB_SLIME_BRICK         BITMAP                  "..\\Resources\\brick\\SlimeBrick.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

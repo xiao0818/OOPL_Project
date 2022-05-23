@@ -168,6 +168,12 @@
     <ClCompile Include="Source\CPlayer2.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CSlime.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CBomb.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -270,6 +276,12 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\CPlayer2.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CSlime.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CBomb.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -2101,6 +2113,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\level\level_50.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brick\BombBrick.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brick\SlimeBrick.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

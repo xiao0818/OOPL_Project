@@ -53,6 +53,8 @@
 #include "CStone.h"
 #include "CWooden.h"
 #include "CSteel.h"
+#include "CSlime.h"
+#include "CBomb.h"
 #include "CFood.h"
 #include "CMonster.h"
 #include "CMud.h"

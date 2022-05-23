@@ -642,6 +642,9 @@
 #define IDB_LEVEL_049                   795
 #define IDB_BITMAP53                    796
 #define IDB_LEVEL_050                   796
+#define IDB_BOMB_BRICK                  797
+#define IDB_BITMAP4                     798
+#define IDB_SLIME_BRICK                 798
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -654,7 +657,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        797
+#define _APS_NEXT_RESOURCE_VALUE        799
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

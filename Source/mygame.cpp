@@ -951,6 +951,22 @@ namespace game_framework {
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);
 				}
+				else if (map.GetBrickInMap(i, j) == CName::SLIME)
+				{
+					CSlime tempSlime;
+					tempSlime.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempSlime.LoadBitmap();
+					tempSlime.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					brick.push_back(tempSlime);
+				}
+				else if (map.GetBrickInMap(i, j) == CName::BOMB)
+				{
+					CBomb tempBomb;
+					tempBomb.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempBomb.LoadBitmap();
+					tempBomb.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					brick.push_back(tempBomb);
+				}
 				else if (map.GetFoodInMap(i, j) == CName::APPLE || map.GetFoodInMap(i, j) == CName::BREAD || map.GetFoodInMap(i, j) == CName::CARROT || map.GetFoodInMap(i, j) == CName::EGG || map.GetFoodInMap(i, j) == CName::GRAPE || map.GetFoodInMap(i, j) == CName::MUTTON || map.GetFoodInMap(i, j) == CName::PIE || map.GetFoodInMap(i, j) == CName::TOMATO || map.GetFoodInMap(i, j) == CName::TURKEY)
 				{
 					CFood tempFood;

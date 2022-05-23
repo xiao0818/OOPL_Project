@@ -87,7 +87,7 @@ namespace game_framework {
 				{
 					trapMap[i][j] = map[i][j];
 				}
-				else if (map[i][j] == CName::WALL || map[i][j] == CName::STONE || map[i][j] == CName::WOODEN || map[i][j] == CName::STEEL)
+				else if (map[i][j] == CName::WALL || map[i][j] == CName::STONE || map[i][j] == CName::WOODEN || map[i][j] == CName::STEEL || map[i][j] == CName::SLIME || map[i][j] == CName::BOMB)
 				{
 					brickMap[i][j] = map[i][j];
 				}
