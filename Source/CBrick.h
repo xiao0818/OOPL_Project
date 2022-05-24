@@ -45,6 +45,7 @@ namespace game_framework {
 		int movingDownCount;
 		bool isAlive;
 		bool isSwallowed;
+		bool isHit;
 		int STEP_TARGET;
 		double STEP_SIZE_X;
 		double STEP_SIZE_Y;

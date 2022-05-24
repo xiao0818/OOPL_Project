@@ -14,7 +14,8 @@ namespace game_framework {
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		isAlive = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		isSwallowed = false;
+		isSwallowed = isHit = false;
+		bitmap.SetDelayCount(2);
 	}
 
 	int CBrick::GetIndexX()
@@ -53,7 +54,18 @@ namespace game_framework {
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
 
-		if (isAlive)
+		if (isHit)
+		{
+			if (!bitmap.IsFinalBitmap())
+			{
+				bitmap.OnMove();
+			}
+			else
+			{
+				isAlive = false;
+			}
+		}
+		else if (isAlive)
 		{
 			if (isSwallowed)
 			{
@@ -397,14 +409,11 @@ namespace game_framework {
 
 	void CBrick::Hit()
 	{
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		if (type == CName::WOODEN)
 		{
 			mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
-			isAlive = false;
-		}
-		else if (type == CName::STONE || type == CName::STEEL)
-		{
-			isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+			isHit = true;
 		}
 	}
 
@@ -440,8 +449,11 @@ namespace game_framework {
 
 	void CBrick::OnShow()
 	{
+		const int BRICK_LENGTH = 36;
+		const int BRICK_WIDTH = 24;
+
 		if (isAlive) {
-			bitmap.SetTopLeft(int(x), int(y) - 12);
+			bitmap.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (bitmap.Width() / 2), int(y) + (BRICK_WIDTH / 2) - (bitmap.Height() / 2) - 6);
 			bitmap.OnShow();
 		}
 	}

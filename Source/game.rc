@@ -1310,6 +1310,10 @@ IDB_BOMB_BRICK          BITMAP                  "..\\Resources\\brick\\BombBrick
 
 IDB_SLIME_BRICK         BITMAP                  "..\\Resources\\brick\\SlimeBrick.bmp"
 
+IDB_WOODEN_BRICK_BREAK_001 BITMAP                  "..\\Resources\\brick\\brick_break_001.bmp"
+
+IDB_WOODEN_BRICK_BREAK_002 BITMAP                  "..\\Resources\\brick\\brick_break_002.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

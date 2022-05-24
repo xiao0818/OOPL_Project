@@ -365,6 +365,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\brick\BombBrick.bmp" />
+    <Image Include="Resources\brick\brick_break_001.bmp" />
+    <Image Include="Resources\brick\brick_break_002.bmp" />
     <Image Include="Resources\brick\SlimeBrick.bmp" />
     <Image Include="Resources\brick\SteelBrick.bmp" />
     <Image Include="Resources\brick\StoneBrick.bmp" />

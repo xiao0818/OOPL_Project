@@ -2121,5 +2121,11 @@
     <Image Include="Resources\brick\SlimeBrick.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\brick\brick_break_001.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brick\brick_break_002.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
