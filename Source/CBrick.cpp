@@ -6,6 +6,7 @@
 #include "gamelib.h"
 #include "CBrick.h"
 #include "CPlayer.h"
+#include "CCount.h"
 
 namespace game_framework {
 	CBrick::CBrick()
@@ -17,7 +18,7 @@ namespace game_framework {
 		isSwallowed = isHit = isBombCounting = isBomb = false;
 		bitmap.SetDelayCount(2);
 		reboundStepCount = 3;
-		bombCount = 10 * 30;
+		bombCount = 0;
 	}
 
 	int CBrick::GetIndexX()
@@ -56,19 +57,19 @@ namespace game_framework {
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
 
-		if (isAlive)
+		if (isBombCounting)
 		{
-			if (isBombCounting)
+			if (--bombCount == 0)
 			{
-				if (bombCount-- == 0)
+				if (type == CName::BOMB)
 				{
-					if (type == CName::BOMB)
-					{
-						Bomb();
-					}
+					Bomb();
 				}
 			}
+		}
 
+		if (isAlive)
+		{
 			if (isBomb)
 			{
 				mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
@@ -460,11 +461,6 @@ namespace game_framework {
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		reboundStepCount = 3;
-		if (type == CName::BOMB)
-		{
-			bombCount = 10 * 30;
-			isBombCounting = true;
-		}
 		
 		if (faceTo == CDirection::LEFT)
 		{
@@ -540,6 +536,12 @@ namespace game_framework {
 	{
 		isSwallowed = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
+		if (type == CName::BOMB)
+		{
+			bombCount = 10 * 30;
+			isBombCounting = true;
+		}
+
 		if (faceTo == CDirection::LEFT)
 		{
 			isMovingRight = true;
@@ -563,9 +565,17 @@ namespace game_framework {
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
 
-		if (isAlive) {
+		if (isAlive)
+		{
 			bitmap.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (bitmap.Width() / 2), int(y) + (BRICK_WIDTH / 2) - (bitmap.Height() / 2) - 6);
 			bitmap.OnShow();
+
+			if (isBombCounting && !isBomb)
+			{
+				count.SetInteger(bombCount / 30);
+				count.SetTopLeft(int(x) + 15, int(y) - 10);
+				count.ShowBitmap();
+			}
 		}
 	}
 }

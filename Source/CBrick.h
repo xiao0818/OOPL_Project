@@ -7,6 +7,7 @@
 #include "CBrick.h"
 #include "CFood.h"
 #include "CMonster.h"
+#include "CCount.h"
 
 namespace game_framework {
 	class CPlayer;
@@ -57,6 +58,7 @@ namespace game_framework {
 		CName type;
 		int reboundStepCount;
 		int bombCount;
+		CCount count;
 	};
 }
 

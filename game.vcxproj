@@ -255,6 +255,7 @@
     <ClCompile Include="Source\audio.cpp" />
     <ClCompile Include="Source\CBomb.cpp" />
     <ClCompile Include="Source\CBrick.cpp" />
+    <ClCompile Include="Source\CCount.cpp" />
     <ClCompile Include="Source\CFood.cpp" />
     <ClCompile Include="Source\CGround.cpp" />
     <ClCompile Include="Source\CMap.cpp" />
@@ -323,6 +324,7 @@
     <ClInclude Include="Source\CAudioId.h" />
     <ClInclude Include="Source\CBomb.h" />
     <ClInclude Include="Source\CBrick.h" />
+    <ClInclude Include="Source\CCount.h" />
     <ClInclude Include="Source\CDirection.h" />
     <ClInclude Include="Source\CFood.h" />
     <ClInclude Include="Source\CGround.h" />

@@ -9,6 +9,8 @@
 namespace game_framework {
 	void CBomb::LoadBitmap()
 	{
+		count.LoadBitmap();
+
 		bitmap.AddBitmap(IDB_BOMB_BRICK);
 		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_001, RGB(255, 255, 255));
 		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_001, RGB(255, 255, 255));
