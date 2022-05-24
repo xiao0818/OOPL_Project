@@ -27,7 +27,7 @@ namespace game_framework {
 		void Swallowed(CDirection faceTo);
 		void OnShow();
 	protected:
-		CMovingBitmap bitmap;
+		CAnimation bitmap;
 		int indexX, indexY;
 		double x, y;
 		CMap *mapRecord;

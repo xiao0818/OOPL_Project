@@ -773,6 +773,11 @@ namespace game_framework {
 			score.SetTopLeft(GROUND_X + SCORE_INDEX_X, GROUND_Y + SCORE_INDEX_Y);
 			score.ShowBitmap();
 		}
+		else if (isEnd)
+		{
+			score.SetTopLeft(GROUND_X + SCORE_INDEX_X, GROUND_Y + SCORE_INDEX_Y_FOR_END);
+			score.ShowBitmap();
+		}
 
 		if (isOnBackButton)
 		{

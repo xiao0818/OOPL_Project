@@ -9,7 +9,7 @@
 namespace game_framework {
 	void CWooden::LoadBitmap()
 	{
-		bitmap.LoadBitmap(IDB_WOODEN_BRICK);
+		bitmap.AddBitmap(IDB_WOODEN_BRICK);
 	}
 
 	void CWooden::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)

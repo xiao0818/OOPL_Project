@@ -9,7 +9,7 @@
 namespace game_framework {
 	void CStone::LoadBitmap()
 	{
-		bitmap.LoadBitmap(IDB_STONE_BRICK);
+		bitmap.AddBitmap(IDB_STONE_BRICK);
 	}
 
 	void CStone::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)

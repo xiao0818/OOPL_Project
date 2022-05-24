@@ -442,7 +442,7 @@ namespace game_framework {
 	{
 		if (isAlive) {
 			bitmap.SetTopLeft(int(x), int(y) - 12);
-			bitmap.ShowBitmap();
+			bitmap.OnShow();
 		}
 	}
 }

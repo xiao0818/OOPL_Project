@@ -9,7 +9,7 @@
 namespace game_framework {
 	void CSteel::LoadBitmap()
 	{
-		bitmap.LoadBitmap(IDB_STEEL_BRICK);
+		bitmap.AddBitmap(IDB_STEEL_BRICK);
 	}
 
 	void CSteel::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)

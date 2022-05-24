@@ -255,8 +255,9 @@ namespace game_framework {
 		const int TRY_AGAIN_BUTTON_INDEX_Y = 630;
 		const int TRY_AGAIN_BUTTON_LENGTH = 200;
 		const int TRY_AGAIN_BUTTON_HEIGHT = 23;
-		const int SCORE_INDEX_X = 550;
+		const int SCORE_INDEX_X = 529;
 		const int SCORE_INDEX_Y = 361;
+		const int SCORE_INDEX_Y_FOR_END = 132;
 		const int PLAYER_INDEX_X = 440;
 		const int PLAYER1_INDEX_X = 385;
 		const int PLAYER2_INDEX_X = 505;
