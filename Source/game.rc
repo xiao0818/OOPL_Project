@@ -1314,6 +1314,22 @@ IDB_WOODEN_BRICK_BREAK_001 BITMAP                  "..\\Resources\\brick\\brick_
 
 IDB_WOODEN_BRICK_BREAK_002 BITMAP                  "..\\Resources\\brick\\brick_break_002.bmp"
 
+IDB_BOMB_BRICK_BREAK_001 BITMAP                  "..\\Resources\\brick\\bomb_break_001.bmp"
+
+IDB_BOMB_BRICK_BREAK_002 BITMAP                  "..\\Resources\\brick\\bomb_break_002.bmp"
+
+IDB_BOMB_BRICK_BREAK_003 BITMAP                  "..\\Resources\\brick\\bomb_break_003.bmp"
+
+IDB_BOMB_BRICK_BREAK_004 BITMAP                  "..\\Resources\\brick\\bomb_break_004.bmp"
+
+IDB_BOMB_BRICK_BREAK_005 BITMAP                  "..\\Resources\\brick\\bomb_break_005.bmp"
+
+IDB_BOMB_BRICK_BREAK_006 BITMAP                  "..\\Resources\\brick\\bomb_break_006.bmp"
+
+IDB_SLIME_REBOUND_001   BITMAP                  "..\\Resources\\brick\\slime_rebound_001.bmp"
+
+IDB_SLIME_REBOUND_002   BITMAP                  "..\\Resources\\brick\\slime_rebound_002.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

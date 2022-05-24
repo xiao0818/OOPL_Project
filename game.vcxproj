@@ -365,9 +365,17 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\brick\BombBrick.bmp" />
+    <Image Include="Resources\brick\bomb_break_001.bmp" />
+    <Image Include="Resources\brick\bomb_break_002.bmp" />
+    <Image Include="Resources\brick\bomb_break_003.bmp" />
+    <Image Include="Resources\brick\bomb_break_004.bmp" />
+    <Image Include="Resources\brick\bomb_break_005.bmp" />
+    <Image Include="Resources\brick\bomb_break_006.bmp" />
     <Image Include="Resources\brick\brick_break_001.bmp" />
     <Image Include="Resources\brick\brick_break_002.bmp" />
     <Image Include="Resources\brick\SlimeBrick.bmp" />
+    <Image Include="Resources\brick\slime_rebound_001.bmp" />
+    <Image Include="Resources\brick\slime_rebound_002.bmp" />
     <Image Include="Resources\brick\SteelBrick.bmp" />
     <Image Include="Resources\brick\StoneBrick.bmp" />
     <Image Include="Resources\brick\WoodenBrick.bmp" />

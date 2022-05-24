@@ -16,6 +16,7 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		isSwallowed = isHit = false;
 		bitmap.SetDelayCount(2);
+		reboundStepCount = 3;
 	}
 
 	int CBrick::GetIndexX()
@@ -62,10 +63,16 @@ namespace game_framework {
 			}
 			else
 			{
-				isAlive = false;
+				bitmap.Reset();
+				isHit = false;
+				if (type == CName::WOODEN)
+				{
+					isAlive = false;
+				}
 			}
 		}
-		else if (isAlive)
+
+		if (isAlive)
 		{
 			if (isSwallowed)
 			{
@@ -177,8 +184,8 @@ namespace game_framework {
 					}
 					else
 					{
-						isMovingLeft = false;
 						Hit();
+						isMovingLeft = false;
 					}
 				}
 				else if (isMovingRight)
@@ -242,8 +249,8 @@ namespace game_framework {
 					}
 					else
 					{
-						isMovingRight = false;
 						Hit();
+						isMovingRight = false;
 					}
 				}
 				else if (isMovingUp)
@@ -307,8 +314,8 @@ namespace game_framework {
 					}
 					else
 					{
-						isMovingUp = false;
 						Hit();
+						isMovingUp = false;
 					}
 				}
 				else if (isMovingDown)
@@ -372,8 +379,8 @@ namespace game_framework {
 					}
 					else
 					{
-						isMovingDown = false;
 						Hit();
+						isMovingDown = false;
 					}
 				}
 			}
@@ -389,6 +396,7 @@ namespace game_framework {
 		mapRecord->SetBrickInMap(indexX, indexY, type);
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
+		reboundStepCount = 3;
 		if (faceTo == CDirection::LEFT)
 		{
 			isMovingLeft = true;
@@ -409,12 +417,41 @@ namespace game_framework {
 
 	void CBrick::Hit()
 	{
-		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 		if (type == CName::WOODEN)
 		{
 			mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 			isHit = true;
 		}
+		else if (type == CName::SLIME)
+		{
+			if (isMovingLeft)
+			{
+				isMovingLeft = false;
+				isMovingRight = true;
+			}
+			else if (isMovingRight)
+			{
+				isMovingRight = false;
+				isMovingLeft = true;
+			}
+			else if (isMovingUp)
+			{
+				isMovingUp = false;
+				isMovingDown = true;
+			}
+			else if (isMovingDown)
+			{
+				isMovingDown = false;
+				isMovingUp = true;
+			}
+			if (reboundStepCount-- >= 0)
+			{
+				mapRecord->SetBrickInMap(indexX, indexY, CName::SLIME);
+				isHit = true;
+				return;
+			}
+		}
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
 	}
 
 	void CBrick::SetXY(int ni, int nj, int nx, int ny)

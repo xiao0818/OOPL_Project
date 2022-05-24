@@ -10,6 +10,15 @@ namespace game_framework {
 	void CSlime::LoadBitmap()
 	{
 		bitmap.AddBitmap(IDB_SLIME_BRICK);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_001);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_001);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_001);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_001);
+		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
+		bitmap.AddBitmap(IDB_SLIME_BRICK);
 	}
 
 	void CSlime::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)

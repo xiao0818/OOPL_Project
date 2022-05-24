@@ -50,6 +50,7 @@ namespace game_framework {
 		double STEP_SIZE_X;
 		double STEP_SIZE_Y;
 		CName type;
+		int reboundStepCount;
 	};
 }
 

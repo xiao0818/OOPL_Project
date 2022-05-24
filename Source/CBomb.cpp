@@ -10,6 +10,12 @@ namespace game_framework {
 	void CBomb::LoadBitmap()
 	{
 		bitmap.AddBitmap(IDB_BOMB_BRICK);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_001);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_002);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_003);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_004);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_005);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_006);
 	}
 
 	void CBomb::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)
