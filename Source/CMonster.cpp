@@ -333,6 +333,11 @@ namespace game_framework {
 		faceTo = GetNewMovingDirection();
 	}
 
+	void CMonster::SetAlive(bool flag)
+	{
+		isAlive = flag;
+	}
+
 	void CMonster::SetInvincible()
 	{
 		if (type == CName::TURTLE)

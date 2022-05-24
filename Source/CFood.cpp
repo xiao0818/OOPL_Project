@@ -138,6 +138,11 @@ namespace game_framework {
 		y = double(ny);
 	}
 
+	void CFood::SetAlive(bool flag)
+	{
+		isAlive = flag;
+	}
+
 	void CFood::Swallowed(CDirection faceTo)
 	{
 		isSwallowed = true;

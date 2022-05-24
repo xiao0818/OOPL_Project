@@ -14,9 +14,10 @@ namespace game_framework {
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		isAlive = true;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		isSwallowed = isHit = false;
+		isSwallowed = isHit = isBombCounting = isBomb = false;
 		bitmap.SetDelayCount(2);
 		reboundStepCount = 3;
+		bombCount = 10 * 30;
 	}
 
 	int CBrick::GetIndexX()
@@ -39,7 +40,7 @@ namespace game_framework {
 		return isAlive;
 	}
 
-	void CBrick::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)
+	void CBrick::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 	}
 
@@ -55,25 +56,87 @@ namespace game_framework {
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
 
-		if (isHit)
+		if (isAlive)
 		{
-			if (!bitmap.IsFinalBitmap())
+			if (isBombCounting)
 			{
-				bitmap.OnMove();
+				if (bombCount-- == 0)
+				{
+					if (type == CName::BOMB)
+					{
+						Bomb();
+					}
+				}
 			}
-			else
+
+			if (isBomb)
 			{
-				bitmap.Reset();
-				isHit = false;
-				if (type == CName::WOODEN)
+				mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
+
+				for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+				{
+					if (indexX - 1 <= k->GetIndexX() && k->GetIndexX() <= indexX + 1 && indexY - 1 <= k->GetIndexY() && k->GetIndexY() <= indexY + 1 && k->IsAlive())
+					{
+						k->SetAlive(false);
+						mapRecord->SetMonsterInMap(k->GetIndexX(), k->GetIndexY(), CName::SPACE);
+					}
+				}
+
+				for (list<CBrick>::iterator k = brickRecord->begin(); k != brickRecord->end(); k++)
+				{
+					if (indexX - 1 <= k->GetIndexX() && k->GetIndexX() <= indexX + 1 && indexY - 1 <= k->GetIndexY() && k->GetIndexY() <= indexY + 1 && k->IsAlive())
+					{
+						k->Bomb();
+						mapRecord->SetBrickInMap(k->GetIndexX(), k->GetIndexY(), CName::SPACE);
+					}
+				}
+
+				for (list<CFood>::iterator k = foodRecord->begin(); k != foodRecord->end(); k++)
+				{
+					if (indexX - 1 <= k->GetIndexX() && k->GetIndexX() <= indexX + 1 && indexY - 1 <= k->GetIndexY() && k->GetIndexY() <= indexY + 1 && k->IsAlive())
+					{
+						k->SetAlive(false);
+						mapRecord->SetFoodInMap(k->GetIndexX(), k->GetIndexY(), CName::SPACE);
+					}
+				}
+
+				if (indexX - 1 <= player1Record->GetIndexX() && player1Record->GetIndexX() <= indexX + 1 && indexY - 1 <= player1Record->GetIndexY() && player1Record->GetIndexY() <= indexY + 1 && !player1Record->IsFail())
+				{
+					player1Record->Fail();
+				}
+
+				if (indexX - 1 <= player2Record->GetIndexX() && player2Record->GetIndexX() <= indexX + 1 && indexY - 1 <= player2Record->GetIndexY() && player2Record->GetIndexY() <= indexY + 1 && !player2Record->IsFail())
+				{
+					player2Record->Fail();
+				}
+
+				if (!bitmap.IsFinalBitmap())
+				{
+					bitmap.OnMove();
+				}
+				else
 				{
 					isAlive = false;
 				}
 			}
-		}
 
-		if (isAlive)
-		{
+			if (isHit)
+			{
+				if (!bitmap.IsFinalBitmap())
+				{
+					bitmap.OnMove();
+				}
+				else
+				{
+					bitmap.Reset();
+					isHit = false;
+					if (type == CName::WOODEN)
+					{
+						isAlive = false;
+					}
+				}
+			}
+
 			if (isSwallowed)
 			{
 				if (isMovingLeft)
@@ -397,6 +460,12 @@ namespace game_framework {
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		reboundStepCount = 3;
+		if (type == CName::BOMB)
+		{
+			bombCount = 10 * 30;
+			isBombCounting = true;
+		}
+		
 		if (faceTo == CDirection::LEFT)
 		{
 			isMovingLeft = true;
@@ -452,6 +521,11 @@ namespace game_framework {
 			}
 		}
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+	}
+
+	void CBrick::Bomb()
+	{
+		isBomb = true;
 	}
 
 	void CBrick::SetXY(int ni, int nj, int nx, int ny)

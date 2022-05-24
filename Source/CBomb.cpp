@@ -10,20 +10,27 @@ namespace game_framework {
 	void CBomb::LoadBitmap()
 	{
 		bitmap.AddBitmap(IDB_BOMB_BRICK);
-		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_001);
-		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_002);
-		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_003);
-		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_004);
-		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_005);
-		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_006);
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_001, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_001, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_002, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_002, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_003, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_003, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_004, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_004, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_005, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_005, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_006, RGB(255, 255, 255));
+		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_006, RGB(255, 255, 255));
 	}
 
-	void CBomb::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)
+	void CBomb::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
 		player1Record = player1;
 		player2Record = player2;
 		brickRecord = brick;
+		foodRecord = food;
 		monsterRecord = monster;
 		STEP_TARGET = 8;
 		STEP_SIZE_X = 4.5;

@@ -11,7 +11,7 @@ namespace game_framework {
 	{
 	public:
 		void LoadBitmap() override;
-		void Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster) override;
+		void Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster) override;
 	};
 }
 

@@ -27,6 +27,7 @@ namespace game_framework {
 		void HitByBrick(CDirection tempDir);
 		void Swallowed(CDirection faceTo);
 		void Reset();
+		void SetAlive(bool flag);
 		void SetInvincible();
 		void MudAndTurtleMove();
 		void SkeletonMove();

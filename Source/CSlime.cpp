@@ -16,17 +16,16 @@ namespace game_framework {
 		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
 		bitmap.AddBitmap(IDB_SLIME_REBOUND_001);
 		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
-		bitmap.AddBitmap(IDB_SLIME_REBOUND_001);
-		bitmap.AddBitmap(IDB_SLIME_REBOUND_002);
 		bitmap.AddBitmap(IDB_SLIME_BRICK);
 	}
 
-	void CSlime::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CMonster> *monster)
+	void CSlime::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
 		player1Record = player1;
 		player2Record = player2;
 		brickRecord = brick;
+		foodRecord = food;
 		monsterRecord = monster;
 		STEP_TARGET = 8;
 		STEP_SIZE_X = 4.5;

@@ -17,6 +17,7 @@ namespace game_framework {
 		void LoadBitmap(CName name);
 		void OnMove();
 		void SetXY(int ni, int nj, int nx, int ny);
+		void SetAlive(bool flag);
 		void Swallowed(CDirection faceTo);
 		void OnShow();
 	protected:

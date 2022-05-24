@@ -935,7 +935,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempStone.Initialize(&map, &player1, &player2, &brick, &food, &monster);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -943,7 +943,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempWooden.Initialize(&map, &player1, &player2, &brick, &food, &monster);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -951,7 +951,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempSteel.Initialize(&map, &player1, &player2, &brick, &food, &monster);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);
@@ -959,7 +959,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::SLIME)
 				{
 					CSlime tempSlime;
-					tempSlime.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempSlime.Initialize(&map, &player1, &player2, &brick, &food, &monster);
 					tempSlime.LoadBitmap();
 					tempSlime.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSlime);
@@ -967,7 +967,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::BOMB)
 				{
 					CBomb tempBomb;
-					tempBomb.Initialize(&map, &player1, &player2, &brick, &monster);
+					tempBomb.Initialize(&map, &player1, &player2, &brick, &food, &monster);
 					tempBomb.LoadBitmap();
 					tempBomb.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempBomb);
