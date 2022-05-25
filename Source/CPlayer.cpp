@@ -282,6 +282,14 @@ namespace game_framework {
 			}
 		}
 
+		if (isSwallowed)
+		{
+			if (!swallowedBrick->IsAlive())
+			{
+				swallowedBrick->SetXY(indexX, indexY, int(x), int(y));
+			}
+		}
+
 		for (list<CTrap>::iterator k = trapRecord->begin(); k != trapRecord->end(); k++)
 		{
 			if (k->GetIndexX() == indexX && k->GetIndexY() == indexY)

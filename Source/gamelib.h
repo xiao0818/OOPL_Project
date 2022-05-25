@@ -255,7 +255,7 @@ public:
 	CInteger(int=4);			// default 4 digits
 	void Add(int n);			// 增加整數值
 	int  GetInteger();			// 回傳整數值
-	virtual void LoadBitmap();			// 載入0..9及負號之圖形
+	void LoadBitmap();			// 載入0..9及負號之圖形
 	void SetInteger(int);		// 設定整數值
 	void SetTopLeft(int,int);	// 將動畫的左上角座標移至 (x,y)
 	void ShowBitmap();			// 將動畫貼到螢幕

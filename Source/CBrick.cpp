@@ -522,6 +522,8 @@ namespace game_framework {
 	void CBrick::Bomb()
 	{
 		isBomb = true;
+		isBombCounting = false;
+		isAlive = true;
 	}
 
 	void CBrick::SetXY(int ni, int nj, int nx, int ny)
@@ -573,7 +575,16 @@ namespace game_framework {
 			if (isBombCounting && !isBomb)
 			{
 				count.SetInteger(bombCount / 30);
-				count.SetTopLeft(int(x) + 15, int(y) - 10);
+				count.SetTopLeft(int(x) + 14, int(y) - 10);
+				count.ShowBitmap();
+			}
+		}
+		else if (!isAlive)
+		{
+			if (isBombCounting && !isBomb)
+			{
+				count.SetInteger(bombCount / 30);
+				count.SetTopLeft(int(x) + 14, int(y) - 40);
 				count.ShowBitmap();
 			}
 		}

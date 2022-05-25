@@ -317,7 +317,7 @@ namespace game_framework {
 		}
 	}
 
-	void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
+	void CGameStateInit::OnLButtonUp(UINT nFlags, CPoint point)
 	{
 		if (isOnMusicButton)
 		{
@@ -650,7 +650,7 @@ namespace game_framework {
 		}
 	}
 
-	void CGameStateOver::OnLButtonDown(UINT nFlags, CPoint point)
+	void CGameStateOver::OnLButtonUp(UINT nFlags, CPoint point)
 	{
 		if (isOnMusicButton)
 		{
@@ -717,10 +717,6 @@ namespace game_framework {
 			}
 			GotoGameState(GAME_STATE_RUN);
 		}
-	}
-
-	void CGameStateOver::OnRButtonDown(UINT nFlags, CPoint point)
-	{
 	}
 
 	void CGameStateOver::OnShow()
@@ -1234,15 +1230,15 @@ namespace game_framework {
 
 	void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)
 	{
+	}
+
+	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
+	{
 		player1.Success();
 		if (playerNumber == 2)
 		{
 			player2.Success();
 		}
-	}
-
-	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)
-	{
 	}
 
 	void CGameStateRun::OnShow()
