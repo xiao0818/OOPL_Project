@@ -192,17 +192,11 @@ namespace game_framework {
 		shareData->InitializeState();
 		player1Button.SetDelayCount(2);
 		player2Button.SetDelayCount(2);
-		helpPage.SetDelayCount(2);
+		helpPage.SetDelayCount(3);
 	}
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
-		//const char KEY_ESC = 27;
-		//const char KEY_SPACE = ' ';
-		//if (nChar == KEY_SPACE)
-		//	GotoGameState(GAME_STATE_RUN);						// 切換至GAME_STATE_RUN
-		//else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
-		//	PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 關閉遊戲
 	}
 
 	void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)
@@ -516,6 +510,15 @@ namespace game_framework {
 			cross.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
 			cross.ShowBitmap();
 		}
+
+		if (isOnMusicButton || isOnSoundButton || isOnPlayButton || isOnScoresButton || isOnHelpButton || isOnCreditsButton || isOnPlayerButton || isOnLevelButton || isOnBackButton)
+		{
+			SetCursor(AfxGetApp()->LoadCursor(IDC_CURSOR_LINK));
+		}
+		else
+		{
+			SetCursor(AfxGetApp()->LoadCursor(IDC_CURSOR_ARROW));
+		}
 	}								
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -815,6 +818,15 @@ namespace game_framework {
 		{
 			cross.SetTopLeft(GROUND_X + SOUND_INDEX_X, GROUND_Y + SOUND_INDEX_Y);
 			cross.ShowBitmap();
+		}
+
+		if (isOnMusicButton || isOnSoundButton || isOnNextLevelButton || isOnTryAgainButton || isOnBackButton)
+		{
+			SetCursor(AfxGetApp()->LoadCursor(IDC_CURSOR_LINK));
+		}
+		else
+		{
+			SetCursor(AfxGetApp()->LoadCursor(IDC_CURSOR_ARROW));
 		}
 	}
 

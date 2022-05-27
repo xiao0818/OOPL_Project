@@ -657,6 +657,9 @@
 #define IDB_SLIME_REBOUND_001           807
 #define IDB_BITMAP13                    808
 #define IDB_SLIME_REBOUND_002           808
+#define IDC_CURSOR_ARROW                809
+#define IDC_CURSOR1                     810
+#define IDC_CURSOR_LINK                 810
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -669,7 +672,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        809
+#define _APS_NEXT_RESOURCE_VALUE        811
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

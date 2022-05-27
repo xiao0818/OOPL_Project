@@ -6,7 +6,7 @@
 #include "gamelib.h"
 #include "CBrick.h"
 #include "CPlayer.h"
-#include "CCount.h"
+
 
 namespace game_framework {
 	CBrick::CBrick()
