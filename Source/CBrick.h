@@ -4,7 +4,6 @@
 #include "CName.h"
 #include "CDirection.h"
 #include "CMap.h"
-#include "CBrick.h"
 #include "CFood.h"
 #include "CMonster.h"
 #include "CCount.h"

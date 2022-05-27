@@ -230,6 +230,8 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Resources\cursor\aero_arrow.cur" />
+    <None Include="Resources\cursor\aero_link.cur" />
     <None Include="RES\bmp0.bmp" />
     <None Include="RES\bmp1.bmp" />
     <None Include="RES\bmp10.bmp" />

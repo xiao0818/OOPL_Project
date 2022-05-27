@@ -1338,6 +1338,10 @@ IDB_SLIME_REBOUND_002   BITMAP                  "..\\Resources\\brick\\slime_reb
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
+IDC_CURSOR_ARROW        CURSOR                  "..\\Resources\\cursor\\aero_arrow.cur"
+
+IDC_CURSOR_LINK         CURSOR                  "..\\Resources\\cursor\\aero_link.cur"
+
 #endif    // Chinese (Traditional, Taiwan) resources
 /////////////////////////////////////////////////////////////////////////////
 

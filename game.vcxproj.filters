@@ -76,6 +76,12 @@
     <None Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\cursor\aero_arrow.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\cursor\aero_link.cur">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\audio.cpp">
