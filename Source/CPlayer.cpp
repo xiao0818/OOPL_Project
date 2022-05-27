@@ -313,6 +313,15 @@ namespace game_framework {
 				isFail = true;
 			}
 		}
+
+		if (!isSuccess && !isFail)
+		{
+			isSuccess = true;
+			for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
+			{
+				isSuccess = isSuccess && !k->IsAlive();
+			}
+		}
 	}
 
 	void CPlayer::SetMovingLeft(bool flag)
@@ -562,12 +571,6 @@ namespace game_framework {
 					}
 				}
 			}
-		}
-
-		isSuccess = true;
-		for (list<CMonster>::iterator k = monsterRecord->begin(); k != monsterRecord->end(); k++)
-		{
-			isSuccess = isSuccess && !k->IsAlive();
 		}
 	}
 

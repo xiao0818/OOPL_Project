@@ -8,13 +8,17 @@ namespace game_framework {
 		CGround();
 		void LoadBitmap();
 		void Initialize(int nx, int ny);
+		void Bomb();
+		void OnMove();
 		void OnShow();
 		void SetXY(int nx ,int ny);
 	protected:
 		CMovingBitmap ground;
+		CAnimation bomb;
 		int x, y;
 		int brickLength, brickWidth;
 		int brickNumberX, brickNumberY;
+		bool isBomb;
 	};
 }
 

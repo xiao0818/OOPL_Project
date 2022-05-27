@@ -855,6 +855,11 @@ namespace game_framework {
 			CAudio::Instance()->Stop(AUDIO_MENU);
 			CAudio::Instance()->Stop(AUDIO_MAIN);
 		}
+
+		isCPressed = false;
+		isOPressed = false;
+		isMPressed = false;
+		isBPressed = false;
 		
 		playerNumber = shareData->GetPlayerNumber();
 		map.SelectLevel(shareData->GetSelectedLevelIndex());
@@ -1019,6 +1024,7 @@ namespace game_framework {
 
 	void CGameStateRun::OnMove()
 	{
+		ground.OnMove();
 		player1.OnMove();
 		if (playerNumber == 2)
 		{
@@ -1111,6 +1117,10 @@ namespace game_framework {
 		const char KEY_W = 0x57;
 		const char KEY_S = 0x53;
 		const char KEY_CTRL = 0x11;
+		const char KEY_C = 0x43;
+		const char KEY_O = 0x4F;
+		const char KEY_M = 0x4D;
+		const char KEY_B = 0x42;
 
 		if (nChar == KEY_R)
 		{
@@ -1171,6 +1181,30 @@ namespace game_framework {
 				}
 			}
 		}
+
+		if (nChar == KEY_C)
+		{
+			isCPressed = true;
+		}
+		if (nChar == KEY_O)
+		{
+			isOPressed = true;
+		}
+		if (nChar == KEY_M)
+		{
+			isMPressed = true;
+		}
+		if (nChar == KEY_B)
+		{
+			isBPressed = true;
+		}
+
+		if (isCPressed && isOPressed && isMPressed && isBPressed)
+		{
+			ground.Bomb();
+			monster.clear();
+			food.clear();
+		}
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -1179,10 +1213,16 @@ namespace game_framework {
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_UP = 0x26; // keyboard上箭頭
 		const char KEY_DOWN = 0x28; // keyboard下箭頭
+		const char KEY_SPACE = 0x20;
 		const char KEY_A = 0x41;
 		const char KEY_D = 0x44;
 		const char KEY_W = 0x57;
 		const char KEY_S = 0x53;
+		const char KEY_CTRL = 0x11;
+		const char KEY_C = 0x43;
+		const char KEY_O = 0x4F;
+		const char KEY_M = 0x4D;
+		const char KEY_B = 0x42;
 
 		if (!player1.IsSuccess() && !player1.IsFail())
 		{
@@ -1225,6 +1265,23 @@ namespace game_framework {
 					player2.SetMovingDown(false);
 				}
 			}
+		}
+
+		if (nChar == KEY_C)
+		{
+			isCPressed = false;
+		}
+		if (nChar == KEY_O)
+		{
+			isOPressed = false;
+		}
+		if (nChar == KEY_M)
+		{
+			isMPressed = false;
+		}
+		if (nChar == KEY_B)
+		{
+			isBPressed = false;
 		}
 	}
 

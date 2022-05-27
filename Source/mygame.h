@@ -195,6 +195,10 @@ namespace game_framework {
 		int	playerNumber;
 		int	player1Count;
 		int	player2Count;
+		bool isCPressed;
+		bool isOPressed;
+		bool isMPressed;
+		bool isBPressed;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

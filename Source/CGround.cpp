@@ -12,19 +12,54 @@ namespace game_framework {
 	{
 		x = y = 0;
 		brickNumberX = brickNumberY = 0;
-		brickLength = 36;
-		brickWidth = 24;
+		isBomb = false;
+		bomb.SetDelayCount(3);
 	}
 
 	void CGround::LoadBitmap()
 	{
-		ground.LoadBitmap(IDB_GROUND);
+		ground.LoadBitmapA(IDB_GROUND);
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_001, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_001, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_002, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_002, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_003, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_003, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_004, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_004, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_005, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_005, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_006, RGB(255, 255, 255));
+		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_006, RGB(255, 255, 255));
 	}
 
 	void CGround::Initialize(int nx, int ny)
 	{
+		x = y = 0;
+		isBomb = false;
 		brickNumberX = nx;
 		brickNumberY = ny;
+		bomb.Reset();
+	}
+
+	void CGround::Bomb()
+	{
+		isBomb = true;
+	}
+
+	void CGround::OnMove()
+	{
+		if (isBomb)
+		{
+			if (!bomb.IsFinalBitmap())
+			{
+				bomb.OnMove();
+			}
+			else
+			{
+				isBomb = false;
+			}
+		}
 	}
 
 	void CGround::SetXY(int nx, int ny)
@@ -35,12 +70,21 @@ namespace game_framework {
 
 	void CGround::OnShow()
 	{
+		const int BRICK_LENGTH = 36;
+		const int BRICK_WIDTH = 24;
+
 		for (int i = 0; i < brickNumberY; i++)
 		{
 			for (int j = 0; j < brickNumberX; j++)
 			{
-				ground.SetTopLeft(x + brickLength * j, y + brickWidth * i);
+				ground.SetTopLeft(x + BRICK_LENGTH * j, y + BRICK_WIDTH * i);
 				ground.ShowBitmap();
+
+				if (isBomb)
+				{
+					bomb.SetTopLeft(x + BRICK_LENGTH * j + (BRICK_LENGTH / 2) - (bomb.Width() / 2), y + BRICK_WIDTH * i + (BRICK_WIDTH / 2) - (bomb.Height() / 2));
+					bomb.OnShow();
+				}
 			}
 		}
 	}
