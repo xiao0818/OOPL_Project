@@ -78,6 +78,7 @@ namespace game_framework {
 				brickMap[i][j] = CName::SPACE;
 				foodMap[i][j] = CName::SPACE;
 				monsterMap[i][j] = CName::SPACE;
+				sidewallMap[i][j] = CName::SPACE;
 
 				if (map[i][j] == CName::PLAYER1 || map[i][j] == CName::PLAYER2)
 				{
@@ -98,6 +99,9 @@ namespace game_framework {
 				else if (map[i][j] == CName::MUD || map[i][j] == CName::TURTLE || map[i][j] == CName::SKELETON)
 				{
 					monsterMap[i][j] = map[i][j];
+				}
+				if (i == 0 || j == 0 || i == brickNumberX - 1 || j == brickNumberY - 1) {
+					sidewallMap[i][j] = map[i][j];
 				}
 			}
 		}
@@ -176,13 +180,9 @@ namespace game_framework {
 		return foodMap[nx][ny];
 	}
 
-	void CMap::SetMonsterInMap(int nx, int ny, CName name)
-	{
-		monsterMap[nx][ny] = name;
-	}
 
 	CName CMap::GetMonsterInMap(int nx, int ny)
 	{
-		return monsterMap[nx][ny];
+		return sidewallMap[nx][ny];
 	}
 }
