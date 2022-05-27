@@ -48,6 +48,7 @@ namespace game_framework {
 		brickMap = new CName *[brickNumberX];
 		foodMap = new CName *[brickNumberX];
 		monsterMap = new CName *[brickNumberX];
+		sidewallMap = new CName *[brickNumberX];
 		for (int i = 0; i < brickNumberX; i++)
 		{
 			map[i] = new CName[brickNumberY];
@@ -56,6 +57,8 @@ namespace game_framework {
 			brickMap[i] = new CName [brickNumberY];
 			foodMap[i] = new CName[brickNumberY];
 			monsterMap[i] = new CName [brickNumberY];
+			sidewallMap[i] = new CName [brickNumberY];
+
 		}
 
 		for (int i = 0; i < brickNumberX; i++)
@@ -117,6 +120,7 @@ namespace game_framework {
 			delete [] brickMap[i];
 			delete [] foodMap[i];
 			delete [] monsterMap[i];
+			delete [] sidewallMap[i];
 		}
 		delete [] map;
 		delete [] playerMap;
@@ -124,6 +128,7 @@ namespace game_framework {
 		delete [] brickMap;
 		delete [] foodMap;
 		delete [] monsterMap;
+		delete [] sidewallMap;
 
 		undeleteFlag = false;
 	}
@@ -180,6 +185,15 @@ namespace game_framework {
 		return foodMap[nx][ny];
 	}
 
+	void CMap::SetMonsterInMap(int nx, int ny, CName name)
+	{
+		monsterMap[nx][ny] = name;
+	}
+
+	CName CMap::GetMonsterInMap(int nx, int ny)
+	{
+		return monsterMap[nx][ny];
+	}
 
 	CName CMap::GetSidewallInMap(int nx, int ny)
 	{
