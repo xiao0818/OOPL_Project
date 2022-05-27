@@ -26,6 +26,7 @@ namespace game_framework {
 		CName GetFoodInMap(int nx, int ny);
 		void SetMonsterInMap(int nx, int ny, CName name);
 		CName GetMonsterInMap(int nx, int ny);
+		CName GetSidewallInMap(int nx, int ny);
 	private:
 		int level;
 		CName **map;
@@ -34,6 +35,7 @@ namespace game_framework {
 		CName **brickMap;
 		CName **foodMap;
 		CName **monsterMap;
+		CName **sidewallMap;
 		const int levelBrickNumberX[50] = { 14, 14, 11, 16, 12, 13, 14, 13, 13, 13, 13, 22, 11, 11, 14, 11, 14, 12, 14, 13, 16, 11, 11, 13, 11, 14, 11, 13, 11, 13, 13, 13, 12, 14, 13, 11, 16, 13, 13, 12, 11, 29, 12, 14, 12, 13, 13, 14, 11, 16};
 		const int levelBrickNumberY[50] = { 14, 14, 18, 14, 17, 15, 14, 16, 15, 15, 16, 20, 18, 18, 14, 18, 14, 17, 16, 16, 14, 18, 18, 15, 18, 14, 18, 15, 18, 15, 15, 15, 18, 16, 15, 18, 14, 15, 16, 18, 18, 14, 16, 14, 16, 15, 15, 14, 18, 16};
 		int brickNumberX;
