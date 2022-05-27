@@ -181,7 +181,7 @@ namespace game_framework {
 	}
 
 
-	CName CMap::GetMonsterInMap(int nx, int ny)
+	CName CMap::GetSidewallInMap(int nx, int ny)
 	{
 		return sidewallMap[nx][ny];
 	}

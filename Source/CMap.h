@@ -26,7 +26,7 @@ namespace game_framework {
 		CName GetFoodInMap(int nx, int ny);
 		void SetMonsterInMap(int nx, int ny, CName name);
 		CName GetMonsterInMap(int nx, int ny);
-		CName GetSideWallInMap(int nx, int ny);
+		CName GetSidewallInMap(int nx, int ny);
 	private:
 		int level;
 		CName **map;
