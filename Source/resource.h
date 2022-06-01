@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by game.rc
+// Microsoft Visual C++ 產生的 Include 檔案。
+// 由 game.rc 使用
 //
 #define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
@@ -660,6 +660,71 @@
 #define IDC_CURSOR_ARROW                809
 #define IDC_CURSOR1                     810
 #define IDC_CURSOR_LINK                 810
+#define IDB_FISH_HIT_DOWN_001           811
+#define IDB_FISH_HIT_DOWN_002           812
+#define IDB_FISH_HIT_DOWN_003           813
+#define IDB_FISH_HIT_DOWN_004           814
+#define IDB_FISH_HIT_DOWN_005           815
+#define IDB_FISH_HIT_DOWN_006           816
+#define IDB_FISH_HIT_DOWN_007           817
+#define IDB_FISH_HIT_DOWN_008           818
+#define IDB_FISH_HIT_LEFT_001           819
+#define IDB_FISH_HIT_LEFT_002           820
+#define IDB_FISH_HIT_LEFT_003           821
+#define IDB_FISH_HIT_LEFT_004           822
+#define IDB_FISH_HIT_LEFT_005           823
+#define IDB_FISH_HIT_LEFT_006           824
+#define IDB_FISH_HIT_LEFT_007           825
+#define IDB_FISH_HIT_LEFT_008           826
+#define IDB_FISH_HIT_RIGHT_001          827
+#define IDB_FISH_HIT_RIGHT_002          828
+#define IDB_FISH_HIT_RIGHT_003          829
+#define IDB_FISH_HIT_RIGHT_004          830
+#define IDB_FISH_HIT_RIGHT_005          831
+#define IDB_FISH_HIT_RIGHT_006          832
+#define IDB_FISH_HIT_RIGHT_007          833
+#define IDB_FISH_HIT_RIGHT_008          834
+#define IDB_FISH_HIT_UP_001             835
+#define IDB_FISH_HIT_UP_002             836
+#define IDB_FISH_HIT_UP_003             837
+#define IDB_FISH_HIT_UP_004             838
+#define IDB_FISH_HIT_UP_005             839
+#define IDB_FISH_HIT_UP_006             840
+#define IDB_FISH_HIT_UP_007             841
+#define IDB_FISH_HIT_UP_008             842
+#define IDB_FISH_MOVE_DOWN_001          843
+#define IDB_FISH_MOVE_DOWN_002          844
+#define IDB_FISH_MOVE_DOWN_003          845
+#define IDB_FISH_MOVE_DOWN_004          846
+#define IDB_FISH_MOVE_DOWN_005          847
+#define IDB_FISH_MOVE_DOWN_006          848
+#define IDB_FISH_MOVE_DOWN_007          849
+#define IDB_FISH_MOVE_DOWN_008          850
+#define IDB_FISH_MOVE_LEFT_001          851
+#define IDB_FISH_MOVE_LEFT_002          852
+#define IDB_FISH_MOVE_LEFT_003          853
+#define IDB_FISH_MOVE_LEFT_004          854
+#define IDB_FISH_MOVE_LEFT_005          855
+#define IDB_FISH_MOVE_LEFT_006          856
+#define IDB_FISH_MOVE_LEFT_007          857
+#define IDB_FISH_MOVE_LEFT_008          858
+#define IDB_FISH_MOVE_RIGHT_001         859
+#define IDB_FISH_MOVE_RIGHT_002         860
+#define IDB_FISH_MOVE_RIGHT_003         861
+#define IDB_FISH_MOVE_RIGHT_004         862
+#define IDB_FISH_MOVE_RIGHT_005         863
+#define IDB_FISH_MOVE_RIGHT_006         864
+#define IDB_FISH_MOVE_RIGHT_007         865
+#define IDB_FISH_MOVE_RIGHT_008         866
+#define IDB_FISH_MOVE_UP_001            867
+#define IDB_FISH_MOVE_UP_002            868
+#define IDB_FISH_MOVE_UP_003            869
+#define IDB_FISH_MOVE_UP_004            870
+#define IDB_FISH_MOVE_UP_005            871
+#define IDB_FISH_MOVE_UP_006            872
+#define IDB_FISH_MOVE_UP_007            873
+#define IDB_BITMAP14                    874
+#define IDB_FISH_MOVE_UP_008            874
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -672,7 +737,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        811
+#define _APS_NEXT_RESOURCE_VALUE        875
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

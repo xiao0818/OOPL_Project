@@ -99,7 +99,7 @@ namespace game_framework {
 				{
 					foodMap[i][j] = map[i][j];
 				}
-				else if (map[i][j] == CName::MUD || map[i][j] == CName::TURTLE || map[i][j] == CName::SKELETON)
+				else if (map[i][j] == CName::MUD || map[i][j] == CName::TURTLE || map[i][j] == CName::SKELETON || map[i][j] == CName::FISH_MAN)
 				{
 					monsterMap[i][j] = map[i][j];
 				}

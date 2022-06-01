@@ -60,6 +60,7 @@
 #include "CMud.h"
 #include "CTurtle.h"
 #include "CSkeleton.h"
+#include "CFish.h"
 #include "CScore.h"
 
 namespace game_framework {

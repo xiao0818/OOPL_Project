@@ -1018,6 +1018,14 @@ namespace game_framework {
 					tempSkeleton.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempSkeleton);
 				}
+				else if (map.GetMonsterInMap(i, j) == CName::FISH_MAN) {
+				CFish tempFish;
+				tempFish.Initialize(&map);
+				tempFish.LoadBitmap();
+				tempFish.SetTypeFlag(CName::FISH_MAN);
+				tempFish.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+				monster.push_back(tempFish);
+				}
 			}
 		}
 	}

@@ -32,6 +32,7 @@ namespace game_framework {
 		void MudAndTurtleMove();
 		void SkeletonMove();
 		void ChangeRushStatus();
+		void FishMove();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -67,10 +68,12 @@ namespace game_framework {
 		int movingUpCount;
 		int movingDownCount;
 		int hitCount;
+		int resetCount;
 		CMap *mapRecord;
 		CDirection faceTo;
 		bool isAlive;
 		bool isRush;
+		bool isFly;
 	};
 };
 
