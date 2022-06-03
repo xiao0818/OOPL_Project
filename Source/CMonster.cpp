@@ -120,7 +120,8 @@ namespace game_framework {
 
 	CDirection CMonster::GetNewMovingDirection()
 	{
-		if (type == CName::FISH_MAN) {
+		if (type == CName::FISH_MAN)
+		{
 			if (mapRecord->GetPlayerIndexY() != GetIndexY())
 			{
 				if (mapRecord->GetPlayerIndexY() < GetIndexY())
@@ -159,7 +160,8 @@ namespace game_framework {
 				return CDirection::LEFT;
 			}
 		}
-		else {
+		else
+		{
 			srand((unsigned int)time(NULL));
 
 			int x = rand();
@@ -450,6 +452,7 @@ namespace game_framework {
 				if (movingLeftCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingLeftCount = 0;
 					isMovingLeft = isSwallowed = false;
 				}
@@ -461,6 +464,7 @@ namespace game_framework {
 				if (movingRightCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingRightCount = 0;
 					isMovingRight = isSwallowed = false;
 				}
@@ -472,6 +476,7 @@ namespace game_framework {
 				if (movingUpCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingUpCount = 0;
 					isMovingUp = isSwallowed = false;
 				}
@@ -483,6 +488,7 @@ namespace game_framework {
 				if (movingDownCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingDownCount = 0;
 					isMovingDown = isSwallowed = false;
 				}
@@ -744,6 +750,7 @@ namespace game_framework {
 				if (movingLeftCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingLeftCount = 0;
 					isMovingLeft = isSwallowed = false;
 				}
@@ -755,6 +762,7 @@ namespace game_framework {
 				if (movingRightCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingRightCount = 0;
 					isMovingRight = isSwallowed = false;
 				}
@@ -766,6 +774,7 @@ namespace game_framework {
 				if (movingUpCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingUpCount = 0;
 					isMovingUp = isSwallowed = false;
 				}
@@ -777,6 +786,7 @@ namespace game_framework {
 				if (movingDownCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingDownCount = 0;
 					isMovingDown = isSwallowed = false;
 				}
@@ -1113,6 +1123,7 @@ namespace game_framework {
 				if (movingLeftCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingLeftCount = 0;
 					isMovingLeft = isSwallowed = false;
 				}
@@ -1124,6 +1135,7 @@ namespace game_framework {
 				if (movingRightCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingRightCount = 0;
 					isMovingRight = isSwallowed = false;
 				}
@@ -1135,6 +1147,7 @@ namespace game_framework {
 				if (movingUpCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingUpCount = 0;
 					isMovingUp = isSwallowed = false;
 				}
@@ -1146,6 +1159,7 @@ namespace game_framework {
 				if (movingDownCount == SWALLOWED_STEP_TARGET)
 				{
 					mapRecord->SetMonsterInMap(indexX, indexY, CName::SPACE);
+					indexX = indexY = 0;
 					movingDownCount = 0;
 					isMovingDown = isSwallowed = false;
 				}
