@@ -26,9 +26,10 @@ namespace game_framework {
 		bitmap.AddBitmap(IDB_BOMB_BRICK_BREAK_006, RGB(255, 255, 255));
 	}
 
-	void CBomb::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
+	void CBomb::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
+		shareDataRecord = shareData;
 		player1Record = player1;
 		player2Record = player2;
 		brickRecord = brick;

@@ -19,7 +19,7 @@ namespace game_framework {
 		int  GetIndexY();
 		bool IsMove();
 		bool IsAlive();
-		virtual void Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
+		virtual void Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SpitedOut(CDirection faceTo, int ni, int nj, int nx, int ny);
@@ -58,6 +58,7 @@ namespace game_framework {
 		int reboundStepCount;
 		int bombCount;
 		CCount count;
+		CShareData *shareDataRecord;
 	};
 }
 

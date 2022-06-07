@@ -6,6 +6,7 @@
 #include "gamelib.h"
 #include "CBrick.h"
 #include "CPlayer.h"
+#include "CAudioId.h"
 
 
 namespace game_framework {
@@ -41,7 +42,7 @@ namespace game_framework {
 		return isAlive;
 	}
 
-	void CBrick::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
+	void CBrick::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 	}
 
@@ -63,6 +64,10 @@ namespace game_framework {
 			{
 				if (type == CName::BOMB)
 				{
+					//if (shareDataRecord->IsSoundEnable())
+					//{
+					//	CAudio::Instance()->Play(SOUND_BOMB, false);
+					//}
 					Bomb();
 				}
 			}
@@ -109,6 +114,14 @@ namespace game_framework {
 				if (indexX - 1 <= player2Record->GetIndexX() && player2Record->GetIndexX() <= indexX + 1 && indexY - 1 <= player2Record->GetIndexY() && player2Record->GetIndexY() <= indexY + 1 && !player2Record->IsFail())
 				{
 					player2Record->Fail();
+				}
+
+				if (bitmap.GetCurrentBitmapNumber() == 0)
+				{
+					if (shareDataRecord->IsSoundEnable())
+					{
+						CAudio::Instance()->Play(SOUND_BOMB, false);
+					}
 				}
 
 				if (!bitmap.IsFinalBitmap())
@@ -484,11 +497,19 @@ namespace game_framework {
 	{
 		if (type == CName::WOODEN)
 		{
+			if (shareDataRecord->IsSoundEnable())
+			{
+				CAudio::Instance()->Play(SOUND_WOODEN_BREAK, false);
+			}
 			mapRecord->SetBrickInMap(indexX, indexY, CName::SPACE);
 			isHit = true;
 		}
 		else if (type == CName::SLIME)
 		{
+			if (shareDataRecord->IsSoundEnable())
+			{
+				CAudio::Instance()->Play(SOUND_SLIME_REBOUNCE, false);
+			}
 			if (isMovingLeft)
 			{
 				isMovingLeft = false;
@@ -514,6 +535,13 @@ namespace game_framework {
 				mapRecord->SetBrickInMap(indexX, indexY, CName::SLIME);
 				isHit = true;
 				return;
+			}
+		}
+		else
+		{
+			if (shareDataRecord->IsSoundEnable())
+			{
+				CAudio::Instance()->Play(SOUND_BRICK_HIT, false);
 			}
 		}
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;

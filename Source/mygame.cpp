@@ -178,6 +178,11 @@ namespace game_framework {
 		CAudio::Instance()->Load(SOUND_SWALLOW, ".\\Resources\\sound\\swallow.mp3");
 		CAudio::Instance()->Load(SOUND_SPIT_OUT, ".\\Resources\\sound\\spit_out.mp3");
 		CAudio::Instance()->Load(SOUND_BRICK_HIT, ".\\Resources\\sound\\brick_hit.mp3");
+		CAudio::Instance()->Load(SOUND_WOODEN_BREAK, ".\\Resources\\sound\\wooden_break.mp3");
+		CAudio::Instance()->Load(SOUND_SLIME_REBOUNCE, ".\\Resources\\sound\\slime_rebounce.mp3");
+		CAudio::Instance()->Load(SOUND_BOMB, ".\\Resources\\sound\\bomb.mp3");
+		CAudio::Instance()->Load(SOUND_MONSTER_HIT, ".\\Resources\\sound\\monster_hit.mp3");
+		CAudio::Instance()->Load(SOUND_SUCCESS, ".\\Resources\\sound\\success.mp3");
 		CAudio::Instance()->Load(SOUND_FAIL, ".\\Resources\\sound\\fail.mp3");
 	}		
 
@@ -871,7 +876,7 @@ namespace game_framework {
 		const int BRICK_WIDTH = 24;
 		const int GROUND_X = (SIZE_X - BRICK_LENGTH * map.GetBrickNumberX()) / 2;
 		const int GROUND_Y = (SIZE_Y - BRICK_WIDTH * map.GetBrickNumberY()) / 2;
-		ground.Initialize(map.GetBrickNumberX(), map.GetBrickNumberY());
+		ground.Initialize(map.GetBrickNumberX(), map.GetBrickNumberY(), shareData);
 		ground.SetXY(GROUND_X, GROUND_Y);
 		grade.SetTopLeft(GROUND_X, GROUND_Y - 36);
 
@@ -948,7 +953,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STONE)
 				{
 					CStone tempStone;
-					tempStone.Initialize(&map, &player1, &player2, &brick, &food, &monster);
+					tempStone.Initialize(&map, shareData, &player1, &player2, &brick, &food, &monster);
 					tempStone.LoadBitmap();
 					tempStone.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempStone);
@@ -956,7 +961,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::WOODEN)
 				{
 					CWooden tempWooden;
-					tempWooden.Initialize(&map, &player1, &player2, &brick, &food, &monster);
+					tempWooden.Initialize(&map, shareData, &player1, &player2, &brick, &food, &monster);
 					tempWooden.LoadBitmap();
 					tempWooden.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempWooden);
@@ -964,7 +969,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::STEEL)
 				{
 					CSteel tempSteel;
-					tempSteel.Initialize(&map, &player1, &player2, &brick, &food, &monster);
+					tempSteel.Initialize(&map, shareData, &player1, &player2, &brick, &food, &monster);
 					tempSteel.LoadBitmap();
 					tempSteel.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSteel);
@@ -972,7 +977,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::SLIME)
 				{
 					CSlime tempSlime;
-					tempSlime.Initialize(&map, &player1, &player2, &brick, &food, &monster);
+					tempSlime.Initialize(&map, shareData, &player1, &player2, &brick, &food, &monster);
 					tempSlime.LoadBitmap();
 					tempSlime.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempSlime);
@@ -980,7 +985,7 @@ namespace game_framework {
 				else if (map.GetBrickInMap(i, j) == CName::BOMB)
 				{
 					CBomb tempBomb;
-					tempBomb.Initialize(&map, &player1, &player2, &brick, &food, &monster);
+					tempBomb.Initialize(&map, shareData, &player1, &player2, &brick, &food, &monster);
 					tempBomb.LoadBitmap();
 					tempBomb.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					brick.push_back(tempBomb);
@@ -996,7 +1001,7 @@ namespace game_framework {
 				else if(map.GetMonsterInMap(i, j) == CName::MUD)
 				{
 					CMud tempMud;
-					tempMud.Initialize(&map);
+					tempMud.Initialize(&map, shareData);
 					tempMud.LoadBitmap();
 					tempMud.SetTypeFlag(CName::MUD);
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -1004,7 +1009,7 @@ namespace game_framework {
 				}
 				else if (map.GetMonsterInMap(i, j) == CName::TURTLE) {
 					CTurtle tempTurtle;
-					tempTurtle.Initialize(&map);
+					tempTurtle.Initialize(&map, shareData);
 					tempTurtle.LoadBitmap();
 					tempTurtle.SetTypeFlag(CName::TURTLE);
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -1012,7 +1017,7 @@ namespace game_framework {
 				}
 				else if (map.GetMonsterInMap(i, j) == CName::SKELETON) {
 					CSkeleton tempSkeleton;
-					tempSkeleton.Initialize(&map);
+					tempSkeleton.Initialize(&map, shareData);
 					tempSkeleton.LoadBitmap();
 					tempSkeleton.SetTypeFlag(CName::SKELETON);
 					tempSkeleton.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -1020,7 +1025,7 @@ namespace game_framework {
 				}
 				else if (map.GetMonsterInMap(i, j) == CName::FISH_MAN) {
 				CFish tempFish;
-				tempFish.Initialize(&map);
+				tempFish.Initialize(&map, shareData);
 				tempFish.LoadBitmap();
 				tempFish.SetTypeFlag(CName::FISH_MAN);
 				tempFish.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);

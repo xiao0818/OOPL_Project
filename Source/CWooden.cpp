@@ -15,9 +15,10 @@ namespace game_framework {
 		bitmap.AddBitmap(IDB_WOODEN_BRICK_BREAK_002, RGB(255, 255, 255));
 	}
 
-	void CWooden::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
+	void CWooden::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
+		shareDataRecord = shareData;
 		player1Record = player1;
 		player2Record = player2;
 		brickRecord = brick;

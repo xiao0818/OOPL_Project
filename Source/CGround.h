@@ -7,7 +7,7 @@ namespace game_framework {
 	public:
 		CGround();
 		void LoadBitmap();
-		void Initialize(int nx, int ny);
+		void Initialize(int nx, int ny, CShareData *shareData);
 		void Bomb();
 		void OnMove();
 		void OnShow();
@@ -19,6 +19,7 @@ namespace game_framework {
 		int brickLength, brickWidth;
 		int brickNumberX, brickNumberY;
 		bool isBomb;
+		CShareData *shareDataRecord;
 	};
 }
 

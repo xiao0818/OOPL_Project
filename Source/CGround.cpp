@@ -6,6 +6,7 @@
 #include "gamelib.h"
 #include "CWall.h"
 #include "CGround.h"
+#include "CAudioId.h"
 
 namespace game_framework {
 	CGround::CGround()
@@ -33,18 +34,23 @@ namespace game_framework {
 		bomb.AddBitmap(IDB_BOMB_BRICK_BREAK_006, RGB(255, 255, 255));
 	}
 
-	void CGround::Initialize(int nx, int ny)
+	void CGround::Initialize(int nx, int ny, CShareData *shareData)
 	{
 		x = y = 0;
 		isBomb = false;
 		brickNumberX = nx;
 		brickNumberY = ny;
 		bomb.Reset();
+		shareDataRecord = shareData;
 	}
 
 	void CGround::Bomb()
 	{
 		isBomb = true;
+		if (shareDataRecord->IsSoundEnable())
+		{
+			CAudio::Instance()->Play(SOUND_BOMB, false);
+		}
 	}
 
 	void CGround::OnMove()

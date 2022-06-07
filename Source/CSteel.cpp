@@ -12,9 +12,10 @@ namespace game_framework {
 		bitmap.AddBitmap(IDB_STEEL_BRICK);
 	}
 
-	void CSteel::Initialize(CMap *map, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
+	void CSteel::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2, list<CBrick> *brick, list<CFood> *food, list<CMonster> *monster)
 	{
 		mapRecord = map;
+		shareDataRecord = shareData;
 		player1Record = player1;
 		player2Record = player2;
 		brickRecord = brick;

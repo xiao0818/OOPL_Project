@@ -76,6 +76,7 @@ namespace game_framework {
 		bool isEating;
 		bool isSuccess;
 		bool isFail;
+		bool isSuccessSoundPlayed;
 	};
 }
 

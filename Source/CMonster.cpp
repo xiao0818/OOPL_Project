@@ -5,8 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CMonster.h"
-#include <stdlib.h>
-#include <time.h>
+#include "CAudioId.h"
 
 namespace game_framework {
 	CMonster::CMonster()
@@ -88,9 +87,10 @@ namespace game_framework {
 		return isInvincible;
 	}
 
-	void CMonster::Initialize(CMap *map)
+	void CMonster::Initialize(CMap *map, CShareData *shareData)
 	{
 		mapRecord = map;
+		shareDataRecord = shareData;
 	}
 
 	void CMonster::LoadBitmap()
@@ -345,6 +345,10 @@ namespace game_framework {
 		{
 			foodTime = 0;
 			faceTo = tempDir;
+		}
+		if (shareDataRecord->IsSoundEnable())
+		{
+			CAudio::Instance()->Play(SOUND_MONSTER_HIT, false);
 		}
 	}
 

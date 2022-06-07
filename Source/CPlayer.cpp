@@ -14,7 +14,7 @@ namespace game_framework {
 		isKeyLeftPressed = isKeyRightPressed = isKeyUpPressed = isKeyDownPressed = false;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		isOnMucus = isSwallowed = isEating = false;
-		isSuccess = isFail = false;
+		isSuccess = isFail = isSuccessSoundPlayed = false;
 		faceTo = CDirection::DOWN;
 		leftAnimation.SetDelayCount(2);
 		rightAnimation.SetDelayCount(2);
@@ -108,7 +108,10 @@ namespace game_framework {
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 		faceTo = CDirection::DOWN;
 		isOnMucus = isSwallowed = isEating = false;
-		isSuccess = isFail = false;
+		isSuccess = isFail = isSuccessSoundPlayed = false;
+
+		successAnimation.Reset();
+		failAnimation.Reset();
 	}
 
 	void CPlayer::LoadBitmap()
@@ -592,6 +595,13 @@ namespace game_framework {
 			failAnimation.OnShow();
 			if (!failAnimation.IsFinalBitmap())
 			{
+				if (failAnimation.GetCurrentBitmapNumber() == 0)
+				{
+					if (shareDataRecord->IsSoundEnable())
+					{
+						CAudio::Instance()->Play(SOUND_FAIL, false);
+					}
+				}
 				failAnimation.OnMove();
 			}
 		}
@@ -599,6 +609,14 @@ namespace game_framework {
 		{
 			successAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (eatLeftAnimation.Width() / 2), int(y) + BRICK_WIDTH - eatLeftAnimation.Height());
 			successAnimation.OnShow();
+			if (!isSuccessSoundPlayed && successAnimation.GetCurrentBitmapNumber() == 0)
+			{
+				if (shareDataRecord->IsSoundEnable())
+				{
+					CAudio::Instance()->Play(SOUND_SUCCESS, false);
+				}
+				isSuccessSoundPlayed = true;
+			}
 			successAnimation.OnMove();
 		}
 		else

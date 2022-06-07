@@ -17,7 +17,7 @@ namespace game_framework {
 		bool IsHit();
 		bool IsAlive();
 		bool IsInvincible();
-		void Initialize(CMap *map);
+		void Initialize(CMap *map, CShareData *shareData);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SetTypeFlag(CName name);
@@ -74,6 +74,7 @@ namespace game_framework {
 		bool isAlive;
 		bool isRush;
 		bool isFly;
+		CShareData *shareDataRecord;
 	};
 };
 
