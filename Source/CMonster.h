@@ -28,6 +28,7 @@ namespace game_framework {
 		void SetAlive(bool flag);
 		void SetInvincible();
 		void ChangeRushStatus();
+		void ChangeFlyStatus();
 		void SetXY(int ni, int nj, int nx, int ny);
 		void OnShow();
 	protected:
@@ -43,6 +44,10 @@ namespace game_framework {
 		CAnimation rushRightAnimation;
 		CAnimation rushUpAnimation;
 		CAnimation rushDownAnimation;
+		CAnimation flyLeftAnimation;
+		CAnimation flyRightAnimation;
+		CAnimation flyUpAnimation;
+		CAnimation flyDownAnimation;
 		CMovingBitmap invincibleRight;
 		CMovingBitmap invincibleLeft;
 		CMovingBitmap invincibleUp;
