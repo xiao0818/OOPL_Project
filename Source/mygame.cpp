@@ -1007,7 +1007,8 @@ namespace game_framework {
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempMud);
 				}
-				else if (map.GetMonsterInMap(i, j) == CName::TURTLE) {
+				else if (map.GetMonsterInMap(i, j) == CName::TURTLE)
+{
 					CTurtle tempTurtle;
 					tempTurtle.Initialize(&map, shareData);
 					tempTurtle.LoadBitmap();
@@ -1015,7 +1016,8 @@ namespace game_framework {
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempTurtle);
 				}
-				else if (map.GetMonsterInMap(i, j) == CName::SKELETON) {
+				else if (map.GetMonsterInMap(i, j) == CName::SKELETON)
+				{
 					CSkeleton tempSkeleton;
 					tempSkeleton.Initialize(&map, shareData);
 					tempSkeleton.LoadBitmap();
@@ -1023,13 +1025,14 @@ namespace game_framework {
 					tempSkeleton.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
 					monster.push_back(tempSkeleton);
 				}
-				else if (map.GetMonsterInMap(i, j) == CName::FISH_MAN) {
-				CFish tempFish;
-				tempFish.Initialize(&map, shareData);
-				tempFish.LoadBitmap();
-				tempFish.SetTypeFlag(CName::FISH_MAN);
-				tempFish.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
-				monster.push_back(tempFish);
+				else if (map.GetMonsterInMap(i, j) == CName::FISH_MAN)
+				{
+					CFish tempFish;
+					tempFish.Initialize(&map, shareData);
+					tempFish.LoadBitmap();
+					tempFish.SetTypeFlag(CName::FISH_MAN);
+					tempFish.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
+					monster.push_back(tempFish);
 				}
 			}
 		}

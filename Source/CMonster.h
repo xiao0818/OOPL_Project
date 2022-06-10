@@ -21,18 +21,15 @@ namespace game_framework {
 		virtual void LoadBitmap();
 		void OnMove();
 		void SetTypeFlag(CName name);
+		CDirection RandomDirection();
 		CDirection GetNewMovingDirection();
-		void SetXY(int ni, int nj, int nx, int ny);
-		void OnShow();
 		void HitByBrick(CDirection tempDir);
 		void Swallowed(CDirection faceTo);
-		void Reset();
 		void SetAlive(bool flag);
 		void SetInvincible();
-		void MudAndTurtleMove();
-		void SkeletonMove();
 		void ChangeRushStatus();
-		void FishMove();
+		void SetXY(int ni, int nj, int nx, int ny);
+		void OnShow();
 	protected:
 		CAnimation leftAnimation;
 		CAnimation rightAnimation;
@@ -68,7 +65,6 @@ namespace game_framework {
 		int movingUpCount;
 		int movingDownCount;
 		int hitCount;
-		int resetCount;
 		CMap *mapRecord;
 		CDirection faceTo;
 		bool isAlive;

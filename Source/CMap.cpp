@@ -86,6 +86,8 @@ namespace game_framework {
 				if (map[i][j] == CName::PLAYER1 || map[i][j] == CName::PLAYER2)
 				{
 					playerMap[i][j] = map[i][j];
+					playerIndexX = i;
+					playerIndexY = j;
 				}
 				else if (map[i][j] == CName::SPIKE || map[i][j] == CName::MUCUS || map[i][j] == CName::MOVING || map[i][j] == CName::STEPPING)
 				{
