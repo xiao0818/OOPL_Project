@@ -682,6 +682,36 @@ namespace game_framework {
 		}
 	}
 
+	void CMonster::ChangeFlyStatus()
+	{
+		if (!isFly) {
+			flyDownAnimation.Reset();
+			flyLeftAnimation.Reset();
+			flyRightAnimation.Reset();
+			flyUpAnimation.Reset();
+		}
+		if (faceTo == CDirection::DOWN)
+		{
+			isFly = mapRecord->GetBrickInMap(GetIndexX(), GetIndexY() + 1) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY() + 1) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+		}
+		else if (faceTo == CDirection::UP)
+		{
+			isFly = mapRecord->GetBrickInMap(GetIndexX(), GetIndexY() - 1) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY() - 1) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+		}
+		else if (faceTo == CDirection::RIGHT)
+		{
+			isFly = mapRecord->GetBrickInMap(GetIndexX() + 1, GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX() + 1, GetIndexY()) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+		}
+		else if (faceTo == CDirection::LEFT)
+		{
+			isFly = mapRecord->GetBrickInMap(GetIndexX() - 1, GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX() - 1, GetIndexY()) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+		}
+		else {
+			isFly = false;
+		}
+
+	}
+
 	void CMonster::SetXY(int ni, int nj, int nx, int ny)
 	{
 		indexX = ni;
@@ -830,4 +860,6 @@ namespace game_framework {
 			}
 		}
 	}
+
+
 }
