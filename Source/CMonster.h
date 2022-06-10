@@ -69,7 +69,6 @@ namespace game_framework {
 		CDirection faceTo;
 		bool isAlive;
 		bool isRush;
-		bool isFly;
 		CShareData *shareDataRecord;
 	};
 };

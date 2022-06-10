@@ -11,7 +11,7 @@ namespace game_framework {
 	CMonster::CMonster()
 	{
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		isHit = isFood = isSwallowed = isInvincible = isRush = isFly = false;
+		isHit = isFood = isSwallowed = isInvincible = isRush = false;
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = invincibleTime = 0;
 		faceTo = GetNewMovingDirection();
@@ -19,6 +19,10 @@ namespace game_framework {
 		rightAnimation.SetDelayCount(2);
 		upAnimation.SetDelayCount(2);
 		downAnimation.SetDelayCount(2);
+		hitLeftAnimation.SetDelayCount(2);
+		hitRightAnimation.SetDelayCount(2);
+		hitUpAnimation.SetDelayCount(2);
+		hitDownAnimation.SetDelayCount(2);
 		rushDownAnimation.SetDelayCount(2);
 		rushLeftAnimation.SetDelayCount(2);
 		rushRightAnimation.SetDelayCount(2);
@@ -119,7 +123,6 @@ namespace game_framework {
 		{
 			faceTo = GetNewMovingDirection();
 			isRush = false;
-			SetInvincible();
 			movingLeftCount = movingRightCount = movingUpCount = movingDownCount = 0;
 			if (!isInvincible)
 			{
@@ -424,6 +427,7 @@ namespace game_framework {
 					}
 					else
 					{
+						SetInvincible();
 						isMovingLeft = false;
 					}
 				}
@@ -448,6 +452,7 @@ namespace game_framework {
 					}
 					else
 					{
+						SetInvincible();
 						isMovingRight = false;
 					}
 				}
@@ -472,6 +477,7 @@ namespace game_framework {
 					}
 					else
 					{
+						SetInvincible();
 						isMovingUp = false;
 					}
 				}
@@ -496,6 +502,7 @@ namespace game_framework {
 					}
 					else
 					{
+						SetInvincible();
 						isMovingDown = false;
 					}
 				}
@@ -630,19 +637,8 @@ namespace game_framework {
 	{
 		if (type == CName::TURTLE)
 		{
-			srand((unsigned int)time(NULL));
-			int x = rand();
-			int flag = x % 5;
-
-			switch (flag)
-			{
-			case 0:
-				isInvincible = true;
-				mapRecord->SetMonsterInMap(indexX, indexY, CName::INVINCIBLE_TURTLE);
-				break;
-			default:
-				isInvincible = false;
-			}
+			isInvincible = true;
+			mapRecord->SetMonsterInMap(indexX, indexY, CName::INVINCIBLE_TURTLE);
 		}
 		else
 		{
