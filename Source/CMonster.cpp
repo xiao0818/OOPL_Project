@@ -11,7 +11,7 @@ namespace game_framework {
 	CMonster::CMonster()
 	{
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		isHit = isFood = isSwallowed = isInvincible = isRush = false;
+		isHit = isFood = isSwallowed = isInvincible = isRush = isFly = false;
 		isAlive = true;
 		movingLeftCount = movingRightCount = movingUpCount = movingDownCount = foodTime = invincibleTime = 0;
 		faceTo = GetNewMovingDirection();
