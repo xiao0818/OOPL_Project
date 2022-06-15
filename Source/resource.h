@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 產生的 Include 檔案。
-// 由 game.rc 使用
+// Microsoft Visual C++ generated include file.
+// Used by game.rc
 //
 #define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
@@ -282,6 +282,7 @@
 #define IDB_PLAYER_BUTTON_008           437
 #define IDB_CREDITS_PAGE                438
 #define IDB_SCORES_PAGE                 441
+#define IDB_ABOUT_PAGE                  441
 #define IDB_HELP_PAGE_001               442
 #define IDB_HELP_PAGE_002               443
 #define IDB_HELP_PAGE_003               444
@@ -344,6 +345,7 @@
 #define IDB_CREDITS                     501
 #define IDB_HELP                        502
 #define IDB_SCORES                      503
+#define IDB_ABOUT                       503
 #define IDB_MOVING_SPIKE_001            504
 #define IDB_MOVING_SPIKE_002            505
 #define IDB_MOVING_SPIKE_003            506

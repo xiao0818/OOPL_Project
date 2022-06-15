@@ -1239,9 +1239,6 @@
     <Image Include="Resources\start\credits_page.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Resources\start\scores_page.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Resources\start\level_page.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -1252,9 +1249,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\start\help.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\start\scores.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\trap\moving_spike\moving_spike_001.bmp">
@@ -2359,6 +2353,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\fish\fish_move_up\fish_move_up_008.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\about_page.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\start\about.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

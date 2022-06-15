@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文 (繁體，台灣) resources
+// Chinese (Traditional, Taiwan) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
@@ -596,7 +596,7 @@ IDB_PLAYER_BUTTON_008   BITMAP                  "..\\Resources\\start\\play\\pla
 
 IDB_CREDITS_PAGE        BITMAP                  "..\\Resources\\start\\credits_page.bmp"
 
-IDB_SCORES_PAGE         BITMAP                  "..\\Resources\\start\\scores_page.bmp"
+IDB_ABOUT_PAGE          BITMAP                  "..\\Resources\\start\\about_page.bmp"
 
 IDB_HELP_PAGE_001       BITMAP                  "..\\Resources\\start\\helpPage\\help_page_001.bmp"
 
@@ -720,7 +720,7 @@ IDB_CREDITS             BITMAP                  "..\\Resources\\start\\credits.b
 
 IDB_HELP                BITMAP                  "..\\Resources\\start\\help.bmp"
 
-IDB_SCORES              BITMAP                  "..\\Resources\\start\\scores.bmp"
+IDB_ABOUT               BITMAP                  "..\\Resources\\start\\about.bmp"
 
 IDB_MOVING_SPIKE_001    BITMAP                  "..\\Resources\\trap\\moving_spike\\moving_spike_001.bmp"
 
@@ -1470,12 +1470,12 @@ IDC_CURSOR_ARROW        CURSOR                  "..\\Resources\\cursor\\aero_arr
 
 IDC_CURSOR_LINK         CURSOR                  "..\\Resources\\cursor\\aero_link.cur"
 
-#endif    // 中文 (繁體，台灣) resources
+#endif    // Chinese (Traditional, Taiwan) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 英文 (美國) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -1773,7 +1773,7 @@ BEGIN
     ID_BUTTON_UNITTEST      "Perform Unit Test"
 END
 
-#endif    // 英文 (美國) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

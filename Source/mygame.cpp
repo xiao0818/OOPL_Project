@@ -80,13 +80,13 @@ namespace game_framework {
 		soundButton.LoadBitmap(IDB_SOUND);
 		backButton.LoadBitmap(IDB_BACK);
 		playButton.LoadBitmap(IDB_PLAY);
-		scoresButton.LoadBitmap(IDB_SCORES);
+		aboutButton.LoadBitmap(IDB_ABOUT);
 		helpButton.LoadBitmap(IDB_HELP);
 		creditsButton.LoadBitmap(IDB_CREDITS);
 		playerPage.LoadBitmap(IDB_PLAYER_PAGE);
 		levelPage.LoadBitmap(IDB_LEVEL);
 		levelPage_2.LoadBitmap(IDB_LEVEL_2);
-		scoresPage.LoadBitmap(IDB_SCORES_PAGE);
+		aboutPage.LoadBitmap(IDB_ABOUT_PAGE);
 		creditsPage.LoadBitmap(IDB_CREDITS_PAGE);
 
 		player1Button.AddBitmap(IDB_PLAYER_BUTTON_001);
@@ -189,10 +189,10 @@ namespace game_framework {
 	void CGameStateInit::OnBeginState()
 	{
 		isOnMusicButton = isOnSoundButton = isOnBackButton = false;
-		isOnPlayButton = isOnScoresButton = isOnHelpButton = isOnCreditsButton = false;
+		isOnPlayButton = isOnAboutButton = isOnHelpButton = isOnCreditsButton = false;
 		isOnPlayerButton = isOnLevelButton = false;
 		isPlayerPage = isLevelPage = false;
-		isScoresPage = isHelpPage = isCreditsPage = false;
+		isAboutPage = isHelpPage = isCreditsPage = false;
 		levelSelect = playerNumber = 0;
 		shareData->InitializeState();
 		player1Button.SetDelayCount(2);
@@ -227,7 +227,7 @@ namespace game_framework {
 			isOnSoundButton = false;
 		}
 
-		if (!isPlayerPage && !isLevelPage && !isScoresPage && !isHelpPage && !isCreditsPage)
+		if (!isPlayerPage && !isLevelPage && !isAboutPage && !isHelpPage && !isCreditsPage)
 		{
 			if ((GROUND_X + PLAY_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + PLAY_BUTTON_INDEX_X + PLAY_BUTTON_LENGTH) && (GROUND_Y + PLAY_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + PLAY_BUTTON_INDEX_Y + PLAY_BUTTON_HEIGHT))
 			{
@@ -238,13 +238,13 @@ namespace game_framework {
 				isOnPlayButton = false;
 			}
 
-			if ((GROUND_X + SCORES_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + SCORES_BUTTON_INDEX_X + SCORES_BUTTON_LENGTH) && (GROUND_Y + SCORES_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + SCORES_BUTTON_INDEX_Y + SCORES_BUTTON_HEIGHT))
+			if ((GROUND_X + ABOUT_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + ABOUT_BUTTON_INDEX_X + ABOUT_BUTTON_LENGTH) && (GROUND_Y + ABOUT_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + ABOUT_BUTTON_INDEX_Y + ABOUT_BUTTON_HEIGHT))
 			{
-				isOnScoresButton = true;
+				isOnAboutButton = true;
 			}
 			else
 			{
-				isOnScoresButton = false;
+				isOnAboutButton = false;
 			}
 
 			if ((GROUND_X + HELP_BUTTON_INDEX_X) < point.x && point.x < (GROUND_X + HELP_BUTTON_INDEX_X + HELP_BUTTON_LENGTH) && (GROUND_Y + HELP_BUTTON_INDEX_Y) < point.y && point.y < (GROUND_Y + HELP_BUTTON_INDEX_Y + HELP_BUTTON_HEIGHT))
@@ -345,9 +345,9 @@ namespace game_framework {
 				isLevelPage = false;
 				isPlayerPage = true;
 			}
-			else if (isPlayerPage || isScoresPage || isHelpPage || isCreditsPage)
+			else if (isPlayerPage || isAboutPage || isHelpPage || isCreditsPage)
 			{
-				isPlayerPage = isScoresPage = isHelpPage = isCreditsPage = false;
+				isPlayerPage = isAboutPage = isHelpPage = isCreditsPage = false;
 			}
 			isOnBackButton = false;
 		}
@@ -369,10 +369,10 @@ namespace game_framework {
 			isPlayerPage = true;
 			isOnPlayButton = false;
 		}
-		else if (isOnScoresButton)
+		else if (isOnAboutButton)
 		{
-			isScoresPage = true;
-			isOnScoresButton = false;
+			isAboutPage = true;
+			isOnAboutButton = false;
 		}
 		else if (isOnHelpButton)
 		{
@@ -392,7 +392,7 @@ namespace game_framework {
 		const int GROUND_X = (SIZE_X - startPage.Width()) / 2;
 		const int GROUND_Y = (SIZE_Y - startPage.Height()) / 2;
 
-		if (isPlayerPage || isScoresPage || isHelpPage || isCreditsPage || isLevelPage)
+		if (isPlayerPage || isAboutPage || isHelpPage || isCreditsPage || isLevelPage)
 		{
 			if (isLevelPage)
 			{
@@ -442,10 +442,10 @@ namespace game_framework {
 					player2Button.Reset();
 				}
 			}
-			else if (isScoresPage)
+			else if (isAboutPage)
 			{
-				scoresPage.SetTopLeft(GROUND_X, GROUND_Y);
-				scoresPage.ShowBitmap();
+				aboutPage.SetTopLeft(GROUND_X, GROUND_Y);
+				aboutPage.ShowBitmap();
 			}
 			else if (isHelpPage)
 			{
@@ -475,10 +475,10 @@ namespace game_framework {
 				playButton.SetTopLeft(GROUND_X + PLAY_BUTTON_INDEX_X, GROUND_Y + PLAY_BUTTON_INDEX_Y);
 				playButton.ShowBitmap();
 			}
-			else if (isOnScoresButton)
+			else if (isOnAboutButton)
 			{
-				scoresButton.SetTopLeft(GROUND_X + SCORES_BUTTON_INDEX_X, GROUND_Y + SCORES_BUTTON_INDEX_Y);
-				scoresButton.ShowBitmap();
+				aboutButton.SetTopLeft(GROUND_X + ABOUT_BUTTON_INDEX_X, GROUND_Y + ABOUT_BUTTON_INDEX_Y);
+				aboutButton.ShowBitmap();
 			}
 			else if (isOnHelpButton)
 			{
@@ -516,7 +516,7 @@ namespace game_framework {
 			cross.ShowBitmap();
 		}
 
-		if (isOnMusicButton || isOnSoundButton || isOnPlayButton || isOnScoresButton || isOnHelpButton || isOnCreditsButton || isOnPlayerButton || isOnLevelButton || isOnBackButton)
+		if (isOnMusicButton || isOnSoundButton || isOnPlayButton || isOnAboutButton || isOnHelpButton || isOnCreditsButton || isOnPlayerButton || isOnLevelButton || isOnBackButton)
 		{
 			SetCursor(AfxGetApp()->LoadCursor(IDC_CURSOR_LINK));
 		}

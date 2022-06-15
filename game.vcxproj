@@ -826,6 +826,8 @@
     <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_006.bmp" />
     <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_007.bmp" />
     <Image Include="Resources\skeleton\skeleton_rush_up\skeleton_rush_up_008.bmp" />
+    <Image Include="Resources\start\about.bmp" />
+    <Image Include="Resources\start\about_page.bmp" />
     <Image Include="Resources\start\back.bmp" />
     <Image Include="Resources\start\cover.bmp" />
     <Image Include="Resources\start\credits.bmp" />
@@ -961,8 +963,6 @@
     <Image Include="Resources\start\play\play6.bmp" />
     <Image Include="Resources\start\play\play7.bmp" />
     <Image Include="Resources\start\play\play8.bmp" />
-    <Image Include="Resources\start\scores.bmp" />
-    <Image Include="Resources\start\scores_page.bmp" />
     <Image Include="Resources\start\sound.bmp" />
     <Image Include="Resources\trap\moving_spike\moving_spike_001.bmp" />
     <Image Include="Resources\trap\moving_spike\moving_spike_002.bmp" />
