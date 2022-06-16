@@ -73,6 +73,11 @@ namespace game_framework {
 		}
 	}
 
+	CName CMonster::GetTypeFlag()
+	{
+		return type;
+	}
+
 	bool CMonster::IsFood()
 	{
 		return isFood;
@@ -93,6 +98,10 @@ namespace game_framework {
 		return isInvincible;
 	}
 
+	bool CMonster::IsFly()
+	{
+		return isFly;
+	}
 
 	void CMonster::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2)
 	{
