@@ -13,10 +13,12 @@ namespace game_framework {
 		int  GetIndexY();
 		int  GetNextIndexX();
 		int  GetNextIndexY();
+		CName CMonster::GetTypeFlag();
 		bool IsFood();
 		bool IsHit();
 		bool IsAlive();
 		bool IsInvincible();
+		bool IsFly();
 		void Initialize(CMap *map, CShareData *shareData);
 		virtual void LoadBitmap();
 		void OnMove();

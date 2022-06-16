@@ -1360,7 +1360,7 @@ namespace game_framework {
 			}
 			for (list<CMonster>::iterator k = monster.begin(); k != monster.end(); k++)
 			{
-				if (k->GetIndexY() == j)
+				if (k->GetIndexY() == j || (k->GetTypeFlag() == CName::FISH_MAN && k->IsFly() && k->GetIndexY() == j - 1) || (k->GetTypeFlag() == CName::FISH_MAN && k->IsFly() && k->GetIndexY() == j - 2))
 				{
 					k->OnShow();
 				}
