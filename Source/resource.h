@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by game.rc
+// Microsoft Visual C++ 產生的 Include 檔案。
+// 由 game.rc 使用
 //
 #define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
@@ -727,6 +727,39 @@
 #define IDB_FISH_MOVE_UP_007            873
 #define IDB_BITMAP14                    874
 #define IDB_FISH_MOVE_UP_008            874
+#define IDB_FISH_FLY_DOWN_001           875
+#define IDB_FISH_FLY_DOWN_002           876
+#define IDB_FISH_FLY_DOWN_003           877
+#define IDB_FISH_FLY_DOWN_004           878
+#define IDB_FISH_FLY_DOWN_005           879
+#define IDB_FISH_FLY_DOWN_006           880
+#define IDB_FISH_FLY_DOWN_007           881
+#define IDB_FISH_FLY_DOWN_008           882
+#define IDB_FISH_FLY_LEFT_001           883
+#define IDB_FISH_FLY_LEFT_002           884
+#define IDB_FISH_FLY_LEFT_003           885
+#define IDB_FISH_FLY_LEFT_004           886
+#define IDB_FISH_FLY_LEFT_005           887
+#define IDB_FISH_FLY_LEFT_006           888
+#define IDB_FISH_FLY_LEFT_007           889
+#define IDB_FISH_FLY_LEFT_008           890
+#define IDB_FISH_FLY_RIGHT_001          891
+#define IDB_FISH_FLY_RIGHT_002          892
+#define IDB_FISH_FLY_RIGHT_003          893
+#define IDB_FISH_FLY_RIGHT_004          894
+#define IDB_FISH_FLY_RIGHT_005          895
+#define IDB_FISH_FLY_RIGHT_006          896
+#define IDB_FISH_FLY_RIGHT_007          897
+#define IDB_FISH_FLY_RIGHT_008          898
+#define IDB_FISH_FLY_UP_001             899
+#define IDB_FISH_FLY_UP_002             900
+#define IDB_FISH_FLY_UP_003             901
+#define IDB_FISH_FLY_UP_004             902
+#define IDB_FISH_FLY_UP_005             903
+#define IDB_FISH_FLY_UP_006             904
+#define IDB_FISH_FLY_UP_007             905
+#define IDB_BITMAP15                    906
+#define IDB_FISH_FLY_UP_008             906
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -739,7 +772,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        875
+#define _APS_NEXT_RESOURCE_VALUE        907
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
