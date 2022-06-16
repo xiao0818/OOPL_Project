@@ -423,6 +423,10 @@ namespace game_framework {
 						{
 							mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
 							movingLeftCount = 0;
+							if (type == CName::FISH_MAN)
+							{
+								isMovingLeft = false;
+							}
 						}
 					}
 					else
@@ -443,6 +447,10 @@ namespace game_framework {
 						{
 							mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
 							movingRightCount = 0;
+							if (type == CName::FISH_MAN)
+							{
+								isMovingRight = false;
+							}
 						}
 					}
 					else
@@ -463,6 +471,10 @@ namespace game_framework {
 						{
 							mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
 							movingUpCount = 0;
+							if (type == CName::FISH_MAN)
+							{
+								isMovingUp = false;
+							}
 						}
 					}
 					else
@@ -483,6 +495,10 @@ namespace game_framework {
 						{
 							mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
 							movingDownCount = 0;
+							if (type == CName::FISH_MAN)
+							{
+								isMovingDown = false;
+							}
 						}
 					}
 					else
