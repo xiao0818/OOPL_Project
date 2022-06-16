@@ -1001,7 +1001,7 @@ namespace game_framework {
 				else if(map.GetMonsterInMap(i, j) == CName::MUD)
 				{
 					CMud tempMud;
-					tempMud.Initialize(&map, shareData);
+					tempMud.Initialize(&map, shareData, &player1, &player2);
 					tempMud.LoadBitmap();
 					tempMud.SetTypeFlag(CName::MUD);
 					tempMud.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -1010,7 +1010,7 @@ namespace game_framework {
 				else if (map.GetMonsterInMap(i, j) == CName::TURTLE)
 {
 					CTurtle tempTurtle;
-					tempTurtle.Initialize(&map, shareData);
+					tempTurtle.Initialize(&map, shareData, &player1, &player2);
 					tempTurtle.LoadBitmap();
 					tempTurtle.SetTypeFlag(CName::TURTLE);
 					tempTurtle.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -1019,7 +1019,7 @@ namespace game_framework {
 				else if (map.GetMonsterInMap(i, j) == CName::SKELETON)
 				{
 					CSkeleton tempSkeleton;
-					tempSkeleton.Initialize(&map, shareData);
+					tempSkeleton.Initialize(&map, shareData, &player1, &player2);
 					tempSkeleton.LoadBitmap();
 					tempSkeleton.SetTypeFlag(CName::SKELETON);
 					tempSkeleton.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);
@@ -1028,7 +1028,7 @@ namespace game_framework {
 				else if (map.GetMonsterInMap(i, j) == CName::FISH_MAN)
 				{
 					CFish tempFish;
-					tempFish.Initialize(&map, shareData);
+					tempFish.Initialize(&map, shareData, &player1, &player2);
 					tempFish.LoadBitmap();
 					tempFish.SetTypeFlag(CName::FISH_MAN);
 					tempFish.SetXY(i, j, GROUND_X + BRICK_LENGTH * i, GROUND_Y + BRICK_WIDTH * j);

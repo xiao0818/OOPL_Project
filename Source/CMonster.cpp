@@ -6,6 +6,7 @@
 #include "gamelib.h"
 #include "CMonster.h"
 #include "CAudioId.h"
+#include "CPlayer.h"
 
 namespace game_framework {
 	CMonster::CMonster()
@@ -92,10 +93,13 @@ namespace game_framework {
 		return isInvincible;
 	}
 
-	void CMonster::Initialize(CMap *map, CShareData *shareData)
+
+	void CMonster::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2)
 	{
 		mapRecord = map;
 		shareDataRecord = shareData;
+		player1Record = player1;
+		player2Record = player2;
 	}
 
 	void CMonster::LoadBitmap()
@@ -629,44 +633,93 @@ namespace game_framework {
 		CDirection nextDirection = RandomDirection();
 		if (type == CName::FISH_MAN)
 		{
-			if (mapRecord->GetPlayerIndexX() != GetIndexX() || mapRecord->GetPlayerIndexY() != GetIndexY())
+			if (!player1Record->IsFail()) 
 			{
-				if (mapRecord->GetPlayerIndexX() == GetIndexX())
+				if (player1Record->GetIndexX() != GetIndexX() || player1Record->GetIndexY() != GetIndexY())
 				{
-					while (!(nextDirection == CDirection::UP || nextDirection == CDirection::DOWN))
+					if (player1Record->GetIndexX() == GetIndexX())
 					{
-						nextDirection = RandomDirection();
+						while (!(nextDirection == CDirection::UP || nextDirection == CDirection::DOWN))
+						{
+							nextDirection = RandomDirection();
+						}
 					}
-				}
-				else if (mapRecord->GetPlayerIndexY() == GetIndexY())
-				{
-					while (!(nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT))
-					{
-						nextDirection = RandomDirection();
-					}
-				}
 
-				if (nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT)
-				{
-					if (mapRecord->GetPlayerIndexX() < GetIndexX())
+					else if (player1Record->GetIndexY() == GetIndexY())
 					{
-						nextDirection = CDirection::LEFT;
+						while (!(nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT))
+						{
+							nextDirection = RandomDirection();
+						}
 					}
-					else if (mapRecord->GetPlayerIndexX() > GetIndexX())
+
+					if (nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT)
 					{
-						nextDirection = CDirection::RIGHT;
+						if (player1Record->GetIndexX() < GetIndexX())
+						{
+							nextDirection = CDirection::LEFT;
+						}
+						else if (player1Record->GetIndexX() > GetIndexX())
+						{
+							nextDirection = CDirection::RIGHT;
+						}
+					}
+
+					if (nextDirection == CDirection::UP || nextDirection == CDirection::DOWN)
+					{
+						if (player1Record->GetIndexY() < GetIndexY())
+						{
+							nextDirection = CDirection::UP;
+						}
+						else if (player1Record->GetIndexY() > GetIndexY())
+						{
+							nextDirection = CDirection::DOWN;
+						}
 					}
 				}
-
-				if (nextDirection == CDirection::UP || nextDirection == CDirection::DOWN)
+			}
+			else if (!player2Record->IsFail())
+			{
+				if (player2Record->GetIndexX() != GetIndexX() || player2Record->GetIndexY() != GetIndexY())
 				{
-					if (mapRecord->GetPlayerIndexY() < GetIndexY())
+					if (player2Record->GetIndexX() == GetIndexX())
 					{
-						nextDirection = CDirection::UP;
+						while (!(nextDirection == CDirection::UP || nextDirection == CDirection::DOWN))
+						{
+							nextDirection = RandomDirection();
+						}
 					}
-					else if (mapRecord->GetPlayerIndexY() > GetIndexY())
+
+					else if (player2Record->GetIndexY() == GetIndexY())
 					{
-						nextDirection = CDirection::DOWN;
+						while (!(nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT))
+						{
+							nextDirection = RandomDirection();
+						}
+					}
+
+					if (nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT)
+					{
+						if (player2Record->GetIndexX() < GetIndexX())
+						{
+							nextDirection = CDirection::LEFT;
+						}
+						else if (player2Record->GetIndexX() > GetIndexX())
+						{
+							nextDirection = CDirection::RIGHT;
+						}
+					}
+
+					if (nextDirection == CDirection::UP || nextDirection == CDirection::DOWN)
+					{
+						if (player2Record->GetIndexY() < GetIndexY())
+						{
+							nextDirection = CDirection::UP;
+						}
+						else if (player2Record->GetIndexY() > GetIndexY())
+						{
+							nextDirection = CDirection::DOWN;
+						}
 					}
 				}
 			}
