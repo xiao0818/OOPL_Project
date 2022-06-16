@@ -6,6 +6,8 @@
 
 
 namespace game_framework {
+	class CPlayer;
+
 	class CMonster {
 	public:
 		CMonster();
@@ -19,7 +21,7 @@ namespace game_framework {
 		bool IsAlive();
 		bool IsInvincible();
 		bool IsFly();
-		void Initialize(CMap *map, CShareData *shareData);
+		void Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2);
 		virtual void LoadBitmap();
 		void OnMove();
 		void SetTypeFlag(CName name);
@@ -72,6 +74,8 @@ namespace game_framework {
 		int movingUpCount;
 		int movingDownCount;
 		int hitCount;
+		CPlayer *player1Record;
+		CPlayer *player2Record;
 		CMap *mapRecord;
 		CDirection faceTo;
 		bool isAlive;

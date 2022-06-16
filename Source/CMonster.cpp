@@ -6,6 +6,7 @@
 #include "gamelib.h"
 #include "CMonster.h"
 #include "CAudioId.h"
+#include "CPlayer.h"
 
 namespace game_framework {
 	CMonster::CMonster()
@@ -102,10 +103,12 @@ namespace game_framework {
 		return isFly;
 	}
 
-	void CMonster::Initialize(CMap *map, CShareData *shareData)
+	void CMonster::Initialize(CMap *map, CShareData *shareData, CPlayer *player1, CPlayer *player2)
 	{
 		mapRecord = map;
 		shareDataRecord = shareData;
+		player1Record = player1;
+		player2Record = player2;
 	}
 
 	void CMonster::LoadBitmap()
@@ -424,11 +427,11 @@ namespace game_framework {
 						x -= STEP_SIZE_X;
 						movingLeftCount++;
 						mapRecord->SetMonsterInMap(indexX - 1, indexY, type);
+						ChangeFlyStatus();
 						if (movingLeftCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
 							movingLeftCount = 0;
-							ChangeFlyStatus();
 						}
 					}
 					else
@@ -444,11 +447,11 @@ namespace game_framework {
 						x += STEP_SIZE_X;
 						movingRightCount++;
 						mapRecord->SetMonsterInMap(indexX + 1, indexY, type);
+						ChangeFlyStatus();
 						if (movingRightCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
 							movingRightCount = 0;
-							ChangeFlyStatus();
 						}
 					}
 					else
@@ -464,12 +467,11 @@ namespace game_framework {
 						y -= STEP_SIZE_Y;
 						movingUpCount++;
 						mapRecord->SetMonsterInMap(indexX, indexY - 1, type);
+						ChangeFlyStatus();
 						if (movingUpCount == STEP_TARGET)
 						{
-
 							mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
 							movingUpCount = 0;
-							ChangeFlyStatus();
 						}
 					}
 					else
@@ -485,11 +487,11 @@ namespace game_framework {
 						y += STEP_SIZE_Y;
 						movingDownCount++;
 						mapRecord->SetMonsterInMap(indexX, indexY + 1, type);
+						ChangeFlyStatus();
 						if (movingDownCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
 							movingDownCount = 0;
-							ChangeFlyStatus();
 						}
 					}
 					else
@@ -508,6 +510,7 @@ namespace game_framework {
 						x -= STEP_SIZE_X;
 						movingLeftCount++;
 						mapRecord->SetMonsterInMap(indexX - 1, indexY, type);
+						ChangeFlyStatus();
 						if (movingLeftCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX--, indexY, CName::SPACE);
@@ -515,7 +518,6 @@ namespace game_framework {
 							ChangeRushStatus();
 							if (type == CName::FISH_MAN)
 							{
-								ChangeFlyStatus();
 								isMovingLeft = false;
 							}
 						}
@@ -534,6 +536,7 @@ namespace game_framework {
 						x += STEP_SIZE_X;
 						movingRightCount++;
 						mapRecord->SetMonsterInMap(indexX + 1, indexY, type);
+						ChangeFlyStatus();
 						if (movingRightCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX++, indexY, CName::SPACE);
@@ -541,7 +544,6 @@ namespace game_framework {
 							ChangeRushStatus();
 							if (type == CName::FISH_MAN)
 							{
-								ChangeFlyStatus();
 								isMovingRight = false;
 							}
 						}
@@ -560,6 +562,7 @@ namespace game_framework {
 						y -= STEP_SIZE_Y;
 						movingUpCount++;
 						mapRecord->SetMonsterInMap(indexX, indexY - 1, type);
+						ChangeFlyStatus();
 						if (movingUpCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX, indexY--, CName::SPACE);
@@ -567,7 +570,6 @@ namespace game_framework {
 							ChangeRushStatus();
 							if (type == CName::FISH_MAN)
 							{
-								ChangeFlyStatus();
 								isMovingUp = false;
 							}
 						}
@@ -586,6 +588,7 @@ namespace game_framework {
 						y += STEP_SIZE_Y;
 						movingDownCount++;
 						mapRecord->SetMonsterInMap(indexX, indexY + 1, type);
+						ChangeFlyStatus();
 						if (movingDownCount == STEP_TARGET)
 						{
 							mapRecord->SetMonsterInMap(indexX, indexY++, CName::SPACE);
@@ -593,7 +596,6 @@ namespace game_framework {
 							ChangeRushStatus();
 							if (type == CName::FISH_MAN)
 							{
-								ChangeFlyStatus();
 								isMovingDown = false;
 							}
 						}
@@ -639,44 +641,93 @@ namespace game_framework {
 		CDirection nextDirection = RandomDirection();
 		if (type == CName::FISH_MAN)
 		{
-			if (mapRecord->GetPlayerIndexX() != GetIndexX() || mapRecord->GetPlayerIndexY() != GetIndexY())
+			if (!player1Record->IsFail()) 
 			{
-				if (mapRecord->GetPlayerIndexX() == GetIndexX())
+				if (player1Record->GetIndexX() != GetIndexX() || player1Record->GetIndexY() != GetIndexY())
 				{
-					while (!(nextDirection == CDirection::UP || nextDirection == CDirection::DOWN))
+					if (player1Record->GetIndexX() == GetIndexX())
 					{
-						nextDirection = RandomDirection();
+						while (!(nextDirection == CDirection::UP || nextDirection == CDirection::DOWN))
+						{
+							nextDirection = RandomDirection();
+						}
 					}
-				}
-				else if (mapRecord->GetPlayerIndexY() == GetIndexY())
-				{
-					while (!(nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT))
-					{
-						nextDirection = RandomDirection();
-					}
-				}
 
-				if (nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT)
-				{
-					if (mapRecord->GetPlayerIndexX() < GetIndexX())
+					else if (player1Record->GetIndexY() == GetIndexY())
 					{
-						nextDirection = CDirection::LEFT;
+						while (!(nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT))
+						{
+							nextDirection = RandomDirection();
+						}
 					}
-					else if (mapRecord->GetPlayerIndexX() > GetIndexX())
+
+					if (nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT)
 					{
-						nextDirection = CDirection::RIGHT;
+						if (player1Record->GetIndexX() < GetIndexX())
+						{
+							nextDirection = CDirection::LEFT;
+						}
+						else if (player1Record->GetIndexX() > GetIndexX())
+						{
+							nextDirection = CDirection::RIGHT;
+						}
+					}
+
+					if (nextDirection == CDirection::UP || nextDirection == CDirection::DOWN)
+					{
+						if (player1Record->GetIndexY() < GetIndexY())
+						{
+							nextDirection = CDirection::UP;
+						}
+						else if (player1Record->GetIndexY() > GetIndexY())
+						{
+							nextDirection = CDirection::DOWN;
+						}
 					}
 				}
-
-				if (nextDirection == CDirection::UP || nextDirection == CDirection::DOWN)
+			}
+			else if (!player2Record->IsFail())
+			{
+				if (player2Record->GetIndexX() != GetIndexX() || player2Record->GetIndexY() != GetIndexY())
 				{
-					if (mapRecord->GetPlayerIndexY() < GetIndexY())
+					if (player2Record->GetIndexX() == GetIndexX())
 					{
-						nextDirection = CDirection::UP;
+						while (!(nextDirection == CDirection::UP || nextDirection == CDirection::DOWN))
+						{
+							nextDirection = RandomDirection();
+						}
 					}
-					else if (mapRecord->GetPlayerIndexY() > GetIndexY())
+
+					else if (player2Record->GetIndexY() == GetIndexY())
 					{
-						nextDirection = CDirection::DOWN;
+						while (!(nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT))
+						{
+							nextDirection = RandomDirection();
+						}
+					}
+
+					if (nextDirection == CDirection::LEFT || nextDirection == CDirection::RIGHT)
+					{
+						if (player2Record->GetIndexX() < GetIndexX())
+						{
+							nextDirection = CDirection::LEFT;
+						}
+						else if (player2Record->GetIndexX() > GetIndexX())
+						{
+							nextDirection = CDirection::RIGHT;
+						}
+					}
+
+					if (nextDirection == CDirection::UP || nextDirection == CDirection::DOWN)
+					{
+						if (player2Record->GetIndexY() < GetIndexY())
+						{
+							nextDirection = CDirection::UP;
+						}
+						else if (player2Record->GetIndexY() > GetIndexY())
+						{
+							nextDirection = CDirection::DOWN;
+						}
 					}
 				}
 			}
@@ -755,26 +806,48 @@ namespace game_framework {
 				rushRightAnimation.Reset();
 				rushUpAnimation.Reset();
 			}
-			if (mapRecord->GetPlayerIndexX() == GetIndexX())
+			if (player1Record->GetIndexX() == GetIndexX())
 			{
 				if (faceTo == CDirection::UP)
 				{
-					isRush = mapRecord->GetPlayerIndexY() < GetIndexY();
+					isRush = player1Record->GetIndexY() < GetIndexY();
 				}
 				if (faceTo == CDirection::DOWN)
 				{
-					isRush = mapRecord->GetPlayerIndexY() > GetIndexY();
+					isRush = player1Record->GetIndexY() > GetIndexY();
 				}
 			}
-			else if (mapRecord->GetPlayerIndexY() == GetIndexY())
+			else if (player2Record->GetIndexX() == GetIndexX())
+			{
+				if (faceTo == CDirection::UP)
+				{
+					isRush = player2Record->GetIndexY() < GetIndexY();
+				}
+				if (faceTo == CDirection::DOWN)
+				{
+					isRush = player2Record->GetIndexY() > GetIndexY();
+				}
+			}
+			else if (player1Record->GetIndexY() == GetIndexY())
 			{
 				if (faceTo == CDirection::RIGHT)
 				{
-					isRush = mapRecord->GetPlayerIndexX() > GetIndexX();
+					isRush = player1Record->GetIndexX() > GetIndexX();
 				}
 				if (faceTo == CDirection::LEFT)
 				{
-					isRush = mapRecord->GetPlayerIndexX() < GetIndexX();
+					isRush = player1Record->GetIndexX() < GetIndexX();
+				}
+			}
+			else if (player2Record->GetIndexY() == GetIndexY()) 
+			{
+				if (faceTo == CDirection::RIGHT)
+				{
+					isRush = player2Record->GetIndexX() > GetIndexX();
+				}
+				if (faceTo == CDirection::LEFT)
+				{
+					isRush = player2Record->GetIndexX() < GetIndexX();
 				}
 			}
 		}
@@ -782,24 +855,27 @@ namespace game_framework {
 
 	void CMonster::ChangeFlyStatus()
 	{
-		if (faceTo == CDirection::DOWN)
+		if (type == CName::FISH_MAN)
 		{
-			isFly = mapRecord->GetBrickInMap(GetIndexX(), GetIndexY() + 1) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY() + 1) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
-		}
-		else if (faceTo == CDirection::UP)
-		{
-			isFly = mapRecord->GetBrickInMap(GetIndexX(), GetIndexY() - 1) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY() - 1) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
-		}
-		else if (faceTo == CDirection::RIGHT)
-		{
-			isFly = mapRecord->GetBrickInMap(GetIndexX() + 1, GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX() + 1, GetIndexY()) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
-		}
-		else if (faceTo == CDirection::LEFT)
-		{
-			isFly = mapRecord->GetBrickInMap(GetIndexX() - 1, GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX() - 1, GetIndexY()) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
-		}
-		else {
-			isFly = false;
+			if (faceTo == CDirection::DOWN)
+			{
+				isFly = mapRecord->GetBrickInMap(GetIndexX(), GetIndexY() + 1) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY() + 1) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+			}
+			else if (faceTo == CDirection::UP)
+			{
+				isFly = mapRecord->GetBrickInMap(GetIndexX(), GetIndexY() - 1) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY() - 1) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+			}
+			else if (faceTo == CDirection::RIGHT)
+			{
+				isFly = mapRecord->GetBrickInMap(GetIndexX() + 1, GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX() + 1, GetIndexY()) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+			}
+			else if (faceTo == CDirection::LEFT)
+			{
+				isFly = mapRecord->GetBrickInMap(GetIndexX() - 1, GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX() - 1, GetIndexY()) != CName::SPACE || mapRecord->GetBrickInMap(GetIndexX(), GetIndexY()) != CName::SPACE || mapRecord->GetFoodInMap(GetIndexX(), GetIndexY()) != CName::SPACE;
+			}
+			else {
+				isFly = false;
+			}
 		}
 	}
 
@@ -815,6 +891,7 @@ namespace game_framework {
 	{
 		const int BRICK_LENGTH = 36;
 		const int BRICK_WIDTH = 24;
+		const int FLY_HEIGHT = 24;
 		if (isAlive || isSwallowed)
 		{
 			if (isInvincible)
@@ -918,7 +995,7 @@ namespace game_framework {
 					{
 						flyLeftAnimation.Reset();
 					}
-					flyLeftAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyLeftAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyLeftAnimation.Height());
+					flyLeftAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyLeftAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyLeftAnimation.Height() - FLY_HEIGHT);
 					flyLeftAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::RIGHT)
@@ -927,7 +1004,7 @@ namespace game_framework {
 					{
 						flyRightAnimation.Reset();
 					}
-					flyRightAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyRightAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyRightAnimation.Height());
+					flyRightAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyRightAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyRightAnimation.Height() - FLY_HEIGHT);
 					flyRightAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::UP)
@@ -936,7 +1013,7 @@ namespace game_framework {
 					{
 						flyUpAnimation.Reset();
 					}
-					flyUpAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyUpAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyUpAnimation.Height());
+					flyUpAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyUpAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyUpAnimation.Height() - FLY_HEIGHT);
 					flyUpAnimation.OnShow();
 				}
 				else if (faceTo == CDirection::DOWN)
@@ -945,7 +1022,7 @@ namespace game_framework {
 					{
 						flyDownAnimation.Reset();
 					}
-					flyDownAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyDownAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyDownAnimation.Height());
+					flyDownAnimation.SetTopLeft(int(x) + (BRICK_LENGTH / 2) - (flyDownAnimation.Width() / 2), int(y) + BRICK_WIDTH - flyDownAnimation.Height() - FLY_HEIGHT);
 					flyDownAnimation.OnShow();
 				}
 			}
