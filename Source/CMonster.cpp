@@ -798,26 +798,48 @@ namespace game_framework {
 				rushRightAnimation.Reset();
 				rushUpAnimation.Reset();
 			}
-			if (mapRecord->GetPlayerIndexX() == GetIndexX())
+			if (player1Record->GetIndexX() == GetIndexX())
 			{
 				if (faceTo == CDirection::UP)
 				{
-					isRush = mapRecord->GetPlayerIndexY() < GetIndexY();
+					isRush = player1Record->GetIndexY() < GetIndexY();
 				}
 				if (faceTo == CDirection::DOWN)
 				{
-					isRush = mapRecord->GetPlayerIndexY() > GetIndexY();
+					isRush = player1Record->GetIndexY() > GetIndexY();
 				}
 			}
-			else if (mapRecord->GetPlayerIndexY() == GetIndexY())
+			else if (player2Record->GetIndexX() == GetIndexX())
+			{
+				if (faceTo == CDirection::UP)
+				{
+					isRush = player2Record->GetIndexY() < GetIndexY();
+				}
+				if (faceTo == CDirection::DOWN)
+				{
+					isRush = player2Record->GetIndexY() > GetIndexY();
+				}
+			}
+			else if (player1Record->GetIndexY() == GetIndexY())
 			{
 				if (faceTo == CDirection::RIGHT)
 				{
-					isRush = mapRecord->GetPlayerIndexX() > GetIndexX();
+					isRush = player1Record->GetIndexX() > GetIndexX();
 				}
 				if (faceTo == CDirection::LEFT)
 				{
-					isRush = mapRecord->GetPlayerIndexX() < GetIndexX();
+					isRush = player1Record->GetIndexX() < GetIndexX();
+				}
+			}
+			else if (player2Record->GetIndexY() == GetIndexY()) 
+			{
+				if (faceTo == CDirection::RIGHT)
+				{
+					isRush = player2Record->GetIndexX() > GetIndexX();
+				}
+				if (faceTo == CDirection::LEFT)
+				{
+					isRush = player2Record->GetIndexX() < GetIndexX();
 				}
 			}
 		}
