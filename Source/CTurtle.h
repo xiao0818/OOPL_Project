@@ -15,4 +15,3 @@ namespace game_framework {
 };
 
 #endif
-
