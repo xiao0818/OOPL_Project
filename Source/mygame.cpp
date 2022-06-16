@@ -202,12 +202,17 @@ namespace game_framework {
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
+		const char KEY_ESC = 27;
+		if (nChar == KEY_ESC && !isPlayerPage && !isAboutPage && !isHelpPage && !isCreditsPage && !isLevelPage)
+		{
+			PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);
+		}
 	}
 
 	void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)
 	{
-		const int GROUND_X = (SIZE_X - 1000) / 2;
-		const int GROUND_Y = (SIZE_Y - 725) / 2;
+		const int GROUND_X = (SIZE_X - PAGE_LENGTH) / 2;
+		const int GROUND_Y = (SIZE_Y - PAGE_HEIGHT) / 2;
 
 		if ((GROUND_X + MUSIC_INDEX_X) < point.x && point.x < (GROUND_X + MUSIC_INDEX_X + CROSS_LENGTH) && (GROUND_Y + MUSIC_INDEX_Y) < point.y && point.y < (GROUND_Y + MUSIC_INDEX_Y + CROSS_HEIGHT))
 		{
@@ -282,7 +287,7 @@ namespace game_framework {
 				{
 					int tens = i / 10;
 					int digits = i % 10;
-					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits + FIRST_LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens + FIRST_LEVEL_BUTTON_HEIGHT))
+					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits + LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens + LEVEL_BUTTON_HEIGHT))
 					{
 						levelSelect = i + 1;
 						isOnLevelButton = true;
@@ -389,8 +394,8 @@ namespace game_framework {
 
 	void CGameStateInit::OnShow()
 	{
-		const int GROUND_X = (SIZE_X - startPage.Width()) / 2;
-		const int GROUND_Y = (SIZE_Y - startPage.Height()) / 2;
+		const int GROUND_X = (SIZE_X - PAGE_LENGTH) / 2;
+		const int GROUND_Y = (SIZE_Y - PAGE_HEIGHT) / 2;
 
 		if (isPlayerPage || isAboutPage || isHelpPage || isCreditsPage || isLevelPage)
 		{

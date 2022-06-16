@@ -149,14 +149,6 @@ namespace game_framework {
 		return playerMap[nx][ny];
 	}
 
-	int CMap::GetPlayerIndexX() {
-		return playerIndexX;
-	}
-
-	int CMap::GetPlayerIndexY() {
-		return playerIndexY;
-	}
-
 	void CMap::SetTrapInMap(int nx, int ny, CName name)
 	{
 		trapMap[nx][ny] = name;

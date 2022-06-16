@@ -16,8 +16,6 @@ namespace game_framework {
 		void DeleteMap();
 		void SetPlayerInMap(int nx, int ny, CName name);
 		CName GetPlayerInMap(int nx, int ny);
-		int GetPlayerIndexX();
-		int GetPlayerIndexY();
 		void SetTrapInMap(int nx, int ny, CName name);
 		CName GetTrapInMap(int nx, int ny);
 		void SetBrickInMap(int nx, int ny, CName name);
