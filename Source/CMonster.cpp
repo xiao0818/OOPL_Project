@@ -758,6 +758,7 @@ namespace game_framework {
 			hitCount = 0;
 			faceTo = tempDir;
 			isHit = true;
+			isFly = false;
 		}
 		else if (isFood)
 		{
