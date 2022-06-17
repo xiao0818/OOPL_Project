@@ -158,8 +158,8 @@ namespace game_framework {
 		const int FIRST_LEVEL_BUTTON_INDEX_Y = 303;
 		const int LEVEL_BUTTON_LENGTH = 76;
 		const int LEVEL_BUTTON_HEIGHT = 75;
-		const int NEXT_LEVEL_BUTTON_DISTANCE_X = 199;
-		const int NEXT_LEVEL_BUTTON_DISTANCE_Y = 97;
+		const double NEXT_LEVEL_BUTTON_DISTANCE_X = 99.5;
+		const double NEXT_LEVEL_BUTTON_DISTANCE_Y = 96.6;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

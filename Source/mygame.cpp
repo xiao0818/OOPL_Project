@@ -287,7 +287,7 @@ namespace game_framework {
 				{
 					int tens = i / 10;
 					int digits = i % 10;
-					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits + LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens + LEVEL_BUTTON_HEIGHT))
+					if ((GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + int(NEXT_LEVEL_BUTTON_DISTANCE_X * digits)) < point.x && point.x < (GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + int(NEXT_LEVEL_BUTTON_DISTANCE_X * digits) + LEVEL_BUTTON_LENGTH) && (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + int(NEXT_LEVEL_BUTTON_DISTANCE_Y * tens)) < point.y && point.y < (GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + int(NEXT_LEVEL_BUTTON_DISTANCE_Y * tens) + LEVEL_BUTTON_HEIGHT))
 					{
 						levelSelect = i + 1;
 						isOnLevelButton = true;
@@ -417,7 +417,7 @@ namespace game_framework {
 					int level = levelSelect - 1;
 					int tens = level / 10;
 					int digits = level % 10;
-					levelButton[level].SetTopLeft(GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + NEXT_LEVEL_BUTTON_DISTANCE_X * digits, GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + NEXT_LEVEL_BUTTON_DISTANCE_Y * tens);
+					levelButton[level].SetTopLeft(GROUND_X + FIRST_LEVEL_BUTTON_INDEX_X + int(NEXT_LEVEL_BUTTON_DISTANCE_X * digits), GROUND_Y + FIRST_LEVEL_BUTTON_INDEX_Y + int(NEXT_LEVEL_BUTTON_DISTANCE_Y * tens));
 					levelButton[level].ShowBitmap();
 				}
 			}
