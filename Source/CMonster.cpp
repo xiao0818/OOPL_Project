@@ -1084,6 +1084,4 @@ namespace game_framework {
 			}
 		}
 	}
-
-
 }

@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 產生的 Include 檔案。
-// 由 game.rc 使用
+// Microsoft Visual C++ generated include file.
+// Used by game.rc
 //
 #define IDB_PLAYER_EAT_RIGHT_003        3
 #define IDD_ABOUTBOX                    100
@@ -9,11 +9,6 @@
 #define IDR_GAMETYPE                    129
 #define IDB_RACKET                      131
 #define IDB_BACKGROUND                  132
-#define IDB_CORNER                      133
-#define IDB_BALL1                       134
-#define IDB_BALL2                       135
-#define IDB_BALL3                       136
-#define IDB_BALL4                       137
 #define IDB_0                           138
 #define IDB_1                           139
 #define IDB_2                           140
@@ -574,9 +569,7 @@
 #define IDB_PLAYER2_MOVE_UP_WITH_FULL_005 728
 #define IDB_PLAYER2_MOVE_UP_WITH_FULL_006 729
 #define IDB_PLAYER2_MOVE_UP_WITH_FULL_007 730
-#define IDB_BITMAP8                     731
 #define IDB_PLAYER2_MOVE_UP_WITH_FULL_008 731
-#define IDB_BITMAP1                     732
 #define IDB_LEVEL_2                     732
 #define IDB_END_PLAYER1_SUCCESS_001     733
 #define IDB_END_PLAYER1_SUCCESS_002     734
@@ -591,7 +584,6 @@
 #define IDB_END_PLAYER2_SUCCESS_004     743
 #define IDB_END_PLAYER2_SUCCESS_005     744
 #define IDB_END_PLAYER2_SUCCESS_006     745
-#define IDB_BITMAP2                     746
 #define IDB_END_PLAYER2_FAIL_001        746
 #define IDB_LEVEL_001                   747
 #define IDB_LEVEL_002                   748
@@ -642,13 +634,10 @@
 #define IDB_LEVEL_047                   793
 #define IDB_LEVEL_048                   794
 #define IDB_LEVEL_049                   795
-#define IDB_BITMAP53                    796
 #define IDB_LEVEL_050                   796
 #define IDB_BOMB_BRICK                  797
-#define IDB_BITMAP4                     798
 #define IDB_SLIME_BRICK                 798
 #define IDB_WOODEN_BRICK_BREAK_001      799
-#define IDB_BITMAP5                     800
 #define IDB_WOODEN_BRICK_BREAK_002      800
 #define IDB_BOMB_BRICK_BREAK_001        801
 #define IDB_BOMB_BRICK_BREAK_002        802
@@ -657,7 +646,6 @@
 #define IDB_BOMB_BRICK_BREAK_005        805
 #define IDB_BOMB_BRICK_BREAK_006        806
 #define IDB_SLIME_REBOUND_001           807
-#define IDB_BITMAP13                    808
 #define IDB_SLIME_REBOUND_002           808
 #define IDC_CURSOR_ARROW                809
 #define IDC_CURSOR1                     810
@@ -725,41 +713,7 @@
 #define IDB_FISH_MOVE_UP_005            871
 #define IDB_FISH_MOVE_UP_006            872
 #define IDB_FISH_MOVE_UP_007            873
-#define IDB_BITMAP14                    874
 #define IDB_FISH_MOVE_UP_008            874
-#define IDB_FISH_FLY_DOWN_001           875
-#define IDB_FISH_FLY_DOWN_002           876
-#define IDB_FISH_FLY_DOWN_003           877
-#define IDB_FISH_FLY_DOWN_004           878
-#define IDB_FISH_FLY_DOWN_005           879
-#define IDB_FISH_FLY_DOWN_006           880
-#define IDB_FISH_FLY_DOWN_007           881
-#define IDB_FISH_FLY_DOWN_008           882
-#define IDB_FISH_FLY_LEFT_001           883
-#define IDB_FISH_FLY_LEFT_002           884
-#define IDB_FISH_FLY_LEFT_003           885
-#define IDB_FISH_FLY_LEFT_004           886
-#define IDB_FISH_FLY_LEFT_005           887
-#define IDB_FISH_FLY_LEFT_006           888
-#define IDB_FISH_FLY_LEFT_007           889
-#define IDB_FISH_FLY_LEFT_008           890
-#define IDB_FISH_FLY_RIGHT_001          891
-#define IDB_FISH_FLY_RIGHT_002          892
-#define IDB_FISH_FLY_RIGHT_003          893
-#define IDB_FISH_FLY_RIGHT_004          894
-#define IDB_FISH_FLY_RIGHT_005          895
-#define IDB_FISH_FLY_RIGHT_006          896
-#define IDB_FISH_FLY_RIGHT_007          897
-#define IDB_FISH_FLY_RIGHT_008          898
-#define IDB_FISH_FLY_UP_001             899
-#define IDB_FISH_FLY_UP_002             900
-#define IDB_FISH_FLY_UP_003             901
-#define IDB_FISH_FLY_UP_004             902
-#define IDB_FISH_FLY_UP_005             903
-#define IDB_FISH_FLY_UP_006             904
-#define IDB_FISH_FLY_UP_007             905
-#define IDB_BITMAP15                    906
-#define IDB_FISH_FLY_UP_008             906
 #define IDB_FISH_FLY_D_001              907
 #define IDB_FISH_FLY_D_002              908
 #define IDB_FISH_FLY_D_003              909
@@ -791,7 +745,6 @@
 #define IDB_FISH_FLY_U_005              935
 #define IDB_FISH_FLY_U_006              936
 #define IDB_FISH_FLY_U_007              937
-#define IDB_BITMAP16                    938
 #define IDB_FISH_FLY_U_008              938
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
